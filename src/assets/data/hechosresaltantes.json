@@ -1,0 +1,60 @@
+{
+    "registros": [
+        {
+            "trabajador_ficha": "12845",
+            "trabajador_nombre": "SANTOS MARTINEZ, ROLANDO",
+            "evaluador_ficha": "12336",
+            "evaluador_nombre": "SEGURA PERALTA, AMERICA GLADYS",
+            "competencia_codigo": "C001",
+            "competencia_titulo": "VOCACIÓN DE SERVICIO",
+            "competencia_descripcion": "Entiende, administra y responde a las expectativas y necesidades de los clientes internos, externos y grupos de interés de la empresa. Busca ofrecer un servicio excepcional, siendo empático y proactivo a las necesidades del cliente. Está atento a responder oportunamente y con efectividad, generando la creación de valor. Está orientado a fortalecer una cultura de calidad de servicio en la empresa.",
+            "comportamiento_codigo": "COC0005",
+            "comportamiento_descripcion": "Escucha con atención y se cerciora de haber comprendido la necesidad del cliente interno o externo, y grupos de interés.",
+            "indicador": 1,
+            "descripcion": "texto",
+            "fecha": 1718514000000
+        },
+        {
+            "trabajador_ficha": "12845",
+            "trabajador_nombre": "SANTOS MARTINEZ, ROLANDO",
+            "evaluador_ficha": "12336",
+            "evaluador_nombre": "SEGURA PERALTA, AMERICA GLADYS",
+            "competencia_codigo": "C001",
+            "competencia_titulo": "VOCACIÓN DE SERVICIO",
+            "competencia_descripcion": "Entiende, administra y responde a las expectativas y necesidades de los clientes internos, externos y grupos de interés de la empresa. Busca ofrecer un servicio excepcional, siendo empático y proactivo a las necesidades del cliente. Está atento a responder oportunamente y con efectividad, generando la creación de valor. Está orientado a fortalecer una cultura de calidad de servicio en la empresa.",
+            "comportamiento_codigo": "COC0005",
+            "comportamiento_descripcion": "Escucha con atención y se cerciora de haber comprendido la necesidad del cliente interno o externo, y grupos de interés.",
+            "indicador": 1,
+            "descripcion": "El trabajador muestra una excelente disposición para ayudar a sus compañeros y colaborar en equipo.",
+            "fecha": 1718600400000
+        },
+        {
+            "trabajador_ficha": "12845",
+            "trabajador_nombre": "SANTOS MARTINEZ, ROLANDO",
+            "evaluador_ficha": "12336",
+            "evaluador_nombre": "SEGURA PERALTA, AMERICA GLADYS",
+            "competencia_codigo": "C001",
+            "competencia_titulo": "VOCACIÓN DE SERVICIO",
+            "competencia_descripcion": "Entiende, administra y responde a las expectativas y necesidades de los clientes internos, externos y grupos de interés de la empresa. Busca ofrecer un servicio excepcional, siendo empático y proactivo a las necesidades del cliente. Está atento a responder oportunamente y con efectividad, generando la creación de valor. Está orientado a fortalecer una cultura de calidad de servicio en la empresa.",
+            "comportamiento_codigo": "COC0005",
+            "comportamiento_descripcion": "Escucha con atención y se cerciora de haber comprendido la necesidad del cliente interno o externo, y grupos de interés.",
+            "indicador": 1,
+            "descripcion": "El sdfsdftrabajador muestra una excelente disposición para ayudar a sus compañeros y colaborar en equipo.",
+            "fecha": 1719464400000
+        },
+        {            "trabajador_ficha": "12845",
+        "trabajador_nombre": "SANTOS MARTINEZ, ROLANDO",
+        "evaluador_ficha": "12336",
+        "evaluador_nombre": "SEGURA PERALTA, AMERICA GLADYS",
+        "competencia_codigo": "C001",
+        "competencia_titulo": "VOCACIÓN DE SERVICIO",
+        "competencia_descripcion": "Entiende, administra y responde a las expectativas y necesidades de los clientes internos, externos y grupos de interés de la empresa. Busca ofrecer un servicio excepcional, siendo empático y proactivo a las necesidades del cliente. Está atento a responder oportunamente y con efectividad, generando la creación de valor. Está orientado a fortalecer una cultura de calidad de servicio en la empresa.",
+        "comportamiento_codigo": "COC0005",
+        "comportamiento_descripcion": "Escucha con atención y se cerciora de haber comprendido la necesidad del cliente interno o externo, y grupos de interés.",
+        "indicador": 1,
+        "descripcion": "El sdfsdftrabajador muestra una excelente disposición para ayudar a sus compañeros y colaborar en equipo.",
+        "fecha": 1719464400000
+    }
+    ],
+    "mensaje": "OK"
+}

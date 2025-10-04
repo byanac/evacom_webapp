@@ -1,0 +1,89 @@
+{
+    "registros": [
+        {
+            "codigo": "N1",
+            "nombre": "Nivel 1",
+            "estado": 1,
+            "admin": {
+                "codigoFicha": "00012336",
+                "apellidosNombres": "SEGURA PERALTA, AMERICA GLADYS",
+                "codigoPuesto": "00005197",
+                "nombrePuesto": "Analista Principal de Sistemas"
+            },
+            "fecModificacion": "2024-10-30 11:33:34"
+        },
+        {
+            "codigo": "N2",
+            "nombre": "Nivel 2",
+            "estado": 1,
+            "admin": {
+                "codigoFicha": "00012336",
+                "apellidosNombres": "SEGURA PERALTA, AMERICA GLADYS",
+                "codigoPuesto": "00005197",
+                "nombrePuesto": "Analista Principal de Sistemas"
+            },
+            "fecModificacion": "2024-10-30 11:33:34"
+        },
+        {
+            "codigo": "N3",
+            "nombre": "Nivel 3",
+            "estado": 1,
+            "admin": {
+                "codigoFicha": "00012336",
+                "apellidosNombres": "SEGURA PERALTA, AMERICA GLADYS",
+                "codigoPuesto": "00005197",
+                "nombrePuesto": "Analista Principal de Sistemas"
+            },
+            "fecModificacion": "2024-10-30 11:33:34"
+        },
+        {
+            "codigo": "N4",
+            "nombre": "Nivel 4",
+            "estado": 1,
+            "admin": {
+                "codigoFicha": "00012336",
+                "apellidosNombres": "SEGURA PERALTA, AMERICA GLADYS",
+                "codigoPuesto": "00005197",
+                "nombrePuesto": "Analista Principal de Sistemas"
+            },
+            "fecModificacion": "2024-10-30 11:33:34"
+        },
+        {
+            "codigo": "N5",
+            "nombre": "Nivel 5",
+            "estado": 1,
+            "admin": {
+                "codigoFicha": "00012336",
+                "apellidosNombres": "SEGURA PERALTA, AMERICA GLADYS",
+                "codigoPuesto": "00005197",
+                "nombrePuesto": "Analista Principal de Sistemas"
+            },
+            "fecModificacion": "2024-10-30 11:33:34"
+        },
+        {
+            "codigo": "P1",
+            "nombre": "PB Nivel T",
+            "estado": 0,
+            "admin": {
+                "codigoFicha": "00012336",
+                "apellidosNombres": "SEGURA PERALTA, AMERICA GLADYS",
+                "codigoPuesto": "00005197",
+                "nombrePuesto": "Analista Principal de Sistemas"
+            },
+            "fecModificacion": "2024-10-30 11:33:34"
+        },
+        {
+            "codigo": "P2",
+            "nombre": "PB2 Nivel 5",
+            "estado": 1,
+            "admin": {
+                "codigoFicha": "00012336",
+                "apellidosNombres": "SEGURA PERALTA, AMERICA GLADYS",
+                "codigoPuesto": "00005197",
+                "nombrePuesto": "Analista Principal de Sistemas"
+            },
+            "fecModificacion": "2024-10-30 11:33:34"
+        }
+    ],
+    "mensaje": "OK"
+}

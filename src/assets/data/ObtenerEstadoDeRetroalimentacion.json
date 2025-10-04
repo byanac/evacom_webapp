@@ -1,0 +1,15 @@
+{
+    "registros": {
+        "codCalendario": "C002",
+        "estadoEvaluador": true,
+        "estadoEvaluado": false,
+        "estadoEvaluacion": true,
+        "fichaEvaluado": "00012810",
+        "fichaEvaluador": "00012336",
+        "fechaEvaluado": 1725253200000,
+        "fechaEvaluador": 1725253200000,
+        "comentarioEvaluado": "Gracias :D",
+        "comentarioEvaluador": "Sigue así!"
+    },
+    "mensaje": "OK"
+}

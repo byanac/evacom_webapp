@@ -1,0 +1,31 @@
+table td p{
+    margin-bottom: 0px !important;
+}
+
+hr{
+    background-color: #c0d5ec !important;
+    border: 0.15rem solid #c0d5ec;
+    margin-bottom: 0.5rem !important;
+}
+
+th{
+  font-size: 16px !important;
+}
+
+.border {
+    border: 1px solid black !important;
+}
+
+.border-solid {
+    border: solid 1px black !important;
+  }
+
+  @media print {
+    app-nav {
+      display: none;
+    }
+
+    .footer{
+      display: none;
+    }
+  }

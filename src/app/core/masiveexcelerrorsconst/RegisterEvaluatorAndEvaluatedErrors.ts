@@ -1,0 +1,21 @@
+export const RegisterEvaluatorAndEvaluatedErrors: { [key: number]: string } = {
+    '1': "Código de calendario vacío",
+    '2': "Código de puesto vacío",
+    '3': "Código de puesto vacío",
+    '4': "Código de puesto vacío",
+    '5': "Código de calendario no es una cadena",
+    '6': "Código de puesto no es una cadena",
+    '7': "Código de puesto no es una cadena",
+    '8': "Código de puesto no es un número entero",
+    '9': "Registro duplicado",
+    '10': "Longitud máxima excedida para código de calendario",
+    '11': "Longitud máxima excedida para código de puesto de Evaluado",
+    '12': "Longitud máxima excedida para código de puesto de Evaluador",
+    '13': "Longitud máxima excedida para código de tipo de Evaluador (2 dígitos)",
+    '14': "El Calendario no existe en la base de datos",
+    '15': "El Puesto de evaluado no existe en la base de datos",
+    '16': "El Puesto de evaluador no existe en la base de datos",
+    '17': "El código de tipo de evaluador no está permitido para este periodo de calendario",
+    '18': "Registro ya existe en la base de datos",
+    '19': "Registro ya existe en la base de datos pero como otro tipo de evaluador"
+};

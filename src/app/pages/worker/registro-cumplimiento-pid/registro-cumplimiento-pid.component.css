@@ -1,0 +1,63 @@
+input[type="date"] {
+    width: 100%;
+}
+
+input[type="number"] {
+    width: 100%;
+    text-align: center;
+}
+
+select{
+    width: 100%;
+}
+
+table{
+    overflow-x: auto !important;
+    white-space: normal !important;
+  }
+  
+  @media only screen and (max-width: 788px) {
+    .Datatable {
+      display: block !important;
+    }
+  }
+
+  .attached-item-label {
+    width: 5rem;
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: center;
+  }
+  
+.non-editable {
+  background-color: #e4e4e4 !important;
+}
+
+
+input[type="file"]::-webkit-file-upload-text {
+  display: none;
+}
+
+
+input[type="file"] {
+  color: transparent;
+}
+
+
+.comentario-textarea {
+  width: 100px;
+  height: 100px;
+  resize: none;
+  display: flex;
+  justify-content: center; 
+  align-items: center;     
+  text-align: center;      
+  padding: 0;
+  box-sizing: border-box; 
+}
+
+.errorborder{
+  border: solid 2px rgb(187, 184, 23) !important;
+}

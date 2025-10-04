@@ -1,0 +1,43 @@
+{
+    "datos": {
+        "listadoCorrectos": [
+            {
+                "grupoEvaluacion": {
+                    "codigo": "17452",
+                    "descripcion": "QWEQWE"
+                },
+                "calendario": {
+                    "vCodigo": "C005",
+                    "vNombre": "180 2025-I"
+                },
+                "trabajador": {
+                    "codigoFicha": "00025133",
+                    "apellidosNombres": "CIVICO MEJIA, MOISES ANACLETO",
+                    "codigoPuesto": "00030570",
+                    "nombrePuesto": "Oper.Esp.Oper.SCADA de Sis.de Bomb.de Ag"
+                },
+                "mensajesError": ""
+            }
+        ],
+        "listadoIncorrectos": [
+            {
+                "grupoEvaluacion": {
+                    "codigo": "17452",
+                    "descripcion": "QWEQWE"
+                },
+                "calendario": {
+                    "vCodigo": "C005",
+                    "vNombre": "180 2025-I"
+                },
+                "trabajador": {
+                    "codigoFicha": "00025133",
+                    "apellidosNombres": "CIVICO MEJIA, MOISES ANACLETO",
+                    "codigoPuesto": "00030570",
+                    "nombrePuesto": "Oper.Esp.Oper.SCADA de Sis.de Bomb.de Ag"
+                },
+                "mensajesError": "13"
+            }
+        ]
+    },
+    "mensaje": "Archivo procesado exitosamente"
+}

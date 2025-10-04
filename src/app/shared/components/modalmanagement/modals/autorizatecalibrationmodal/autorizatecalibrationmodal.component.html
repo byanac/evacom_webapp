@@ -1,0 +1,160 @@
+<div
+  class="relative z-10"
+  aria-labelledby="modal-title"
+  role="dialog"
+  aria-modal="true"
+>
+  <!-- Fondo oscuro -->
+  <div class="fixed inset-0 bg-gray-900/50 transition-opacity"></div>
+  
+  <!-- Contenedor del modal centrado con desplazamiento si es necesario -->
+  <div class="fixed inset-0 z-10 flex items-center justify-center p-4">
+    <div
+      class="relative transform overflow-y-auto max-h-screen rounded-lg bg-white text-left shadow-xl transition-all sm:w-full sm:max-w-lg"
+    >
+      <!-- Contenido del modal -->
+      <div>
+        <!-- Encabezado -->
+        <div class="bg-blue-600 p-6 text-white flex justify-between items-center">
+          <h1 class="text-2xl font-bold mb-0">
+            Calibrar Evaluaciones {{ TypeAndPeriodName }}
+          </h1>
+          <button
+            (click)="CloseModal()"
+            class="inline-flex items-center justify-center rounded-md text-sm font-medium focus:outline-none focus:ring-2 focus:ring-white hover:bg-white hover:text-gray-500 h-10 px-4 py-2"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="h-6 w-6"
+            >
+              <path d="M18 6 6 18"></path>
+              <path d="m6 6 12 12"></path>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Cuerpo del modal -->
+        <div class="flex flex-col items-center justify-center px-6 py-4 border-b border-gray-200">
+          <div class="flex items-center w-full">
+            <input
+              placeholder="Buscar por ficha"
+              class="flex-1 mr-4 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              type="text"
+              maxlength="8"
+              [(ngModel)]="FileValue"
+            />
+            <button
+              *ngIf="FileValue.length === 0"
+              disabled
+              class="bg-blue-400 text-white font-medium py-2 px-4 rounded-md cursor-not-allowed"
+            >
+              <svg
+                class="w-6 h-6 text-white"
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke="white"
+                  stroke-linecap="round"
+                  stroke-width="2"
+                  d="m21 21-3.5-3.5M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"
+                />
+              </svg>
+            </button>
+            <button
+              *ngIf="FileValue.length != 0"
+              (click)="GetData()"
+              class="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-md"
+            >
+              <svg
+                class="w-6 h-6 text-white"
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke="white"
+                  stroke-linecap="round"
+                  stroke-width="2"
+                  d="m21 21-3.5-3.5M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Lista de datos -->
+        <div *ngIf="DataList.length > 0 || ListToSend.length > 0" class="px-6 py-4 border-b border-gray-200">
+          <div class="grid justify-center justify-items-center">
+            <p-pickList
+              [source]="DataList"
+              [target]="ListToSend"
+              [responsive]="true"
+              [showSourceControls]="false"
+              [showTargetControls]="false"
+              (onMoveToTarget)="onMoveToTarget($event)"
+              (onMoveToSource)="onMoveToSource($event)"
+              sourceHeader="Disponibles"
+              targetHeader="Seleccionados"
+              dragdrop="true"
+              [sourceStyle]="{ height: '300px' }"
+              [targetStyle]="{ height: '300px' }"
+            >
+              <ng-template let-people pTemplate="item">
+                <div class="ui-helper-clearfix border border-gray-300 rounded-md p-2">
+                  <img
+                    [src]="people.foto"
+                    class="inline-block mr-2"
+                    width="48"
+                    alt="Foto"
+                  />
+                  <div>
+                    <p class="font-medium">{{ people.codigoFicha }}</p>
+                    <p class="text-gray-500">{{ people.apellidosNombres }}</p>
+                  </div>
+                </div>
+              </ng-template>
+            </p-pickList>
+            <div class="grid w-52 mt-4 text-center">
+              <p class="text-sm font-medium text-gray-500">Fecha límite:</p>
+              <p>{{ this.formatFechaDDMMAAAA(this.EndCalibrationPeriod) }}</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Botones de acción -->
+        <div
+        *ngIf="DataList.length > 0 || ListToSend.length > 0"
+        class="px-6 py-4 border-t border-gray-200"
+      >
+        <button
+          *ngIf="ListToSend.length === 0"
+          class="bg-blue-400 cursor-not-allowed text-white font-medium py-2 px-4 rounded-md w-full cursor-not-allowed"
+        >
+          Autorizar calibración
+        </button>
+        <button
+          *ngIf="ListToSend.length > 0"
+          (click)="SendCalibration()"
+          class="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-md w-full"
+        >
+          Autorizar calibración
+        </button>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>

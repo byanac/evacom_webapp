@@ -1,0 +1,143 @@
+input[type="date"] {
+    width: 100%;
+}
+
+select{
+    width: 100%;
+}
+
+table{
+  overflow-x: auto !important;
+  white-space: normal !important;
+}
+
+@media only screen and (max-width: 788px) {
+  .Datatable {
+    display: block !important;
+  }
+}
+
+
+summary {
+    white-space: nowrap; 
+    overflow: hidden;   
+    text-overflow: ellipsis; 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    width: 100%;
+    cursor: pointer;
+    white-space: pre-line;
+   
+}
+
+.multiselectcontainer{
+  max-width: fit-content;
+}
+
+details {
+  display: inline-flex;
+  flex-direction: column;
+  padding: 3px 6px;
+}
+
+details summary::marker {
+  display: none;
+  font-size: 0;
+}
+
+details summary::-webkit-details-marker {
+  display: none;
+  font-size: 0;
+}
+
+details summary::after {
+  content: "\25BC" / "";
+  display: inline-block;
+  font-size: 0.6rem;
+  height: 1rem;
+  line-height: 1rem;
+  margin-left: 0.5rem;
+  position: relative;
+  transition: transform 0.25s;
+}
+
+details[open] summary {
+  margin-bottom: 1rem;
+}
+
+details[open] summary::after {
+  top: -0.15rem;
+  transform: rotate(180deg);
+}
+
+form {
+  display: flex;
+}
+
+fieldset {
+  border: 0;
+  padding: 0;
+  width: 100%;
+}
+
+fieldset legend {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+ul li {
+  border-radius: 3px;
+  margin: 0;
+  padding: 4px 2px;
+}
+
+ul li:hover {
+  background: #eee;
+}
+
+ul li label {
+  display: flex;
+  flex-grow: 1;
+  justify-content: space-between;
+}
+
+
+.editable {
+  background-color: white !important;
+}
+
+
+.non-editable {
+  background-color: #e4e4e4 !important;
+}
+
+
+.errorborder{
+  border: solid 2px rgb(255, 61, 61) !important;
+}
+
+select{
+  background-color: #ffffff00;
+}
+
+.empty-cell {
+  min-height: 1.5rem;
+}
+
+.ResultViewTBODY p{
+  margin-bottom: 0px;
+}

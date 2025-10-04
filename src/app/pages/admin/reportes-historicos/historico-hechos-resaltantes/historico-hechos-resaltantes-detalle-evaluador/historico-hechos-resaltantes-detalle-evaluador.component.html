@@ -1,0 +1,86 @@
+
+<app-title titulo="Histórico del personal con hechos resaltantes a cargo de {{EvaluatorName}} - {{PeriodName}}"></app-title>
+
+<app-targetscounters *ngIf="TableData != undefined" [DataToCount]="TableData" [ConfirmedEntryName]="'registraHechos'" [ConfirmText]="'Con hechos registrados'" [NotConfirmedText]="'Sin hechos registrados'"></app-targetscounters>
+
+<div class="relative overflow-x-auto">
+  <table class="w-full text-sm text-left rtl:text-right text-gray-500 border solid">
+    <thead class="text-xs text-gray-700 uppercase bg-gray-5">
+      <tr>
+        <th scope="col" class="px-6 py-3 border" style="width: 8rem;">Foto</th>
+        <th scope="col" class="px-6 py-3 border" style="width: 5.9rem;">COD. FICHA</th>
+        <th scope="col" class="px-6 py-3 border" style="width: 35rem;">APELLIDOS Y NOMBRES</th>
+        <th scope="col" class="px-6 py-3 border" style="width: 8.5rem;">UNIDAD ORGÁNICA</th>
+        <th scope="col" class="px-6 py-3 border" style="width: 6.8rem;">COD. PUESTO</th>
+        <th scope="col" class="px-6 py-3 border text-wrap" style="width: 35rem;">PUESTO</th>
+        <th scope="col" class="px-6 py-3 border" style="width: 7rem;">Hechos resaltantes</th>
+        <th scope="col" class="px-6 py-3 border" style="width: 3rem;">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of TableData" class="border hover:bg-gray-100">
+        <!-- Foto -->
+        <th class="px-6 py-4 text-black border">
+          <img class="w-20 h-20" [src]="item?.foto" loading="lazy" 
+ crossorigin="anonymous" (error)="onImgError($event)" alt="Foto">
+        </th>
+        <!-- COD. Ficha -->
+        <th class="px-6 py-4 text-gray-900 whitespace-nowrap">
+          <div class="text-base font-semibold">{{removeLeadingZeros(item.codigoFicha)}}</div>
+        </th>
+        <!-- APELLIDOS Y NOMBRES -->
+        <td class="px-6 py-4 text-black border">{{item?.apellidosNombres}}</td>
+        <!-- UNIDAD ORGÁNICA -->
+        <td class="px-6 py-4 text-black border">{{item?.unidadOrganica}}</td>
+        <!-- COD. PUESTO -->
+        <td class="px-6 py-4 text-black border">{{item?.codigoPuesto}}</td>
+        <!-- PUESTO -->
+        <td class="px-6 py-4 text-black border">{{item?.nombrePuesto}}</td>
+        <!-- Evaluación -->
+        <td class="px-6 py-4 text-black border">
+          <div *ngIf="item?.registraHechos" class="flex items-center">
+            <span class="badgegreen bg-green-500">REGISTRADOS</span>
+          </div>
+          <div *ngIf="!item?.registraHechos" class="flex items-center">
+            <span class="badgered bg-red-500">NO REGISTRADOS</span>
+          </div>
+        </td>
+        <td class="px-6 py-4">
+          <div class="flex items-center">
+            <div class="w-full">
+              <button type="button" *ngIf="item?.registraHechos" 
+                      (click)="showDialog(item)"
+                      class="text-white bg-green-500 hover:bg-green-600 font-medium rounded-lg text-sm px-2.5 py-2.5 w-full">
+                Ver hechos
+              </button>
+              <button type="button" *ngIf="!item?.registraHechos" 
+                      class="text-white bg-gray-500 font-medium rounded-lg text-sm px-2.5 py-2.5 w-full cursor-not-allowed">
+                Ver hechos
+              </button>
+            </div>
+          </div>                    
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+<div *ngIf="FactsData != undefined ">
+  <p-dialog header="Hechos resaltantes de {{EvaluatedName}}" [(visible)]="visible"> 
+      <div *ngFor="let item of FactsData.registros">
+          <div class="grid">
+              <hr class="bg-black" style="margin: 0.5rem 0 0.5rem 0 !important;">
+              <span>Autor: <b>{{item?.evaluador_nombre}}</b></span>
+              <span>Fecha: <b>{{DecodeDate(item?.fecha)}}</b></span>
+              <hr class="bg-black" style="margin: 0.5rem 0 0.5rem 0 !important;">
+          </div>
+          <div>
+              <p><b>Competencia:</b> {{item?.competencia_titulo}}</p>
+              <p><b>Comportamiento:</b> {{item?.competencia_descripcion}}</p>
+              <p><b>Tipo de hecho:</b> {{GetTypeText(item?.indicador)}}</p>
+              <p><b>Descripción:</b> {{item?.descripcion}}</p>
+          </div>
+      </div>
+  </p-dialog>
+</div>

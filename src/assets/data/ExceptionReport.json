@@ -1,0 +1,18 @@
+{
+    "registros": [
+        {
+            "evaluador": {
+                "codigoFicha": "12336",
+                "apellidosNombres": "SEGURA PERALTA, AMERICA GLADYS",
+                "unidadOrganica": "302-ETIC",
+                "codigoPuesto": "00005197",
+                "nombrePuesto": "Analista Principal de Sistemas",
+                "foto": "https://webapp16.sedapal.com.pe/imgsedatel/ficha/12336.jpg"
+            },
+            "evaluados_total": 2,
+            "evaluados_pendientes": 2,
+            "evaluados_terminados": 0
+        }
+    ],
+    "mensaje": "OK"
+}

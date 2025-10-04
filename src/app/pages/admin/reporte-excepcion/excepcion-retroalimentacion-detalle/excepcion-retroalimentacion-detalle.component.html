@@ -1,0 +1,94 @@
+<app-title titulo="Excepción del Personal a ser retroalimentado a cargo de {{EvaluatorName}} - {{PeriodName}}"></app-title>
+
+<div class="relative overflow-x-auto">
+  <table class="w-full text-sm text-left rtl:text-right text-gray-500 border solid">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-5">
+            <tr>
+                <th scope="col" class="px-6 py-3 border" style="width: 2rem;">
+                    <!-- Columna para la flecha -->
+                </th>
+                <th scope="col" class="px-6 py-3 border" style="width: 8rem;">Foto</th>
+                <th scope="col" class="px-6 py-3 border" style="width: 5.9rem;">COD. FICHA</th>
+                <th scope="col" class="px-6 py-3 border" style="width: 35rem;">APELLIDOS Y NOMBRES</th>
+                <th scope="col" class="px-6 py-3 border" style="width: 8.5rem;">UNIDAD ORGÁNICA</th>
+                <th scope="col" class="px-6 py-3 border" style="width: 6.8rem;">COD. PUESTO</th>
+                <th scope="col" class="px-6 py-3 border text-wrap" style="width: 35rem;">PUESTO</th>
+                <th scope="col" class="px-6 py-3 border text-center" style="width: 10rem;">Fecha límite</th>
+                <th scope="col" class="px-6 py-3 border" style="width: 7rem;">Estado</th>
+                <th scope="col" class="px-6 py-3 border" style="width: 7rem;">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <ng-container *ngFor="let item of TableData?.registros" >
+            <tr  class="border hover:bg-gray-100">
+                <td class="px-2 py-4 text-center" (click)="item?.evaluado?.codigoFicha && toggleRowExpansion(item?.evaluado?.codigoFicha)">
+                    <span class="inline-block transition-transform duration-200" [ngClass]="{'rotate-180': isRowExpanded(item?.evaluado?.codigoFicha)}">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down h-4 w-4">
+                        <path d="m6 9 6 6 6-6"></path>
+                      </svg>
+                    </span>
+                </td>
+                <td class="px-6 py-4 text-black border" data-label="Foto">
+                    <img class="w-20 h-20" [src]="item?.evaluado?.foto" loading="lazy" 
+                    crossorigin="anonymous" (error)="onImgError($event)" alt="Foto">
+                </td>
+                <td class="px-6 py-4 text-gray-900 whitespace-nowrap" data-label="COD. Ficha">
+                    <div class="text-base font-semibold">{{ removeLeadingZeros(item.evaluado?.codigoFicha) }}</div>
+                </td>
+                <td class="px-6 py-4 text-black border" data-label="APELLIDOS Y NOMBRES">{{item?.evaluado?.apellidosNombres}}</td>
+                <td class="px-6 py-4 text-black border" data-label="UNIDAD ORGÁNICA">{{item?.evaluado?.unidadOrganica}}</td>
+                <td class="px-6 py-4 text-black border" data-label="COD. PUESTO">{{item?.evaluado?.codigoPuesto}}</td>
+                <td class="px-6 py-4 text-black border" data-label="PUESTO">{{item?.evaluado?.nombrePuesto}}</td>
+                <td [ngClass]="getStatusClass(item?.fechaLimite,item?.estadoExcepcion,item?.estadoEvaluador,item?.estadoEvaluado)" class="px-6 py-4 text-black border text-center">{{item?.fechaLimite | date: 'dd/MM/yyyy'}}</td>    
+                <td class="px-6 py-4 text-black border" data-label="Estado">
+                    <div *ngIf="item.estadoEvaluador && item.estadoEvaluado" class="flex items-center justify-center">
+                        <span class="badgegreen bg-green-500">AMBOS REALIZADOS</span>
+                    </div>
+                    <div *ngIf="!item.estadoEvaluador && !item.estadoEvaluado" class="flex items-center justify-center">
+                        <span class="badgered bg-red-500">PENDIENTE DEL EVALUADOR</span>
+                    </div>
+                    <div *ngIf="item.estadoEvaluador && !item.estadoEvaluado" class="flex items-center justify-center">
+                        <span class="badgered bg-orange-500">PENDIENTE DEL EVALUADO</span>
+                    </div>
+                    <div *ngIf="!item.estadoEvaluador && item.estadoEvaluado" class="flex items-center justify-center">
+                        <span class="badgered bg-blue-500">Solo Evaluado</span>
+                    </div>
+                </td>
+                <td class="px-6 py-4 text-black border actions-cell" data-label="Acciones">
+                    <div class="flex space-x-2">
+                        <!-- Ver Retroalimentación -->
+                        <button *ngIf="item.estadoEvaluador || item.estadoEvaluado && !ReturnFormatedStatusDate(item?.fechaLimite).isPast"
+                                [routerLink]="['/home/admin-visualizar-retroalimentacion',item?.evaluado?.codigoFicha,item?.evaluado?.codigoPuesto,item?.evaluador?.codigoFicha,item?.evaluador?.codigoPuesto,this.CalendarCode,'',item.idRetroalimentacion]"
+                                class="text-white bg-green-500 hover:bg-green-600 font-medium rounded-lg text-sm px-2.5 py-2.5 w-full">
+                            Ver retroalimentación
+                        </button>
+                        <!-- Notificar Evaluador -->
+                        <button *ngIf="!item.estadoEvaluador && !item.estadoExcepcion && !ReturnFormatedStatusDate(item?.fechaLimite).isPast"
+                                (click)="sendEvaluatorNotification(item?.evaluador?.apellidosNombres,item.idEvaluacion)"
+                                class="text-white bg-blue-500 hover:bg-blue-600 font-medium rounded-lg text-sm px-2.5 py-2.5 w-full">
+                            Notificar evaluador
+                        </button>
+                        <!-- Notificar Evaluado -->
+                        <button *ngIf="item.estadoEvaluador && !item.estadoEvaluado && !ReturnFormatedStatusDate(item?.fechaLimite).isPast" 
+                                (click)="sendEvaluatedNotification(item?.evaluado?.apellidosNombres,item.idEvaluacion)"
+                                class="text-white bg-blue-500 hover:bg-blue-600 font-medium rounded-lg text-sm px-2.5 py-2.5 w-full">
+                            Notificar evaluado
+                        </button>
+                        <button type="button" *ngIf="(!item?.estadoEvaluador || !item?.estadoEvaluado) &&  ReturnFormatedStatusDate(item?.fechaLimite).isPast" (click)="ShowModal(item)" class="text-white bg-gray-500 hover:bg-gray-600 font-medium rounded-lg text-sm px-2.5 py-2.5 w-full">Reprogramar excepción</button>
+                    </div>
+                </td>
+            </tr>
+            <tr *ngIf="item?.evaluado?.codigoFicha && isRowExpanded(item?.evaluado?.codigoFicha)" class="bg-gray-50">
+                <td colspan="10" class="px-6 py-4 text-black border">
+                  <div class="grid bg-gray-200 p-2 rounded-md">
+                    <div><strong>Administrador que autorizó la excepción: </strong> {{item?.admin?.apellidosNombres}}</div>
+                    <div><strong>Registro de excepción: </strong> {{item?.fechaRegistro | date: 'dd/MM/yyyy'}}</div>
+                  </div>
+                </td>
+            </tr>
+        </ng-container> 
+        </tbody>
+  </table>
+</div>
+
+<app-changeexceptionlimitdates *ngIf="ShowChangeExceptionLimitDateModal" (close)="closeModal($event)" [PeriodCode]="this.CalendarCode" [EntryData]="this.EntryData"></app-changeexceptionlimitdates>

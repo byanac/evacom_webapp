@@ -1,0 +1,65 @@
+{
+    "registros": [
+        {
+            "codigoFicha": "00013168",
+            "apellidosNombres": "GALVAN ESCAJADILLO, NATALIA",
+            "unidadOrganica": "211-EBS",
+            "codigoPuesto": "00000464",
+            "nombrePuesto": "Jefe del Equipo Bienestar Social",
+            "foto": "https://webapp16.sedapal.com.pe/imgsedatel/ficha/13168.jpg",
+            "tipoEvaluador": 1,
+            "registraHechos": true
+        },
+        {
+            "codigoFicha": "00016058",
+            "apellidosNombres": "PANDURO AREVALO, NANCY PILAR",
+            "unidadOrganica": "217-EGIS",
+            "codigoPuesto": "00017919",
+            "nombrePuesto": "Jefe del Equip.Gestión Integral de Salud",
+            "foto": "https://webapp16.sedapal.com.pe/imgsedatel/ficha/16058.jpg",
+            "tipoEvaluador": 1,
+            "registraHechos": false
+        },
+        {
+            "codigoFicha": "00012810",
+            "apellidosNombres": "QUIÑONES RAMIREZ, BELINDA ELIZABETH",
+            "unidadOrganica": "214-EC",
+            "codigoPuesto": "00037752",
+            "nombrePuesto": "Jefe del Equipo Capacitación",
+            "foto": "https://webapp16.sedapal.com.pe/imgsedatel/ficha/12810.jpg",
+            "tipoEvaluador": 1,
+            "registraHechos": true
+        },
+        {
+            "codigoFicha": "00013255",
+            "apellidosNombres": "ZUÑIGA URDAY, PAOLA ARCELIA",
+            "unidadOrganica": "213-EEP",
+            "codigoPuesto": "00038299",
+            "nombrePuesto": "Jefe del Equipo Evaluación y Proyección",
+            "foto": "https://webapp16.sedapal.com.pe/imgsedatel/ficha/13255.jpg",
+            "tipoEvaluador": 1,
+            "registraHechos": true
+        },
+        {
+            "codigoFicha": "00016089",
+            "apellidosNombres": "RODRIGUEZ SAAVEDRA, ALFREDO EDUARDO",
+            "unidadOrganica": "216-ERCB",
+            "codigoPuesto": "00038376",
+            "nombrePuesto": "Contratado",
+            "foto": "https://webapp16.sedapal.com.pe/imgsedatel/ficha/16089.jpg",
+            "tipoEvaluador": 1,
+            "registraHechos": false
+        },
+        {
+            "codigoFicha": "00014501",
+            "apellidosNombres": "HUAMAN CORDOVA, LUIS ANGEL",
+            "unidadOrganica": "215-ERC",
+            "codigoPuesto": "00038436",
+            "nombrePuesto": "Jefe del Equipo Registro y Control",
+            "foto": "https://webapp16.sedapal.com.pe/imgsedatel/ficha/14501.jpg",
+            "tipoEvaluador": 1,
+            "registraHechos": false
+        }
+    ],
+    "mensaje 1": "OK"
+}

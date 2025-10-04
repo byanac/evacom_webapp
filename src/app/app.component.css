@@ -1,0 +1,48 @@
+@media print {
+    app-nav {
+      display: none;
+  }
+}
+
+::ng-deep .mat-form-field-wrapper {
+  padding-bottom: 0; /* o el valor que prefieras */
+}
+
+table{
+  table-layout: fixed;
+  overflow-x:auto;
+}
+
+.badgegreen {
+  color: white;
+  padding: 4px 20px;
+  text-align: center;
+  border-radius: 5px;
+  font-size: 13px;
+  font-weight: bolder;
+  width: 100%;
+}
+
+.badgered {
+  color: white;
+  padding: 4px 8px;
+  text-align: center;
+  border-radius: 5px;
+  font-size: 13px;
+  font-weight: bolder;
+  width: 100%;
+}
+
+@media print {
+  app-toolbar {
+    display: none;
+  }
+
+  app-mobile {
+    display: none;
+  }
+
+  .footer{
+    display: none;
+  }
+}

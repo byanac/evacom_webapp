@@ -1,0 +1,14 @@
+{
+    "registros": {
+        "calendario": {
+            "vCodigo": "C006",
+            "vNombre": "test2",
+            "tipo": "180"
+        },
+        "reglaCalculo": false,
+        "grupoEvaluacionAsignacion": true,
+        "evaluacionAsignacion90": false,
+        "evaluacionAsignacion180": false
+    },
+    "mensaje": "OK"
+}

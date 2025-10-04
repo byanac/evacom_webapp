@@ -1,0 +1,4 @@
+<div *ngIf="TableData != null">
+    <app-questionstablewithanswers *ngIf="TableData.registros.estado === 0" [Data]="TableData"></app-questionstablewithanswers> 
+    <app-results *ngIf="TableData.registros.estado === 1" [Data]="TableData" [AutoEvaluationResult]="AutoEvaluationResult"></app-results>
+</div>

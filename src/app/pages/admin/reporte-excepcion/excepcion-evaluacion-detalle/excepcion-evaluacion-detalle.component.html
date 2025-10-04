@@ -1,0 +1,76 @@
+
+<app-title titulo="Excepción del personal a ser evaluado a cargo de {{EvaluatorName}} - {{PeriodName}}"></app-title>
+<app-targetscounters *ngIf="TableData != undefined" [DataToCount]="TableData" [ConfirmedEntryName]="'estadoExcepcion'" [ConfirmText]="'Evaluado'" [NotConfirmedText]="'No evaluado'"></app-targetscounters>
+  
+<div class="relative overflow-x-auto">
+    <table class="w-full text-sm text-left rtl:text-right text-gray-500 border solid">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-5">
+            <tr>
+                <th scope="col" class="px-6 py-3 border" style="width: 2rem;">
+                    <!-- Columna para la flecha -->
+                </th>
+                <th scope="col" class="px-6 py-3 border" style="width: 8rem;">Foto</th>
+                <th scope="col" class="px-6 py-3 border" style="width: 5.9rem;">COD. FICHA</th>
+                <th scope="col" class="px-6 py-3 border" style="width: 35rem;">APELLIDOS Y NOMBRES</th>
+                <th scope="col" class="px-6 py-3 border" style="width: 8.5rem;">UNIDAD ORGÁNICA</th>
+                <th scope="col" class="px-6 py-3 border" style="width: 6.8rem;">COD. PUESTO</th>
+                <th scope="col" class="px-6 py-3 border text-wrap" style="width: 35rem;">PUESTO</th>
+                <th scope="col" class="px-6 py-3 border text-center" style="width: 10rem;">Fecha límite</th>
+                <th scope="col" class="px-6 py-3 border" style="width: 7rem;">Evaluación</th>
+                <th scope="col" class="px-6 py-3 border" style="width: 3rem;">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <ng-container *ngFor="let item of TableData" >
+            <tr class="border hover:bg-gray-100">
+                <td class="px-2 py-4 text-center" (click)="item?.evaluado?.codigoFicha && toggleRowExpansion(item?.evaluado?.codigoFicha)">
+                    <span class="inline-block transition-transform duration-200" [ngClass]="{'rotate-180': isRowExpanded(item?.evaluado?.codigoFicha)}">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down h-4 w-4">
+                        <path d="m6 9 6 6 6-6"></path>
+                      </svg>
+                    </span>
+                </td>
+                <th class="px-6 py-4 text-black border">
+                    <img class="w-20 h-20" [src]="item?.evaluado?.foto" loading="lazy" 
+                    crossorigin="anonymous" (error)="onImgError($event)" alt="Foto">
+                </th>            
+                <th class="px-6 py-4 text-gray-900 whitespace-nowrap">
+                    <div class="text-base font-semibold">{{ removeLeadingZeros(item.evaluado?.codigoFicha) }}</div>
+                </th>
+                <td class="px-6 py-4 text-black border">{{item?.evaluado?.apellidosNombres}}</td>
+                <td class="px-6 py-4 text-black border">{{item?.evaluado?.unidadOrganica}}</td>
+                <td class="px-6 py-4 text-black border">{{item?.evaluado?.codigoPuesto}}</td>
+                <td class="px-6 py-4 text-black border">{{item?.evaluado?.nombrePuesto}}</td>
+                <td [ngClass]="getStatusClass(item?.fechaLimite,item?.estadoExcepcion)" class="px-6 py-4 text-black border text-center">{{item?.fechaLimite | date: 'dd/MM/yyyy' }}</td>    
+                <td class="px-6 py-4 text-black border">
+                    <div *ngIf="item?.estadoExcepcion" class="flex items-center">
+                        <span class="badgegreen bg-green-500">EVALUADO</span>                                                     
+                    </div>   
+                    <div *ngIf="!item?.estadoExcepcion" class="flex items-center">
+                        <span class="badgered bg-red-500">NO EVALUADO</span>    
+                    </div>
+                </td>
+                <td class="px-6 py-4">
+                    <div class="flex items-center">
+                        <div class="w-full">
+                            <button type="button" *ngIf="item?.estadoExcepcion" [routerLink]="['/home/reporte-excepcion-evaluacion-visualizar-evaluacion',item?.evaluado?.codigoFicha,item?.evaluado?.codigoPuesto,this.EvaluatorFile,this.EvaluatorPosition,this.CalendarCode]" class="text-white bg-green-500 hover:bg-green-600 font-medium rounded-lg text-sm px-2.5 py-2.5 w-full">Ver resultados</button>
+                            <button type="button" *ngIf="!item?.estadoExcepcion && !ReturnFormatedStatusDate(item?.fechaLimite).isPast" (click)="sendEmail(item?.evaluado.apellidosNombres)" class="w-full text-white bg-blue-500 hover:bg-blue-600 font-medium rounded-lg text-sm px-2.5 py-2.5">Notificar</button>
+                            <button type="button" *ngIf="!item?.estadoExcepcion && ReturnFormatedStatusDate(item?.fechaLimite).isPast" (click)="ShowModal(item)" class="text-white bg-gray-500 hover:bg-gray-600 font-medium rounded-lg text-sm px-2.5 py-2.5 w-full">Reprogramar excepción</button>
+                        </div>
+                    </div>                    
+                </td>
+            </tr>
+            <tr *ngIf="item?.evaluado?.codigoFicha && isRowExpanded(item?.evaluado?.codigoFicha)" class="bg-gray-50">
+                <td colspan="10" class="px-6 py-4 text-black border">
+                  <div class="grid bg-gray-200 p-2 rounded-md">
+                    <div><strong>Administrador que autorizó la excepción: </strong> {{item?.admin?.apellidosNombres}}</div>
+                    <div><strong>Registro de excepción: </strong> {{item?.fechaRegistro | date: 'dd/MM/yyyy' }}</div>
+                  </div>
+                </td>
+            </tr>
+            </ng-container> 
+        </tbody>
+    </table>
+  </div>
+  
+<app-changeexceptionlimitdates *ngIf="ShowChangeExceptionLimitDateModal" (close)="closeModal($event)" [PeriodCode]="this.CalendarCode" [EntryData]="this.EntryData"></app-changeexceptionlimitdates>

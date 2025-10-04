@@ -1,0 +1,21 @@
+<div *ngFor="let item of Data; index as i" class="relative overflow-x-auto m-4">
+    <table *ngFor="let header of item.registros.competencias; index as i" class="w-full text-sm text-left rtl:text-right mb-4">
+            <tr class="border border-black border-solid" style="background-color: #bfdbfe;">
+                <th class="px-6 py-3 question">
+                    {{header.titulo + ":"}}
+                    <div class="normal-case">
+                    {{header.descripcion}}
+                    </div>
+                </th>
+            </tr>
+        <tbody *ngFor="let question of header.comportamientos; index as i">
+            <tr class="bg-white border border-black border-solid">
+                <th class="flex m-6 font-medium text-gray-900 questions">
+                    <div class="mr-5 number">{{i+1}}</div>
+                    <div>{{question.descripcion}}</div>
+                </th>
+            </tr>
+        </tbody>
+    </table>
+</div>
+

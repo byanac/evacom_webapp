@@ -1,0 +1,126 @@
+{
+    "registros": [
+        {
+            "codigoFicha": "12336",
+            "apellidosNombres": "SEGURA PERALTA, AMERICA GLADYS",
+            "unidadOrganica": "302-ETIC",
+            "codigoPuesto": "00005197",
+            "nombrePuesto": "Analista Principal de Sistemas",
+            "foto": "https://webapp16.sedapal.com.pe/imgsedatel/ficha/12336.jpg",
+            "evaluados_total": 19,
+            "evaluados_pendientes": 14,
+            "evaluados_terminados": 5
+        },
+        {
+            "codigoFicha": "13028",
+            "apellidosNombres": "MENDIVIL CHIPANA, ANGEL",
+            "unidadOrganica": "458-EOMASBA",
+            "codigoPuesto": "00019648",
+            "nombrePuesto": "Especialista de Oper. Manten. Electrom.",
+            "foto": "https://webapp16.sedapal.com.pe/imgsedatel/ficha/13028.jpg",
+            "evaluados_total": 5,
+            "evaluados_pendientes": 5,
+            "evaluados_terminados": 0
+        },
+        {
+            "codigoFicha": "13928",
+            "apellidosNombres": "DIAZ CABREJO, RICARDO NOE",
+            "unidadOrganica": "458-EOMASBA",
+            "codigoPuesto": "00019649",
+            "nombrePuesto": "Especialista de Oper. Manten. Electrom.",
+            "foto": "https://webapp16.sedapal.com.pe/imgsedatel/ficha/13928.jpg",
+            "evaluados_total": 9,
+            "evaluados_pendientes": 9,
+            "evaluados_terminados": 0
+        },
+        {
+            "codigoFicha": "14103",
+            "apellidosNombres": "MATIAS MESIAS, DENIS HUMBERTO",
+            "unidadOrganica": "458-EOMASBA",
+            "codigoPuesto": "00017896",
+            "nombrePuesto": "Especialista de Oper. Manten. Electrom.",
+            "foto": "https://webapp16.sedapal.com.pe/imgsedatel/ficha/14103.jpg",
+            "evaluados_total": 4,
+            "evaluados_pendientes": 4,
+            "evaluados_terminados": 0
+        },
+        {
+            "codigoFicha": "15712",
+            "apellidosNombres": "ROMERO SAENZ, RODOLFO PABLO",
+            "unidadOrganica": "458-EOMASBA",
+            "codigoPuesto": "00028929",
+            "nombrePuesto": "Especialista de Oper. Manten. Electrom.",
+            "foto": "https://webapp16.sedapal.com.pe/imgsedatel/ficha/15712.jpg",
+            "evaluados_total": 12,
+            "evaluados_pendientes": 12,
+            "evaluados_terminados": 0
+        },
+        {
+            "codigoFicha": "12645",
+            "apellidosNombres": "REYES MURILLO, RENAN  ORLANDO",
+            "unidadOrganica": "471-ECRF",
+            "codigoPuesto": "00002202",
+            "nombrePuesto": "Analista de Control y Reducción de Fugas",
+            "foto": "https://webapp16.sedapal.com.pe/imgsedatel/ficha/12645.jpg",
+            "evaluados_total": 2,
+            "evaluados_pendientes": 2,
+            "evaluados_terminados": 0
+        },
+        {
+            "codigoFicha": "12814",
+            "apellidosNombres": "LATURE BUSTAMANTE, PERCY WENCESLAO",
+            "unidadOrganica": "471-ECRF",
+            "codigoPuesto": "00002198",
+            "nombrePuesto": "Especialista de Control y Reducc. Fugas",
+            "foto": "https://webapp16.sedapal.com.pe/imgsedatel/ficha/12814.jpg",
+            "evaluados_total": 1,
+            "evaluados_pendientes": 1,
+            "evaluados_terminados": 0
+        },
+        {
+            "codigoFicha": "13555",
+            "apellidosNombres": "VERA ROJAS, LUIS EUGENIO",
+            "unidadOrganica": "471-ECRF",
+            "codigoPuesto": "00002201",
+            "nombrePuesto": "Analista Princ. Control y Reducc. Fugas",
+            "foto": "https://webapp16.sedapal.com.pe/imgsedatel/ficha/13555.jpg",
+            "evaluados_total": 1,
+            "evaluados_pendientes": 1,
+            "evaluados_terminados": 0
+        },
+        {
+            "codigoFicha": "13886",
+            "apellidosNombres": "HERNANDEZ TATAJE, SANDY ANEL",
+            "unidadOrganica": "471-ECRF",
+            "codigoPuesto": "00002200",
+            "nombrePuesto": "Analista Princ. Control y Reducc. Fugas",
+            "foto": "https://webapp16.sedapal.com.pe/imgsedatel/ficha/13886.jpg",
+            "evaluados_total": 1,
+            "evaluados_pendientes": 1,
+            "evaluados_terminados": 0
+        },
+        {
+            "codigoFicha": "15481",
+            "apellidosNombres": "OBLITAS PEREZ, SEGUNDO",
+            "unidadOrganica": "471-ECRF",
+            "codigoPuesto": "00021296",
+            "nombrePuesto": "Analista de Control y Reducción de Fugas",
+            "foto": "https://webapp16.sedapal.com.pe/imgsedatel/ficha/15481.jpg",
+            "evaluados_total": 3,
+            "evaluados_pendientes": 3,
+            "evaluados_terminados": 0
+        },
+        {
+            "codigoFicha": "15565",
+            "apellidosNombres": "DAVILA LLONTOP, LUIS RICARDO",
+            "unidadOrganica": "471-ECRF",
+            "codigoPuesto": "00037220",
+            "nombrePuesto": "Técnico en Catastro",
+            "foto": "https://webapp16.sedapal.com.pe/imgsedatel/ficha/15565.jpg",
+            "evaluados_total": 1,
+            "evaluados_pendientes": 1,
+            "evaluados_terminados": 0
+        }
+    ],
+    "mensaje": "OK"
+}

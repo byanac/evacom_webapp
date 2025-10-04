@@ -1,0 +1,71 @@
+<div class="min-h-screen bg-gray-100 flex flex-col">
+  <header class="text-white py-4 px-6" style="background-color: #3776ff;">
+    <h1 class="text-2xl font-bold mb-0">Configuración de Reglas de Cálculo - {{CalendarData?.calendario?.vNombre}}</h1>
+  </header>
+  <main class="flex-grow p-6">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="space-y-8 max-w-4xl mx-auto">
+      <div class="grid grid-cols-1 gap-6">
+        <div *ngIf="!loading">
+          Cargando...
+        </div>
+        <div *ngIf="loading" class="space-y-4">
+          <div>
+            <label for="nombre" class="block text-sm font-medium text-gray-700">Nombre del Calendario</label>
+            <input id="nombre" type="text" formControlName="nombre" disabled
+                   class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50">
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700">Tipo de Evaluación</label>
+            <div class="mt-1 space-x-4">
+              <mat-radio-group formControlName="tipoEvaluacion" class="w-full">
+                <mat-radio-button value="90">90°</mat-radio-button>
+                <mat-radio-button value="180" class="ml-4">180°</mat-radio-button>
+              </mat-radio-group>              
+            </div>
+          </div>
+        </div>
+        <div *ngIf="loading" class="space-y-4">
+          <h2 class="text-lg font-semibold">Configuración de Evaluadores</h2>
+          <div *ngFor="let evaluador of evaluadores; let i = index" class="bg-white p-4 rounded-lg shadow">
+            <h3 class="font-medium mb-2">{{ evaluador.tipo }}</h3>
+            <div class="space-y-4">
+              <div>
+                <label [for]="'peso-' + i" class="block text-sm font-medium text-gray-700">Peso del promedio (%)</label>
+                <mat-slider 
+                [id]="'peso-' + i" 
+                [value]="evaluador.peso" 
+                (input)="handlePesoChange(i, $event)" 
+                [disabled]="form.get('tipoEvaluacion').value === '90'"
+                min="0" 
+                max="100" 
+                class="mt-1 block w-full">
+              </mat-slider>
+              
+                <span class="text-sm text-gray-600">{{ evaluador.peso }}%</span>
+              </div>
+              <div *ngIf="evaluador.tipo === 'Subordinados'">
+                <label for="cantidadSubordinados" class="block text-sm font-medium text-gray-700">Cantidad de Subordinados</label>
+                <input id="cantidadSubordinados" type="number" formControlName="cantidadSubordinados" min="0" max="10"
+                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </main>
+  <footer class="bottom-0 left-0 right-0 bg-white border-t border-gray-200 p-4">
+    <div class="mx-auto flex justify-end space-x-4">
+      <button type="button" (click)="CancelButton()" class="px-4 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+        Cancelar
+      </button>
+      <button type="submit"  (click)="onSubmit()" class="px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+        <svg class="inline-block mr-2 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM6.293 6.707a1 1 0 010-1.414l3-3a1 1 0 011.414 0l3 3a1 1 0 01-1.414 1.414L11 5.414V13a1 1 0 11-2 0V5.414L7.707 6.707a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+        </svg>
+        {{CalendarData.reglaCalculo ? 'Actualizar regla de cálculo' : 'Guardar regla de cálculo'}}
+        
+      </button>
+    </div>
+  </footer>
+        

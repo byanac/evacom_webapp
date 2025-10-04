@@ -1,0 +1,123 @@
+<div *ngIf="Data != undefined">
+<div class="text-center mt-6">
+  <h1 class="text-lg" style="text-transform: uppercase;">PRE-EVALUACIÓN DE COMPETENCIAS - {{Data.registros.calendario_nombre}}</h1>
+</div>
+
+<section class="m-4">
+  <hr>
+  <div>
+    <p class="font-bold mb-0">Datos del evaluado:</p>
+  </div>
+  <div>
+    <table>
+      <tr>
+        <td class="flex font-bold justify-between"><p style="margin-bottom: 0px !important;">Ficha:</p> <p style="margin-bottom: 0px !important;">{{removeLeadingZeros(Data.registros.ficha)}}</p></td>
+        <td class="font-bold pl-4">Nombre: {{Data.registros.nombre}}</td>
+      </tr>
+      <tr>
+        <td class="flex font-bold justify-between"><p style="margin-bottom: 0px !important;">Unidad Orgánica: {{Data.registros.unidadOrganica}}</p></td>
+        <td class="font-bold pl-4" style="margin-bottom: 0px !important;">Cargo:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{Data.registros.cargo}}</td>
+      </tr>
+    </table>
+  </div>
+  <hr class="mt-2">
+  <!-- <div>
+    <p class="font-bold mb-0">Datos del evaluador:</p>
+  </div>
+  <div>
+    <table>
+      <tr>
+        <td class="flex font-bold justify-between"><p>Ficha:</p> <p>13961</p></td>
+        <td class="font-bold pl-4">Nombre: JORGE LUIS RUCOBA TELLO</td>
+      </tr>
+      <tr>
+        <td class="flex font-bold justify-between"><p>Unidad Orgánica:</p></td>
+        <td class="font-bold pl-4">Cargo:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Especialista Comercial</td>
+      </tr>
+    </table>
+  </div>
+  <hr class="mt-2"> -->
+</section>
+
+<section class="m-4">
+  <div>
+      <p class="font-bold mb-0 text-black">INTRUCCIONES</p>
+      <p class="text-black">Marque el nivel de desarrollo correspondiente, en cada uno de los 5 comportamientos que conforman cada competencia. de acuerdo a las evidencias que Ud. ha podido identificar durante las labores y responsabilidades durante el periodo de autoevaluación.</p>
+  </div>
+</section>
+
+<div *ngFor="let item of Data.registros.competenciasResultado; index as i" class="relative overflow-x-auto mt-4 mr-4 ml-4">
+  <table class="w-full text-sm text-left rtl:text-right text-gray-500 ">
+      <thead class="text-xs text-gray-700 bg-blue-200">
+          <tr class="border border-black border-solid text-black">
+              <th scope="col" class="px-6 py-3">
+                  {{item.titulo + ":"}}
+                  <div class="normal-case text-justify">
+                      {{item.descripcion}}
+                  </div>
+              </th>
+              <th class="text-center border-solid border-1" style="width: 6rem;">
+                  <p class="mb-0">NO CUBRE LA EXPECTATIVA <br> (0%)</p>
+              </th>
+              <th class="text-center border-solid border-1" style="width: 6rem;">
+                  <p class="mb-0">NECESITA MEJORAR <br> (25%)</p>
+              </th>
+              <th class="text-center border-solid border-1" style="width: 6rem;">
+                  <p class="mb-0">PARCIALMENTE EFECTIVO <br> (50%)</p>
+              </th>
+              <th class="text-center border-solid border-1" style="width: 6rem;">
+                  <p class="mb-0">EFECTIVO <br> (75%)</p>
+              </th>
+              <th class="text-center border-solid border-1" style="width: 6rem;">
+                  <p class="mb-0">ALTAMENTE EFECTIVO <br> (100%)</p>
+              </th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let question of item.comportamientosResultado; index as j" class="bg-white border border-black border-solid text-black">
+              <th scope="row" class="flex m-6 font-medium text-gray-900">
+                  <div class="mr-5">{{j + 1}}</div>
+                  <div>{{question.descripcion}}</div>
+              </th>
+              <td class="text-center border-solid border-1">
+                  <input
+                      type="radio"
+                  />
+              </td>
+              <td class="text-center border-solid border-1">
+                  <input
+                      type="radio"
+                  />
+              </td>
+              <td class="text-center border-solid border-1">
+                  <input
+                      type="radio"
+                  />
+              </td>
+              <td class="text-center border-solid border-1">
+                  <input
+                      type="radio"
+                  />
+              </td>
+              <td class="text-center border-solid border-1">
+                  <input
+                      type="radio"
+                  />
+              </td>
+          </tr>
+      </tbody>
+  </table>
+</div>
+<div  class="m-4">
+  <div class="grid justify-start mb-2">
+      <label for="Fortaleza"><b>Competencia con mayor FORTALEZA. (MARQUE LA FORTALEZA A ELEGIR)</b></label>
+       <p *ngFor="let item of Data.registros.competenciasResultado; index as i">▢ {{item.titulo}}</p>
+      <textarea name="Fortaleza"  cols="500" rows="5"  placeholder="Indicar hechos y datos que evidencien la fortaleza seleccionada"></textarea>
+  </div>
+  <div class="grid justify-start">
+      <label for="Oportunidad"><b>Competencia con mayor OPORTUNIDAD DE MEJORA. (MARQUE LA OPORTUNIDAD DE MEJORA A ELEGIR)</b></label>
+      <p *ngFor="let item of Data.registros.competenciasResultado; index as i">▢ {{item.titulo}}</p>
+      <textarea name="Oportunidad" cols="500" rows="5"  placeholder="Indicar hechos y datos que evidencien la oportunidad de mejora seleccionada"></textarea>
+  </div>
+</div>
+</div>

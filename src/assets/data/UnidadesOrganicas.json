@@ -1,0 +1,581 @@
+{
+    "registros": [
+        {
+            "codigo": "00004299",
+            "nombreCorto": "303-EIIN",
+            "nombre": "Eq Investig., Innovación y Normalización",
+            "fecha": null
+        },
+        {
+            "codigo": "00004305",
+            "nombreCorto": "482-EGEB-AR",
+            "nombre": "Eq. Gestión de Estac. Bombeo de Ag. Resi",
+            "fecha": null
+        },
+        {
+            "codigo": "00000071",
+            "nombreCorto": "433-EOMR-AV",
+            "nombre": "Eq. Opera. y Mantto. de Redes - ATE - V",
+            "fecha": null
+        },
+        {
+            "codigo": "00000073",
+            "nombreCorto": "435-EOMR-B",
+            "nombre": "Eq. Opera. y Mantto. de Redes - Breña",
+            "fecha": null
+        },
+        {
+            "codigo": "00000064",
+            "nombreCorto": "423-EOMR-Ca",
+            "nombre": "Eq. Opera. y Mantto. de Redes - Callao",
+            "fecha": null
+        },
+        {
+            "codigo": "00000062",
+            "nombreCorto": "421-EOMR-C",
+            "nombre": "Eq. Opera. y Mantto. de Redes - Comas",
+            "fecha": null
+        },
+        {
+            "codigo": "00000069",
+            "nombreCorto": "431-EOMR-SJL",
+            "nombre": "Eq. Opera. y Mantto. de Redes - SJL",
+            "fecha": null
+        },
+        {
+            "codigo": "00000080",
+            "nombreCorto": "443-EOMR-VES",
+            "nombre": "Eq. Opera. y Mantto. de Redes - VES",
+            "fecha": null
+        },
+        {
+            "codigo": "00000078",
+            "nombreCorto": "441-EOMR-S",
+            "nombre": "Eq. Opera. y Mantto. de Redes-Surquillo",
+            "fecha": null
+        },
+        {
+            "codigo": "00000055",
+            "nombreCorto": "312-EPOF",
+            "nombre": "Eq. Planeamiento Operativo y Financiero",
+            "fecha": null
+        },
+        {
+            "codigo": "00000049",
+            "nombreCorto": "231-EPAB",
+            "nombre": "Eq. Planeamiento y Adquisición de Bienes",
+            "fecha": null
+        },
+        {
+            "codigo": "00004399",
+            "nombreCorto": "240-EPEC",
+            "nombre": "Eq. Programación y Ejecución Contractual",
+            "fecha": null
+        },
+        {
+            "codigo": "00004423",
+            "nombreCorto": "374-ESPS",
+            "nombre": "Eq. Saneamiento de Propi. y Servidumbres",
+            "fecha": null
+        },
+        {
+            "codigo": "00004098",
+            "nombreCorto": "302-ETIC",
+            "nombre": "Eq. Tecnolog. de la Inform. y Comunic.",
+            "fecha": null
+        },
+        {
+            "codigo": "00004304",
+            "nombreCorto": "481-EG-PTAR",
+            "nombre": "Eq.Gest. de Plantas de Tratam. Aguas Res",
+            "fecha": null
+        },
+        {
+            "codigo": "00004323",
+            "nombreCorto": "141-EGP-PP",
+            "nombre": "Eq.Gestión de Proyectos Público Privados",
+            "fecha": null
+        },
+        {
+            "codigo": "00003898",
+            "nombreCorto": "458-EOMASBA",
+            "nombre": "Eq.Op.y Mtto.de los Sist.de Bomb.de Agua",
+            "fecha": null
+        },
+        {
+            "codigo": "00000076",
+            "nombreCorto": "438-EA-C",
+            "nombre": "Equipo Administración - Centro",
+            "fecha": null
+        },
+        {
+            "codigo": "00000067",
+            "nombreCorto": "426-EA-N",
+            "nombre": "Equipo Administración - Norte",
+            "fecha": null
+        },
+        {
+            "codigo": "00000083",
+            "nombreCorto": "446-EA-S",
+            "nombre": "Equipo Administración - Sur",
+            "fecha": null
+        },
+        {
+            "codigo": "00000615",
+            "nombreCorto": "236-EAC",
+            "nombre": "Equipo Administración y Conservación",
+            "fecha": null
+        },
+        {
+            "codigo": "00003803",
+            "nombreCorto": "454-EASu",
+            "nombre": "Equipo Aguas Subterráneas",
+            "fecha": null
+        },
+        {
+            "codigo": "00003925",
+            "nombreCorto": "372-EAL",
+            "nombre": "Equipo Asuntos Legal",
+            "fecha": null
+        },
+        {
+            "codigo": "00003599",
+            "nombreCorto": "151-EAOF",
+            "nombre": "Equipo Auditoría Operativo-Financiero",
+            "fecha": null
+        },
+        {
+            "codigo": "00003600",
+            "nombreCorto": "152-EATA",
+            "nombre": "Equipo Auditoría Técnico-Administrativo",
+            "fecha": null
+        },
+        {
+            "codigo": "00000029",
+            "nombreCorto": "211-EBS",
+            "nombre": "Equipo Bienestar Social",
+            "fecha": null
+        },
+        {
+            "codigo": "00000041",
+            "nombreCorto": "214-EC",
+            "nombre": "Equipo Capacitación",
+            "fecha": null
+        },
+        {
+            "codigo": "00003726",
+            "nombreCorto": "344-EC-AV",
+            "nombre": "Equipo Comercial-Ate Vitarte",
+            "fecha": null
+        },
+        {
+            "codigo": "00003727",
+            "nombreCorto": "345-EC-B",
+            "nombre": "Equipo Comercial-Breña",
+            "fecha": null
+        },
+        {
+            "codigo": "00003724",
+            "nombreCorto": "342-EC-Ca",
+            "nombre": "Equipo Comercial-Callao",
+            "fecha": null
+        },
+        {
+            "codigo": "00003723",
+            "nombreCorto": "341-EC-C",
+            "nombre": "Equipo Comercial-Comas",
+            "fecha": null
+        },
+        {
+            "codigo": "00003725",
+            "nombreCorto": "343-EC-SJL",
+            "nombre": "Equipo Comercial-San Juan de Lurigancho",
+            "fecha": null
+        },
+        {
+            "codigo": "00003728",
+            "nombreCorto": "346-EC-S",
+            "nombre": "Equipo Comercial-Surquillo",
+            "fecha": null
+        },
+        {
+            "codigo": "00003729",
+            "nombreCorto": "347-EC-VES",
+            "nombre": "Equipo Comercial-Villa El Salvador",
+            "fecha": null
+        },
+        {
+            "codigo": "00004198",
+            "nombreCorto": "138-ECI",
+            "nombre": "Equipo Comunicación Institucional",
+            "fecha": null
+        },
+        {
+            "codigo": "00000046",
+            "nombreCorto": "223-ECGe",
+            "nombre": "Equipo Contabilidad General",
+            "fecha": null
+        },
+        {
+            "codigo": "00004424",
+            "nombreCorto": "375-ECo",
+            "nombre": "Equipo Contrataciones",
+            "fecha": null
+        },
+        {
+            "codigo": "00004173",
+            "nombreCorto": "471-ECRF",
+            "nombre": "Equipo Control y Reducción de Fugas",
+            "fecha": null
+        },
+        {
+            "codigo": "00004573",
+            "nombreCorto": "140- ECNII",
+            "nombre": "Equipo Cumplimiento Normat e Integ. Inst",
+            "fecha": null
+        },
+        {
+            "codigo": "00003802",
+            "nombreCorto": "453-EDP",
+            "nombre": "Equipo Distribución Primaria",
+            "fecha": null
+        },
+        {
+            "codigo": "00004524",
+            "nombreCorto": "365-EEDef",
+            "nombre": "Equipo Estudios Definitivos",
+            "fecha": null
+        },
+        {
+            "codigo": "00004523",
+            "nombreCorto": "364-EEPre",
+            "nombre": "Equipo Estudios Preliminares",
+            "fecha": null
+        },
+        {
+            "codigo": "00003804",
+            "nombreCorto": "455-EEC",
+            "nombre": "Equipo Evaluación de Calidad",
+            "fecha": null
+        },
+        {
+            "codigo": "00003807",
+            "nombreCorto": "461-EEC-AR",
+            "nombre": "Equipo Evaluación de Calidad de Aguas R",
+            "fecha": null
+        },
+        {
+            "codigo": "00000040",
+            "nombreCorto": "213-EEP",
+            "nombre": "Equipo Evaluación y Proyección",
+            "fecha": null
+        },
+        {
+            "codigo": "00004175",
+            "nombreCorto": "217-EGIS",
+            "nombre": "Equipo Gestion Integral de Salud",
+            "fecha": null
+        },
+        {
+            "codigo": "00000051",
+            "nombreCorto": "233-EGA",
+            "nombre": "Equipo Gestión Almacenes",
+            "fecha": null
+        },
+        {
+            "codigo": "00003998",
+            "nombreCorto": "301-EGAm",
+            "nombre": "Equipo Gestión Ambiental",
+            "fecha": null
+        },
+        {
+            "codigo": "00004448",
+            "nombreCorto": "142-EGASE",
+            "nombre": "Equipo Gestión Ambiental y Servicios Ec.",
+            "fecha": null
+        },
+        {
+            "codigo": "00003402",
+            "nombreCorto": "331-EGC",
+            "nombre": "Equipo Gestión Comercial",
+            "fecha": null
+        },
+        {
+            "codigo": "00004348",
+            "nombreCorto": "348-EGCM",
+            "nombre": "Equipo Gestión Comercial y Micromedición",
+            "fecha": null
+        },
+        {
+            "codigo": "00004298",
+            "nombreCorto": "139-EGI",
+            "nombre": "Equipo Gestión Institucional",
+            "fecha": null
+        },
+        {
+            "codigo": "00004301",
+            "nombreCorto": "472-EGIP",
+            "nombre": "Equipo Gestión Integral de Plantas",
+            "fecha": null
+        },
+        {
+            "codigo": "00004250",
+            "nombreCorto": "373-EGLA",
+            "nombre": "Equipo Gestión Legal y Administrativa",
+            "fecha": null
+        },
+        {
+            "codigo": "00003900",
+            "nombreCorto": "361-EGSP",
+            "nombre": "Equipo Gestión Social de Proyectos",
+            "fecha": null
+        },
+        {
+            "codigo": "00003876",
+            "nombreCorto": "358-EGP-C",
+            "nombre": "Equipo Gestión de Proyectos-Centro",
+            "fecha": null
+        },
+        {
+            "codigo": "00003874",
+            "nombreCorto": "357-EGP-N",
+            "nombre": "Equipo Gestión de Proyectos-Norte",
+            "fecha": null
+        },
+        {
+            "codigo": "00003877",
+            "nombreCorto": "359-EGP-S",
+            "nombre": "Equipo Gestión de Proyectos-Sur",
+            "fecha": null
+        },
+        {
+            "codigo": "00004398",
+            "nombreCorto": "239-EGAb",
+            "nombre": "Equipo Gestión del Abastecimiento",
+            "fecha": null
+        },
+        {
+            "codigo": "00003879",
+            "nombreCorto": "356-ELC",
+            "nombre": "Equipo Licitaciones y Contratos",
+            "fecha": null
+        },
+        {
+            "codigo": "00000044",
+            "nombreCorto": "221-EMF",
+            "nombre": "Equipo Manejo de Fondos",
+            "fecha": null
+        },
+        {
+            "codigo": "00003403",
+            "nombreCorto": "332-EMR",
+            "nombre": "Equipo Micromedición y Registros",
+            "fecha": null
+        },
+        {
+            "codigo": "00004525",
+            "nombreCorto": "366-EO",
+            "nombre": "Equipo Obras",
+            "fecha": null
+        },
+        {
+            "codigo": "00000045",
+            "nombreCorto": "222-EOF",
+            "nombre": "Equipo Operaciones Financieras",
+            "fecha": null
+        },
+        {
+            "codigo": "00004598",
+            "nombreCorto": "305-EPFPIn",
+            "nombre": "Equipo Planemi. Fisico y Prog. de Invers",
+            "fecha": null
+        },
+        {
+            "codigo": "00000048",
+            "nombreCorto": "226-EP",
+            "nombre": "Equipo Presupuesto",
+            "fecha": null
+        },
+        {
+            "codigo": "00004176",
+            "nombreCorto": "137-EPF",
+            "nombre": "Equipo Prevencion del Fraude",
+            "fecha": null
+        },
+        {
+            "codigo": "00000050",
+            "nombreCorto": "232-EPV",
+            "nombre": "Equipo Protección y Vigilancia",
+            "fecha": null
+        },
+        {
+            "codigo": "00004325",
+            "nombreCorto": "363-EPE",
+            "nombre": "Equipo Proyectos Especiales",
+            "fecha": null
+        },
+        {
+            "codigo": "00003809",
+            "nombreCorto": "463-ERPrim",
+            "nombre": "Equipo Recolección Primaria",
+            "fecha": null
+        },
+        {
+            "codigo": "00000042",
+            "nombreCorto": "215-ERC",
+            "nombre": "Equipo Registro y Control",
+            "fecha": null
+        },
+        {
+            "codigo": "00000047",
+            "nombreCorto": "224-ERCP",
+            "nombre": "Equipo Registro y Control Patrimonial",
+            "fecha": null
+        },
+        {
+            "codigo": "00003924",
+            "nombreCorto": "371-ER",
+            "nombre": "Equipo Regulación",
+            "fecha": null
+        },
+        {
+            "codigo": "00000043",
+            "nombreCorto": "216-ERCB",
+            "nombre": "Equipo Remunera., Compensa. y Beneficios",
+            "fecha": null
+        },
+        {
+            "codigo": "00004548",
+            "nombreCorto": "122-ESG",
+            "nombre": "Equipo Secretaría General",
+            "fecha": null
+        },
+        {
+            "codigo": "00004302",
+            "nombreCorto": "473-ESCP",
+            "nombre": "Equipo Seguimiento y Control de Plantas",
+            "fecha": null
+        },
+        {
+            "codigo": "00000039",
+            "nombreCorto": "212-ESHO",
+            "nombre": "Equipo Seguridad e Higiene Ocupacional",
+            "fecha": null
+        },
+        {
+            "codigo": "00000052",
+            "nombreCorto": "234-ESGe",
+            "nombre": "Equipo Servicios Generales",
+            "fecha": null
+        },
+        {
+            "codigo": "00003404",
+            "nombreCorto": "333-ESCE",
+            "nombre": "Equipo Servicios y Clientes Especiales",
+            "fecha": null
+        },
+        {
+            "codigo": "00004225",
+            "nombreCorto": "437-ET-C",
+            "nombre": "Equipo Técnico - Centro",
+            "fecha": null
+        },
+        {
+            "codigo": "00004223",
+            "nombreCorto": "425-ET-N",
+            "nombre": "Equipo Técnico - Norte",
+            "fecha": null
+        },
+        {
+            "codigo": "00004248",
+            "nombreCorto": "445-ET-S",
+            "nombre": "Equipo Técnico - Sur",
+            "fecha": null
+        },
+        {
+            "codigo": "00003401",
+            "nombreCorto": "330-GC",
+            "nombre": "Gerencia Comercial",
+            "fecha": null
+        },
+        {
+            "codigo": "00000027",
+            "nombreCorto": "120-GG",
+            "nombre": "Gerencia General",
+            "fecha": null
+        },
+        {
+            "codigo": "00003923",
+            "nombreCorto": "370-GALR",
+            "nombre": "Gerencia de Asuntos Legales y R",
+            "fecha": null
+        },
+        {
+            "codigo": "00003598",
+            "nombreCorto": "150-GAI",
+            "nombre": "Gerencia de Auditoría Interna",
+            "fecha": null
+        },
+        {
+            "codigo": "00000032",
+            "nombreCorto": "310-GDI",
+            "nombre": "Gerencia de Desarrollo e Investigación",
+            "fecha": null
+        },
+        {
+            "codigo": "00000030",
+            "nombreCorto": "220-GF",
+            "nombre": "Gerencia de Finanzas",
+            "fecha": null
+        },
+        {
+            "codigo": "00004303",
+            "nombreCorto": "480-GGAR",
+            "nombre": "Gerencia de Gestión de Aguas Residuales",
+            "fecha": null
+        },
+        {
+            "codigo": "00000031",
+            "nombreCorto": "230-GLS",
+            "nombre": "Gerencia de Logística y Servicios",
+            "fecha": null
+        },
+        {
+            "codigo": "00003798",
+            "nombreCorto": "450-GPDP",
+            "nombre": "Gerencia de Producc.y Distribuc.Primaria",
+            "fecha": null
+        },
+        {
+            "codigo": "00003873",
+            "nombreCorto": "350-GPO",
+            "nombre": "Gerencia de Proyectos y Obras",
+            "fecha": null
+        },
+        {
+            "codigo": "00000028",
+            "nombreCorto": "210-GRH",
+            "nombre": "Gerencia de Recursos Humanos",
+            "fecha": null
+        },
+        {
+            "codigo": "00000036",
+            "nombreCorto": "430-GSC",
+            "nombre": "Gerencia de Servicios Centro",
+            "fecha": null
+        },
+        {
+            "codigo": "00000035",
+            "nombreCorto": "420-GSN",
+            "nombre": "Gerencia de Servicios Norte",
+            "fecha": null
+        },
+        {
+            "codigo": "00000037",
+            "nombreCorto": "440-GSS",
+            "nombre": "Gerencia de Servicios Sur",
+            "fecha": null
+        }
+    ],
+    "mensaje": "OK"
+}

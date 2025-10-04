@@ -1,0 +1,16 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+
+@media print {
+    app-toolbar {
+      display: none;
+    }
+  
+    app-mobile {
+      display: none;
+    }
+  
+    .footer{
+      display: none;
+    }
+}

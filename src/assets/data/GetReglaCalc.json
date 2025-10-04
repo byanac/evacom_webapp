@@ -1,0 +1,13 @@
+{
+    "registros": {
+        "calendario": {
+            "vCodigo": "C005",
+            "vNombre": "180 2025-I",
+            "tipo": "180"
+        },
+        "porcentajeEvaluadorJefe": 60,
+        "porcentajeEvaluadoresSubordinados": 40,
+        "cantidadEvaluadoresSubordinados": 3
+    },
+    "mensaje": "OK"
+}

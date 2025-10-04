@@ -1,0 +1,25 @@
+{
+    "registros": [
+        {
+            "codigoFicha": "12845",
+            "apellidosNombres": "SANTOS MARTINEZ, ROLANDO",
+            "unidadOrganica": "302-ETIC",
+            "codigoPuesto": "00016707",
+            "nombrePuesto": "Analista Principal de Sistemas",
+            "foto": "https://webapp16.sedapal.com.pe/imgsedatel/ficha/12845.jpg",
+            "tipoEvaluador": 1,
+            "estadoEvaluacion": false
+        },
+        {
+            "codigoFicha": "12845",
+            "apellidosNombres": "SANTOS MARTINEZ, ROLANDO",
+            "unidadOrganica": "302-ETIC",
+            "codigoPuesto": "00016707",
+            "nombrePuesto": "Analista Principal de Sistemas",
+            "foto": "https://webapp16.sedapal.com.pe/imgsedatel/ficha/12845.jpg",
+            "tipoEvaluador": 1,
+            "estadoEvaluacion": true
+        }
+    ],
+    "mensaje": "OK"
+}

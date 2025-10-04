@@ -1,0 +1,277 @@
+<div *ngIf="DataToShow != undefined" class="p-6">
+  <!-- Header -->
+  <div class="text-center mb-6">
+    <h1 class="text-lg font-bold text-blue-900">
+      Registro de Plan Individual de Desarrollo (PID)
+    </h1>
+  </div>
+
+ <p-messages
+    [(value)]="msgs"
+    [closable]="false"
+  ></p-messages>
+
+  <table class="bg-white mb-2 w-full Datatable">
+    <tbody>
+      <tr>
+        <td class=" px-4 py-2 font-semibold" style="text-align: start !important;">Nombre del Trabajador:</td>
+        <td class=" px-4 py-2" style="text-align: start !important;">{{DataToShow.registros.evaluado.apellidosNombres}}</td>
+        <td class=" px-4 py-2 font-semibold" style="text-align: start !important;">Equipo:</td>
+        <td class=" px-4 py-2" style="text-align: start !important;">{{DataToShow.registros.evaluado.equipo_nombre}}</td>
+      </tr>
+      <tr>
+        <td class=" px-4 py-2 font-semibold" style="text-align: start !important;">Puesto del Trabajador:</td>
+        <td class=" px-4 py-2" style="text-align: start !important;">{{DataToShow.registros.evaluado.nombrePuesto}}</td>
+        <td class=" px-4 py-2 font-semibold" style="text-align: start !important;">Gerencia:</td>
+        <td class=" px-4 py-2" style="text-align: start !important;">{{DataToShow.registros.evaluado.gerencia_nombre}}</td>
+      </tr>
+      <tr>
+        <td class=" px-4 py-2 font-semibold" style="text-align: start !important;">Ficha del Trabajador:</td>
+        <td class=" px-4 py-2" style="text-align: start !important;">{{DataToShow.registros.evaluado.codigoFicha}}</td>
+        <td class=" px-4 py-2 font-semibold" style="text-align: start !important;">Fecha:</td>
+        <td class=" px-4 py-2" style="text-align: start !important;">{{FormatDate(DataToShow.registros.fecModificacion)}}</td>
+      </tr>
+      <tr>
+        <td class=" px-4 py-2 font-semibold" style="text-align: start !important;">Nombre del Evaluador:</td>
+        <td class=" px-4 py-2" style="text-align: start !important;">{{DataToShow.registros.evaluador.apellidosNombres}}</td>
+      </tr>
+      <tr>
+        <td class=" px-4 py-2 font-semibold" style="text-align: start !important;">Puesto del Evaluador:</td>
+        <td class=" px-4 py-2" style="text-align: start !important;">{{DataToShow.registros.evaluador.nombrePuesto}}</td>
+      </tr>
+      <tr>
+        <td class=" px-4 py-2 font-semibold" style="text-align: start !important;">Ficha del Evaluador:</td>
+        <td class=" px-4 py-2" style="text-align: start !important;">{{DataToShow.registros.evaluador.codigoFicha}}</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <p *ngIf="EvaluadoVaARegistrar" class="text-red-600 font-bold">*Debes de completar la primera iniciativa de la tabla para registrar su PID.</p>
+  <!-- Competencias Table -->
+  <table class="overflow-x-auto Datatable"  class="w-full Datatable text-sm text-left text-gray-700 border border-gray-300">
+    <thead class="text-xs text-white bg-blue-900 uppercase">
+      <tr>
+        <th scope="col" class="p-2 border border-gray-300">
+          Competencia a Desarrollar
+        </th>
+        <th scope="col" class="p-2 border border-gray-300">
+          Objetivo de Desarrollo
+        </th>
+        <th scope="col" class="p-2 border border-gray-300">
+          Iniciativas y Acciones de Mejora
+        </th>
+        <th scope="col" class="min-w-16 p-2 border border-gray-300">Indicadores</th>
+        <th scope="col" class="p-2 border border-gray-300">Entregables</th>
+        <th scope="col" class="p-2 border border-gray-300">
+          Fecha de inicio de iniciativa
+        </th>
+        <th scope="col" class="p-2 border border-gray-300">
+          Fecha de fin de iniciativa
+        </th>
+      </tr>
+    </thead>
+    <tbody *ngIf="!PendienteVeredicto && !Aprobado">
+      <tr class="bg-white border-b">
+        <td style="max-width: 100%;" class="p-2 border border-gray-300 font-semibold" rowspan="3" [ngClass]="{ 'errorborder': selectCompetencyWarning}">
+          <select *ngIf="competencias != undefined" [(ngModel)]="CompetenciaSeleccionada">
+            <option value="">Seleccionar competencia</option>
+            <option *ngFor="let item of competencias" [value]="item.codigo">{{item.titulo}}</option>
+          </select>
+        </td>
+        <td
+          [ngClass]="{ 'errorborder': fullObjectiveWarning}"
+          class="p-2 border border-gray-300"
+          [ngClass]="{ 'editable': CompetenciaSeleccionada !== '', 'non-editable': CompetenciaSeleccionada === '' }"
+          [attr.contenteditable]="CompetenciaSeleccionada !== '' ? true : null"
+          (blur)="onTextChange1ObjetivoDesarrollo($event.target.innerText.trim())"
+          rowspan="3"
+        >
+        {{ObjetivoDesarrollo}}
+        </td>
+        <td 
+          class="p-2 border border-gray-300" 
+          [ngClass]="{ 'editable': ObjetivoDesarrollo !== '', 'non-editable': ObjetivoDesarrollo === '', 'errorborder': Items1BorderRed}"
+          [attr.contenteditable]="ObjetivoDesarrollo !== '' ? true : null"
+          (blur)="onTextChangeIniciativaYMejora($event.target.innerText.trim(),1)"
+          (mouseenter)="Items1BorderRed = false"
+          >
+          {{IniciativaYMejora1}}
+        </td>
+        <td 
+        class="multiselectcontainer text-left p-2 border border-gray-300 text-center"  
+       (mouseenter)="Items1BorderRed = false"
+        [ngClass]="{ 'non-editable': IniciativaYMejora1 === '', 'errorborder': Items1BorderRed }"
+        >
+          <select *ngIf="Indicadores != undefined" [(ngModel)]="selectedIndicatorItem1" [disabled]="IniciativaYMejora1 === ''">
+            <option value="">Seleccionar competencia</option>
+            <option [disabled]="item.estado === 0" *ngFor="let item of Indicadores" [value]="item.codigo">{{item.valor}}</option>
+          </select>      
+        </td>
+        <td 
+        class="multiselectcontainer text-left p-2 border border-gray-300 text-center" 
+       (mouseenter)="Items1BorderRed = false" 
+        [ngClass]="{ 'non-editable': selectedIndicatorItem1 === '', 'errorborder': Items1BorderRed }"
+        >
+          <select *ngIf="Entregables != undefined" [(ngModel)]="selectedDeliverableItem1" [disabled]="selectedIndicatorItem1 === ''">
+            <option value="">Seleccionar competencia</option>
+            <option [disabled]="item.estado === 0" *ngFor="let item of Entregables" [value]="item.codigo">{{item.valor}}</option>
+          </select>      
+        </td>
+        <td class="border border-gray-300 text-center" [ngClass]="{ 'non-editable': selectedDeliverableItem1 === '', 'errorborder': Items1BorderRed}"  (mouseenter)="Items1BorderRed = false">
+          <input [(ngModel)]="Item1StartDate" [disabled]="selectedDeliverableItem1 === ''" style="background-color: #ffffff00;" type="date" placeholder="dd/mm/aaaa" appMinDateToday class="text-center">
+        </td>
+        <td class="p-2 border border-gray-300 text-center"  (mouseenter)="Items1BorderRed = false" [ngClass]="{ 'non-editable': !Item1StartDate , 'errorborder': Items1BorderRed}">
+          <input
+          [(ngModel)]="Item1EndDate"
+          type="date" placeholder="dd/mm/aaaa"
+          appMinDateToday
+          [disabled]="!Item1StartDate"
+          [ngStyle]="{ 'background-color': 'transparent' }"
+          [value]="Item1StartDate ? Item1EndDate : ''"
+          class="text-center"
+        >        
+        </td>
+      </tr>
+      <tr class="bg-white border-b" >
+        <td 
+        (mouseenter)="Items2BorderRed = false"
+        class="p-2 border border-gray-300" 
+        [ngClass]="{ 'editable': ObjetivoDesarrollo !== '', 'non-editable': ObjetivoDesarrollo === '','errorborder': Items2BorderRed}"
+        [attr.contenteditable]="ObjetivoDesarrollo !== '' ? true : null"
+        (blur)="onTextChangeIniciativaYMejora($event.target.innerText.trim(),2)"
+        >
+        {{IniciativaYMejora2}}
+        </td>
+        <td 
+        class="multiselectcontainer text-left p-2 border border-gray-300 text-center"  
+        (mouseenter)="Items2BorderRed = false"
+        [ngClass]="{ 'non-editable': IniciativaYMejora2 === '','errorborder': Items2BorderRed }"
+        >
+          <select *ngIf="Indicadores != undefined" [(ngModel)]="selectedIndicatorItem2" [disabled]="IniciativaYMejora2 === ''">
+            <option value="">Seleccionar competencia</option>
+            <option 
+             [disabled]="item.estado === 0" *ngFor="let item of Indicadores" [value]="item.codigo">{{item.valor}}</option>
+          </select>      
+        </td>
+        <td 
+        class="multiselectcontainer text-left p-2 border border-gray-300 text-center"  
+        (mouseenter)="Items2BorderRed = false"
+        [ngClass]="{ 'non-editable': selectedIndicatorItem2 === '','errorborder': Items2BorderRed }"
+        >
+          <select *ngIf="Entregables != undefined" [(ngModel)]="selectedDeliverableItem2" [disabled]="selectedIndicatorItem2 === ''">
+            <option value="">Seleccionar competencia</option>
+            <option [disabled]="item.estado === 0" *ngFor="let item of Entregables" [value]="item.codigo">{{item.valor}}</option>
+          </select>      
+        </td>
+        <td class="border border-gray-300 text-center"  (mouseenter)="Items2BorderRed = false" [ngClass]="{ 'non-editable': selectedDeliverableItem2 === '','errorborder': Items2BorderRed}">
+          <input class="text-center" [(ngModel)]="Item2StartDate" [disabled]="selectedDeliverableItem2 === ''"  style="background-color: #ffffff00;" type="date" placeholder="dd/mm/aaaa" appMinDateToday >
+        </td>
+        <td class="p-2 border border-gray-300 text-center" (mouseenter)="Items2BorderRed = false" [ngClass]="{ 'non-editable': !Item2StartDate,'errorborder': Items2BorderRed}">
+          <input class="text-center" [(ngModel)]="Item2EndDate" [disabled]="!Item2StartDate" style="background-color: #ffffff00;" type="date" placeholder="dd/mm/aaaa" appMinDateToday  [value]="Item2StartDate ? Item2EndDate : ''" >
+        </td>
+      </tr>
+      <tr class="bg-white border-b">
+        <td 
+        class="p-2 border border-gray-300" 
+        (mouseenter)="Items3BorderRed = false"
+        [ngClass]="{ 'editable': ObjetivoDesarrollo !== '', 'non-editable': ObjetivoDesarrollo === '','errorborder': Items3BorderRed }"
+        [attr.contenteditable]="ObjetivoDesarrollo !== '' ? true : null"
+        (blur)="onTextChangeIniciativaYMejora($event.target.innerText.trim(),3)"
+        >
+        {{IniciativaYMejora3}}
+        <td 
+        class="multiselectcontainer text-left p-2 border border-gray-300 text-center" 
+        (mouseenter)="Items3BorderRed = false" 
+        [ngClass]="{ 'non-editable': IniciativaYMejora3 === '','errorborder': Items3BorderRed }"
+        >
+          <select *ngIf="Indicadores != undefined" [(ngModel)]="selectedIndicatorItem3" [disabled]="IniciativaYMejora3 === ''">
+            <option value="">Seleccionar competencia</option>
+            <option [disabled]="item.estado === 0" *ngFor="let item of Indicadores" [value]="item.codigo">{{item.valor}}</option>
+          </select>      
+        </td>
+        <td 
+        class="multiselectcontainer text-left p-2 border border-gray-300 text-center"  
+        (mouseenter)="Items3BorderRed = false" 
+        [ngClass]="{ 'non-editable': selectedIndicatorItem3 === '','errorborder': Items3BorderRed }"
+        >
+          <select *ngIf="Entregables != undefined" [(ngModel)]="selectedDeliverableItem3" [disabled]="selectedIndicatorItem3 === ''">
+            <option value="">Seleccionar competencia</option>
+            <option [disabled]="item.estado === 0" *ngFor="let item of Entregables" [value]="item.codigo">{{item.valor}}</option>
+          </select>      
+        </td>
+        <td class="border border-gray-300 text-center" (mouseenter)="Items3BorderRed = false"  [ngClass]="{ 'non-editable': selectedDeliverableItem3 === '','errorborder': Items3BorderRed }">
+          <input class="text-center" [(ngModel)]="Item3StartDate" [disabled]="selectedDeliverableItem3 === ''" type="date" placeholder="dd/mm/aaaa" appMinDateToday style="background-color: #ffffff00;">
+        </td>
+        <td class="p-2 border border-gray-300 text-center" (mouseenter)="Items3BorderRed = false"  [ngClass]="{ 'non-editable': !Item3StartDate,'errorborder': Items3BorderRed }">
+          <input class="text-center" [(ngModel)]="Item3EndDate" [disabled]="!Item3StartDate" type="date" placeholder="dd/mm/aaaa" appMinDateToday style="background-color: #ffffff00;" [value]="Item3StartDate ? Item3EndDate : ''"  >
+        </td>
+      </tr>
+    </tbody>
+
+    <tbody class="ResultViewTBODY" *ngIf="PendienteVeredicto || Aprobado">
+      <ng-container *ngFor="let detalle of DataToShow.registros.detalles; let i = index">
+        <tr class="bg-white border-b">
+          <!-- La primera celda solo se muestra en la primera fila -->
+          <td *ngIf="i === 0" style="max-width: 100%;" class="p-2 border border-gray-300 font-semibold" [attr.rowspan]="DataToShow.registros.detalles.length">
+            {{ detalle.competencia.titulo }}
+          </td>
+          <!-- La segunda celda solo se muestra en la primera fila -->
+          <td *ngIf="i === 0" class="p-2 border border-gray-300" [attr.rowspan]="DataToShow.registros.detalles.length">
+            {{ ObjetivoDesarrollo }}
+          </td>
+          <td class="p-2 border border-gray-300">
+            {{ detalle.iniciativaAcciones }}
+          </td>
+          <td class="multiselectcontainer text-left p-2 border border-gray-300 text-center">
+            {{ GetIndicatorName(detalle.codigosIndicadores[0]) }}
+          </td>
+          <td class="multiselectcontainer text-left p-2 border border-gray-300 text-center">
+            {{ GetDeliverableName(detalle.codigosEntregables[0]) }}
+          </td>
+          <td class="p-2 border border-gray-300 text-center">
+            {{ FormatDate(detalle.fechaInicioIniciativa) }}
+          </td>
+          <td class="p-2 border border-gray-300 text-center">
+            {{ FormatDate(detalle.fechaFinIniciativa) }}
+          </td>
+        </tr>
+      </ng-container>
+    </tbody>
+    
+  </table>
+</div>
+<div class="p-6" *ngIf="EvaluatorcomentarioRegistro != ''">
+  <div>
+    <p class="mb-2"><b>COMENTARIO DEL EVALUADOR:</b></p>
+  </div>
+  <mat-form-field appearance="outline" class="w-full">
+    <textarea
+      matInput
+      class="w-full rounded-md"
+      disabled
+      [(ngModel)]="EvaluatorcomentarioRegistro"
+      maxlength="500"
+      aria-label="Comentario"
+      rows="5">
+    </textarea>
+    <mat-hint align="end">{{ EvaluatorcomentarioRegistro?.length || 0 }}/500</mat-hint>
+  </mat-form-field>  
+</div>
+<footer class="p-6" *ngIf="DataToShow != undefined" >
+  <button
+  *ngIf="EvaluadoVaARegistrar"
+  class="inline-flex text-white bg-primary items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-primary/90 h-10 px-4 py-2 w-full"
+  type="submit"
+  (click)="RegisterPID(false)"
+>
+  Registrar plan individual de desarrollo
+</button>
+<button
+*ngIf="Rechazado && EvaluadoVaAActualizar  && !Aprobado"
+class="inline-flex text-white bg-primary items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-primary/90 h-10 px-4 py-2 w-full"
+type="submit"
+(click)="RegisterPID(true)"
+>
+Actualizar plan individual de desarrollo
+</button>
+</footer>

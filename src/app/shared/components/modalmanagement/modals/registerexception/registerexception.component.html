@@ -1,0 +1,241 @@
+<p-dialog header="" [(visible)]="visible"> 
+  <div *ngFor="let item of TeamsErrors">
+      <div class="grid">
+          <hr class="bg-black" style="margin: 0.5rem 0 0.5rem 0 !important;">
+          <span>Evaluado: <b>{{item.evaluado_nombre}}</b></span>
+          <span>Advertencia: <b>{{item.error}}</b></span>
+          <hr class="bg-black" style="margin: 0.5rem 0 0.5rem 0 !important;">
+      </div>
+  </div>
+</p-dialog>  
+<div
+  class="relative z-10"
+  aria-labelledby="modal-title"
+  role="dialog"
+  aria-modal="true"
+>
+  <div class="fixed inset-0 bg-gray-900/50 transition-opacity"></div>
+  <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
+    <div
+      class="flex min-h-full items-end justify-center p-4 text-center items-center"
+    >
+      <div
+        class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all"
+      >
+        <div class="space-y-6">
+          <div class="bg-white shadow-md rounded-lg overflow-hidden mt-0">
+            <div class="bg-white shadow-md rounded-lg overflow-hidden">
+              <div
+                class="bg-primary p-6 text-primary-foreground flex justify-between items-center bg-blue-600 text-white"
+              >
+                <h1 class="text-2xl font-bold mb-0">
+                  Registrar excepciones {{ TypeAndPeriodName }}
+                </h1>
+                <button
+                  (click)="CloseModal()"
+                  class="inline-flex items-center hover:bg-white hover:text-gray-500 justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 text-primary-foreground"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="h-6 w-6"
+                  >
+                    <path d="M18 6 6 18"></path>
+                    <path d="m6 6 12 12"></path>
+                  </svg>
+                </button>
+              </div>
+              <div
+                class="flex items-center justify-center px-6 py-4 border-b border-gray-200"
+              >
+                <div class="grid gap-4">
+                  <section>
+                    <div class="label text-center">
+                      <p class="mb-1 mt-1 text-sm font-medium text-gray-500">
+                        Tipo de excepción:
+                      </p>
+                    </div>
+                    <div class="text-center">
+                      <mat-form-field appearance="outline" class="w-full" style="min-width: 324px;">
+                        <mat-label>Tipo de excepción</mat-label>
+                        <mat-select  [(ngModel)]="ExceptionType" [disabled]="ExceptionType !== ''">
+                          <mat-option value="conocimiento">Conocimiento</mat-option>
+                          <mat-option value="autoeval">Autoevaluación</mat-option>
+                          <mat-option value="eval">Evaluación</mat-option>
+                          <mat-option value="calibracion">Calibración</mat-option>
+                          <mat-option value="retroalimentacion">Retroalimentación</mat-option>
+                          <mat-option value="PID_EST">PID registro</mat-option>
+                          <mat-option value="PID_EVAL">PID cumplimiento </mat-option>
+                        </mat-select>
+                      </mat-form-field>                      
+                    </div>
+                  </section>
+
+                  <section *ngIf="ExceptionType !== '' && selectedOption === ''">
+                    <div class="label text-center">
+                      <p class="mb-1 mt-1 text-sm font-medium text-gray-500">
+                        Tipo de búsqueda:
+                      </p>
+                    </div>
+                    <div>
+                      <mat-radio-group [(ngModel)]="selectedOption" (change)="onRadioChange($event)" style="display: flex !important;justify-content: space-between;align-items: center;">
+                        <mat-radio-button value="ficha">Ficha</mat-radio-button>
+                        <mat-radio-button value="equipo">Equipo</mat-radio-button>
+                      </mat-radio-group>
+                    </div>
+                  </section>
+
+                  <section *ngIf="selectedOption === 'ficha'">
+                    <div class="label text-center">
+                      <p class="mb-1 mt-1 text-sm font-medium text-gray-500">
+                        Buscar por ficha:
+                      </p>
+                    </div>
+                    <div class="flex">
+                      <input
+                      placeholder="Buscar por ficha"
+                      class="flex-1 mr-4 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                      type="text"
+                      maxlength="8"
+                      onlyNumber
+                      [(ngModel)]="FileValue"
+                    />
+                    <button
+                      *ngIf="FileValue.length === 0"
+                      disabled
+                      class="bg-blue-400 text-white font-medium py-2 px-4 rounded-md cursor-not-allowed"
+                    >
+                    <svg class="h-5 w-5 text-white"  xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                      <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="m21 21-3.5-3.5M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z" />
+                    </svg>
+                    
+                    </button>
+                    <button
+                      *ngIf="FileValue.length != 0"
+                      (click)="GetData()"
+                      class="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-md"
+                    >
+                    <svg class="h-5 w-5 text-white"  xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                      <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="m21 21-3.5-3.5M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z" />
+                    </svg>
+                    
+                    </button>
+                  </div>       
+                  </section>
+
+                  <section *ngIf="selectedOption === 'equipo' && OrganicUnitOptions.length != 0">
+                    <div class="label text-center">
+                      <p class="mb-1 mt-1 text-sm font-medium text-gray-500">
+                        Selección de unidad orgánica:
+                      </p>
+                    </div>
+                    <div class="text-center">
+                      <mat-form-field appearance="outline" class="w-full">
+                        <mat-label>Unidad orgánica</mat-label>
+                        <mat-select [disabled]="TeamSelectOptions.length != 0" [(ngModel)]="OrganicUnitSelection" (selectionChange)="GetTeamByOrganicUnit($event)" >
+                          <mat-option *ngFor="let ou of OrganicUnitOptions" [value]="ou?.codigo">
+                            {{ ou?.nombre }}
+                          </mat-option>                                              
+                        </mat-select>
+                      </mat-form-field>                      
+                    </div>
+                  </section>
+
+                <section *ngIf="TeamSelectOptions.length != 0">
+                  <div class="label text-center">
+                    <p class="mb-1 mt-1 text-sm font-medium text-gray-500">
+                      Selección de equipo:
+                    </p>
+                  </div>
+                  <div class="text-center flex justify-center items-center">
+                    <mat-form-field appearance="outline" class="w-full">
+                      <mat-label>Equipos</mat-label>
+                      <mat-select [value]="TeamSelection" (selectionChange)="onExceptionTeamChange($event)">
+                        <mat-option *ngFor="let team of TeamSelectOptions" [value]="team?.codigo">
+                          {{ team?.nombreCorto }}
+                        </mat-option>                                              
+                      </mat-select>
+                    </mat-form-field>  
+                    <p-button *ngIf="TeamsErrors.length !== 0" class="ml-4" (click)="showDialog()" label="ADVERTENCIAS" [disabled]="visible"></p-button>                 
+                  </div>
+                </section>
+                </div>
+              </div>
+              <div
+                *ngIf="DataList.length > 0 || ListToSend.length > 0"
+                class="px-6 py-4 border-b border-gray-200"
+              >
+                <div class="grid justify-center justify-items-center">
+                  <p-pickList
+ 
+                    [source]="DataList"
+                    [target]="ListToSend"
+                    [responsive]="true"
+                    [showSourceControls]="false"
+                    [showTargetControls]="false"
+                    sourceHeader="Disponibles"
+                    targetHeader="Seleccionados"
+                    dragdrop="true"
+                    disabled
+                    [sourceStyle]="{ height: '300px', width: '330px' }"
+                    [targetStyle]="{ height: '300px', width: '330px' }"
+                  >
+                    <ng-template let-people pTemplate="item">
+                      <div class="ui-helper-clearfix" style="border: rgb(184, 184, 184) 1px solid !important;">
+                        <p>{{ people.codigoFicha }}</p>
+                        <p>{{ people.apellidosNombres }}</p>
+                      </div>
+                    </ng-template>
+                  </p-pickList>
+
+                  <div class="grid">
+                    <section>
+                      <div class="label text-center">
+                        <p class="mb-1 mt-1 text-sm font-medium text-gray-500">
+                          Fecha límite:
+                        </p>
+                      </div>
+                      <div class="text-center">
+                        <mat-form-field appearance="outline" class="w-full">
+                          <mat-label>Fecha de límite</mat-label>
+                          <input matInput [matDatepicker]="picker" [(ngModel)]="fechaEvaluacion" placeholder="dd/MM/yyyy" name="fechaEvaluacion">
+                          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                          <mat-datepicker #picker></mat-datepicker>
+                        </mat-form-field>
+                      </div>
+                    </section> 
+                  </div>
+                </div>
+              </div>
+              <div
+                *ngIf="DataList.length > 0 || ListToSend.length > 0"
+                class="px-6 py-4 border-t border-gray-200"
+              >
+                <button
+                  *ngIf="ListToSend.length === 0 || fechaEvaluacion === null"
+                  class="bg-blue-400 cursor-not-allowed text-white font-medium py-2 px-4 rounded-md w-full cursor-not-allowed"
+                >
+                  Registrar excepción
+                </button>
+                <button
+                  *ngIf="ListToSend.length > 0 && fechaEvaluacion !== null"
+                  (click)="SendException()"
+                  class="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-md w-full"
+                >
+                  Registrar excepción
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

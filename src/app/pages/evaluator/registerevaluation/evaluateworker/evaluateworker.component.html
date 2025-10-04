@@ -1,0 +1,209 @@
+<div *ngIf="TableData != undefined && FactsData != undefined">
+<div class="text-center mt-6">
+  <h1 class="text-lg" style="text-transform: uppercase;">EVALUACIÓN DEL DESEMPEÑO POR COMPETENCIAS {{TypeAndPeriodName}}°</h1>
+</div>
+
+<div *ngIf="FactsData != undefined ">
+    <p-button *ngIf="FactsData.registros.length === 0" class="ml-4" label="No se tienen hechos resaltantes" [disabled]="true"></p-button>
+    <p-button *ngIf="FactsData.registros.length != 0" class="ml-4" (click)="showDialog()" label="Mostrar hechos resaltantes" [disabled]="visible"></p-button>
+
+    <p-dialog header="Hechos resaltantes de {{TableData.registros.nombre}}" [(visible)]="visible"> 
+        <div *ngFor="let item of FactsData.registros">
+            <div class="grid">
+                <hr class="bg-black" style="margin: 0.5rem 0 0.5rem 0 !important;">
+                <span>Autor: <b>{{item.evaluador_nombre}}</b></span>
+                <span>Fecha: <b>{{DecodeDate(item.fecha)}}</b></span>
+                <hr class="bg-black" style="margin: 0.5rem 0 0.5rem 0 !important;">
+            </div>
+            <div>
+                <p><b>Competencia:</b> {{item.competencia_titulo}}</p>
+                <p><b>Comportamiento:</b> {{item.competencia_descripcion}}</p>
+                <p><b>Tipo de hecho:</b> {{GetTypeText(item.indicador)}}</p>
+                <p><b>Descripción:</b> {{item.descripcion}}</p>
+            </div>
+        </div>
+    </p-dialog>
+</div>
+
+<section class="m-4" >
+  <hr class="header-hr">
+  <div>
+    <p class="font-bold mb-0">Datos del evaluado:</p>
+  </div>
+  <div>
+    <table>
+      <tr>
+        <td class="flex font-bold justify-between"><p style="margin-bottom: 0px !important;">Ficha:</p> <p style="margin-bottom: 0px !important;">{{removeLeadingZeros(TableData.registros.ficha)}}</p></td>
+        <td class="font-bold pl-4">Nombre: {{TableData.registros.nombre}}</td>
+      </tr>
+      <tr>
+        <td class="flex font-bold justify-between"><p style="margin-bottom: 0px !important;">Unidad Orgánica: {{TableData.registros.unidadOrganica}}</p></td>
+        <td class="font-bold pl-4" style="margin-bottom: 0px !important;">Cargo:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{TableData.registros.cargo}}</td>
+      </tr>
+    </table>
+  </div>
+  <hr class="header-hr">
+  <div>
+    <p class="font-bold mb-0">Datos del evaluador:</p>
+  </div>
+  <div>
+    <table>
+      <tr>
+        <td class="flex font-bold justify-between"><p style="margin-bottom: 0px !important;">Ficha:</p> <p style="margin-bottom: 0px !important;">{{removeLeadingZeros(TableData.registros.fichaEvaluador)}}</p></td>
+        <td class="font-bold pl-4">Nombre: {{TableData.registros.nombreEvaluador}}</td>
+      </tr>
+      <tr>
+        <td class="flex font-bold justify-between"><p style="margin-bottom: 0px !important;">Unidad Orgánica: {{TableData.registros.unidadOrganicaEvaluador}}</p></td>
+        <td class="font-bold pl-4" style="margin-bottom: 0px !important;">Cargo:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{TableData.registros.cargoEvaluador}}</td>
+      </tr>
+    </table>
+  </div>
+  <hr class="header-hr">
+</section>
+
+<section class="m-4">
+  <div>
+      <p class="font-bold mb-0 text-black">INTRUCCIONES</p>
+      <p class="text-black">Marque el nivel de desarrollo correspondiente, en cada uno de los 5 comportamientos que conforman cada competencia. de acuerdo a las evidencias que Ud. ha podido identificar durante las labores y responsabilidades durante el periodo de evaluación.</p>
+  </div>
+</section>
+
+<div *ngFor="let item of TableData.registros.competenciasResultado; index as i" class="relative overflow-x-auto mt-4 mr-4 ml-4">
+  <table class="w-full text-sm text-left rtl:text-right text-gray-500 ">
+      <thead class="text-xs text-gray-700 bg-blue-200">
+          <tr class="border border-black border-solid text-black">
+              <th scope="col" class="px-6 py-3">
+                  {{item.titulo + ":"}}
+                  <div class="normal-case text-justify">
+                      {{item.descripcion}}
+                  </div>
+              </th>
+              <th class="text-center border-solid border-1" style="width: 6rem;">
+                  <p class="mb-0">NO CUBRE LA EXPECTATIVA <br> (0%)</p>
+              </th>
+              <th class="text-center border-solid border-1" style="width: 6rem;">
+                  <p class="mb-0">NECESITA MEJORAR <br> (25%)</p>
+              </th>
+              <th class="text-center border-solid border-1" style="width: 6rem;">
+                  <p class="mb-0">PARCIALMENTE EFECTIVO <br> (50%)</p>
+              </th>
+              <th class="text-center border-solid border-1" style="width: 6rem;">
+                  <p class="mb-0">EFECTIVO <br> (75%)</p>
+              </th>
+              <th class="text-center border-solid border-1" style="width: 6rem;">
+                  <p class="mb-0">ALTAMENTE EFECTIVO <br> (100%)</p>
+              </th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let question of item.comportamientosResultado; index as j" class="bg-white border border-black border-solid text-black">
+              <th scope="row" class="flex m-6 font-medium text-gray-900">
+                  <div class="mr-5">{{j + 1}}</div>
+                  <div>{{question.descripcion}}</div>
+              </th>
+              <td class="text-center border-solid border-1">
+                  <input
+                      type="radio"
+                      name="flexRadioDefault{{question.codigo}}"
+                      id="radioDefault{{question.codigo}}1"
+                      [value]="1"
+                      [(ngModel)]="question.resultado"
+                  />
+              </td>
+              <td class="text-center border-solid border-1">
+                  <input
+                      type="radio"
+                      name="flexRadioDefault{{question.codigo}}"
+                      id="radioDefault{{question.codigo}}2"
+                      [value]="2"
+                      [(ngModel)]="question.resultado"
+                  />
+              </td>
+              <td class="text-center border-solid border-1">
+                  <input
+                      type="radio"
+                      name="flexRadioDefault{{question.codigo}}"
+                      id="radioDefault{{question.codigo}}3"
+                      [value]="3"
+                      [(ngModel)]="question.resultado"
+                  />
+              </td>
+              <td class="text-center border-solid border-1">
+                  <input
+                      type="radio"
+                      name="flexRadioDefault{{question.codigo}}"
+                      id="radioDefault{{question.codigo}}4"
+                      [value]="4"
+                      [(ngModel)]="question.resultado"
+                  />
+              </td>
+              <td class="text-center border-solid border-1">
+                  <input
+                      type="radio"
+                      name="flexRadioDefault{{question.codigo}}"
+                      id="radioDefault{{question.codigo}}5"
+                      [value]="5"
+                      [(ngModel)]="question.resultado"
+                  />
+              </td>
+          </tr>
+      </tbody>
+  </table>
+</div>
+<div class="m-4 flex flex-col md:flex-row justify-around">
+  <div class="grid justify-start mb-2" style="width: 31rem;">
+      <label for="Fortaleza"><b>Competencia con mayor FORTALEZA: Indicar hechos y datos que envidencien la competencia seleccionada.</b></label>
+      <mat-form-field>
+        <mat-select placeholder="Fortaleza" [(ngModel)]="TableData.registros.competenciaFortaleza">
+          <mat-option>Seleccionar Fortaleza</mat-option>
+          <mat-option *ngFor="let item of TableData.registros.competenciasResultado" [value]="item.codigo">
+            {{item.titulo}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>      
+      <mat-form-field appearance="outline">
+        <textarea 
+          matInput
+          [disabled]="TableData.registros.competenciaFortaleza === undefined" 
+          [(ngModel)]="TableData.registros.fortaleza" 
+          [value]="TableData.registros.fortaleza"
+          maxlength="500"
+          rows="5">
+        </textarea>
+      </mat-form-field>      
+      <p class="text-end">{{500 - TableData.registros.fortaleza.length}} caracteres restantes</p>
+  </div>
+  <div class="grid justify-start" style="width: 31rem;">
+      <label for="Oportunidad"><b>Competencia con mayor OPORTUNIDAD DE MEJORA: Indicar hechos y datos que evidencien la competencia seleccionada.</b></label>
+      <mat-form-field>
+        <mat-select placeholder="Oportunidad" [(ngModel)]="TableData.registros.competenciaOportunidad">
+          <mat-option>Seleccionar Oportunidad de Mejora</mat-option>
+          <mat-option *ngFor="let item of TableData.registros.competenciasResultado" [value]="item.codigo">
+            {{item.titulo}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field> 
+      <mat-form-field appearance="outline">
+        <textarea 
+          matInput
+          [disabled]="TableData.registros.competenciaOportunidad === undefined" 
+          [(ngModel)]="TableData.registros.oportunidad" 
+          [value]="TableData.registros.oportunidad"
+          maxlength="500"
+          rows="5">
+        </textarea>
+      </mat-form-field>
+      <p class="text-end">{{500 - TableData.registros.oportunidad.length}} caracteres restantes</p>
+  </div>
+</div>
+<div class="flex float-end text-end pb-6" >
+  <div>
+      <button *ngIf="TableData.registros.estado === 0" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full mr-6" (click)="SaveButton()">
+          Guardar
+      </button>
+      <button *ngIf="TableData.registros.estado === 1" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full mr-6" (click)="ReloadPage()">
+          Ver Resultados
+      </button>
+  </div>
+</div>
+</div>

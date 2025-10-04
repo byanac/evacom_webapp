@@ -1,0 +1,124 @@
+<div class="min-h-screen bg-gray-100 flex flex-col">
+  <header class="text-white py-4 px-6" style="background-color: #3776ff;">
+    <h1 class="text-2xl font-bold mb-0">Registro de detalle de grupos de evaluación</h1>
+  </header>
+<main class="flex-grow p-6">
+  <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+    <h2 class="text-xl font-semibold mb-4">Registro de detalle de grupos de evaluación</h2>
+    <form [formGroup]="form" (ngSubmit)="handleSubmit()" class="space-y-4">
+      <div class="grid gap-4">    
+
+        <mat-form-field appearance="outline" class="w-full">
+          <mat-label>Grupo de evaluación</mat-label>
+          <mat-select id="idGrupoEvaluacion" formControlName="idGrupoEvaluacion" required>
+            <mat-option value="">Selecciona un grupo de evaluación</mat-option>
+            <mat-option *ngFor="let grupo of gruposEvaluacion" [value]="grupo.codigo">
+              {{grupo.descripcion}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="w-full">
+          <mat-label>Competencia</mat-label>
+          <mat-select id="idGrupoCompetencia" formControlName="idGrupoCompetencia" required>
+            <mat-option value="">Selecciona una competencia</mat-option>
+            <mat-option *ngFor="let competencia of competencias" [value]="competencia.codigo">
+              {{competencia.titulo}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        
+        <mat-form-field appearance="outline" class="w-full">
+          <mat-label>Nivel de competencia</mat-label>
+          <mat-select id="idNivelCompetencia" formControlName="idNivelCompetencia" required>
+            <mat-option value="">Selecciona un nivel</mat-option>
+            <mat-option *ngFor="let nivel of niveles" [value]="nivel.codigo">
+              {{nivel.nombre}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+      </div>      
+      <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+        {{editingItem ? 'Editar' : 'Añadir'}} Grupo de Evaluación
+      </button>
+    </form>
+  </div>
+  <div class="bg-white shadow-md rounded px-8 pt-6 pb-8">
+    <h2 class="text-xl font-semibold mb-4">Detalle de grupos de evaluación - Registrados</h2>
+    <mat-table [dataSource]="dataSourceGroupEvaluacionDetalle">
+
+      <!-- ID Column -->
+      <ng-container matColumnDef="grupoeval">
+        <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
+        <mat-cell *matCellDef="let grupo"> {{ grupo?.grupoEvaluacion?.codigo }} </mat-cell>
+      </ng-container>
+    
+      <!-- Codigo de Competencia Column -->
+      <ng-container matColumnDef="codigocompetencia">
+        <mat-header-cell *matHeaderCellDef> Codigo de Competencia </mat-header-cell>
+        <mat-cell *matCellDef="let grupo"> {{grupo?.competencia?.codigo}} </mat-cell>
+      </ng-container>
+
+      <!-- Titulo de Competencia Column -->
+      <ng-container matColumnDef="grupocompetencia">
+        <mat-header-cell *matHeaderCellDef> Competencia </mat-header-cell>
+        <mat-cell *matCellDef="let grupo"> {{grupo?.competencia?.titulo}} </mat-cell>
+      </ng-container>
+    
+      <!-- Competencia Column -->
+      <ng-container matColumnDef="nivel">
+        <mat-header-cell *matHeaderCellDef class="center-text"> Nivel </mat-header-cell>
+        <mat-cell *matCellDef="let grupo" class="center-text">
+          {{ grupo?.nivel?.nombre }}
+        </mat-cell>
+      </ng-container>
+
+
+      <ng-container matColumnDef="ultimamodific">
+        <mat-header-cell *matHeaderCellDef>Fecha de modificación</mat-header-cell>
+        <mat-cell *matCellDef="let grupo">{{ grupo?.fecModificacion | date:'dd/MM/yyyy'}}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="adminmodific">
+        <mat-header-cell *matHeaderCellDef>Modificación realizada por</mat-header-cell>
+        <mat-cell *matCellDef="let grupo">{{ grupo?.admin?.apellidosNombres }}</mat-cell>
+      </ng-container>
+    
+      <!-- Nivel Column -->
+      <ng-container matColumnDef="estado">
+        <mat-header-cell *matHeaderCellDef> Estado </mat-header-cell>
+        <mat-cell *matCellDef="let grupo"> {{ grupo?.estado === 0 ? 'Inactivo' : 'Activo' }} </mat-cell>
+      </ng-container>
+    
+      <!-- Acciones Column -->
+      <ng-container matColumnDef="acciones">
+        <mat-header-cell *matHeaderCellDef> Acciones </mat-header-cell>
+        <mat-cell *matCellDef="let grupo">
+          <button *ngIf="grupo?.estado === 0" (click)="handleActivate(grupo)" class="text-green-600 hover:text-green-900"><mat-icon>settings_backup_restore</mat-icon></button>
+          <button *ngIf="grupo?.estado === 1" (click)="handleEdit(grupo)" class="text-indigo-600 hover:text-indigo-900"><mat-icon>edit</mat-icon></button>
+          <button *ngIf="grupo?.estado === 1" (click)="handleDelete(grupo)" class="text-red-600 hover:text-red-900"><mat-icon>delete</mat-icon></button>
+        </mat-cell>
+      </ng-container>
+    
+      <!-- Header Row -->
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <!-- Data Rows -->
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+    <mat-paginator #paginatorEvalGroupsDetail [pageSizeOptions]="[10, 15, 20, 25 ,30]" showFirstLastButtons></mat-paginator>
+  </div>
+</main>
+<!-- <footer class="bottom-0 left-0 right-0 bg-white border-t border-gray-200 p-4">
+   <div class="mx-auto flex justify-end space-x-4">
+    <button type="button" class="px-4 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+      Cancelar
+    </button>
+    <button type="submit" class="px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+      <svg class="inline-block mr-2 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+        <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM6.293 6.707a1 1 0 010-1.414l3-3a1 1 0 011.414 0l3 3a1 1 0 01-1.414 1.414L11 5.414V13a1 1 0 11-2 0V5.414L7.707 6.707a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+      </svg>
+      Guardar Grupos de Evaluación
+    </button>
+  </div>
+</footer> -->
+      

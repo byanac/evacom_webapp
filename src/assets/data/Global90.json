@@ -1,0 +1,93 @@
+{
+    "registros": {
+        "evaluado": {
+            "codigoFicha": "12845",
+            "apellidosNombres": "SANTOS MARTINEZ, ROLANDO",
+            "codigoPuesto": "00016707",
+            "nombrePuesto": "Analista Principal de Sistemas",
+            "equipo_codigo": "00004098",
+            "equipo_nombre": "Eq. Tecnolog. de la Inform. y Comunic.",
+            "gerencia_codigo": "00000032",
+            "gerencia_nombre": "Gerencia de Desarrollo e Investigación",
+            "grupo_eval_codigo": "GE4",
+            "grupo_eval_nombre": "Trabajadores sin Rol de Supervisión de Personal",
+            "grupo_ocupacional": "PROFESIO"
+        },
+        "evaluador": {
+            "codigoFicha": "00012336",
+            "apellidosNombres": "SEGURA PERALTA, AMERICA GLADYS",
+            "codigoPuesto": "00005197",
+            "nombrePuesto": "Analista Principal de Sistemas"
+        },
+        "competencia": [
+            {
+                "codigo": "C001",
+                "titulo": "VOCACIÓN DE SERVICIO",
+                "descripcion": "Entiende, administra y responde a las expectativas y necesidades de los clientes internos, externos y grupos de interés de la empresa. Busca ofrecer un servicio excepcional, siendo empático y proactivo a las necesidades del cliente. Está atento a responder oportunamente y con efectividad, generando la creación de valor. Está orientado a fortalecer una cultura de calidad de servicio en la empresa.",
+                "promedio": 75.0,
+                "promedioAuto": 50.0,
+                "promedioSubalternos": null,
+                "promedioFinal": null
+            },
+            {
+                "codigo": "C002",
+                "titulo": "INNOVACIÓN",
+                "descripcion": "Actúa como un agente de cambio y mantiene un enfoque positivo con el objetivo de generar valor. Se adapta a las circunstancias de manera efectiva y ajusta las prioridades y planes para nuevos eventos, tanto en el ambiente como en la organización. Identifica oportunidades para mejorar y muestra interés activo en las iniciativas e ideas nuevas. Cuestiona siempre los procedimientos y procesos actuales, buscando la mejora continua. ",
+                "promedio": 50.0,
+                "promedioAuto": 25.0,
+                "promedioSubalternos": null,
+                "promedioFinal": null
+            },
+            {
+                "codigo": "C003",
+                "titulo": "COMPROMISO",
+                "descripcion": "Sentir como propios los objetivos de la organización, superando obstáculos que interfieran con el logro de los mismos. Promover una gestión sostenible y responsable de las normas sociales, ambientales, éticas y organizacionales en la realización de las actividades internas y externas. Hacerse cargo de las consecuencias de las decisiones tomadas con el fin de sostener el compromiso con las normas éticas y sociales aceptadas en las actividades relacionadas con el sector. ",
+                "promedio": 100.0,
+                "promedioAuto": 75.0,
+                "promedioSubalternos": null,
+                "promedioFinal": null
+            },
+            {
+                "codigo": "C004",
+                "titulo": "INTEGRIDAD",
+                "descripcion": "Es la capacidad de actuar basados en principios éticos, siendo consecuente con lo que se dice o se considera importante. Incluye comunicar las intenciones, ideas y sentimientos abierta y directamente y respetar la diversidad de creencias y opiniones. Implica estar dispuesto a actuar con honestidad incluso en negociaciones difíciles con agentes externos. ",
+                "promedio": 25.0,
+                "promedioAuto": 100.0,
+                "promedioSubalternos": null,
+                "promedioFinal": null
+            },
+            {
+                "codigo": "C006",
+                "titulo": "ORIENTACIÓN A RESULTADOS",
+                "descripcion": "Es la capacidad de encaminar todos los actos al cumplimiento de lo esperado, actuando con velocidad y sentido de urgencia ante decisiones importantes necesarias para superar los obstáculos, respondiendo a las necesidades del cliente interno o externo, y grupos de interés para mejorar el desempeño de la empresa tomando en cuenta los aspectos económicos, sociales y ambientales.",
+                "promedio": 75.0,
+                "promedioAuto": 0.0,
+                "promedioSubalternos": null,
+                "promedioFinal": null
+            }
+        ],
+        "cualitativa": [
+            {
+                "nivel": 0,
+                "fortaleza": "texto de prueba qa ",
+                "oportunidad": "texto de prueba qa ",
+                "competencia_codigo_fortaleza": "C001",
+                "competencia_nombre_fortaleza": "VOCACIÓN DE SERVICIO",
+                "competencia_codigo_oportunidad": "C002",
+                "competencia_nombre_oportunidad": "INNOVACIÓN"
+            },
+            {
+                "nivel": 1,
+                "fortaleza": "Prueba",
+                "oportunidad": "Prueba",
+                "competencia_codigo_fortaleza": "C001",
+                "competencia_nombre_fortaleza": "VOCACIÓN DE SERVICIO",
+                "competencia_codigo_oportunidad": "C001",
+                "competencia_nombre_oportunidad": "VOCACIÓN DE SERVICIO"
+            }
+        ],
+        "promedioEvaluacion": 65.0,
+        "promedioAutoevaluacion": 50.0
+    },
+    "mensaje": "OK"
+}

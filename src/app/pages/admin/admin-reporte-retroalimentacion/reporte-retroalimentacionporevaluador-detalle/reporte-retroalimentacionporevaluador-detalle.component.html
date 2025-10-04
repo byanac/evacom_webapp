@@ -1,0 +1,69 @@
+<app-title titulo="Personal a ser retroalimentado a cargo de {{EvaluatorName}} - {{PeriodName}}"></app-title>
+
+<div class="relative overflow-x-auto">
+  <table class="w-full text-sm text-left rtl:text-right text-gray-500 border solid">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-5">
+            <tr>
+                <th scope="col" class="px-6 py-3 border" style="width: 8rem;">Foto</th>
+                <th scope="col" class="px-6 py-3 border" style="width: 5.9rem;">COD. FICHA</th>
+                <th scope="col" class="px-6 py-3 border" style="width: 35rem;">APELLIDOS Y NOMBRES</th>
+                <th scope="col" class="px-6 py-3 border" style="width: 8.5rem;">UNIDAD ORGÁNICA</th>
+                <th scope="col" class="px-6 py-3 border" style="width: 6.8rem;">COD. PUESTO</th>
+                <th scope="col" class="px-6 py-3 border text-wrap" style="width: 35rem;">PUESTO</th>
+                <th scope="col" class="px-6 py-3 border" style="width: 7rem;">Estado</th>
+                <th scope="col" class="px-6 py-3 border" style="width: 7rem;">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of TableData" class="border hover:bg-gray-100">
+                <td class="px-6 py-4 text-black border" data-label="Foto">
+                    <img class="w-20 h-20" [src]="item.foto" loading="lazy" 
+ crossorigin="anonymous" (error)="onImgError($event)" alt="Foto">
+                </td>
+                <td class="px-6 py-4 text-gray-900 whitespace-nowrap" data-label="COD. Ficha">
+                    <div class="text-base font-semibold">{{removeLeadingZeros(item.codigoFicha)}}</div>
+                </td>
+                <td class="px-6 py-4 text-black border" data-label="APELLIDOS Y NOMBRES">{{item.apellidosNombres}}</td>
+                <td class="px-6 py-4 text-black border" data-label="UNIDAD ORGÁNICA">{{item.unidadOrganica}}</td>
+                <td class="px-6 py-4 text-black border" data-label="COD. PUESTO">{{item.codigoPuesto}}</td>
+                <td class="px-6 py-4 text-black border" data-label="PUESTO">{{item.nombrePuesto}}</td>
+                <td class="px-6 py-4 text-black border" data-label="Estado">
+                    <div *ngIf="item.estadoEvaluador && item.estadoEvaluado" class="flex items-center justify-center">
+                        <span class="badgegreen bg-green-500">AMBOS REALIZADOS</span>
+                    </div>
+                    <div *ngIf="!item.estadoEvaluador && !item.estadoEvaluado" class="flex items-center justify-center">
+                        <span class="badgered bg-red-500">PENDIENTE DEL EVALUADOR</span>
+                    </div>
+                    <div *ngIf="item.estadoEvaluador && !item.estadoEvaluado" class="flex items-center justify-center">
+                        <span class="badgered bg-orange-500">PENDIENTE DEL EVALUADO</span>
+                    </div>
+                    <div *ngIf="!item.estadoEvaluador && item.estadoEvaluado" class="flex items-center justify-center">
+                        <span class="badgered bg-blue-500">Solo Evaluado</span>
+                    </div>
+                </td>
+                <td class="px-6 py-4 text-black border actions-cell" data-label="Acciones">
+                    <div class="flex space-x-2">
+                        <!-- Ver Retroalimentación -->
+                        <button *ngIf="item.estadoEvaluador || item.estadoEvaluado"
+                                [routerLink]="['/home/admin-visualizar-retroalimentacion',item.codigoFicha,item.codigoPuesto,this.EvaluatorFile,this.EvaluatorPosition,this.CalendarCode,this.CalendarType,item.idRetroalimentacion]"
+                                class="text-white bg-green-500 hover:bg-green-600 font-medium rounded-lg text-sm px-2.5 py-2.5 w-full">
+                            Ver retroalimentación
+                        </button>
+                        <!-- Notificar Evaluador -->
+                        <button *ngIf="!item.estadoEvaluador"
+                                (click)="sendEvaluatorNotification(item.apellidosNombres,item.idEvaluacion)"
+                                class="text-white bg-blue-500 hover:bg-blue-600 font-medium rounded-lg text-sm px-2.5 py-2.5 w-full">
+                            Notificar evaluador
+                        </button>
+                        <!-- Notificar Evaluado -->
+                        <button *ngIf="item.estadoEvaluador && !item.estadoEvaluado"
+                                (click)="sendEvaluatedNotification(item.apellidosNombres,item.idEvaluacion)"
+                                class="text-white bg-blue-500 hover:bg-blue-600 font-medium rounded-lg text-sm px-2.5 py-2.5 w-full">
+                            Notificar evaluado
+                        </button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+  </table>
+</div>

@@ -1,0 +1,14 @@
+{
+    "registros": {
+        "evaluado": {
+            "codigoFicha": "00012845",
+            "apellidosNombres": "SANTOS MARTINEZ, ROLANDO",
+            "codigoPuesto": "00016707",
+            "nombrePuesto": "Analista Principal de Sistemas",
+            "foto": "https://webapp16.sedapal.com.pe/imgsedatel/ficha/12845.jpg"
+        },
+        "observacion": "Ficha ya cuenta con un PID de cumplimiento",
+        "habilitaExcepcion": true
+    },
+    "mensaje": "OK"
+}

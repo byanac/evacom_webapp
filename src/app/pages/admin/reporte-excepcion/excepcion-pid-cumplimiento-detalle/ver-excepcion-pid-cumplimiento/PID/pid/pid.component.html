@@ -1,0 +1,119 @@
+<div *ngIf="DataToShow != undefined">
+  <div class="p-6">
+    <!-- Header -->
+    <div class="text-center mb-6">
+      <h1 class="text-lg font-bold text-blue-900">
+        Registro de Plan Individual de Desarrollo (PID)
+      </h1>
+    </div>
+  
+    <p-messages *ngIf="ShowVerdictBadge" [(value)]="msgs" [closable]="false"></p-messages>
+  
+  
+    <!-- Information Table -->
+    <table *ngIf="DataToShow != undefined" class="bg-white mb-2 w-full Datatable">
+      <tbody>
+        <tr>
+          <td class=" px-4 py-2 font-semibold" style="text-align: start !important;">Nombre del Trabajador:</td>
+          <td class=" px-4 py-2" style="text-align: start !important;">{{DataToShow.registros.evaluado.apellidosNombres}}</td>
+          <td class=" px-4 py-2 font-semibold" style="text-align: start !important;">Equipo:</td>
+          <td class=" px-4 py-2" style="text-align: start !important;">{{DataToShow.registros.evaluado.equipo_nombre}}</td>
+        </tr>
+        <tr>
+          <td class=" px-4 py-2 font-semibold" style="text-align: start !important;">Puesto del Trabajador:</td>
+          <td class=" px-4 py-2" style="text-align: start !important;">{{DataToShow.registros.evaluado.nombrePuesto}}</td>
+          <td class=" px-4 py-2 font-semibold" style="text-align: start !important;">Gerencia:</td>
+          <td class=" px-4 py-2" style="text-align: start !important;">{{DataToShow.registros.evaluado.gerencia_nombre}}</td>
+        </tr>
+        <tr>
+          <td class=" px-4 py-2 font-semibold" style="text-align: start !important;">Ficha del Trabajador:</td>
+          <td class=" px-4 py-2" style="text-align: start !important;">{{DataToShow.registros.evaluado.codigoFicha}}</td>
+          <td class=" px-4 py-2 font-semibold" style="text-align: start !important;">Fecha:</td>
+          <td class=" px-4 py-2" style="text-align: start !important;" *ngIf="DataToShow.registros.fecModificacion != ''">{{FormatDate(DataToShow.registros.fecModificacion)}}</td>
+        </tr>
+        <tr>
+          <td class=" px-4 py-2 font-semibold" style="text-align: start !important;">Nombre del Evaluador:</td>
+          <td class=" px-4 py-2" style="text-align: start !important" *ngIf="DataToShow.registros.evaluador.apellidosNombres != ''">{{DataToShow.registros.evaluador.apellidosNombres}}</td>
+        </tr>
+        <tr>
+          <td class=" px-4 py-2 font-semibold" style="text-align: start !important;">Puesto del Evaluador:</td>
+          <td class=" px-4 py-2" style="text-align: start !important;" *ngIf="DataToShow.registros.evaluador.nombrePuesto != ''">{{DataToShow.registros.evaluador.nombrePuesto}}</td>
+        </tr>
+        <tr>
+          <td class=" px-4 py-2 font-semibold" style="text-align: start !important;">Ficha del Evaluador:</td>
+          <td class=" px-4 py-2" style="text-align: start !important;" *ngIf="DataToShow.registros.evaluador.codigoFicha != ''">{{DataToShow.registros.evaluador.codigoFicha}}</td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <!-- Competencias Table -->
+    <table *ngIf="DataToShow != undefined" class="w-full Datatable text-sm text-left text-gray-700 border border-gray-300">
+      <thead class="text-xs text-white bg-blue-900 uppercase">
+        <tr>
+          <th scope="col" class="p-2 border border-gray-300">
+            Competencia a Desarrollar
+          </th>
+          <th scope="col" class="p-2 border border-gray-300">
+            Objetivo de Desarrollo
+          </th>
+          <th scope="col" class="p-2 border border-gray-300">
+            Iniciativas y Acciones de Mejora
+          </th>
+          <th scope="col" class="p-2 border border-gray-300">Indicadores</th>
+          <th scope="col" class="p-2 border border-gray-300">Entregables</th>
+          <th scope="col" class="p-2 border border-gray-300">
+            Fecha de inicio de iniciativa
+          </th>
+          <th scope="col" class="p-2 border border-gray-300">
+            Fecha de fin de iniciativa
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngFor="let detalle of DataToShow.registros.detalles; let i = index">
+          <tr *ngIf="detalle.codigosIndicadores[0] != undefined && detalle.codigosEntregables[0] != undefined" class="bg-white border-b">
+            <td *ngIf="i === 0" style="max-width: 100%;" class="p-2 border border-gray-300 font-semibold" [attr.rowspan]="DataToShow.registros.detalles.length">
+              {{ detalle.competencia.titulo }}
+            </td>
+            <td *ngIf="i === 0" class="p-2 border border-gray-300" [attr.rowspan]="DataToShow.registros.detalles.length">
+              {{ ObjetivoDesarrollo }}
+            </td>
+            <td class="p-2 border border-gray-300">
+              {{ detalle.iniciativaAcciones }}
+            </td>
+            <td class="multiselectcontainer text-left p-2 border border-gray-300 text-center">
+              {{ GetIndicatorName(detalle.codigosIndicadores[0]) }}
+            </td>
+            <td class="multiselectcontainer text-left p-2 border border-gray-300 text-center">
+              {{ GetDeliverableName(detalle.codigosEntregables[0]) }}
+            </td>
+            <td class="p-2 border border-gray-300 text-center">
+              {{ FormatDate(detalle.fechaInicioIniciativa) }}
+            </td>
+            <td class="p-2 border border-gray-300 text-center">
+              {{ FormatDate(detalle.fechaFinIniciativa) }}
+            </td>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
+  </div>
+  
+    <div class="p-6" *ngIf="DataToShow.registros.comentarioRegistro != ''">
+      <div>
+        <p class="mb-2"><b>COMENTARIO DEL EVALUADOR:</b></p>
+      </div>
+      <mat-form-field appearance="outline" class="w-full">
+        <textarea
+          matInput
+          class="w-full rounded-md"
+          disabled
+          [(ngModel)]="EvaluatorDenyReason"
+          maxlength="500"
+          aria-label="Comentario"
+          rows="5">
+        </textarea>
+        <mat-hint align="end">{{ EvaluatorDenyReason?.length || 0 }}/500</mat-hint>
+      </mat-form-field>  
+    </div>
+  </div>

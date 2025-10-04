@@ -1,0 +1,35 @@
+{
+    "datos": {
+        "listadoCorrectos": [
+            {
+                "codigo": "CTO99",
+                "descripcion": "DESCRIPCION COMPORTAMIENTO 04",
+                "competencia": {
+                    "codigo": "EW323",
+                    "titulo": "TITULO 02asdasd"
+                },
+                "nivel": {
+                    "codigo": "N1",
+                    "nombre": "Nivel 1"
+                },
+                "mensajesError": "16"
+            }
+        ],
+        "listadoIncorrectos": [
+            {
+                "codigo": "CTO99",
+                "descripcion": "DESCRIPCION COMPORTAMIENTO 04",
+                "competencia": {
+                    "codigo": "EW323",
+                    "titulo": "TITULO 02asdasd"
+                },
+                "nivel": {
+                    "codigo": "N1",
+                    "nombre": "Nivel 1"
+                },
+                "mensajesError": "16"
+            }
+        ]
+    },
+    "mensaje": "Archivo procesado exitosamente"
+}

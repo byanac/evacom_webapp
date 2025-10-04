@@ -1,0 +1,25 @@
+<div class="layout-wrapper" 
+    [ngClass]="
+        {
+            'layout-overlay': ConfigurationService.IsMenuModeOverlay(),
+            'layout-static': ConfigurationService.IsMenuModeStatic(),
+            'layout-theme-light': !Configuration.dark,
+            'layout-theme-dark': Configuration.dark,
+            'layout-overlay-sidebar-active': OverlayMenuActive,
+            'layout-static-sidebar-inactive': StaticMenuInactive,
+            'layout-mobile-sidebar-active': MenuActiveMobile,
+            'p-ripple-disabled': !Configuration.ripple, 
+            'p-input-filled': Configuration.inputStyle === 'filled'
+        }">
+    <app-toolbar *ngIf="ShowNavBar"></app-toolbar>
+    <div class="layout-sidebar">
+        <app-slidedrawer></app-slidedrawer>
+    </div>
+    <div class="layout-main-container" style="padding: 0px !important;">
+        <div class="layout-main">
+            <div class="background" [hidden]="HideBackgroundImage"></div>
+            <router-outlet></router-outlet>
+           <app-modalmanagement></app-modalmanagement>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,56 @@
+<div *ngIf="Type != ''">
+<app-title titulo="Mantenimiento de {{Type}}"></app-title>
+<div class="contenedor">
+  <button class="DownloadMasive" (click)="ShowModal('Add',TypeIndividual,9999999999)">Añadir {{TypeIndividual}}</button>
+</div> 
+<div class="relative overflow-x-auto h-screen">
+  <table class="w-full text-sm text-left rtl:text-right text-gray-500 block overflow-x-auto">
+    <thead class="text-xs text-gray-700 uppercase bg-gray-5">
+      <tr>
+        <th scope="col" class="px-6 py-3 border" style="width: 50%">
+          {{Type}}
+        </th>
+        <th scope="col" class="px-6 py-3 border" style="width: 50%">
+          Descripción
+        </th>
+        <th scope="col" class="px-6 py-3 border" style="width: 50%">
+          Acciones
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of DataToShow" >
+        <td class="px-6 py-4 text-black border">{{item.valor}}</td>
+        <td class="px-6 py-4 text-black border">{{item.descripcion}}</td>
+        <td class="px-6 py-4 ">
+          <div class="flex gap-2">
+            <button
+            type="button"
+            class="w-full h-full text-white bg-green-500 hover:bg-green-600 font-medium rounded-lg text-sm px-2.5 py-2.5"
+            (click)="ShowModal('Edit',TypeIndividual,item.codigo)"
+          >
+            Editar
+          </button>
+          <button
+            type="button"
+            class="w-full h-full text-white bg-blue-500 hover:bg-blue-600 font-medium rounded-lg text-sm px-2.5 py-2.5"
+            (click)="DeleteItem(item.codigo,item.valor,item.grupo,item.descripcion)"
+          >
+            Eliminar
+          </button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</div>
+
+<app-maintenanceofdeliverables
+  *ngIf="ShowMainteanceModal"
+  [add]="Add"
+  [Type]="TypeIndividual"
+  [TypeToCreate]="TypeToCreate"
+  (close)="closeModal($event)"
+  [ItemID]="SelectedItemID"
+></app-maintenanceofdeliverables>

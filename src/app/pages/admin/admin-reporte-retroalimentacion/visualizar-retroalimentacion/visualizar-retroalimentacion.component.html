@@ -1,0 +1,474 @@
+<div *ngIf="DataToShow != undefined && EvaluationID != undefined && FeedbackStatus != undefined">
+  <div class="mt-2 container">
+    <section class="title-container" style="page-break-after: always;">
+      <div class="text-center font-bold">
+        <p>
+          REPORTE DE RESULTADOS Y RETROALIMENTACIÓN DE LA EVALUACIÓN DEL DESEMPEÑO
+          {{CalendarTypeNumber}}°
+        </p>
+      </div>
+      <div class="text-center font-bold">
+        <p>Periodo {{PeriodName}}</p>
+      </div>
+    </section>
+    <section class="personalinfo-container">
+      <table>
+        <tbody *ngIf="DataToShow != undefined">
+          <tr>
+            <td>Evaluado:</td>
+            <td>{{DataToShow?.evaluado?.apellidosNombres}}</td>
+            <td>Ficha:</td>
+            <td>{{DataToShow?.evaluado?.codigoFicha}}</td>
+          </tr>
+          <tr>
+            <td>Puesto:</td>
+            <td>{{DataToShow?.evaluado?.nombrePuesto}}</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Grupo Ocupacional/Categoria:</td>
+            <td>{{DataToShow?.evaluado?.grupo_ocupacional}}</td>
+            <td>Grupo Evaluación:</td>
+            <td>{{DataToShow?.evaluado?.grupo_eval_nombre}}</td>
+          </tr>
+          <tr>
+            <td>Gerencia:</td>
+            <td>{{DataToShow?.evaluado?.gerencia_nombre}}</td>
+            <td>Equipo:</td>
+            <td>{{DataToShow?.evaluado?.equipo_nombre}}</td>
+          </tr>
+          <tr>
+            <td>Jefe Evaluador:</td>
+            <td>{{DataToShow?.evaluador?.apellidosNombres}}</td>
+            <td>Ficha:</td>
+            <td>{{DataToShow?.evaluador?.codigoFicha}}</td>
+          </tr>
+          <tr>
+            <td>Cargo:</td>
+            <td>{{DataToShow?.evaluador?.nombrePuesto}}</td>
+            <td></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+    <section>
+      <table>
+        <thead class="tableheader">
+          <tr>
+            <th>1. RESULTADO GLOBAL DE LA EVALUACIÓN</th>
+          </tr>
+        </thead>
+        <tbody *ngIf="DataToShow != undefined">
+          <tr>
+            <td>{{AutoEvaluationResult}}% - {{this.ObtenerLabeldeEstado(AutoEvaluationResult)}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+    <section>
+      <table>
+        <thead class="tableheader">
+          <tr>
+            <th>2. RESULTADOS POR COMPETENCIAS</th>
+          </tr>
+        </thead>
+        <tbody>
+          <canvas
+          baseChart
+          [datasets]="chartData"
+          [labels]="chartLabels"
+          [options]="chartOptions"
+          [colors]="chartColors"
+          [legend]="chartLegend"
+          [chartType]="chartType"
+        >
+        </canvas>
+        </tbody>
+      </table>
+  
+      <div class="ResultCompetencyContainerInfo180" *ngIf="DataToShow != undefined">
+        <section class="m-0 mt-4 w-96">
+          <table class="w-full h-full">
+            <thead>
+            <tr>
+              <th>Competencias</th>
+              <th>Nivel Alcanzado</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let competencia of DataToShow.competencia.slice(0, 3)">
+              <td class="w-60">{{competencia?.titulo}}</td>
+              <td>{{competencia?.promedioAuto}}% - {{this.ObtenerLabeldeEstado(competencia?.promedioAuto)}}</td>
+            </tr>
+          </tbody>
+          </table>
+        </section>
+  
+        <section class="m-0 mt-4 w-96">
+          <table class="w-full h-full"><thead>
+            <tr>
+              <th>Competencias</th>
+              <th>Nivel Alcanzado</th>
+            </tr></thead>
+            <tbody>
+              <tr *ngFor="let competencia of DataToShow.competencia.slice(3, 6)">
+                <td class="w-60">{{competencia?.titulo}}</td>
+                <td>{{competencia?.promedioAuto}}%  - {{this.ObtenerLabeldeEstado(competencia?.promedioAuto)}}</td>
+              </tr> 
+            </tbody>          
+          </table>
+        </section>
+      </div> 
+      
+    </section>
+    <section class="mt-4">
+      <table>
+        <thead class="tableheader">
+          <tr>
+            <th>3. RESULTADO GLOBAL POR EVALUADORES</th>
+          </tr>
+        </thead>
+        <tbody>
+          <canvas *ngIf="DataToShow != undefined"
+          baseChart
+          [datasets]="chartDataEvaluators"
+          [labels]="chartLabelsEvaluators"
+          [options]="chartOptions"
+          [colors]="chartColorsEvaluators"
+          [legend]="chartLegend"
+          [chartType]="chartType"
+        >
+        </canvas>
+        </tbody>
+      </table>
+      <div [ngClass]="{'ResultCompetencyContainerInfo90': Show90, 'ResultCompetencyContainerInfo180': Show180}" *ngIf="DataToShow != undefined">
+        <section class="m-0 mt-4 w-96">
+          <table class="w-full h-full"><thead>
+            <tr>
+              <th>Evaluador</th>
+              <th>Nivel Alcanzado</th>
+            </tr></thead>
+          <tbody>
+            <tr>
+              <td class="w-60">AUTOEVALUACIÓN</td>
+              <td>{{DataToShow?.promedioAutoevaluacion}}% - {{this.ObtenerLabeldeEstado(DataToShow?.promedioAutoevaluacion)}}</td>
+            </tr>
+            <tr>
+              <td class="w-60">JEFE DIRECTO</td>
+              <td>{{DataToShow?.promedioEvaluacion}}% - {{this.ObtenerLabeldeEstado(DataToShow?.promedioEvaluacion)}}</td>
+            </tr>
+          </tbody>
+          </table>
+        </section>
+  
+        <section class="m-0 mt-4 w-96" *ngIf="Show180">
+          <table class="w-full h-full"><thead>
+            <tr>
+              <th>Evaluador</th>
+              <th>Nivel Alcanzado</th>
+            </tr></thead>
+          <tbody>
+            <tr>
+              <td class="w-60">TRABAJADORES</td>
+              <td>{{DataToShow?.promedioSubalternos}}% - {{this.ObtenerLabeldeEstado(DataToShow?.promedioSubalternos)}}</td>
+            </tr>
+            <tr>
+              <td class="w-60">RESULTADO GLOBAL DE DESEMPEÑO</td>
+              <td>{{DataToShow?.promedioFinal}}% - {{this.ObtenerLabeldeEstado(DataToShow?.promedioFinal)}}</td>
+            </tr>
+          </tbody>
+          </table>
+        </section>
+      </div>
+    </section>
+  </div>
+  <div class="mt-2 container">
+    <section class="title-container" style="page-break-after: always;">
+      <div class="text-center font-bold">
+        <p>
+          REPORTE DE RESULTADOS Y RETROALIMENTACIÓN DE LA EVALUACIÓN DEL DESEMPEÑO
+          {{CalendarTypeNumber}}°
+        </p>
+      </div>
+      <div class="text-center font-bold">
+        <p>Periodo {{PeriodName}}</p>
+      </div>
+    </section>
+    <section class="personalinfo-container">
+      <table>
+        <tbody *ngIf="DataToShow != undefined">
+          <tr>
+            <td>Evaluado:</td>
+            <td>{{DataToShow?.evaluado?.apellidosNombres}}</td>
+            <td>Ficha:</td>
+            <td>{{DataToShow?.evaluado?.codigoFicha}}</td>
+          </tr>
+          <tr>
+            <td>Puesto:</td>
+            <td>{{DataToShow?.evaluado?.nombrePuesto}}</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Grupo Ocupacional/Categoria:</td>
+            <td>{{DataToShow?.evaluado?.grupo_ocupacional}}</td>
+            <td>Grupo Evaluación:</td>
+            <td>{{DataToShow?.evaluado?.grupo_eval_nombre}}</td>
+          </tr>
+          <tr>
+            <td>Gerencia:</td>
+            <td>{{DataToShow?.evaluado?.gerencia_nombre}}</td>
+            <td>Equipo:</td>
+            <td>{{DataToShow?.evaluado?.equipo_nombre}}</td>
+          </tr>
+          <tr>
+            <td>Jefe Evaluador:</td>
+            <td>{{DataToShow?.evaluador?.apellidosNombres}}</td>
+            <td>Ficha:</td>
+            <td>{{DataToShow?.evaluador?.codigoFicha}}</td>
+          </tr>
+          <tr>
+            <td>Cargo:</td>
+            <td>{{DataToShow?.evaluador?.nombrePuesto}}</td>
+            <td></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+    <section>
+      <table>
+        <thead class="tableheader">
+          <tr>
+            <th>4. RESULTADO GLOBAL POR EVALUADORES</th>
+          </tr>
+        </thead>
+        <tbody>
+          <canvas *ngIf="DataToShow != undefined"
+          baseChart
+          [datasets]="Show90? chartData3 : chartData3180"
+          [labels]="chartLabels3"
+          [options]="chartOptions3"
+          [legend]="chartLegend3"
+          [chartType]="chartType3"
+        >
+        </canvas>
+        </tbody>
+      </table>
+    </section>
+    <section class="p-2" style="border: solid #bed6f8 2px;">
+      <table class="resultstable" style="border: none;"><thead>
+        <tr>
+          <th>Competencias</th>
+          <th>Autoevaluación</th>
+          <th>Jefe Directo</th>
+          <th *ngIf="Show180">Trabajadores</th>
+          <th *ngIf="Show180">Resultado Global</th>
+        </tr></thead>
+        <tbody *ngIf="DataToShow != undefined">
+          <tr *ngFor="let competencia of DataToShow.competencia let i = index">
+  
+            <!-- Competencia Titulo -->
+            <td>{{competencia?.titulo}}</td>
+            
+            <!-- AutoEvaluación -->
+            <td>
+              {{competencia?.promedioAuto}}% - 
+              {{this.ObtenerLabeldeEstado(competencia?.promedioAuto)}}
+            </td>
+            
+            <!-- Evaluador (Jefe Directo) -->
+            <td>
+              {{competencia?.promedio}}% - 
+              {{this.ObtenerLabeldeEstado(competencia?.promedio)}}
+            </td>
+  
+            <!-- Trabajadores -->
+           <td *ngIf="Show180">
+              {{competencia?.promedioSubalternos}}% - 
+              {{this.ObtenerLabeldeEstado(competencia?.promedioSubalternos)}}
+            </td>
+  
+            <!-- Resultado Global -->
+            <td *ngIf="Show180">
+              {{competencia?.promedioFinal}}% - 
+              {{this.ObtenerLabeldeEstado(competencia?.promedioFinal)}}
+            </td>
+          </tr>
+        </tbody>      
+        </table>
+    </section>
+  </div>    
+  
+  <div class="mt-2 container">
+    <section class="title-container" style="page-break-after: always;">
+      <div class="text-center font-bold">
+        <p>
+          REPORTE DE RESULTADOS Y RETROALIMENTACIÓN DE LA EVALUACIÓN DEL DESEMPEÑO
+          {{CalendarTypeNumber}}°
+        </p>
+      </div>
+      <div class="text-center font-bold">
+        <p>Periodo {{PeriodName}}</p>
+      </div>
+    </section>
+    <section class="personalinfo-container">
+      <table>
+        <tbody *ngIf="DataToShow != undefined">
+          <tr>
+            <td>Evaluado:</td>
+            <td>{{DataToShow?.evaluado?.apellidosNombres}}</td>
+            <td>Ficha:</td>
+            <td>{{DataToShow?.evaluado?.codigoFicha}}</td>
+          </tr>
+          <tr>
+            <td>Puesto:</td>
+            <td>{{DataToShow?.evaluado?.nombrePuesto}}</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Grupo Ocupacional/Categoria:</td>
+            <td>{{DataToShow?.evaluado?.grupo_ocupacional}}</td>
+            <td>Grupo Evaluación:</td>
+            <td>{{DataToShow?.evaluado?.grupo_eval_nombre}}</td>
+          </tr>
+          <tr>
+            <td>Gerencia:</td>
+            <td>{{DataToShow?.evaluado?.gerencia_nombre}}</td>
+            <td>Equipo:</td>
+            <td>{{DataToShow?.evaluado?.equipo_nombre}}</td>
+          </tr>
+          <tr>
+            <td>Jefe Evaluador:</td>
+            <td>{{DataToShow?.evaluador?.apellidosNombres}}</td>
+            <td>Ficha:</td>
+            <td>{{DataToShow?.evaluador?.codigoFicha}}</td>
+          </tr>
+          <tr>
+            <td>Cargo:</td>
+            <td>{{DataToShow?.evaluador?.nombrePuesto}}</td>
+            <td></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+    <section class="resultscualitativesection">
+      <table>
+        <thead class="tableheader">
+          <tr>
+            <th>5. RESULTADOS CUALITATIVOS
+        </thead>
+        <table id="resultscualitative" *ngIf="DataToShow != undefined">
+          <tbody>
+            <!-- Jefe Directo -->
+            <tr>
+              <td rowspan="2">Jefe Directo</td>
+              <td>
+                <b>Competencia con mayor FORTALEZA</b><br>
+                {{DataToShow.cualitativa[1].competencia_nombre_fortaleza}}: {{DataToShow.cualitativa[1].fortaleza}}
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>Competencia con mayor OPORTUNIDAD DE MEJORA</b><br>
+                {{DataToShow.cualitativa[1].competencia_nombre_oportunidad}}: {{DataToShow.cualitativa[1].oportunidad}}
+              </td>
+            </tr>
+            
+            <ng-container *ngFor="let item of DataToShow.cualitativa.slice(2); let i = index">
+  <tr *ngIf="Show180">
+    <td rowspan="2">Subordinado {{i + 1}}</td>
+    <td>
+      <b>Competencia con mayor FORTALEZA</b><br>
+      {{item.competencia_nombre_fortaleza}}: {{item.fortaleza}}
+    </td>
+  </tr>
+  <tr *ngIf="Show180">
+    <td>
+      <b>Competencia con mayor OPORTUNIDAD DE MEJORA</b><br>
+      {{item.competencia_nombre_oportunidad}}: {{item.oportunidad}}
+    </td>
+  </tr>
+</ng-container>
+
+  
+             <!-- Autoevaluación -->
+             <tr>
+              <td rowspan="2">Autoevaluación</td>
+              <td>
+                <b>Competencia con mayor FORTALEZA</b><br>
+                {{DataToShow.cualitativa[0].competencia_nombre_fortaleza}}: {{DataToShow.cualitativa[0].fortaleza}}
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>Competencia con mayor OPORTUNIDAD DE MEJORA</b><br>
+                {{DataToShow.cualitativa[0].competencia_nombre_oportunidad}}: {{DataToShow.cualitativa[0].oportunidad}}
+              </td>
+            </tr>         
+          </tbody>
+          
+      </table>
+      </table>
+    </section>
+    <section>    
+      <table>
+      <thead class="tableheader">
+        <tr>
+          <th>6. COMENTARIOS FINALES</th>
+        </tr>
+      </thead>
+      <table *ngIf="ShowEvaluatorTextField" class="p-10">
+      <tbody>
+        <tr>
+          <td>COMENTARIO DEL EVALUADOR JEFE</td>
+        </tr>
+        <tr>
+          <td>      
+            <mat-form-field appearance="outline" class="w-full">
+              <textarea
+                matInput
+                class="w-full rounded-md "
+                [disabled]="DisableEvaluatorTextField" 
+                [(ngModel)]="EvaluatorFeedbackText"
+                maxlength="500"
+                placeholder="Escribe tu retroalimentación aquí"
+                aria-label="Retroalimentación"
+                rows="5">
+              </textarea>
+              <mat-hint align="end">{{ EvaluatorFeedbackText?.length || 0 }}/500</mat-hint>
+            </mat-form-field>            
+          </td>
+        </tr>
+      </tbody>
+      </table>
+      <table  *ngIf="ShowEvaluatedTextField"  class="p-10"> 
+      <tbody>
+        <tr>
+          <td>COMENTARIO DEL EVALUADO</td>
+        </tr>
+        <tr>
+          <td>
+            <mat-form-field appearance="outline" class="w-full">
+              <textarea
+                matInput
+                class="w-full rounded-md "
+                [disabled]="DisableEvaluatedTextField" 
+                [(ngModel)]="EvaluatedFeedbackText"
+                maxlength="500"
+                placeholder="Escribe tu retroalimentación aquí"
+                aria-label="Retroalimentación"
+                rows="5">
+              </textarea>
+              <mat-hint align="end">{{ EvaluatedFeedbackText?.length || 0 }}/500</mat-hint>
+            </mat-form-field>  
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    </table>
+  </section>

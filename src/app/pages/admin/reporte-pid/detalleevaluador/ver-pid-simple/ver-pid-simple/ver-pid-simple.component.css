@@ -1,0 +1,12 @@
+table{
+    overflow-x: auto !important;
+    white-space: normal !important;
+  }
+  
+  @media only screen and (max-width: 1074px) {
+    .Datatable {
+      display: block !important;
+    }
+  }
+
+

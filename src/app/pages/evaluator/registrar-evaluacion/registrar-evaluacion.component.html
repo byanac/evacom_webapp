@@ -1,0 +1,190 @@
+<app-title titulo="REGISTRAR EVALUACIÓN {{CalendarType}}°"></app-title>
+<app-targetscounters *ngIf="ShowTable" [DataToCount]="DataList" [ConfirmedEntryName]="'estadoEvaluacion'" [ConfirmText]="'Evaluado'" [NotConfirmedText]="'No evaluado'"></app-targetscounters>
+
+<div class="flex justify-center gap-4 pb-4" *ngIf="ShowTable">
+    <button class="DownloadMasive w-full md:w-auto" (click)="DownloadMasive()">
+        Formato de pre-evaluación <br> masivo
+    </button>
+    <button class="DownloadMasiveSecondary w-full md:w-auto" (click)="ViewEndedEvaluations()">
+        Ver evaluaciones <br> finalizadas
+    </button>
+</div>
+
+<div *ngIf="ShowTable" class="relative overflow-x-auto">
+  <table class="w-full text-sm text-left rtl:text-right text-gray-500 border solid">
+      <thead class="text-xs text-gray-700 uppercase bg-gray-5">
+        <tr>
+            <th scope="col" class="px-6 py-3  border" style="width: 8rem !important;">
+                Foto
+            </th>
+            <th scope="col" class="px-6 py-3  border" style="width: 5.9rem !important;">
+                COD. FICHA
+            </th>
+            <th scope="col" class="px-6 py-3  border" style="width: 35rem !important;">
+                APELLIDOS Y NOMBRES
+            </th>
+            <th scope="col" class="px-6 py-3  border" style="width: 8.5rem !important;">
+                UNIDAD ORGÁNICA
+            </th>
+            <th scope="col" class="px-6 py-3  border" style="width: 6.8rem !important;">
+                COD. PUESTO
+            </th>
+            <th scope="col" class="px-6 py-3  border text-wrap" style="width: 35rem !important;">
+                PUESTO
+            </th>
+            <th scope="col" class="px-6 py-3  border">
+                EVALUACIÓN
+            </th>
+            <th scope="col" class="px-6 py-3  border" style="width: 20rem !important;">
+                ACCIONES
+            </th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr  *ngFor="let item of DataList" class="border hover:bg-gray-100">    
+            <th class="px-6 py-4 text-black  border ">
+               <img class="w-20 h-20" 
+                       
+                    [src]="item?.foto" loading="lazy" 
+ 
+                    crossorigin="anonymous" (error)="onImgError($event)"
+                    alt="Foto">
+
+             </th>           
+            <th class="px-6 py-4 text-gray-900 whitespace-nowrap  ">
+                <div class="text-base font-semibold">{{removeLeadingZeros(item.codigoFicha)}}</div>
+             </th>
+            <td class="px-6 py-4 text-black  border">
+                {{item?.apellidosNombres}}
+            </td>
+            <td class="px-6 py-4 text-black  border ">
+                {{item?.unidadOrganica}}
+            </td>
+            <td class="px-6 py-4 text-black  border ">
+                {{item?.codigoPuesto}}
+            </td>
+            <td class="px-6 py-4 text-black  border">
+                {{item?.nombrePuesto}}
+            </td>
+            <td class="px-6 py-4 text-black border">    
+                          
+            <div *ngIf="item?.estadoEvaluacion || (!item?.estadoEvaluacion && item?.estadoCalibracion)" class="flex pt-1 pb-1 items-center w-full">
+                    <span class="badgegreen w-full bg-green-500">EVALUADO</span>
+            </div>
+            
+            <div *ngIf="item?.estadoEvaluacion && item?.estadoCalibracion" class="flex pt-1 pb-1 items-center w-full">
+                <span class="badgegreen w-full bg-green-500">CALIBRADO</span>
+            </div> 
+
+            <div *ngIf="!item?.estadoEvaluacion && !item?.estadoCalibracion" class="flex pt-1 pb-1 items-center w-full">
+                    <span class="badgered w-full bg-red-500">NO EVALUADO</span>
+            </div> 
+
+            <div *ngIf="!item?.estadoEvaluacion && item?.estadoCalibracion && !item?.estadoFecLimiteCalibracion" class="flex pt-1 pb-1  items-center w-full">
+                <span 
+                    class="badgegreen w-full bg-gray-500" 
+                    [matTooltip]="'Fecha de límite de calibración: ' + this.FormatDate(item?.fechaLimiteCalibracion)"
+                    matTooltipPosition="below">
+                    CALIBRACIÓN PENDIENTE
+                </span>
+            </div>
+
+            <div *ngIf="!item?.estadoEvaluacion && item?.estadoCalibracion && item?.estadoFecLimiteCalibracion" class="flex pt-1 pb-1 items-center w-full">
+                <span 
+                    class="badgered w-full bg-gray-500" 
+                    [matTooltip]="'Fecha de límite de calibración: ' + this.FormatDate(item?.fechaLimiteCalibracion)"
+                    matTooltipPosition="below">
+                    CALIBRACIÓN EXPIRADA
+                </span>
+            </div> 
+
+            <div *ngIf="!item?.estadoEvaluacion &&  item?.estadoExcepcion && !item?.estadoFecLimiteExcepcion" class="flex pt-1 pb-1  items-center w-full">
+                <span 
+                    class="badgegreen w-full bg-gray-500" 
+                    [matTooltip]="'Fecha de límite de excepción: ' + this.FormatDate(item?.fechaLimiteExcepcion)"
+                    matTooltipPosition="below">
+                    EXCEPCIÓN PENDIENTE
+                </span>
+            </div>
+
+            <div *ngIf="!item?.estadoEvaluacion &&  item?.estadoExcepcion && item?.estadoFecLimiteExcepcion" class="flex pt-1 pb-1  items-center w-full">
+                <span 
+                    class="badgegreen w-full bg-gray-500" 
+                    [matTooltip]="'Fecha de límite de excepción: ' + this.FormatDate(item?.fechaLimiteExcepcion)"
+                    matTooltipPosition="below">
+                    EXCEPCIÓN EXPIRADA
+                </span>
+            </div>
+ 
+            </td>
+              <td class="px-6 py-4">
+                  <div class="flex">
+                    <button 
+                        *ngIf="!item?.estadoEvaluacion"
+                        type="button" 
+                        [routerLink]="['/home/progreso-trabajador',item?.codigoFicha,item?.codigoPuesto,SesionData.ficha,SesionData.codPuesto,CalendarCode,CalendarType]" 
+                        style="padding-left: 1rem !important; padding-right: 1rem !important;" 
+                        class="mr-2 w-full text-white font-medium rounded-lg text-sm py-2.5 text-center"
+                        [ngClass]="{
+                            'bg-blue-600 hover:bg-blue-700': 
+                              (item?.estadoCalendarioEvaluacionVigente && !item?.estadoEvaluacion)
+                              || (!item?.estadoEvaluacion && item?.estadoCalendarioCalibracionVigente && item?.estadoCalibracion)
+                              || (item?.estadoExcepcion && !item?.estadoFecLimiteExcepcion),
+                              
+                            'bg-gray-600 hover:bg-gray-600':
+                              !(
+                                (item?.estadoCalendarioEvaluacionVigente && !item?.estadoEvaluacion)
+                                || (!item?.estadoEvaluacion && item?.estadoCalendarioCalibracionVigente && item?.estadoCalibracion)
+                                || (item?.estadoExcepcion && !item?.estadoFecLimiteExcepcion)
+                              )
+                          }"
+
+                        [disabled]="!(
+                            (item?.estadoCalendarioEvaluacionVigente && !item?.estadoEvaluacion)
+                            || (!item?.estadoEvaluacion && item?.estadoCalendarioCalibracionVigente && item?.estadoCalibracion)
+                            || (item?.estadoExcepcion && !item?.estadoFecLimiteExcepcion)
+                          )">
+                        Realizar evaluación
+                    </button>
+
+                    <button type="button" *ngIf="item?.estadoEvaluacion" [routerLink]="['/home/progreso-trabajador',item?.codigoFicha,item?.codigoPuesto,SesionData.ficha,SesionData.codPuesto,CalendarCode,CalendarType]" style="padding-left: 1.25rem !important; padding-right: 1.25rem !important;"   class="text-white w-full bg-green-500 hover:bg-green-600 font-medium rounded-lg text-sm px-2.5 py-2.5">Ver resultados</button>
+                      
+                    <button 
+                    type="_blank" 
+                    (click)="goPrintFormat(item?.codigoFicha,item?.codigoPuesto,SesionData.ficha,SesionData.codPuesto,CalendarCode)"  
+                    type="button" *ngIf="!item?.estadoEvaluacion && !item?.estadoCalibracion && !item?.estadoFecLimiteCalibracion  || (!item?.estadoEvaluacion && item?.estadoCalibracion && !item?.estadoFecLimiteCalibracion)" 
+                    title="Imprimir formato" 
+                    class="flex text-white pl-2 pr-2 items-center font-medium rounded-lg text-sm w-full py-2.5 text-center"
+                    [ngClass]="{
+                        'bg-gray-500 hover:bg-gray-700': 
+                        (item?.estadoCalendarioEvaluacionVigente && !item?.estadoEvaluacion)
+                        || (!item?.estadoEvaluacion && item?.estadoCalendarioCalibracionVigente && item?.estadoCalibracion)
+                        || (item?.estadoExcepcion && !item?.estadoFecLimiteExcepcion),
+                        
+                        'bg-gray-600 hover:bg-gray-600':
+                        !(
+                            (item?.estadoCalendarioEvaluacionVigente && !item?.estadoEvaluacion)
+                            || (!item?.estadoEvaluacion && item?.estadoCalendarioCalibracionVigente && item?.estadoCalibracion)
+                            || (item?.estadoExcepcion && !item?.estadoFecLimiteExcepcion)
+                        )
+                    }"
+                                        
+                    [disabled]="!(
+                            (item?.estadoCalendarioEvaluacionVigente && !item?.estadoEvaluacion)
+                            || (!item?.estadoEvaluacion && item?.estadoCalendarioCalibracionVigente && item?.estadoCalibracion)
+                            || (item?.estadoExcepcion && !item?.estadoFecLimiteExcepcion)
+                    )"
+                    >
+                        <svg class="w-6 h-6 text-white svg-fixed-size"  xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" >
+                        <path fill-rule="evenodd" d="M8 3a2 2 0 0 0-2 2v3h12V5a2 2 0 0 0-2-2H8Zm-3 7a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h1v-4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v4h1a2 2 0 0 0 2-2v-5a2 2 0 0 0-2-2H5Zm4 11a1 1 0 0 1-1-1v-4h8v4a1 1 0 0 1-1 1H9Z" clip-rule="evenodd"/>
+                      </svg> 
+                      &nbsp;Formulario de pre-evaluación
+                    </button>   
+
+                      <button type="button" *ngIf="!item?.estadoEvaluacion && item?.estadoCalibracion && item?.estadoFecLimiteCalibracion" style="cursor: not-allowed;" class="w-full text-white bg-gray-500 font-medium rounded-lg text-sm px-2.5 py-2.5">Calibración expirada</button>           
+                  </div>               
+              </td>
+          </tr>
+      </tbody>
+  </table>
+</div>

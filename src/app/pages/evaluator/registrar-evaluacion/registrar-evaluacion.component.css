@@ -1,0 +1,77 @@
+
+thead tr th{
+    background: rgb(0,211,255,1) !important;
+    background: linear-gradient(180deg, rgba(191,219,254,1) 0%, rgb(0, 204, 255) 100%) !important; 
+    font-size: 16px;
+    color: rgb(49, 49, 49);
+}
+
+th,td{
+    border: solid rgb(153, 153, 153) 1px !important;
+}
+
+.badgegreen {
+  color: white;
+  padding: 4px 20px;
+  text-align: center;
+  border-radius: 5px;
+  font-size: 13px;
+  font-weight: bolder;
+  width: 100%;
+}
+
+.badgered {
+  color: white;
+  padding: 4px 8px;
+  text-align: center;
+  border-radius: 5px;
+  font-size: 13px;
+  font-weight: bolder;
+  width: 100%;
+}
+
+  .svg-fixed-size {
+    width: 24px;
+    height: 24px;
+    min-width: 24px;
+    min-height: 24px;
+  }
+
+.DownloadMasive{
+    margin: 0;
+    color: #ffffff;
+    background-color: #007ad9;
+    border: 1px solid #007ad9;
+    font-size: 14px;
+    padding: 0.429em 1em;
+    border-radius: 3px;
+}
+
+.DownloadMasive:hover{
+    background-color: #006fc4;
+    border-color: #006fc4;
+}
+
+
+
+.DownloadMasiveSecondary{
+    margin: 0;
+    color: #007ad9;
+    background-color: white;
+    border: 1px solid #007ad9;
+    font-size: 14px;
+    padding: 0.429em 1em;
+    border-radius: 3px;
+}
+
+.DownloadMasiveSecondary:hover{
+  background-color: rgb(243, 243, 243);
+}
+
+.contenedor {
+  height: 4rem;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+

@@ -1,0 +1,68 @@
+{
+    "registros": [
+        {
+            "codigo": 17,
+            "grupo": "INDICADOR",
+            "valor": "% Actividades ejecutadas vs planificadas",
+            "descripcion": "Indicador de % Actividades ejecutadas vs planificadas",
+            "estado": 0
+        },
+        {
+            "codigo": 18,
+            "grupo": "INDICADOR",
+            "valor": "% de Proyecto  implementado vs planificado",
+            "descripcion": "Indicador de % de Proyecto  implementado vs planificado",
+            "estado": 1
+        },
+        {
+            "codigo": 19,
+            "grupo": "INDICADOR",
+            "valor": "N° de Reconocimientos",
+            "descripcion": "Indicador de N° de Reconocimientos",
+            "estado": 1
+        },
+        {
+            "codigo": 20,
+            "grupo": "INDICADOR",
+            "valor": "N° de Encuestas",
+            "descripcion": "Indicador de N° de Encuestas",
+            "estado": 1
+        },
+        {
+            "codigo": 21,
+            "grupo": "INDICADOR",
+            "valor": "N° de Investigaciones",
+            "descripcion": "Indicador de N° de Investigaciones",
+            "estado": 1
+        },
+        {
+            "codigo": 22,
+            "grupo": "INDICADOR",
+            "valor": "N° de N° Charlas",
+            "descripcion": "Indicador de N° Charlas",
+            "estado": 1
+        },
+        {
+            "codigo": 28,
+            "grupo": "INDICADOR",
+            "valor": "Prueba editada",
+            "descripcion": "Indicador de Prueba2",
+            "estado": 1
+        },
+        {
+            "codigo": 10,
+            "grupo": "INDICADOR",
+            "valor": "% de Reuniones individuales ejecutadas vs planificadas",
+            "descripcion": "Indicador de % de Reuniones individuales ejecutadas vs planificadas",
+            "estado": 1
+        },
+        {
+            "codigo": 11,
+            "grupo": "INDICADOR",
+            "valor": "% de Reuniones grupales ejecutadas vs planificadas",
+            "descripcion": "Indicador de % de Reuniones grupales ejecutadas vs planificadas",
+            "estado": 1
+        }
+    ],
+    "mensaje": "OK"
+}

@@ -1,0 +1,116 @@
+<app-title titulo="REGISTRO DE ADMINISTRADORES"></app-title>
+<div class="contenedor">
+  <button class="DownloadMasive" (click)="ShowModal()">Registrar administrador</button>
+</div>
+
+<div *ngIf="DataList"  class="grid grid-cols-3 gap-4 my-6 mx-8">
+    <div class="bg-white p-6 border border-gray-300 rounded-lg">
+        <div class="flex justify-between items-center mb-2">
+            <h2 class="text-sm font-medium text-gray-500">Total Empleados</h2>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-400" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z" />
+            </svg>
+        </div>
+        <p class="text-2xl font-bold">{{DataList.length}}</p>
+    </div>
+    <div class="bg-white p-6 border border-gray-300 rounded-lg">
+        <div class="flex justify-between items-center mb-2">
+            <h2 class="text-sm font-medium text-gray-500">Activos</h2>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-400" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+            </svg>
+        </div>
+        <p class="text-2xl font-bold">{{GetConfirmedCount()}}</p>
+    </div>
+    <div class="bg-white p-6 border border-gray-300 rounded-lg">
+        <div class="flex justify-between items-center mb-2">
+            <h2 class="text-sm font-medium text-gray-500">Inactivos</h2>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-red-400" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
+            </svg>
+        </div>
+        <p class="text-2xl font-bold">{{GetRefuseCount()}}</p>
+    </div>
+</div>
+
+<div class="relative overflow-x-auto">
+  <table class="w-full text-sm text-left rtl:text-right text-gray-500 border solid">
+      <thead class="text-xs text-gray-700 uppercase bg-gray-5">
+        <tr>
+            <th scope="col" class="px-6 py-3  border" style="width: 8rem !important;">
+                Foto
+            </th>
+            <th scope="col" class="px-6 py-3  border" style="width: 5.9rem !important;">
+                COD. FICHA
+            </th>
+            <th scope="col" class="px-6 py-3  border" style="width: 35rem !important;">
+                APELLIDOS Y NOMBRES
+            </th>
+            <th scope="col" class="px-6 py-3  border" style="width: 8.5rem !important;">
+                UNIDAD ORGÁNICA
+            </th>
+            <th scope="col" class="px-6 py-3  border" style="width: 6.8rem !important;">
+                COD. PUESTO
+            </th>
+            <th scope="col" class="px-6 py-3  border text-wrap" style="width: 35rem !important;">
+                PUESTO
+            </th>
+            <th scope="col" class="px-6 py-3  border">
+                ESTADO
+            </th>
+            <th scope="col" class="px-6 py-3  border" style="width: 20rem !important;">
+                ACCIONES
+            </th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr  *ngFor="let item of DataList" class="border hover:bg-gray-100">    
+            <th class="px-6 py-4 text-black  border ">
+               <img class="w-20 h-20" 
+                       
+                    [src]="item.foto" loading="lazy" 
+ 
+                    crossorigin="anonymous" (error)="onImgError($event)"
+                    alt="Foto">
+
+             </th>           
+            <th class="px-6 py-4 text-gray-900 whitespace-nowrap  ">
+                <div class="text-base font-semibold">{{removeLeadingZeros(item.codigoFicha)}}</div>
+             </th>
+            <td class="px-6 py-4 text-black  border">
+                {{item.apellidosNombres}}
+            </td>
+            <td class="px-6 py-4 text-black  border ">
+                {{item.unidadOrganica}}
+            </td>
+            <td class="px-6 py-4 text-black  border ">
+                {{item.codigoPuesto}}
+            </td>
+            <td class="px-6 py-4 text-black  border">
+                {{item.nombrePuesto}}
+            </td>
+            <td class="px-6 py-4 text-black border">    
+                          
+            <div *ngIf="item.estado === 1" class="flex pt-1 pb-1 items-center w-full">
+                <span class="badgegreen w-full bg-green-500">ACTIVO</span>
+            </div>
+            
+            <div *ngIf="item.estado === 0" class="flex pt-1 pb-1 items-center w-full">
+                <span class="badgered w-full bg-red-500">INACTIVO</span>
+            </div> 
+             
+            </td>
+              <td class="px-6 py-4">
+                  <div class="flex gap-2">
+                    <button *ngIf="item.estado === 0" type="button" (click)="ActivateAdmin(item.apellidosNombres,item.codigoFicha)"  class="text-white w-full bg-green-500 hover:bg-green-600 font-medium rounded-lg text-sm px-2.5 py-2.5">Activar</button> 
+                    <button *ngIf="item.estado === 1" type="button" (click)="DeactivateAdmin(item.apellidosNombres,item.codigoFicha)" class="text-white w-full bg-red-500 hover:bg-red-600 font-medium rounded-lg text-sm px-2.5 py-2.5">Desactivar</button> 
+                    <button type="button" (click)="EliminateAdmin(item.apellidosNombres,item.codigoFicha)" class="text-white w-full bg-blue-500 hover:bg-blue-600 font-medium rounded-lg text-sm px-2.5 py-2.5">Eliminar</button>
+                  </div>               
+              </td>
+          </tr>
+      </tbody>
+  </table>
+</div>
+
+
+<app-registeradministratormodal *ngIf="showregisteradministratormodal" (close)="closeModal($event)"></app-registeradministratormodal>

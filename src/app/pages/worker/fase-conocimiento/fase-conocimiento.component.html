@@ -1,0 +1,33 @@
+<div class="text-center mt-4">
+    <h1 class="text-lg font-bold" style="text-transform: uppercase;" *ngIf="TableData != null">Competencias y comportamientos a ser evaluados - {{PeriodName}} </h1>
+</div>
+
+<header *ngIf="TableData != null" class="ml-4 mr-4 font-bold">
+    <p class="mb-0">INSTRUCCIONES</p>
+    
+    <p class="mb-0">a) A continuación, se describen las competencias y los comportamientos que le corresponden a cada trabajador, de acuerdo al nivel de desarrollo esperado para su grupo de evaluación.</p>
+    <p class="mb-0">b) Lea con atención la definición de cada competencia y los comportamientos observables que deberá evidenciar durante el período de evaluación.</p>
+    <p class="mb-0">c) Identifique en sus labores, las situaciones claves que le permitirán evidenciar con objetividad dichos comportamientos con su/s evaluador/es, en caso de dudas aclárelas con su jefe directo y/o con el EEP.</p> 
+    <p class="mb-0">d) Al final de la sección, deberá dejar constancia que ha tomado conocimiento de las competencias y comportamientos, sobre las que será evaluado.</p>
+</header>
+
+<div>
+    <app-questionstable [Data]="TableData"></app-questionstable> 
+</div>
+
+
+<div class="flex pb-6 optionsfooter" *ngIf="TableData !== undefined" style="justify-content: space-around !important;align-items: center !important;">
+    <div class="text-start py-2 px-4 ">
+        Tengo conocimiento de las competencias que se me aplicaran en la evaluación del Desempeño por Competencias - {{PeriodName}}
+    </div>
+
+    <button type="button" *ngIf="!TableData[0].registros.conformidadOtorgada;" class="bg-blue-200  text-white font-bold py-2 px-4 rounded-full mr-2 max-h-12"  style="cursor: not-allowed;">Imprimir</button>
+    <button type="button" *ngIf="TableData[0].registros.conformidadOtorgada;"  (click)="PrintButton()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full mr-2 max-h-12">Imprimir</button>
+  
+    <button *ngIf="!TableData[0].registros.conformidadOtorgada;" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-2 rounded-full mr-6 max-h-12 confirmbutton" (click)="ConfirmButton()">
+         Dar conformidad
+    </button>
+    <button  *ngIf="TableData[0].registros.conformidadOtorgada;" class="bg-blue-200  text-white font-bold rounded-full py-0 px-2 rounded-full mr-6 max-h-12 confirmbutton" style="cursor: not-allowed;">
+        Conformidad <br> enviada
+    </button>
+</div>

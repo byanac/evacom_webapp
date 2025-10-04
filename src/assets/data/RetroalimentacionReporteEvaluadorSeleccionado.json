@@ -1,0 +1,55 @@
+{
+    "registros": [
+        {
+            "codigoFicha": "00024547",
+            "apellidosNombres": "HERRERA GARCIA, ANDY OMAR",
+            "unidadOrganica": "458-EOMASBA",
+            "codigoPuesto": "00017394",
+            "nombrePuesto": "Oper.Espec.de Maqui.Pesada y Operaciones",
+            "foto": "https://webapp16.sedapal.com.pe/imgsedatel/ficha/24547.jpg",
+            "estadoEvaluacion": true,
+            "estadoEvaluador": true,
+            "estadoEvaluado": true,
+            "idRetroalimentacion": 0,
+            "idEvaluacion": 139,
+            "estadoCalendarioVigente": false,
+            "estadoExcepcion": true,
+            "estadoFecLimiteExcepcion": true,
+            "fechaLimiteExcepcion": "2025-01-15"
+        },
+        {
+            "codigoFicha": "00022507",
+            "apellidosNombres": "ALARCON OSIS, FERNANDO",
+            "unidadOrganica": "458-EOMASBA",
+            "codigoPuesto": "00001370",
+            "nombrePuesto": "Capataz de Oper.y Mantto. Electromecáni.",
+            "foto": "https://webapp16.sedapal.com.pe/imgsedatel/ficha/22507.jpg",
+            "estadoEvaluacion": true,
+            "estadoEvaluador": true,
+            "estadoEvaluado": false,
+            "idRetroalimentacion": 0,
+            "idEvaluacion": 73,
+            "estadoCalendarioVigente": false,
+            "estadoExcepcion": true,
+            "estadoFecLimiteExcepcion": false,
+            "fechaLimiteExcepcion": "2024-12-16"
+        },
+        {
+            "codigoFicha": "00024877",
+            "apellidosNombres": "LAGOS ALAMA, JUAN CARLOS",
+            "unidadOrganica": "458-EOMASBA",
+            "codigoPuesto": "00001378",
+            "nombrePuesto": "Ope. Espec. de Opera. y Mantto. Electro.",
+            "foto": "https://webapp16.sedapal.com.pe/imgsedatel/ficha/24877.jpg",
+            "estadoEvaluacion": true,
+            "estadoEvaluador": false,
+            "estadoEvaluado": false,
+            "idRetroalimentacion": 0,
+            "idEvaluacion": 80,
+            "estadoCalendarioVigente": false,
+            "estadoExcepcion": false,
+            "estadoFecLimiteExcepcion": false
+        }
+    ],
+    "mensaje": "OK"
+}

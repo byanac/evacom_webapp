@@ -1,0 +1,42 @@
+<div id="maincontainer" class="mx-auto sm:px-6 lg:px-8">
+  <div class="relative flex h-20 items-center justify-between">
+    <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+      <!-- Mobile menu button-->
+      <button (click)="ToggleMenu($event)" type="button" class="relative inline-flex items-center justify-center rounded-md p-2 text-black-400" aria-controls="mobile-menu" aria-expanded="false">
+        <span class="absolute -inset-0.5"></span>
+        <span class="sr-only">Open main menu</span>
+        <svg class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" >
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+        </svg>
+        <svg class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" >
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+    <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start gap-4" style="align-items: center !important;">
+      <div class="flex flex-shrink-0 items-center justify-between" (click)="TurnOffMenu()">
+        <img class="h-12 w-auto" src="assets/img/logotipo-navbar.png" alt="Sedapal" (click)="goHome()" class="cursor-pointer w-24" >
+      </div>
+      <div class="hidden sm:ml-6 sm:block" style="margin-left: 0px !important; margin-right: 1rem;background-color: #E4E4E4 !important; border-radius: 5px;" >
+        <div class="flex space-x-4">
+          <button title="Menu" (click)="ToggleMenu($event)" class=" rounded-md px-3 py-2 text-sm font-medium text-black font-bold" aria-current="page" type="button" data-bs-toggle="offcanvas"  data-bs-target="#offcanvasNavbar" >
+            Menú
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+      <div class="flex items-center relative ml-3">
+        <p class="text-white mb-0 mr-3" id="welcomeMessage"><b>Bienvenido/a {{DataFromsessionStorage.nombreCompleto}}</b></p>
+        <div>
+          <button (click)="toggleSubMenu()" type="button" class="relative flex rounded-full bg-gray-800 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+            <img crossorigin="anonymous" class="w-10 h-10 rounded-full" [src]="DataFromsessionStorage.foto" alt="">  
+          </button>
+        </div>
+        <div *ngIf="showSubMenu" style="z-index: 10000;" class="absolute top-9 right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
+          <button (click)="closeSesion()" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Cerrar sesión</button>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>

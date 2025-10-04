@@ -1,0 +1,29 @@
+{
+    "datos": {
+        "listadoCorrectos": [
+            {
+                "codigo": "TW800",
+                "titulo": "TW800",
+                "descripcion": "DESCRIPCION PRUEBA TW800",
+                "grupo": {
+                    "codigo": "GC001",
+                    "descripcion": "Centrales"
+                },
+                "mensajesError": "15"
+            }
+        ],
+        "listadoIncorrectos": [
+            {
+                "codigo": "TW800",
+                "titulo": "TW800",
+                "descripcion": "DESCRIPCION PRUEBA TW800",
+                "grupo": {
+                    "codigo": "GC001",
+                    "descripcion": "Centrales"
+                },
+                "mensajesError": "15"
+            }
+        ]
+    },
+    "mensaje": "Archivo procesado exitosamente"
+}

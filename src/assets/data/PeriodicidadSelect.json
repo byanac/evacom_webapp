@@ -1,0 +1,19 @@
+{
+    "registros": [
+      {
+        "codigo": 38,
+        "grupo": "PERIODICIDAD",
+        "valor": "SEMESTRAL",
+        "descripcion": "Periodo de calendario semestral",
+        "estado": 1
+      },
+      {
+        "codigo": 39,
+        "grupo": "PERIODICIDAD",
+        "valor": "ANUAL",
+        "descripcion": "Periodo de calendario anual",
+        "estado": 1
+      }
+    ],
+    "mensaje": "OK"
+  }

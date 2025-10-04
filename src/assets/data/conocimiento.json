@@ -1,0 +1,206 @@
+{
+    "registros": {
+        "calendario": {
+            "vCodigo": "C001",
+            "vNombre": "PERIODO 2024-I"
+        },
+        "grupoEvaluacion": "GE1",
+        "tipo": "180",
+        "competencias": [
+            {
+                "codigo": "C007",
+                "titulo": "VISIÓN ESTRATÉGICA",
+                "descripcion": "Capacidad para identificar escenarios futuros, interpretar tendencias y determinar impacto del entorno en la organización; con la finalidad de definir estrategias a largo plazo alineadas con las perspectivas organizacionales, realizar los ajustes estratégicos necesarios, minimizar las debilidades y potenciar las fortalezas.",
+                "grupo": {
+                    "codigo": "GC002",
+                    "descripcion": "Liderazgo"
+                },
+                "nivel": "N4",
+                "comportamientos": [
+                    {
+                        "codigo": "COC0148",
+                        "descripcion": "Establece objetivos organizacionales considerando sinergias transversales y creando las condiciones para su implementación con una visión a largo plazo."
+                    },
+                    {
+                        "codigo": "COC0149",
+                        "descripcion": "Demuestra su sólido manejo de escenarios futuros y define estrategias organizacionales que consideran a los grupos de interés."
+                    },
+                    {
+                        "codigo": "COC0150",
+                        "descripcion": "Demuestra dominio de la dinámica del negocio y entabla en forma activa vínculos claros con las estrategias organizacionales."
+                    },
+                    {
+                        "codigo": "COC0151",
+                        "descripcion": "Detecta con facilidad las oportunidades y amenazas del entorno tanto presentes como futuras, y actúa para lograr el mayor provecho para la organización."
+                    },
+                    {
+                        "codigo": "COC0152",
+                        "descripcion": "Gestiona oportunamente los cambios del entorno y adapta estrategias de la organización para obtener el mayor beneficio."
+                    }
+                ]
+            },
+            {
+                "codigo": "C008",
+                "titulo": "CAPACIDAD DE DIRECCIÓN",
+                "descripcion": "Habilidad para establecer y lograr objetivos retadores, en línea con las prioridades estratégicas de la organización, implica gestionar eficientemente al equipo y los recursos, generando confianza para lograr mejores resultados.",
+                "grupo": {
+                    "codigo": "GC002",
+                    "descripcion": "Liderazgo"
+                },
+                "nivel": "N4",
+                "comportamientos": [
+                    {
+                        "codigo": "COC0173",
+                        "descripcion": "Determina objetivos y prioridades organizacionales en alineamiento a la estrategia organizacional, maximizando los resultados."
+                    },
+                    {
+                        "codigo": "COC0174",
+                        "descripcion": "Establece mediciones e implementa herramientas para evaluar de manera permanente la calidad y efectividad de los resultados del trabajo."
+                    },
+                    {
+                        "codigo": "COC0175",
+                        "descripcion": "Dirige los esfuerzos y los redirige cuando no se alcanzan las metas o cuando los supuestos iniciales se modificaron."
+                    },
+                    {
+                        "codigo": "COC0176",
+                        "descripcion": "Delega responsabilidades para que el equipo resuelva problemas, tome decisiones y mejore procesos, identificando las fortalezas de sus miembros."
+                    },
+                    {
+                        "codigo": "COC0177",
+                        "descripcion": "Genera confianza en los miembros de la organización para que lo sigan con convicción, valorando su capacidad de dirección y sus aportes."
+                    }
+                ]
+            },
+            {
+                "codigo": "C009",
+                "titulo": "GESTIÓN DE PERSONAS",
+                "descripcion": "Habilidad para conducir equipos de manera efectiva, orientando el trabajo a los objetivos de la organización, implica la capacidad de delegar responsablemente, brindando apoyo, asesoría, retroalimentación, motivación y reconocimiento para el desarrollo de sus colaboradores.",
+                "grupo": {
+                    "codigo": "GC002",
+                    "descripcion": "Liderazgo"
+                },
+                "nivel": "N4",
+                "comportamientos": [
+                    {
+                        "codigo": "COC0198",
+                        "descripcion": "Alienta y promueve un clima laboral de confianza y motivación, es ejemplo de los valores organizacionales para su equipo y compañeros."
+                    },
+                    {
+                        "codigo": "COC0199",
+                        "descripcion": "Determina conjuntamente con el equipo los estándares de desempeño y procura que todos estén alineados, brindando apoyo constante."
+                    },
+                    {
+                        "codigo": "COC0200",
+                        "descripcion": "Brinda retroalimentación constructiva y altamente motivadora, reconociendo y reforzando los comportamientos impulsores e identificando conjuntamente con cada colaborador las áreas de mejora."
+                    },
+                    {
+                        "codigo": "COC0201",
+                        "descripcion": "Valora la capacidad de las personas a su cargo y los empodera dándoles autoridad y responsabilidad para gestionar nuevos desafíos, dando pautas de acción y midiendo los riesgos."
+                    },
+                    {
+                        "codigo": "COC0202",
+                        "descripcion": "Identifica rutas de desarrollo en los miembros de su equipo a partir de su potencial. Asigna recursos para el desarrollo de su equipo."
+                    }
+                ]
+            },
+            {
+                "codigo": "C010",
+                "titulo": "COLABORACIÓN E INFLUENCIA",
+                "descripcion": "Habilidad para construir y mantener relaciones relevantes para la organización, tanto internas como externas. Involucra la capacidad de lograr acuerdos, así como conformar redes y alianzas para lograr buen desempeño en un ambiente de comunicación y confianza.",
+                "grupo": {
+                    "codigo": "GC002",
+                    "descripcion": "Liderazgo"
+                },
+                "nivel": "N4",
+                "comportamientos": [
+                    {
+                        "codigo": "COC0223",
+                        "descripcion": "Ajusta su estilo de comunicación a las características de su público, llega a ellos con la confianza y credibilidad que proyecta, con argumentos bien sustentados."
+                    },
+                    {
+                        "codigo": "COC0224",
+                        "descripcion": "Afianza relaciones con stakeholders gestores de decisiones clave, asegurándose de lograr beneficios presentes y futuros para la organización."
+                    },
+                    {
+                        "codigo": "COC0225",
+                        "descripcion": "Identifica eficazmente las áreas comunes y puntos controversiales con stakeholders, construyendo consensos sólidos a corto y mediano plazo."
+                    },
+                    {
+                        "codigo": "COC0226",
+                        "descripcion": "Comparte información estratégica y operativa con sus colaboradores, pares y realiza aportes a otras áreas de la organización basados en su experiencia relevante."
+                    },
+                    {
+                        "codigo": "COC0227",
+                        "descripcion": "Influye en otros en forma positiva y a partir del ejemplo, logrando persuadir al equipo con integridad y eficacia para cumplir los objetivos de la organización."
+                    }
+                ]
+            },
+            {
+                "codigo": "C011",
+                "titulo": "GESTIÓN DEL CAMBIO",
+                "descripcion": "Es la predisposición a comprender y apreciar perspectivas diferentes u opuestas, teniendo la capacidad para adaptarse y amoldarse a los cambios y de modificar la propia conducta para alcanzar determinados objetivos cuando surgen dificultades.",
+                "grupo": {
+                    "codigo": "GC002",
+                    "descripcion": "Liderazgo"
+                },
+                "nivel": "N4",
+                "comportamientos": [
+                    {
+                        "codigo": "COC0248",
+                        "descripcion": "Reconoce cambios en el entorno organizacional, toma acción sobre los que están bajo su ámbito de acción y los asume como un reto."
+                    },
+                    {
+                        "codigo": "COC0249",
+                        "descripcion": "Se adapta con eficiencia y velocidad a distintos contextos, situaciones, medios y personas."
+                    },
+                    {
+                        "codigo": "COC0250",
+                        "descripcion": "Promueve cambios de procesos, servicios o relaciones, de acuerdo con lo que requieran las nuevas situaciones."
+                    },
+                    {
+                        "codigo": "COC0251",
+                        "descripcion": "Coopera con la organización implementando propuestas de cambio que han surgido en respuesta al logro de objetivos."
+                    },
+                    {
+                        "codigo": "COC0252",
+                        "descripcion": "Implementa nuevas metodologías y herramientas que facilitan el cambio."
+                    }
+                ]
+            },
+            {
+                "codigo": "C012",
+                "titulo": "ALINEAMIENTO A LAS NORMAS",
+                "descripcion": "Implica el respeto y el cumplimiento de las normas que rigen en la organización. Es la capacidad de seguir los procesos definidos, buscando que no interfieran con el cumplimiento de las normas, políticas y lineamientos establecidos y en consecuencia, velar por la obtención adecuada de los resultados esperados.",
+                "grupo": {
+                    "codigo": "GC002",
+                    "descripcion": "Liderazgo"
+                },
+                "nivel": "N4",
+                "comportamientos": [
+                    {
+                        "codigo": "COC0273",
+                        "descripcion": "Se ocupa de estar actualizado en el conocimiento de las normas aplicables al funcionamiento de la organización."
+                    },
+                    {
+                        "codigo": "COC0274",
+                        "descripcion": "Administra los procesos vinculados a su ámbito de acción cuidando el cumplimiento de las normas, políticas, directivas de gestión y lineamientos establecidos."
+                    },
+                    {
+                        "codigo": "COC0275",
+                        "descripcion": "Hace aportes y provee de ideas para mejorar el accionar de la Empresa y adecuarlo a los valores y principios comunes."
+                    },
+                    {
+                        "codigo": "COC0276",
+                        "descripcion": "Orienta el trabajo de sus compañeros en base al cumplimiento de las normas de la organización."
+                    },
+                    {
+                        "codigo": "COC0277",
+                        "descripcion": "Guía a sus compañeros cuando estos se encuentran frente al desconocimiento de una norma."
+                    }
+                ]
+            }
+        ],
+        "conformidadOtorgada": true
+    },
+    "mensaje": "OK"
+}

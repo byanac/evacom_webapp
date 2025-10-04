@@ -1,0 +1,23 @@
+label{
+    user-select: none;
+}
+*{
+    accent-color: rgb(29 78 216)
+}
+
+#dropdownBgHover{
+    width: 300px;
+    resize: both;
+    overflow: auto;
+
+}
+
+#dropdownBgHoverButton{
+    height: 43px
+}
+
+@media (max-width: 639px) {
+    .fixedpopup {
+        margin-top: 7rem;
+    }
+}

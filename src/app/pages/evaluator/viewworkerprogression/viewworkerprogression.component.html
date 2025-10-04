@@ -1,0 +1,4 @@
+<div *ngIf="TableData != undefined">
+    <app-evaluateworker *ngIf="TableData.registros.estado === 0" [TableData]="TableData" [FactsData]="FactsDataFromApi"  [TcodFicha]="TcodFichaFetch"  [TcodPuesto]="TcodPuestoToFetch" [EcodFicha]="EcodFichaFetch" [CalendarCode]="CalendarCode"></app-evaluateworker>
+    <app-workerresult *ngIf="TableData.registros.estado === 1" [TableData]="TableData" [CalendarCode]="CalendarCode" [EcodFicha]="EcodFichaFetch"></app-workerresult>
+</div>

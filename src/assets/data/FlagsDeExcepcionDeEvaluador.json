@@ -1,0 +1,17 @@
+{
+    "registros": {
+        "calendario": {
+            "vCodigo": "C003",
+            "vNombre": "90° 2024-I",
+            "tipo": "90"
+        },
+        "trabajador": null,
+        "habilitadoConocimiento": false,
+        "habilitadoAutoevaluacion": true,
+        "habilitadoEvaluacion": true,
+        "habilitadoRetroalimentacion": true,
+        "habilitadoPIDRegistro": true,
+        "habilitadoPIDCumplimiento": true
+    },
+    "mensaje": "OK"
+}

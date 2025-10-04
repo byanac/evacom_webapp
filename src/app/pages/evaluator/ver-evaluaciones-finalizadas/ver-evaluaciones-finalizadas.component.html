@@ -1,0 +1,137 @@
+<div class="flex w-full float-end justify-end text-end mt-4 mb-4 footer">
+  <div>
+    <button *ngIf="TableData.length != 0" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full mr-6" (click)="PrintButton()">
+      Imprimir
+    </button>
+  </div>
+</div>
+
+
+<div *ngIf="TableData.length != 0">
+  <div *ngFor="let evaluacion of TableData" style="page-break-after: always;">
+    <div class="text-center mt-6" >
+      <h1 class="text-lg" style="text-transform: uppercase;">VISUALIZACIÓN DE RESULTADOS DE EVALUACIÓN DE DESEMPEÑO POR COMPETENCIAS {{TypeAndPeriodName}}°</h1>
+    </div>
+    <div>
+      <section class="m-4">
+        <hr>
+        <div>
+          <p class="font-bold mb-0">Datos del evaluado:</p>
+        </div>
+        <div>
+          <table>
+            <tr>
+              <td class="flex font-bold justify-between"><p>Ficha:</p> <p>{{removeLeadingZeros(evaluacion?.ficha)}}</p></td>
+              <td class="font-bold pl-4">Nombre: {{evaluacion?.nombre}}</td>
+            </tr>
+            <tr>
+              <td class="flex font-bold justify-between"><p>Unidad Orgánica: {{evaluacion?.unidadOrganica}}</p></td>
+              <td class="font-bold pl-4">Cargo:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{evaluacion?.cargo}}</td>
+            </tr>
+          </table>
+        </div>
+        <hr class="mt-2">
+        <div>
+          <p class="font-bold mb-0">Datos del evaluador:</p>
+        </div>
+        <div>
+          <table>
+            <tr>
+              <td class="flex font-bold justify-between"><p>Ficha:</p> <p>{{removeLeadingZeros(evaluacion?.fichaEvaluador)}}</p></td>
+              <td class="font-bold pl-4">Nombre: {{evaluacion?.nombreEvaluador}}</td>
+            </tr>
+            <tr>
+              <td class="flex font-bold justify-between"><p>Unidad Orgánica: {{evaluacion?.unidadOrganicaEvaluador}}</p></td>
+              <td class="font-bold pl-4">Cargo:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{evaluacion?.cargoEvaluador}}</td>
+            </tr>
+          </table>
+        </div>
+        <hr class="mt-2">
+      </section>
+      
+
+        <div *ngFor="let item of evaluacion?.competenciasResultado; index as i" class="relative overflow-x-auto m-4 mt-1">
+          <table class="w-full text-sm text-left rtl:text-right text-gray-500  mb-4">
+              <thead class="text-xs text-gray-700 bg-blue-200">
+                  <tr class="border border-black border-solid  text-black">
+                      <th scope="col" class="px-6 py-3"></th>
+                      <th scope="col" class="py-3" *ngIf="item.titulo != undefined">
+                          {{item.titulo + ":"}}
+                          <div class="normal-case">
+                          {{item.descripcion}}
+                          </div>
+                      </th>
+                      <th class="text-center border-solid border-1 " style="width: 6rem;">
+                          <p class="mb-0">Calificación por Comportamiento</p>
+                      </th>
+                  </tr>
+              </thead>
+              <tbody *ngFor="let question of item.comportamientosResultado; index as i">
+                  <tr class="bg-white border border-black border-solid">
+                      <td class="text-center text-gray-900">
+                        {{i+1}}
+                      </td>
+                      <td scope="row" class="flex font-medium text-gray-900">
+                          <div>{{question.descripcion}}</div>
+                      </td>
+                      <td class="text-center border-solid border-1 bg-blue-300" [ngSwitch]="question.resultado">
+                        <p class="text-black" *ngSwitchCase="0">No se ingresó un valor</p>
+                          <p class="text-black" *ngSwitchCase="1">0%</p>
+                          <p class="text-black" *ngSwitchCase="2">25%</p>
+                          <p class="text-black" *ngSwitchCase="3">50%</p>
+                          <p class="text-black" *ngSwitchCase="4">75%</p>
+                          <p class="text-black" *ngSwitchCase="5">100%</p>
+                      </td>
+                  </tr>  
+              </tbody>
+              <tr class="bg-blue-900 text-white">
+                <td colspan="2">Calificación por competencia {{item.titulo}}</td>
+                <td class="font-bold text-center">{{calcularPromedioPonderado(item.resultado)}} <br> {{ObtenerLabeldeEstado(item.resultado)}}</td>
+              </tr>
+          </table>
+          </div>
+     
+          <div class="m-4">
+            <table class="w-full text-sm text-left rtl:text-right text-gray-500">
+              <tbody>
+                <tr class="bg-white border border-black border-solid">
+                  <td class="w-1/2 bg-blue-900 text-white">Competencia con mayor FORTALEZA: Indicar hechos y datos que lo evidencien.</td>
+                  <td class="w-1/2 font-medium text-gray-900"><b>{{obtenerNombreCompetenciasFiltrada(evaluacion?.competenciaFortaleza,evaluacion?.competenciasResultado)}}</b><br>{{evaluacion?.fortaleza}}</td>
+                </tr>
+                <tr class="bg-white border border-black border-solid">
+                  <td class="w-1/2 bg-blue-900 text-white">Competencia con mayor OPORTUNIDAD DE MEJORA: Indicar hechos y datos que lo evidencien.</td>
+                  <td class="w-1/2 font-medium text-gray-900"><b>{{obtenerNombreCompetenciasFiltrada(evaluacion?.competenciaOportunidad,evaluacion?.competenciasResultado)}}</b><br>{{evaluacion?.oportunidad}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+   
+        <div class="m-4">
+        <table class="w-full text-sm text-left rtl:text-right text-gray-500 ">
+          <tbody>
+              <tr class="bg-white  border border-black border-solid">
+                  <td rowspan="4" class="bg-blue-900 text-white">
+                    RESULTADO DE EVALUACIÓN DEL DESEMPEÑO
+                  </td>
+                  <td scope="row" class="flex font-medium text-gray-900">
+                    RESULTADO DE EVALUACIÓN DE COMPETENCIAS
+                  </td>
+                  <td class="bg-blue-900 text-white text-center">
+                      <p class="text-white font-bold">{{calcularPromedioFinal(evaluacion?.resultado) + "%"}}</p>
+                  </td>
+              </tr>  
+              <tr class="bg-white  border border-black border-solid">
+                <td scope="row" class="flex font-medium text-gray-900">
+                  VALORACIÓN DEL DESEMPEÑO
+                </td>
+                <td class="bg-blue-900 text-white text-center">
+                    <p class="text-white font-bold">{{ObtenerLabeldeEstado(evaluacion?.resultado)}}</p>
+                </td>
+            </tr> 
+          </tbody>
+        </table>
+        </div>
+      </div>
+    
+  </div>
+  </div>

@@ -1,0 +1,36 @@
+.half-width ::ng-deep .ui-steps .ui-steps-item {
+    width: 50%;
+  }
+  
+.third-width ::ng-deep .ui-steps .ui-steps-item {
+    width: 33%;
+}
+  
+::ng-deep .ui-steps.steps-custom {
+    margin-bottom: 30px;
+}
+
+::ng-deep .ui-steps.steps-custom .ui-steps-item .ui-menuitem-link {
+    padding: 0 1em;
+    overflow: visible;
+}
+
+::ng-deep .ui-steps.steps-custom .ui-steps-item .ui-steps-number {
+    background-color: #0081c2;
+    color: #FFFFFF;
+    display: inline-block;
+    width: 36px;
+    border-radius: 50%;
+    margin-top: -14px;
+    margin-bottom: 10px;
+}
+
+
+@media screen and (max-width: 520px) {
+    ::ng-deep .ui-steps .ui-steps-item .ui-menuitem-link .ui-steps-title {
+        font-size: 8px; 
+        visibility: hidden;
+    }    
+}
+
+

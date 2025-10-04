@@ -1,0 +1,39 @@
+<div class="container-fluid" id="divLogin">
+  <main class="form-signin w-100 m-auto ">
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <form  [formGroup]="loginForm" (ngSubmit)="login()">          
+          <div class="text-center">
+            <img class="mb-4" src="assets/img/logo-sedapal.png" alt="Logo Sedapal" height="80">
+          </div>  
+          <div class="form-floating mb-3">
+            <label for="floatingInput">Usuario</label>
+            <input formControlName="username" 
+                   type="text" 
+                   class="form-control" 
+                   id="floatingInput" 
+                   control-id="ControlID-1" 
+                   placeholder="Usuario">
+          </div>
+          <label for="floatingPassword">Contraseña</label>
+          <div class="form-floating mb-3">
+            <input formControlName="password" 
+                   type="password" 
+                   class="form-control" 
+                   id="floatingPassword" 
+                   control-id="ControlID-2" 
+                   placeholder="Contraseña">       
+          </div>
+          <button class="btn btn-primary w-100 py-2" 
+                  type="submit" 
+                  control-id="ControlID-4" 
+                  style="background-color: #428BCA!important; border-color: #428BCA!important;">
+            Ingresar
+          </button>
+          <p class="text-danger">{{ loginError }}</p>
+          <p class="mt-5 mb-3 text-body-secondary">© Sedapal 2024</p>
+        </form>
+      </div>  
+    </div>
+  </main>
+</div>

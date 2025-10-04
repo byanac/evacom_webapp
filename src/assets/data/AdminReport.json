@@ -1,0 +1,41 @@
+{
+    "registros": [
+      {
+        "codigoFicha": "00015193",
+        "apellidosNombres": "ESCALANTE RUIZ, AARON",
+        "codigoPuesto": "00024971",
+        "nombrePuesto": "Analista SCADA",
+        "correo": "aescalanter@sedapal.com.pe",
+        "idAdmin": 2,
+        "estado": 0
+      },
+      {
+        "codigoFicha": "00014444",
+        "apellidosNombres": "DE LOS SANTOS LEON, VICTOR HUGO",
+        "codigoPuesto": "00000499",
+        "nombrePuesto": "Gerente de Recursos Humanos",
+        "correo": "scaudales@sedapal.com.pe",
+        "idAdmin": 1,
+        "estado": 1
+      },
+      {
+        "codigoFicha": "00014444",
+        "apellidosNombres": "DE LOS SANTOS LEON, VICTOR HUGO",
+        "codigoPuesto": "00000499",
+        "nombrePuesto": "Gerente de Recursos Humanos",
+        "correo": "scaudales@sedapal.com.pe",
+        "idAdmin": 1,
+        "estado": 2
+      },
+      {
+        "codigoFicha": "00014444",
+        "apellidosNombres": "DE LOS SANTOS LEON, VICTOR HUGO",
+        "codigoPuesto": "00000499",
+        "nombrePuesto": "Gerente de Recursos Humanos",
+        "correo": "scaudales@sedapal.com.pe",
+        "idAdmin": 1,
+        "estado": 0
+      }
+    ],
+    "mensaje": "OK"
+  }

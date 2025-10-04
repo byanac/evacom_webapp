@@ -1,0 +1,889 @@
+{
+    "registros": [
+        {
+            "idEvaluacion": 131,
+            "fichaEvaluador": "00012336",
+            "nombreEvaluador": "SEGURA PERALTA, AMERICA GLADYS",
+            "cargoEvaluador": "Analista Principal de Sistemas",
+            "unidadOrganicaEvaluador": "302-ETIC",
+            "tipoEvaluador": 1,
+            "estado": 1,
+            "fechaInicio": 1721970000000,
+            "fechaFin": 1721970000000,
+            "grupoEvaluacion": "GE4",
+            "calendario": "C003",
+            "calendario_nombre": "90° 2024-I",
+            "tipo": "90",
+            "resultado": 3.08,
+            "ficha": "24808",
+            "nombre": "TICACALA CUTIPA, MARCO ANTONIO",
+            "unidadOrganica": "458-EOMASBA",
+            "cargo": "Oper.Espec.de Oper.y Matto.Electrom.",
+            "competenciasResultado": [
+                {
+                    "codigo": "C001",
+                    "titulo": "VOCACIÓN DE SERVICIO",
+                    "descripcion": "Entiende, administra y responde a las expectativas y necesidades de los clientes internos, externos y grupos de interés de la empresa. Busca ofrecer un servicio excepcional, siendo empático y proactivo a las necesidades del cliente. Está atento a responder oportunamente y con efectividad, generando la creación de valor. Está orientado a fortalecer una cultura de calidad de servicio en la empresa.",
+                    "estado": 1,
+                    "grupo": {
+                        "codigo": "GC001",
+                        "descripcion": "Centrales"
+                    },
+                    "nivel": "N3",
+                    "resultado": 1.2,
+                    "comportamientosResultado": [
+                        {
+                            "codigo": "COC0010",
+                            "descripcion": "Recibe con interés y disposición a los clientes internos, externos y grupos de interés brindando un trato amable en todo momento.",
+                            "resultado": 1
+                        },
+                        {
+                            "codigo": "COC0009",
+                            "descripcion": "Ofrece soluciones procurando atender las necesidades de sus clientes de manera eficaz",
+                            "resultado": 1
+                        },
+                        {
+                            "codigo": "COC0011",
+                            "descripcion": "Atiende con rapidez las necesidades de los clientes internos o externos, y grupos de interés ofreciendo respuestas adecuadas a su necesidades",
+                            "resultado": 1
+                        },
+                        {
+                            "codigo": "COC0012",
+                            "descripcion": "Hace seguimiento de las preguntas, problemas o quejas de los clientes internos o externos, y grupos de interés.",
+                            "resultado": 1
+                        },
+                        {
+                            "codigo": "COC0013",
+                            "descripcion": "Busca ofrecer un servicio de calidad, siendo empático y proactivo en la atención a las necesidades de clientes internos o externos. ",
+                            "resultado": 2
+                        }
+                    ]
+                },
+                {
+                    "codigo": "C002",
+                    "titulo": "INNOVACIÓN",
+                    "descripcion": "Actúa como un agente de cambio y mantiene un enfoque positivo con el objetivo de generar valor. Se adapta a las circunstancias de manera efectiva y ajusta las prioridades y planes para nuevos eventos, tanto en el ambiente como en la organización. Identifica oportunidades para mejorar y muestra interés activo en las iniciativas e ideas nuevas. Cuestiona siempre los procedimientos y procesos actuales, buscando la mejora continua. ",
+                    "estado": 1,
+                    "grupo": {
+                        "codigo": "GC001",
+                        "descripcion": "Centrales"
+                    },
+                    "nivel": "N3",
+                    "resultado": 2.2,
+                    "comportamientosResultado": [
+                        {
+                            "codigo": "COC0029",
+                            "descripcion": "Se esfuerza por innovar y mejorar continuamente, explorando nuevas perspectivas, haciendo recomendaciones para el trabajo diario",
+                            "resultado": 2
+                        },
+                        {
+                            "codigo": "COC0030",
+                            "descripcion": "Se muestra proactivo en la innovación, aportando nuevas ideas para ayudar a mejorar la ventaja competitiva de la organización",
+                            "resultado": 2
+                        },
+                        {
+                            "codigo": "COC0031",
+                            "descripcion": "Se interesa por conocer y  utilizar eficientemente nuevas tecnologías para ser más competitivo",
+                            "resultado": 2
+                        },
+                        {
+                            "codigo": "COC0032",
+                            "descripcion": "Entiende y valora las perspectivas de los demás en temas de innovación de procesos y procedimientos",
+                            "resultado": 2
+                        },
+                        {
+                            "codigo": "COC0033",
+                            "descripcion": "Se siente capaz de trabajar en situaciones distintas y con grupos o personas diversas.",
+                            "resultado": 3
+                        }
+                    ]
+                },
+                {
+                    "codigo": "C003",
+                    "titulo": "COMPROMISO",
+                    "descripcion": "Sentir como propios los objetivos de la organización, superando obstáculos que interfieran con el logro de los mismos. Promover una gestión sostenible y responsable de las normas sociales, ambientales, éticas y organizacionales en la realización de las actividades internas y externas. Hacerse cargo de las consecuencias de las decisiones tomadas con el fin de sostener el compromiso con las normas éticas y sociales aceptadas en las actividades relacionadas con el sector. ",
+                    "estado": 1,
+                    "grupo": {
+                        "codigo": "GC001",
+                        "descripcion": "Centrales"
+                    },
+                    "nivel": "N3",
+                    "resultado": 3.0,
+                    "comportamientosResultado": [
+                        {
+                            "codigo": "COC0052",
+                            "descripcion": "Se hace responsable con las tareas y objetivos a su cargo y asume como propios los objetivos de la empresa",
+                            "resultado": 3
+                        },
+                        {
+                            "codigo": "COC0051",
+                            "descripcion": "Apoya las decisiones organizacionales, comprometiéndose con el logro de los objetivos del negocio ",
+                            "resultado": 3
+                        },
+                        {
+                            "codigo": "COC0053",
+                            "descripcion": " Se mantiene motivado y motiva a sus compañeros para guiar su accionar según los objetivos planteados",
+                            "resultado": 3
+                        },
+                        {
+                            "codigo": "COC0055",
+                            "descripcion": "Se identifica con el grupo al cual pertenece y se siente parte y responsable por el logro de los resultados que se esperan de él.",
+                            "resultado": 3
+                        },
+                        {
+                            "codigo": "COC0054",
+                            "descripcion": " Tiene un buen nivel de desempeño y alcanza siempre los objetivos que se le pautan, esforzándose por mejorar continuamente y por participar en las iniciativas",
+                            "resultado": 3
+                        }
+                    ]
+                },
+                {
+                    "codigo": "C004",
+                    "titulo": "INTEGRIDAD",
+                    "descripcion": "Es la capacidad de actuar basados en principios éticos, siendo consecuente con lo que se dice o se considera importante. Incluye comunicar las intenciones, ideas y sentimientos abierta y directamente y respetar la diversidad de creencias y opiniones. Implica estar dispuesto a actuar con honestidad incluso en negociaciones difíciles con agentes externos. ",
+                    "estado": 1,
+                    "grupo": {
+                        "codigo": "GC001",
+                        "descripcion": "Centrales"
+                    },
+                    "nivel": "N3",
+                    "resultado": 4.0,
+                    "comportamientosResultado": [
+                        {
+                            "codigo": "COC0075",
+                            "descripcion": "Establece relaciones laborales basadas en el respeto a las normas y los valores eticos",
+                            "resultado": 4
+                        },
+                        {
+                            "codigo": "COC0076",
+                            "descripcion": "Es honesto en sus vínculos con los demás; expresa lo que siente, trata de no generar falsas expectativas y cumple lo que promete.",
+                            "resultado": 4
+                        },
+                        {
+                            "codigo": "COC0077",
+                            "descripcion": "Informa con transparencia, brindando siempre información clara, completa, veraz y oportuna.",
+                            "resultado": 4
+                        },
+                        {
+                            "codigo": "COC0078",
+                            "descripcion": "Induce a otros a actuar de acuerdo con valores y creencias",
+                            "resultado": 4
+                        },
+                        {
+                            "codigo": "COC0079",
+                            "descripcion": "Respeta la diversidad sin calificar o excluir a las personas por sus ideas, opiniones o creencias",
+                            "resultado": 4
+                        }
+                    ]
+                },
+                {
+                    "codigo": "C006",
+                    "titulo": "ORIENTACIÓN A RESULTADOS",
+                    "descripcion": "Es la capacidad de encaminar todos los actos al cumplimiento de lo esperado, actuando con velocidad y sentido de urgencia ante decisiones importantes necesarias para superar los obstáculos, respondiendo a las necesidades del cliente interno o externo, y grupos de interés para mejorar el desempeño de la empresa tomando en cuenta los aspectos económicos, sociales y ambientales.",
+                    "estado": 1,
+                    "grupo": {
+                        "codigo": "GC001",
+                        "descripcion": "Centrales"
+                    },
+                    "nivel": "N3",
+                    "resultado": 5.0,
+                    "comportamientosResultado": [
+                        {
+                            "codigo": "COC0119",
+                            "descripcion": "Planifica acciones para cumplir objetivos y realiza un adecuado control de su propio trabajo, evalua sus procedimientos y ejecuta acciones correctivas cuando observa que se esta desviando del objetivo:",
+                            "resultado": 5
+                        },
+                        {
+                            "codigo": "COC0120",
+                            "descripcion": "Establece objetivos claros, concretos, articulados, medibles y alcanzables.",
+                            "resultado": 5
+                        },
+                        {
+                            "codigo": "COC0122",
+                            "descripcion": "Utiliza herramientas de control y seguimiento de objetivos.",
+                            "resultado": 5
+                        },
+                        {
+                            "codigo": "COC0121",
+                            "descripcion": "Planifica acciones a corto y mediano plazo para lograr alcanzar los objetivos.",
+                            "resultado": 5
+                        },
+                        {
+                            "codigo": "COC0123",
+                            "descripcion": "Establece sus propias pautas para cumplir con los objetivos de su puesto de trabajo",
+                            "resultado": 5
+                        }
+                    ]
+                }
+            ],
+            "fortaleza": " TQWE",
+            "oportunidad": " QWEQWE",
+            "competenciaFortaleza": "C002",
+            "competenciaOportunidad": "C002"
+        },
+        {
+            "idEvaluacion": 139,
+            "fichaEvaluador": "00012336",
+            "nombreEvaluador": "SEGURA PERALTA, AMERICA GLADYS",
+            "cargoEvaluador": "Analista Principal de Sistemas",
+            "unidadOrganicaEvaluador": "302-ETIC",
+            "tipoEvaluador": 1,
+            "estado": 1,
+            "fechaInicio": 1722488400000,
+            "fechaFin": 1726549200000,
+            "grupoEvaluacion": "GE4",
+            "calendario": "C003",
+            "calendario_nombre": "90° 2024-I",
+            "tipo": "90",
+            "resultado": 3.0,
+            "ficha": "24547",
+            "nombre": "HERRERA GARCIA, ANDY OMAR",
+            "unidadOrganica": "458-EOMASBA",
+            "cargo": "Oper.Espec.de Maqui.Pesada y Operaciones",
+            "competenciasResultado": [
+                {
+                    "codigo": "C001",
+                    "titulo": "VOCACIÓN DE SERVICIO",
+                    "descripcion": "Entiende, administra y responde a las expectativas y necesidades de los clientes internos, externos y grupos de interés de la empresa. Busca ofrecer un servicio excepcional, siendo empático y proactivo a las necesidades del cliente. Está atento a responder oportunamente y con efectividad, generando la creación de valor. Está orientado a fortalecer una cultura de calidad de servicio en la empresa.",
+                    "estado": 1,
+                    "grupo": {
+                        "codigo": "GC001",
+                        "descripcion": "Centrales"
+                    },
+                    "nivel": "N3",
+                    "resultado": 1.0,
+                    "comportamientosResultado": [
+                        {
+                            "codigo": "COC0010",
+                            "descripcion": "Recibe con interés y disposición a los clientes internos, externos y grupos de interés brindando un trato amable en todo momento.",
+                            "resultado": 1
+                        },
+                        {
+                            "codigo": "COC0009",
+                            "descripcion": "Ofrece soluciones procurando atender las necesidades de sus clientes de manera eficaz",
+                            "resultado": 1
+                        },
+                        {
+                            "codigo": "COC0011",
+                            "descripcion": "Atiende con rapidez las necesidades de los clientes internos o externos, y grupos de interés ofreciendo respuestas adecuadas a su necesidades",
+                            "resultado": 1
+                        },
+                        {
+                            "codigo": "COC0012",
+                            "descripcion": "Hace seguimiento de las preguntas, problemas o quejas de los clientes internos o externos, y grupos de interés.",
+                            "resultado": 1
+                        },
+                        {
+                            "codigo": "COC0013",
+                            "descripcion": "Busca ofrecer un servicio de calidad, siendo empático y proactivo en la atención a las necesidades de clientes internos o externos. ",
+                            "resultado": 1
+                        }
+                    ]
+                },
+                {
+                    "codigo": "C002",
+                    "titulo": "INNOVACIÓN",
+                    "descripcion": "Actúa como un agente de cambio y mantiene un enfoque positivo con el objetivo de generar valor. Se adapta a las circunstancias de manera efectiva y ajusta las prioridades y planes para nuevos eventos, tanto en el ambiente como en la organización. Identifica oportunidades para mejorar y muestra interés activo en las iniciativas e ideas nuevas. Cuestiona siempre los procedimientos y procesos actuales, buscando la mejora continua. ",
+                    "estado": 1,
+                    "grupo": {
+                        "codigo": "GC001",
+                        "descripcion": "Centrales"
+                    },
+                    "nivel": "N3",
+                    "resultado": 2.0,
+                    "comportamientosResultado": [
+                        {
+                            "codigo": "COC0029",
+                            "descripcion": "Se esfuerza por innovar y mejorar continuamente, explorando nuevas perspectivas, haciendo recomendaciones para el trabajo diario",
+                            "resultado": 2
+                        },
+                        {
+                            "codigo": "COC0030",
+                            "descripcion": "Se muestra proactivo en la innovación, aportando nuevas ideas para ayudar a mejorar la ventaja competitiva de la organización",
+                            "resultado": 2
+                        },
+                        {
+                            "codigo": "COC0031",
+                            "descripcion": "Se interesa por conocer y  utilizar eficientemente nuevas tecnologías para ser más competitivo",
+                            "resultado": 2
+                        },
+                        {
+                            "codigo": "COC0032",
+                            "descripcion": "Entiende y valora las perspectivas de los demás en temas de innovación de procesos y procedimientos",
+                            "resultado": 2
+                        },
+                        {
+                            "codigo": "COC0033",
+                            "descripcion": "Se siente capaz de trabajar en situaciones distintas y con grupos o personas diversas.",
+                            "resultado": 2
+                        }
+                    ]
+                },
+                {
+                    "codigo": "C003",
+                    "titulo": "COMPROMISO",
+                    "descripcion": "Sentir como propios los objetivos de la organización, superando obstáculos que interfieran con el logro de los mismos. Promover una gestión sostenible y responsable de las normas sociales, ambientales, éticas y organizacionales en la realización de las actividades internas y externas. Hacerse cargo de las consecuencias de las decisiones tomadas con el fin de sostener el compromiso con las normas éticas y sociales aceptadas en las actividades relacionadas con el sector. ",
+                    "estado": 1,
+                    "grupo": {
+                        "codigo": "GC001",
+                        "descripcion": "Centrales"
+                    },
+                    "nivel": "N3",
+                    "resultado": 3.0,
+                    "comportamientosResultado": [
+                        {
+                            "codigo": "COC0052",
+                            "descripcion": "Se hace responsable con las tareas y objetivos a su cargo y asume como propios los objetivos de la empresa",
+                            "resultado": 3
+                        },
+                        {
+                            "codigo": "COC0051",
+                            "descripcion": "Apoya las decisiones organizacionales, comprometiéndose con el logro de los objetivos del negocio ",
+                            "resultado": 3
+                        },
+                        {
+                            "codigo": "COC0053",
+                            "descripcion": " Se mantiene motivado y motiva a sus compañeros para guiar su accionar según los objetivos planteados",
+                            "resultado": 3
+                        },
+                        {
+                            "codigo": "COC0055",
+                            "descripcion": "Se identifica con el grupo al cual pertenece y se siente parte y responsable por el logro de los resultados que se esperan de él.",
+                            "resultado": 3
+                        },
+                        {
+                            "codigo": "COC0054",
+                            "descripcion": " Tiene un buen nivel de desempeño y alcanza siempre los objetivos que se le pautan, esforzándose por mejorar continuamente y por participar en las iniciativas",
+                            "resultado": 3
+                        }
+                    ]
+                },
+                {
+                    "codigo": "C004",
+                    "titulo": "INTEGRIDAD",
+                    "descripcion": "Es la capacidad de actuar basados en principios éticos, siendo consecuente con lo que se dice o se considera importante. Incluye comunicar las intenciones, ideas y sentimientos abierta y directamente y respetar la diversidad de creencias y opiniones. Implica estar dispuesto a actuar con honestidad incluso en negociaciones difíciles con agentes externos. ",
+                    "estado": 1,
+                    "grupo": {
+                        "codigo": "GC001",
+                        "descripcion": "Centrales"
+                    },
+                    "nivel": "N3",
+                    "resultado": 4.0,
+                    "comportamientosResultado": [
+                        {
+                            "codigo": "COC0075",
+                            "descripcion": "Establece relaciones laborales basadas en el respeto a las normas y los valores eticos",
+                            "resultado": 4
+                        },
+                        {
+                            "codigo": "COC0076",
+                            "descripcion": "Es honesto en sus vínculos con los demás; expresa lo que siente, trata de no generar falsas expectativas y cumple lo que promete.",
+                            "resultado": 4
+                        },
+                        {
+                            "codigo": "COC0077",
+                            "descripcion": "Informa con transparencia, brindando siempre información clara, completa, veraz y oportuna.",
+                            "resultado": 4
+                        },
+                        {
+                            "codigo": "COC0078",
+                            "descripcion": "Induce a otros a actuar de acuerdo con valores y creencias",
+                            "resultado": 4
+                        },
+                        {
+                            "codigo": "COC0079",
+                            "descripcion": "Respeta la diversidad sin calificar o excluir a las personas por sus ideas, opiniones o creencias",
+                            "resultado": 4
+                        }
+                    ]
+                },
+                {
+                    "codigo": "C006",
+                    "titulo": "ORIENTACIÓN A RESULTADOS",
+                    "descripcion": "Es la capacidad de encaminar todos los actos al cumplimiento de lo esperado, actuando con velocidad y sentido de urgencia ante decisiones importantes necesarias para superar los obstáculos, respondiendo a las necesidades del cliente interno o externo, y grupos de interés para mejorar el desempeño de la empresa tomando en cuenta los aspectos económicos, sociales y ambientales.",
+                    "estado": 1,
+                    "grupo": {
+                        "codigo": "GC001",
+                        "descripcion": "Centrales"
+                    },
+                    "nivel": "N3",
+                    "resultado": 5.0,
+                    "comportamientosResultado": [
+                        {
+                            "codigo": "COC0119",
+                            "descripcion": "Planifica acciones para cumplir objetivos y realiza un adecuado control de su propio trabajo, evalua sus procedimientos y ejecuta acciones correctivas cuando observa que se esta desviando del objetivo:",
+                            "resultado": 5
+                        },
+                        {
+                            "codigo": "COC0120",
+                            "descripcion": "Establece objetivos claros, concretos, articulados, medibles y alcanzables.",
+                            "resultado": 5
+                        },
+                        {
+                            "codigo": "COC0122",
+                            "descripcion": "Utiliza herramientas de control y seguimiento de objetivos.",
+                            "resultado": 5
+                        },
+                        {
+                            "codigo": "COC0121",
+                            "descripcion": "Planifica acciones a corto y mediano plazo para lograr alcanzar los objetivos.",
+                            "resultado": 5
+                        },
+                        {
+                            "codigo": "COC0123",
+                            "descripcion": "Establece sus propias pautas para cumplir con los objetivos de su puesto de trabajo",
+                            "resultado": 5
+                        }
+                    ]
+                }
+            ],
+            "fortaleza": "TEST111",
+            "oportunidad": "123123",
+            "competenciaFortaleza": "C001",
+            "competenciaOportunidad": "C001"
+        },
+        {
+            "idEvaluacion": 140,
+            "fichaEvaluador": "00012336",
+            "nombreEvaluador": "SEGURA PERALTA, AMERICA GLADYS",
+            "cargoEvaluador": "Analista Principal de Sistemas",
+            "unidadOrganicaEvaluador": "302-ETIC",
+            "tipoEvaluador": 1,
+            "estado": 1,
+            "fechaInicio": 1723438800000,
+            "fechaFin": 1726462800000,
+            "grupoEvaluacion": "GE4",
+            "calendario": "C003",
+            "calendario_nombre": "90° 2024-I",
+            "tipo": "90",
+            "resultado": 3.8,
+            "ficha": "24539",
+            "nombre": "LA ROSA NEYRA, JOSE LUIS",
+            "unidadOrganica": "458-EOMASBA",
+            "cargo": "Oper.Espec.de Maqui.Pesada y Operaciones",
+            "competenciasResultado": [
+                {
+                    "codigo": "C001",
+                    "titulo": "VOCACIÓN DE SERVICIO",
+                    "descripcion": "Entiende, administra y responde a las expectativas y necesidades de los clientes internos, externos y grupos de interés de la empresa. Busca ofrecer un servicio excepcional, siendo empático y proactivo a las necesidades del cliente. Está atento a responder oportunamente y con efectividad, generando la creación de valor. Está orientado a fortalecer una cultura de calidad de servicio en la empresa.",
+                    "estado": 1,
+                    "grupo": {
+                        "codigo": "GC001",
+                        "descripcion": "Centrales"
+                    },
+                    "nivel": "N3",
+                    "resultado": 5.0,
+                    "comportamientosResultado": [
+                        {
+                            "codigo": "COC0010",
+                            "descripcion": "Recibe con interés y disposición a los clientes internos, externos y grupos de interés brindando un trato amable en todo momento.",
+                            "resultado": 5
+                        },
+                        {
+                            "codigo": "COC0009",
+                            "descripcion": "Ofrece soluciones procurando atender las necesidades de sus clientes de manera eficaz",
+                            "resultado": 5
+                        },
+                        {
+                            "codigo": "COC0011",
+                            "descripcion": "Atiende con rapidez las necesidades de los clientes internos o externos, y grupos de interés ofreciendo respuestas adecuadas a su necesidades",
+                            "resultado": 5
+                        },
+                        {
+                            "codigo": "COC0012",
+                            "descripcion": "Hace seguimiento de las preguntas, problemas o quejas de los clientes internos o externos, y grupos de interés.",
+                            "resultado": 5
+                        },
+                        {
+                            "codigo": "COC0013",
+                            "descripcion": "Busca ofrecer un servicio de calidad, siendo empático y proactivo en la atención a las necesidades de clientes internos o externos. ",
+                            "resultado": 5
+                        }
+                    ]
+                },
+                {
+                    "codigo": "C002",
+                    "titulo": "INNOVACIÓN",
+                    "descripcion": "Actúa como un agente de cambio y mantiene un enfoque positivo con el objetivo de generar valor. Se adapta a las circunstancias de manera efectiva y ajusta las prioridades y planes para nuevos eventos, tanto en el ambiente como en la organización. Identifica oportunidades para mejorar y muestra interés activo en las iniciativas e ideas nuevas. Cuestiona siempre los procedimientos y procesos actuales, buscando la mejora continua. ",
+                    "estado": 1,
+                    "grupo": {
+                        "codigo": "GC001",
+                        "descripcion": "Centrales"
+                    },
+                    "nivel": "N3",
+                    "resultado": 4.0,
+                    "comportamientosResultado": [
+                        {
+                            "codigo": "COC0029",
+                            "descripcion": "Se esfuerza por innovar y mejorar continuamente, explorando nuevas perspectivas, haciendo recomendaciones para el trabajo diario",
+                            "resultado": 4
+                        },
+                        {
+                            "codigo": "COC0030",
+                            "descripcion": "Se muestra proactivo en la innovación, aportando nuevas ideas para ayudar a mejorar la ventaja competitiva de la organización",
+                            "resultado": 4
+                        },
+                        {
+                            "codigo": "COC0031",
+                            "descripcion": "Se interesa por conocer y  utilizar eficientemente nuevas tecnologías para ser más competitivo",
+                            "resultado": 4
+                        },
+                        {
+                            "codigo": "COC0032",
+                            "descripcion": "Entiende y valora las perspectivas de los demás en temas de innovación de procesos y procedimientos",
+                            "resultado": 4
+                        },
+                        {
+                            "codigo": "COC0033",
+                            "descripcion": "Se siente capaz de trabajar en situaciones distintas y con grupos o personas diversas.",
+                            "resultado": 4
+                        }
+                    ]
+                },
+                {
+                    "codigo": "C003",
+                    "titulo": "COMPROMISO",
+                    "descripcion": "Sentir como propios los objetivos de la organización, superando obstáculos que interfieran con el logro de los mismos. Promover una gestión sostenible y responsable de las normas sociales, ambientales, éticas y organizacionales en la realización de las actividades internas y externas. Hacerse cargo de las consecuencias de las decisiones tomadas con el fin de sostener el compromiso con las normas éticas y sociales aceptadas en las actividades relacionadas con el sector. ",
+                    "estado": 1,
+                    "grupo": {
+                        "codigo": "GC001",
+                        "descripcion": "Centrales"
+                    },
+                    "nivel": "N3",
+                    "resultado": 3.0,
+                    "comportamientosResultado": [
+                        {
+                            "codigo": "COC0052",
+                            "descripcion": "Se hace responsable con las tareas y objetivos a su cargo y asume como propios los objetivos de la empresa",
+                            "resultado": 3
+                        },
+                        {
+                            "codigo": "COC0051",
+                            "descripcion": "Apoya las decisiones organizacionales, comprometiéndose con el logro de los objetivos del negocio ",
+                            "resultado": 3
+                        },
+                        {
+                            "codigo": "COC0053",
+                            "descripcion": " Se mantiene motivado y motiva a sus compañeros para guiar su accionar según los objetivos planteados",
+                            "resultado": 3
+                        },
+                        {
+                            "codigo": "COC0055",
+                            "descripcion": "Se identifica con el grupo al cual pertenece y se siente parte y responsable por el logro de los resultados que se esperan de él.",
+                            "resultado": 3
+                        },
+                        {
+                            "codigo": "COC0054",
+                            "descripcion": " Tiene un buen nivel de desempeño y alcanza siempre los objetivos que se le pautan, esforzándose por mejorar continuamente y por participar en las iniciativas",
+                            "resultado": 3
+                        }
+                    ]
+                },
+                {
+                    "codigo": "C004",
+                    "titulo": "INTEGRIDAD",
+                    "descripcion": "Es la capacidad de actuar basados en principios éticos, siendo consecuente con lo que se dice o se considera importante. Incluye comunicar las intenciones, ideas y sentimientos abierta y directamente y respetar la diversidad de creencias y opiniones. Implica estar dispuesto a actuar con honestidad incluso en negociaciones difíciles con agentes externos. ",
+                    "estado": 1,
+                    "grupo": {
+                        "codigo": "GC001",
+                        "descripcion": "Centrales"
+                    },
+                    "nivel": "N3",
+                    "resultado": 2.0,
+                    "comportamientosResultado": [
+                        {
+                            "codigo": "COC0075",
+                            "descripcion": "Establece relaciones laborales basadas en el respeto a las normas y los valores eticos",
+                            "resultado": 2
+                        },
+                        {
+                            "codigo": "COC0076",
+                            "descripcion": "Es honesto en sus vínculos con los demás; expresa lo que siente, trata de no generar falsas expectativas y cumple lo que promete.",
+                            "resultado": 2
+                        },
+                        {
+                            "codigo": "COC0077",
+                            "descripcion": "Informa con transparencia, brindando siempre información clara, completa, veraz y oportuna.",
+                            "resultado": 2
+                        },
+                        {
+                            "codigo": "COC0078",
+                            "descripcion": "Induce a otros a actuar de acuerdo con valores y creencias",
+                            "resultado": 2
+                        },
+                        {
+                            "codigo": "COC0079",
+                            "descripcion": "Respeta la diversidad sin calificar o excluir a las personas por sus ideas, opiniones o creencias",
+                            "resultado": 2
+                        }
+                    ]
+                },
+                {
+                    "codigo": "C006",
+                    "titulo": "ORIENTACIÓN A RESULTADOS",
+                    "descripcion": "Es la capacidad de encaminar todos los actos al cumplimiento de lo esperado, actuando con velocidad y sentido de urgencia ante decisiones importantes necesarias para superar los obstáculos, respondiendo a las necesidades del cliente interno o externo, y grupos de interés para mejorar el desempeño de la empresa tomando en cuenta los aspectos económicos, sociales y ambientales.",
+                    "estado": 1,
+                    "grupo": {
+                        "codigo": "GC001",
+                        "descripcion": "Centrales"
+                    },
+                    "nivel": "N3",
+                    "resultado": 5.0,
+                    "comportamientosResultado": [
+                        {
+                            "codigo": "COC0119",
+                            "descripcion": "Planifica acciones para cumplir objetivos y realiza un adecuado control de su propio trabajo, evalua sus procedimientos y ejecuta acciones correctivas cuando observa que se esta desviando del objetivo:",
+                            "resultado": 5
+                        },
+                        {
+                            "codigo": "COC0120",
+                            "descripcion": "Establece objetivos claros, concretos, articulados, medibles y alcanzables.",
+                            "resultado": 5
+                        },
+                        {
+                            "codigo": "COC0122",
+                            "descripcion": "Utiliza herramientas de control y seguimiento de objetivos.",
+                            "resultado": 5
+                        },
+                        {
+                            "codigo": "COC0121",
+                            "descripcion": "Planifica acciones a corto y mediano plazo para lograr alcanzar los objetivos.",
+                            "resultado": 5
+                        },
+                        {
+                            "codigo": "COC0123",
+                            "descripcion": "Establece sus propias pautas para cumplir con los objetivos de su puesto de trabajo",
+                            "resultado": 5
+                        }
+                    ]
+                }
+            ],
+            "fortaleza": "TEST2",
+            "oportunidad": "TEST2",
+            "competenciaFortaleza": "C002",
+            "competenciaOportunidad": "C001"
+        },
+        {
+            "idEvaluacion": 136,
+            "fichaEvaluador": "00012336",
+            "nombreEvaluador": "SEGURA PERALTA, AMERICA GLADYS",
+            "cargoEvaluador": "Analista Principal de Sistemas",
+            "unidadOrganicaEvaluador": "302-ETIC",
+            "tipoEvaluador": 1,
+            "estado": 1,
+            "fechaInicio": 1722488400000,
+            "fechaFin": 1726462800000,
+            "grupoEvaluacion": "GE4",
+            "calendario": "C003",
+            "calendario_nombre": "90° 2024-I",
+            "tipo": "90",
+            "resultado": 3.8,
+            "ficha": "24878",
+            "nombre": "JANAMPA ALCA, CARLOS",
+            "unidadOrganica": "458-EOMASBA",
+            "cargo": "Oper.Espec.de Oper.y Mantto.Electro.",
+            "competenciasResultado": [
+                {
+                    "codigo": "C001",
+                    "titulo": "VOCACIÓN DE SERVICIO",
+                    "descripcion": "Entiende, administra y responde a las expectativas y necesidades de los clientes internos, externos y grupos de interés de la empresa. Busca ofrecer un servicio excepcional, siendo empático y proactivo a las necesidades del cliente. Está atento a responder oportunamente y con efectividad, generando la creación de valor. Está orientado a fortalecer una cultura de calidad de servicio en la empresa.",
+                    "estado": 1,
+                    "grupo": {
+                        "codigo": "GC001",
+                        "descripcion": "Centrales"
+                    },
+                    "nivel": "N3",
+                    "resultado": 5.0,
+                    "comportamientosResultado": [
+                        {
+                            "codigo": "COC0010",
+                            "descripcion": "Recibe con interés y disposición a los clientes internos, externos y grupos de interés brindando un trato amable en todo momento.",
+                            "resultado": 5
+                        },
+                        {
+                            "codigo": "COC0009",
+                            "descripcion": "Ofrece soluciones procurando atender las necesidades de sus clientes de manera eficaz",
+                            "resultado": 5
+                        },
+                        {
+                            "codigo": "COC0011",
+                            "descripcion": "Atiende con rapidez las necesidades de los clientes internos o externos, y grupos de interés ofreciendo respuestas adecuadas a su necesidades",
+                            "resultado": 5
+                        },
+                        {
+                            "codigo": "COC0012",
+                            "descripcion": "Hace seguimiento de las preguntas, problemas o quejas de los clientes internos o externos, y grupos de interés.",
+                            "resultado": 5
+                        },
+                        {
+                            "codigo": "COC0013",
+                            "descripcion": "Busca ofrecer un servicio de calidad, siendo empático y proactivo en la atención a las necesidades de clientes internos o externos. ",
+                            "resultado": 5
+                        }
+                    ]
+                },
+                {
+                    "codigo": "C002",
+                    "titulo": "INNOVACIÓN",
+                    "descripcion": "Actúa como un agente de cambio y mantiene un enfoque positivo con el objetivo de generar valor. Se adapta a las circunstancias de manera efectiva y ajusta las prioridades y planes para nuevos eventos, tanto en el ambiente como en la organización. Identifica oportunidades para mejorar y muestra interés activo en las iniciativas e ideas nuevas. Cuestiona siempre los procedimientos y procesos actuales, buscando la mejora continua. ",
+                    "estado": 1,
+                    "grupo": {
+                        "codigo": "GC001",
+                        "descripcion": "Centrales"
+                    },
+                    "nivel": "N3",
+                    "resultado": 4.0,
+                    "comportamientosResultado": [
+                        {
+                            "codigo": "COC0029",
+                            "descripcion": "Se esfuerza por innovar y mejorar continuamente, explorando nuevas perspectivas, haciendo recomendaciones para el trabajo diario",
+                            "resultado": 4
+                        },
+                        {
+                            "codigo": "COC0030",
+                            "descripcion": "Se muestra proactivo en la innovación, aportando nuevas ideas para ayudar a mejorar la ventaja competitiva de la organización",
+                            "resultado": 4
+                        },
+                        {
+                            "codigo": "COC0031",
+                            "descripcion": "Se interesa por conocer y  utilizar eficientemente nuevas tecnologías para ser más competitivo",
+                            "resultado": 4
+                        },
+                        {
+                            "codigo": "COC0032",
+                            "descripcion": "Entiende y valora las perspectivas de los demás en temas de innovación de procesos y procedimientos",
+                            "resultado": 4
+                        },
+                        {
+                            "codigo": "COC0033",
+                            "descripcion": "Se siente capaz de trabajar en situaciones distintas y con grupos o personas diversas.",
+                            "resultado": 4
+                        }
+                    ]
+                },
+                {
+                    "codigo": "C003",
+                    "titulo": "COMPROMISO",
+                    "descripcion": "Sentir como propios los objetivos de la organización, superando obstáculos que interfieran con el logro de los mismos. Promover una gestión sostenible y responsable de las normas sociales, ambientales, éticas y organizacionales en la realización de las actividades internas y externas. Hacerse cargo de las consecuencias de las decisiones tomadas con el fin de sostener el compromiso con las normas éticas y sociales aceptadas en las actividades relacionadas con el sector. ",
+                    "estado": 1,
+                    "grupo": {
+                        "codigo": "GC001",
+                        "descripcion": "Centrales"
+                    },
+                    "nivel": "N3",
+                    "resultado": 3.0,
+                    "comportamientosResultado": [
+                        {
+                            "codigo": "COC0052",
+                            "descripcion": "Se hace responsable con las tareas y objetivos a su cargo y asume como propios los objetivos de la empresa",
+                            "resultado": 3
+                        },
+                        {
+                            "codigo": "COC0051",
+                            "descripcion": "Apoya las decisiones organizacionales, comprometiéndose con el logro de los objetivos del negocio ",
+                            "resultado": 3
+                        },
+                        {
+                            "codigo": "COC0053",
+                            "descripcion": " Se mantiene motivado y motiva a sus compañeros para guiar su accionar según los objetivos planteados",
+                            "resultado": 3
+                        },
+                        {
+                            "codigo": "COC0055",
+                            "descripcion": "Se identifica con el grupo al cual pertenece y se siente parte y responsable por el logro de los resultados que se esperan de él.",
+                            "resultado": 3
+                        },
+                        {
+                            "codigo": "COC0054",
+                            "descripcion": " Tiene un buen nivel de desempeño y alcanza siempre los objetivos que se le pautan, esforzándose por mejorar continuamente y por participar en las iniciativas",
+                            "resultado": 3
+                        }
+                    ]
+                },
+                {
+                    "codigo": "C004",
+                    "titulo": "INTEGRIDAD",
+                    "descripcion": "Es la capacidad de actuar basados en principios éticos, siendo consecuente con lo que se dice o se considera importante. Incluye comunicar las intenciones, ideas y sentimientos abierta y directamente y respetar la diversidad de creencias y opiniones. Implica estar dispuesto a actuar con honestidad incluso en negociaciones difíciles con agentes externos. ",
+                    "estado": 1,
+                    "grupo": {
+                        "codigo": "GC001",
+                        "descripcion": "Centrales"
+                    },
+                    "nivel": "N3",
+                    "resultado": 4.0,
+                    "comportamientosResultado": [
+                        {
+                            "codigo": "COC0075",
+                            "descripcion": "Establece relaciones laborales basadas en el respeto a las normas y los valores eticos",
+                            "resultado": 4
+                        },
+                        {
+                            "codigo": "COC0076",
+                            "descripcion": "Es honesto en sus vínculos con los demás; expresa lo que siente, trata de no generar falsas expectativas y cumple lo que promete.",
+                            "resultado": 4
+                        },
+                        {
+                            "codigo": "COC0077",
+                            "descripcion": "Informa con transparencia, brindando siempre información clara, completa, veraz y oportuna.",
+                            "resultado": 4
+                        },
+                        {
+                            "codigo": "COC0078",
+                            "descripcion": "Induce a otros a actuar de acuerdo con valores y creencias",
+                            "resultado": 4
+                        },
+                        {
+                            "codigo": "COC0079",
+                            "descripcion": "Respeta la diversidad sin calificar o excluir a las personas por sus ideas, opiniones o creencias",
+                            "resultado": 4
+                        }
+                    ]
+                },
+                {
+                    "codigo": "C006",
+                    "titulo": "ORIENTACIÓN A RESULTADOS",
+                    "descripcion": "Es la capacidad de encaminar todos los actos al cumplimiento de lo esperado, actuando con velocidad y sentido de urgencia ante decisiones importantes necesarias para superar los obstáculos, respondiendo a las necesidades del cliente interno o externo, y grupos de interés para mejorar el desempeño de la empresa tomando en cuenta los aspectos económicos, sociales y ambientales.",
+                    "estado": 1,
+                    "grupo": {
+                        "codigo": "GC001",
+                        "descripcion": "Centrales"
+                    },
+                    "nivel": "N3",
+                    "resultado": 3.0,
+                    "comportamientosResultado": [
+                        {
+                            "codigo": "COC0119",
+                            "descripcion": "Planifica acciones para cumplir objetivos y realiza un adecuado control de su propio trabajo, evalua sus procedimientos y ejecuta acciones correctivas cuando observa que se esta desviando del objetivo:",
+                            "resultado": 3
+                        },
+                        {
+                            "codigo": "COC0120",
+                            "descripcion": "Establece objetivos claros, concretos, articulados, medibles y alcanzables.",
+                            "resultado": 3
+                        },
+                        {
+                            "codigo": "COC0122",
+                            "descripcion": "Utiliza herramientas de control y seguimiento de objetivos.",
+                            "resultado": 3
+                        },
+                        {
+                            "codigo": "COC0121",
+                            "descripcion": "Planifica acciones a corto y mediano plazo para lograr alcanzar los objetivos.",
+                            "resultado": 3
+                        },
+                        {
+                            "codigo": "COC0123",
+                            "descripcion": "Establece sus propias pautas para cumplir con los objetivos de su puesto de trabajo",
+                            "resultado": 3
+                        }
+                    ]
+                }
+            ],
+            "fortaleza": "TEST",
+            "oportunidad": "TEST",
+            "competenciaFortaleza": "C002",
+            "competenciaOportunidad": "C003"
+        }
+    ],
+    "mensaje 1": "OK"
+}

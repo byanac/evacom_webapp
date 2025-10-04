@@ -1,0 +1,319 @@
+<div class="min-h-screen bg-gray-100 flex flex-col">
+  <header class="text-white py-4 px-6" style="background-color: #3776ff;">
+    <h1 class="text-2xl font-bold mb-0">Asignación de Grupos de Evaluación - {{CalendarData?.calendario?.vNombre}}</h1>
+  </header>
+
+<main class="flex-grow p-6">
+    <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+      <form [formGroup]="form" class="space-y-4">
+        <div class="grid gap-4">
+          <div class="space-y-2">
+            <mat-form-field appearance="outline" class="w-full">
+              <mat-label>Grupo de evaluación</mat-label>
+              <mat-select 
+                id="idGrupoEvaluacion" 
+                formControlName="idGrupoEvaluacion" 
+                required>
+                <mat-option *ngFor="let grupo of gruposEvaluacionSelect" [value]="grupo.codigo">
+                  {{ grupo.descripcion }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            
+          </div>
+          <!-- INI PROY-00013 RFC -->
+          <div class="space-y-2">
+            <mat-form-field appearance="outline" class="w-full">
+              <mat-label>Unidad Organizativa</mat-label>
+              <mat-select 
+                id="codigo" 
+                formControlName="codigo" 
+                required>
+                <mat-option disabled>
+                  <input matInput placeholder="Buscar..." [formControl]="uoFilterCtrl"
+                    (keydown)="$event.stopPropagation()">
+                </mat-option>
+
+                <!-- Opciones filtradas -->
+                <mat-option *ngFor="let uo of filteredUnidadOrganizativa | async" [value]="uo.codigo">
+                  {{ uo.nombre }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>            
+          </div>
+          <div class="space-y-2">
+            <mat-form-field appearance="outline" class="w-full">
+              <mat-label>Evaluados de la Unidad Organizativa</mat-label>
+              <mat-select (selectionChange)="onTrabajadorSeleccionado($event.value)"
+                id="ficha" 
+                formControlName="ficha" 
+                required>
+                <mat-option *ngFor="let trabajador of trabajadorSelect" [value]="trabajador">
+                  {{ trabajador.ficha }} - {{ trabajador.nombre }} {{ trabajador.apellidos }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>             
+          </div>
+          <!-- FIN PROY-00013 RFC -->
+          <div class="space-y-2">
+            <mat-form-field appearance="outline" class="w-full">
+              <mat-label>Ficha del Evaluado</mat-label>
+              <input 
+                matInput
+                id="Ficha" 
+                formControlName="Ficha" 
+                type="text" 
+              >
+            </mat-form-field>
+          </div>
+          <div class="space-y-2">
+            <mat-form-field appearance="outline" class="w-full">
+              <mat-label>Nombre del evaluado</mat-label>
+              <input 
+                matInput
+                id="NombApell" 
+                formControlName="NombApell" 
+                type="text" 
+              >
+            </mat-form-field>
+          </div> 
+
+          <div class="space-y-2">
+            <mat-form-field appearance="outline" class="w-full">
+              <mat-label>Código de puesto del evaluado</mat-label>
+              <input 
+                matInput
+                id="posicionTrabajo" 
+                formControlName="posicionTrabajo" 
+                type="text" 
+                required
+                (blur)="onSearchWorker()"
+                maxlength="8"
+              >
+            </mat-form-field>
+          </div>
+          
+          <div class="space-y-2">
+            <mat-form-field appearance="outline" class="w-full">
+              <mat-label>Puesto</mat-label>
+              <input 
+                matInput
+                id="Puesto" 
+                formControlName="Puesto" 
+                type="text" 
+              >
+            </mat-form-field>
+          </div>
+          <div class="space-y-2">
+            <mat-form-field appearance="outline" class="w-full">
+              <mat-label>Correo</mat-label>
+              <input 
+                matInput
+                id="Correo" 
+                formControlName="Correo" 
+                type="text" 
+              >
+            </mat-form-field>
+          </div>                 
+        </div>
+        <div class="flex gap-2">
+          <button (click)="handleSubmit()" type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+            {{editingItem ? 'Actualizar' : 'Añadir'}} Asignación
+          </button>
+          <button mat-icon-button color="warn" type="button" class="uploadbtn" (click)="openUploadExcelAssignmentDialog()">
+            <svg class="mr-2" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="white" d="m2.859 2.877l12.57-1.795a.5.5 0 0 1 .571.494v20.848a.5.5 0 0 1-.57.494L2.858 21.123a1 1 0 0 1-.859-.99V3.867a1 1 0 0 1 .859-.99M17 3h4a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1h-4zm-6.8 9L13 8h-2.4L9 10.286L7.4 8H5l2.8 4L5 16h2.4L9 13.714L10.6 16H13z"/></svg>
+            <span>Subir excel</span>
+          </button>
+          <!-- INI PROY-00013 RFC -->
+          <button (click)="cargaAutomatica()" *ngIf="CalendarObject?.tipo == '90'"
+             [routerLink]="['/home/asignacion-grupos-carga-automatica',CalendarID]"
+             class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+            Carga Automática
+          </button>
+          <!-- FIN PROY-00013 RFC -->
+        </div>
+      </form>
+    </div>
+    <div class="bg-white shadow-md rounded px-8 pt-6 pb-8">
+      <h2 class="text-xl font-semibold mb-4">Asignaciones Registradas</h2>
+      <mat-table [dataSource]="dataSourceEvalGroups">
+        <ng-container matColumnDef="codigocalendario">
+          <mat-header-cell *matHeaderCellDef>Calendario</mat-header-cell>
+          <mat-cell *matCellDef="let grupoeval">{{ grupoeval?.calendario?.vNombre }}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="grupoevaluacionCod">
+          <mat-header-cell *matHeaderCellDef>Código del Grupo de Evaluación</mat-header-cell>
+          <mat-cell *matCellDef="let grupoeval">{{ grupoeval?.grupoEvaluacion?.codigo }}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="grupoevaluacionNom">
+          <mat-header-cell *matHeaderCellDef>Denominación del Grupo de Evaluación</mat-header-cell>
+          <mat-cell *matCellDef="let grupoeval">{{ grupoeval?.grupoEvaluacion?.descripcion }}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="puesto">
+          <mat-header-cell *matHeaderCellDef>Código del Puesto</mat-header-cell>
+          <mat-cell *matCellDef="let grupoeval">{{ grupoeval?.trabajador?.codigoPuesto }}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="posicion">
+          <mat-header-cell *matHeaderCellDef>Denominación del Puesto</mat-header-cell>
+          <mat-cell *matCellDef="let grupoeval">{{ grupoeval?.trabajador?.nombrePuesto }}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="ficha">
+          <mat-header-cell *matHeaderCellDef>Código de Ficha</mat-header-cell>
+          <mat-cell *matCellDef="let grupoeval">{{ grupoeval?.trabajador?.codigoFicha }}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="nombresyapellidos">
+          <mat-header-cell *matHeaderCellDef>Nombres y Apellidos</mat-header-cell>
+          <mat-cell *matCellDef="let grupoeval">{{ grupoeval?.trabajador?.apellidosNombres }}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="ultimamodific">
+          <mat-header-cell *matHeaderCellDef>Fecha de modificación</mat-header-cell>
+          <mat-cell *matCellDef="let grupoeval">{{ grupoeval?.fecModificacion | date:'dd/MM/yyyy'}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="adminmodific">
+          <mat-header-cell *matHeaderCellDef>Modificación realizada por</mat-header-cell>
+          <mat-cell *matCellDef="let grupoeval">{{ grupoeval?.admin?.apellidosNombres }}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="estado">
+          <mat-header-cell *matHeaderCellDef>Estado</mat-header-cell>
+          <mat-cell *matCellDef="let grupoeval">{{ grupoeval?.estado === 0 ? 'Inactivo' : 'Activo' }}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="acciones">
+          <mat-header-cell *matHeaderCellDef>Acciones</mat-header-cell>
+          <mat-cell *matCellDef="let grupoeval">
+            <button *ngIf="grupoeval?.estado === 0" (click)="handleActivate(grupoeval)" class="text-green-600 hover:text-green-900"><mat-icon>settings_backup_restore</mat-icon></button>
+            <button *ngIf="grupoeval?.estado === 1" (click)="handleEdit(grupoeval)" class="text-indigo-600 hover:text-indigo-900"><mat-icon>edit</mat-icon></button>
+            <button *ngIf="grupoeval?.estado === 1" (click)="handleDelete(grupoeval)" class="text-red-600 hover:text-red-900"><mat-icon>delete</mat-icon></button>
+          </mat-cell>
+        </ng-container>
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
+      <mat-paginator #paginatorEvalGrupos [pageSizeOptions]="[10, 15, 20, 25 ,30]" showFirstLastButtons></mat-paginator>
+    </div>
+</main>
+
+      
+
+<ng-template #UploadExcelAssignmentDialog>
+  <h1 mat-dialog-title>Subir excel de asignación de grupos de evaluación</h1>       
+  <button (click)="fileInput.click()" mat-icon-button color="primary" class="addbtn" style="gap: 5px !important;">
+    <mat-icon>cloud_upload</mat-icon>
+    <span>Subir archivo</span>
+  </button>
+  <input #fileInput type="file" accept=".xlsx,.xls" (change)="onFileSelectedCompetency($event)" style="display: none;" />
+  <mat-dialog-content class="w-full flex justify-center" style="margin: 0px !important; padding: 0px !important;">
+    <div class="flex gap-4 w-full justify-center">
+      
+      <div *ngIf="gruposevaluacionEXCEL && gruposevaluacionEXCEL.datos && gruposevaluacionEXCEL.datos.listadoCorrectos && gruposevaluacionEXCEL.datos.listadoCorrectos.length > 0"   
+      [ngClass]="{
+        'w-1/2': gruposevaluacionEXCEL?.datos?.listadoIncorrectos?.length > 0,
+        'w-full': gruposevaluacionEXCEL?.datos?.listadoIncorrectos?.length === 0}">
+        <h4 class="mt-4">Correctos</h4>
+        <mat-table [dataSource]="gruposevaluacionEXCEL.datos.listadoCorrectos" class="mt-4 w-full border border-gray-300">
+          
+          <ng-container matColumnDef="grupoevaluacion">
+            <mat-header-cell *matHeaderCellDef>Grupo evaluación</mat-header-cell>
+            <mat-cell *matCellDef="let competencia">{{ competencia?.grupoEvaluacion?.descripcion }}</mat-cell>
+          </ng-container>
+          
+          <ng-container matColumnDef="codcalendario">
+            <mat-header-cell *matHeaderCellDef>Calendario</mat-header-cell>
+            <mat-cell *matCellDef="let competencia">{{ competencia?.calendario?.vNombre }}</mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="codpuesto">
+            <mat-header-cell *matHeaderCellDef>Codigo de puesto del trabajador</mat-header-cell>
+            <mat-cell *matCellDef="let competencia">{{ competencia?.trabajador?.codigoPuesto }}</mat-cell>
+          </ng-container>      
+          
+          <ng-container matColumnDef="denominaciónpuesto">
+            <mat-header-cell *matHeaderCellDef>Denominación del puesto del trabajador</mat-header-cell>
+            <mat-cell *matCellDef="let competencia">{{ competencia?.trabajador?.nombrePuesto }}</mat-cell>
+          </ng-container>  
+
+          <ng-container matColumnDef="codigoficha">
+            <mat-header-cell *matHeaderCellDef>Código de Ficha</mat-header-cell>
+            <mat-cell *matCellDef="let competencia">{{ competencia?.trabajador?.codigoFicha }}</mat-cell>
+          </ng-container>  
+
+          <ng-container matColumnDef="nombresapellidos">
+            <mat-header-cell *matHeaderCellDef>Nombres y Apellidos</mat-header-cell>
+            <mat-cell *matCellDef="let competencia">{{ competencia?.trabajador?.apellidosNombres }}</mat-cell>
+          </ng-container>  
+          
+          <ng-container matColumnDef="observacion">
+            <mat-header-cell *matHeaderCellDef>Observación</mat-header-cell>
+            <mat-cell *matCellDef="let competencia"></mat-cell>
+          </ng-container>
+          
+          <mat-header-row *matHeaderRowDef="displayedColumnsExcelModal"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumnsExcelModal;"></mat-row>
+        </mat-table>
+      </div>
+  
+      <div *ngIf="gruposevaluacionEXCEL && gruposevaluacionEXCEL.datos && gruposevaluacionEXCEL.datos.listadoIncorrectos && gruposevaluacionEXCEL.datos.listadoIncorrectos.length > 0"   
+      [ngClass]="{
+        'w-1/2': gruposevaluacionEXCEL?.datos?.listadoCorrectos?.length > 0,
+        'w-full': gruposevaluacionEXCEL?.datos?.listadoCorrectos?.length === 0}">
+        <h4 class="mt-4">Incorrectos</h4>
+        <mat-table [dataSource]="gruposevaluacionEXCEL.datos.listadoIncorrectos" class="mt-4 w-full border border-gray-300">
+        
+                   
+                   <ng-container matColumnDef="grupoevaluacion">
+                    <mat-header-cell *matHeaderCellDef>Grupo evaluación</mat-header-cell>
+                    <mat-cell *matCellDef="let competencia">{{ competencia?.grupoEvaluacion?.descripcion }}</mat-cell>
+                  </ng-container>
+                  
+                  <ng-container matColumnDef="codcalendario">
+                    <mat-header-cell *matHeaderCellDef>Calendario</mat-header-cell>
+                    <mat-cell *matCellDef="let competencia">{{ competencia?.calendario?.vNombre }}</mat-cell>
+                  </ng-container>
+        
+                  <ng-container matColumnDef="codpuesto">
+                    <mat-header-cell *matHeaderCellDef>Codigo de puesto del trabajador</mat-header-cell>
+                    <mat-cell *matCellDef="let competencia">{{ competencia?.trabajador?.codigoPuesto }}</mat-cell>
+                  </ng-container>      
+                  
+                  <ng-container matColumnDef="denominaciónpuesto">
+                    <mat-header-cell *matHeaderCellDef>Denominación del puesto del trabajador</mat-header-cell>
+                    <mat-cell *matCellDef="let competencia">{{ competencia?.trabajador?.nombrePuesto }}</mat-cell>
+                  </ng-container>  
+
+                  <ng-container matColumnDef="codigoficha">
+                    <mat-header-cell *matHeaderCellDef>Código de Ficha</mat-header-cell>
+                    <mat-cell *matCellDef="let competencia">{{ competencia?.trabajador?.codigoFicha }}</mat-cell>
+                  </ng-container>  
+
+                  <ng-container matColumnDef="nombresapellidos">
+                    <mat-header-cell *matHeaderCellDef>Nombres y Apellidos</mat-header-cell>
+                    <mat-cell *matCellDef="let competencia">{{ competencia?.trabajador?.apellidosNombres }}</mat-cell>
+                  </ng-container>  
+          
+          <ng-container matColumnDef="observacion">
+            <mat-header-cell *matHeaderCellDef>Observación</mat-header-cell>
+            <mat-cell *matCellDef="let competencia">
+              <ng-container *ngIf="competencia.mensajesError">
+                <ul class="dotted-list">
+                  <ng-container *ngFor="let mensaje of competencia.mensajesError.split('|')">
+                    <li>{{ AsignationEvalGroupsErrors[mensaje] }}</li>
+                  </ng-container>
+                </ul>
+              </ng-container>
+            </mat-cell>
+          </ng-container>
+  
+          <mat-header-row *matHeaderRowDef="displayedColumnsExcelModal"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumnsExcelModal;"></mat-row>
+        </mat-table>
+      </div>
+      
+    </div>
+  </mat-dialog-content>
+  
+  <h5 class="my-4 text-red-600"><b>AVISO:</b> Todos los registros deben estar correctos para poder continuar.</h5>
+
+  <mat-dialog-actions class="gap-2" align="end">
+    <button type="button" mat-dialog-close class="inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto">Cancelar</button>   
+    <button type="button" (click)="SendEvalGroupsAsignationData()" *ngIf="gruposevaluacionEXCEL != undefined && gruposevaluacionEXCEL?.datos?.listadoIncorrectos.length === 0" class="inline-flex w-full justify-center rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-blue-500 sm:mt-0 sm:w-auto" >Confirmar</button>  
+  </mat-dialog-actions>
+</ng-template>

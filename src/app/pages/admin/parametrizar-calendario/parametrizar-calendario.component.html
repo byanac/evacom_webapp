@@ -1,0 +1,40 @@
+<app-title titulo="PARAMETRIZACIÓN - {{CalendarData?.calendario?.vNombre}}"></app-title>
+
+<section *ngIf="CalendarData?.calendario" class="steps-container text-center flex justify-center">
+  <div class="w-full px-6">
+    <p-steps
+      [ngClass]="CalendarData?.calendario?.tipo === '90' ? 'half-width' : 'third-width'"
+      [model]="items"
+      [readonly]="false"
+      class="steps"
+      [(activeIndex)]="activeIndex"
+    >
+   </p-steps>
+  </div>
+  
+</section>
+
+<section *ngIf="CalendarData?.calendario" class="p-6 m-6" style="border: solid 2px #C8C8C8; border-radius: 5px;">
+  <div [ngClass]="{
+    'sm:grid-cols-2': CalendarData?.calendario?.tipo === '90',
+    'md:grid-cols-3': CalendarData?.calendario?.tipo === '180'
+  }"
+  class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+    <button *ngIf="CalendarData?.calendario?.tipo === '180'"  [routerLink]="['/home/configuracion-reglas-calculo',CalendarID]" class="bg-blue-100 rounded-lg p-4 text-center flex items-center shadow-sm hover:bg-blue-200">
+      <div style="min-width: 24px; max-height: 24px;" class="bg-white rounded-full w-6 h-6 flex items-center justify-center font-bold text-sm mr-2">1</div>
+      Configuración de reglas de cálculo
+    </button>
+    <button [routerLink]="['/home/asignacion-grupos-evaluacion',CalendarID]" [disabled]="this.CalendarData.calendario.tipo === '180' ? !this.CalendarData.reglaCalculo : false"  class="bg-blue-100 rounded-lg p-4 text-center flex items-center shadow-sm hover:bg-blue-200">
+      <div style="min-width: 24px; max-height: 24px;" class="bg-white rounded-full w-6 h-6 flex items-center justify-center font-bold text-sm mr-2">{{CalendarData?.calendario?.tipo === '90'? '1':'2'}}</div>
+      Asignación de grupos de evaluación
+    </button>
+    <button *ngIf="CalendarData?.calendario?.tipo === '90'"  [disabled]="!this.CalendarData.grupoEvaluacionAsignacion" [routerLink]="['/home/registro-evaluadores90',CalendarID]" class="bg-blue-100 rounded-lg p-4 text-center flex items-center shadow-sm hover:bg-blue-200">
+      <div style="min-width: 24px; max-height: 24px;" class="bg-white rounded-full w-6 h-6 flex items-center justify-center font-bold text-sm mr-2">{{CalendarData?.calendario?.tipo === '90'? '2':'3'}}</div>
+      Registro de evaluadores y evaluados 90°
+    </button>
+    <button *ngIf="CalendarData?.calendario?.tipo === '180'" [disabled]="!this.CalendarData.grupoEvaluacionAsignacion" [routerLink]="['/home/registro-evaluadores180',CalendarID]" class="bg-blue-100 rounded-lg p-4 text-center flex items-center shadow-sm hover:bg-blue-200">
+      <div style="min-width: 24px; max-height: 24px;" class="bg-white rounded-full w-6 h-6 flex items-center justify-center font-bold text-sm mr-2">3</div>
+      Registro de evaluadores y evaluados 180°
+    </button>
+  </div>  
+</section>

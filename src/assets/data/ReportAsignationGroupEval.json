@@ -1,0 +1,317 @@
+{
+    "registros": [
+        {
+            "idGrupoEvaluacionAsignacion": 2372,
+            "grupoEvaluacion": {
+                "codigo": "GP1",
+                "descripcion": "DESCRIP PRUEBA GRUPO EVALUACION TEST"
+            },
+            "calendario": {
+                "vCodigo": "C005",
+                "vNombre": "TESTCALENDARIO12323",
+                "tipo": "90"
+            },
+            "trabajador": {
+                "codigoFicha": "00015756",
+                "apellidosNombres": "GALINDO MEZA, FREDDY ALEXANDER",
+                "codigoPuesto": "00023973",
+                "nombrePuesto": "Contratado"
+            },
+            "estado": 1,
+            "admin": {
+                "codigoFicha": "00012336",
+                "apellidosNombres": "SEGURA PERALTA, AMERICA GLADYS",
+                "codigoPuesto": "00005197",
+                "nombrePuesto": "Analista Principal de Sistemas"
+            },
+            "fecModificacion": "2024-10-30 11:33:34"
+        },
+        {
+            "idGrupoEvaluacionAsignacion": 2373,
+            "grupoEvaluacion": {
+                "codigo": "GE4",
+                "descripcion": "Trabajadores sin Rol de Supervisión de Personal"
+            },
+            "calendario": {
+                "vCodigo": "C005",
+                "vNombre": "TESTCALENDARIO12323",
+                "tipo": "90"
+            },
+            "trabajador": {
+                "codigoFicha": "00025187",
+                "apellidosNombres": "DELGADO SALAZAR, MANUEL ADELIN",
+                "codigoPuesto": "00037795",
+                "nombrePuesto": "Operario Esp.Mantto de Plantas-Soldador"
+            },
+            "estado": 1,
+            "admin": {
+                "codigoFicha": "00012336",
+                "apellidosNombres": "SEGURA PERALTA, AMERICA GLADYS",
+                "codigoPuesto": "00005197",
+                "nombrePuesto": "Analista Principal de Sistemas"
+            },
+            "fecModificacion": "2024-10-30 11:33:34"
+        },
+        {
+            "idGrupoEvaluacionAsignacion": 2373,
+            "grupoEvaluacion": {
+                "codigo": "GE4",
+                "descripcion": "Trabajadores sin Rol de Supervisión de Personal"
+            },
+            "calendario": {
+                "vCodigo": "C005",
+                "vNombre": "TESTCALENDARIO12323",
+                "tipo": "90"
+            },
+            "trabajador": {
+                "codigoFicha": "00025187",
+                "apellidosNombres": "DELGADO SALAZAR, MANUEL ADELIN",
+                "codigoPuesto": "00037795",
+                "nombrePuesto": "Operario Esp.Mantto de Plantas-Soldador"
+            },
+            "estado": 1,
+            "admin": {
+                "codigoFicha": "00012336",
+                "apellidosNombres": "SEGURA PERALTA, AMERICA GLADYS",
+                "codigoPuesto": "00005197",
+                "nombrePuesto": "Analista Principal de Sistemas"
+            },
+            "fecModificacion": "2024-10-30 11:33:34"
+        },
+        {
+            "idGrupoEvaluacionAsignacion": 2373,
+            "grupoEvaluacion": {
+                "codigo": "GE4",
+                "descripcion": "Trabajadores sin Rol de Supervisión de Personal"
+            },
+            "calendario": {
+                "vCodigo": "C005",
+                "vNombre": "TESTCALENDARIO12323",
+                "tipo": "90"
+            },
+            "trabajador": {
+                "codigoFicha": "00025187",
+                "apellidosNombres": "DELGADO SALAZAR, MANUEL ADELIN",
+                "codigoPuesto": "00037795",
+                "nombrePuesto": "Operario Esp.Mantto de Plantas-Soldador"
+            },
+            "estado": 1,
+            "admin": {
+                "codigoFicha": "00012336",
+                "apellidosNombres": "SEGURA PERALTA, AMERICA GLADYS",
+                "codigoPuesto": "00005197",
+                "nombrePuesto": "Analista Principal de Sistemas"
+            },
+            "fecModificacion": "2024-10-30 11:33:34"
+        },
+        {
+            "idGrupoEvaluacionAsignacion": 2373,
+            "grupoEvaluacion": {
+                "codigo": "GE4",
+                "descripcion": "Trabajadores sin Rol de Supervisión de Personal"
+            },
+            "calendario": {
+                "vCodigo": "C005",
+                "vNombre": "TESTCALENDARIO12323",
+                "tipo": "90"
+            },
+            "trabajador": {
+                "codigoFicha": "00025187",
+                "apellidosNombres": "DELGADO SALAZAR, MANUEL ADELIN",
+                "codigoPuesto": "00037795",
+                "nombrePuesto": "Operario Esp.Mantto de Plantas-Soldador"
+            },
+            "estado": 1,
+            "admin": {
+                "codigoFicha": "00012336",
+                "apellidosNombres": "SEGURA PERALTA, AMERICA GLADYS",
+                "codigoPuesto": "00005197",
+                "nombrePuesto": "Analista Principal de Sistemas"
+            },
+            "fecModificacion": "2024-10-30 11:33:34"
+        },
+        {
+            "idGrupoEvaluacionAsignacion": 2373,
+            "grupoEvaluacion": {
+                "codigo": "GE4",
+                "descripcion": "Trabajadores sin Rol de Supervisión de Personal"
+            },
+            "calendario": {
+                "vCodigo": "C005",
+                "vNombre": "TESTCALENDARIO12323",
+                "tipo": "90"
+            },
+            "trabajador": {
+                "codigoFicha": "00025187",
+                "apellidosNombres": "DELGADO SALAZAR, MANUEL ADELIN",
+                "codigoPuesto": "00037795",
+                "nombrePuesto": "Operario Esp.Mantto de Plantas-Soldador"
+            },
+            "estado": 1,
+            "admin": {
+                "codigoFicha": "00012336",
+                "apellidosNombres": "SEGURA PERALTA, AMERICA GLADYS",
+                "codigoPuesto": "00005197",
+                "nombrePuesto": "Analista Principal de Sistemas"
+            },
+            "fecModificacion": "2024-10-30 11:33:34"
+        },
+        {
+            "idGrupoEvaluacionAsignacion": 2373,
+            "grupoEvaluacion": {
+                "codigo": "GE4",
+                "descripcion": "Trabajadores sin Rol de Supervisión de Personal"
+            },
+            "calendario": {
+                "vCodigo": "C005",
+                "vNombre": "TESTCALENDARIO12323",
+                "tipo": "90"
+            },
+            "trabajador": {
+                "codigoFicha": "00025187",
+                "apellidosNombres": "DELGADO SALAZAR, MANUEL ADELIN",
+                "codigoPuesto": "00037795",
+                "nombrePuesto": "Operario Esp.Mantto de Plantas-Soldador"
+            },
+            "estado": 1,
+            "admin": {
+                "codigoFicha": "00012336",
+                "apellidosNombres": "SEGURA PERALTA, AMERICA GLADYS",
+                "codigoPuesto": "00005197",
+                "nombrePuesto": "Analista Principal de Sistemas"
+            },
+            "fecModificacion": "2024-10-30 11:33:34"
+        },
+        {
+            "idGrupoEvaluacionAsignacion": 2373,
+            "grupoEvaluacion": {
+                "codigo": "GE4",
+                "descripcion": "Trabajadores sin Rol de Supervisión de Personal"
+            },
+            "calendario": {
+                "vCodigo": "C005",
+                "vNombre": "TESTCALENDARIO12323",
+                "tipo": "90"
+            },
+            "trabajador": {
+                "codigoFicha": "00025187",
+                "apellidosNombres": "DELGADO SALAZAR, MANUEL ADELIN",
+                "codigoPuesto": "00037795",
+                "nombrePuesto": "Operario Esp.Mantto de Plantas-Soldador"
+            },
+            "estado": 1,
+            "admin": {
+                "codigoFicha": "00012336",
+                "apellidosNombres": "SEGURA PERALTA, AMERICA GLADYS",
+                "codigoPuesto": "00005197",
+                "nombrePuesto": "Analista Principal de Sistemas"
+            },
+            "fecModificacion": "2024-10-30 11:33:34"
+        },
+        {
+            "idGrupoEvaluacionAsignacion": 2373,
+            "grupoEvaluacion": {
+                "codigo": "GE4",
+                "descripcion": "Trabajadores sin Rol de Supervisión de Personal"
+            },
+            "calendario": {
+                "vCodigo": "C005",
+                "vNombre": "TESTCALENDARIO12323",
+                "tipo": "90"
+            },
+            "trabajador": {
+                "codigoFicha": "00025187",
+                "apellidosNombres": "DELGADO SALAZAR, MANUEL ADELIN",
+                "codigoPuesto": "00037795",
+                "nombrePuesto": "Operario Esp.Mantto de Plantas-Soldador"
+            },
+            "estado": 1,
+            "admin": {
+                "codigoFicha": "00012336",
+                "apellidosNombres": "SEGURA PERALTA, AMERICA GLADYS",
+                "codigoPuesto": "00005197",
+                "nombrePuesto": "Analista Principal de Sistemas"
+            },
+            "fecModificacion": "2024-10-30 11:33:34"
+        },
+        {
+            "idGrupoEvaluacionAsignacion": 2373,
+            "grupoEvaluacion": {
+                "codigo": "GE4",
+                "descripcion": "Trabajadores sin Rol de Supervisión de Personal"
+            },
+            "calendario": {
+                "vCodigo": "C005",
+                "vNombre": "TESTCALENDARIO12323",
+                "tipo": "90"
+            },
+            "trabajador": {
+                "codigoFicha": "00025187",
+                "apellidosNombres": "DELGADO SALAZAR, MANUEL ADELIN",
+                "codigoPuesto": "00037795",
+                "nombrePuesto": "Operario Esp.Mantto de Plantas-Soldador"
+            },
+            "estado": 1,
+            "admin": {
+                "codigoFicha": "00012336",
+                "apellidosNombres": "SEGURA PERALTA, AMERICA GLADYS",
+                "codigoPuesto": "00005197",
+                "nombrePuesto": "Analista Principal de Sistemas"
+            },
+            "fecModificacion": "2024-10-30 11:33:34"
+        },
+        {
+            "idGrupoEvaluacionAsignacion": 2373,
+            "grupoEvaluacion": {
+                "codigo": "GE4",
+                "descripcion": "Trabajadores sin Rol de Supervisión de Personal"
+            },
+            "calendario": {
+                "vCodigo": "C005",
+                "vNombre": "TESTCALENDARIO12323",
+                "tipo": "90"
+            },
+            "trabajador": {
+                "codigoFicha": "00025187",
+                "apellidosNombres": "DELGADO SALAZAR, MANUEL ADELIN",
+                "codigoPuesto": "00037795",
+                "nombrePuesto": "Operario Esp.Mantto de Plantas-Soldador"
+            },
+            "estado": 1,
+            "admin": {
+                "codigoFicha": "00012336",
+                "apellidosNombres": "SEGURA PERALTA, AMERICA GLADYS",
+                "codigoPuesto": "00005197",
+                "nombrePuesto": "Analista Principal de Sistemas"
+            },
+            "fecModificacion": "2024-10-30 11:33:34"
+        },
+        {
+            "idGrupoEvaluacionAsignacion": 2373,
+            "grupoEvaluacion": {
+                "codigo": "GE4",
+                "descripcion": "Trabajadores sin Rol de Supervisión de Personal"
+            },
+            "calendario": {
+                "vCodigo": "C005",
+                "vNombre": "TESTCALENDARIO12323",
+                "tipo": "90"
+            },
+            "trabajador": {
+                "codigoFicha": "00025187",
+                "apellidosNombres": "DELGADO SALAZAR, MANUEL ADELIN",
+                "codigoPuesto": "00037795",
+                "nombrePuesto": "Operario Esp.Mantto de Plantas-Soldador"
+            },
+            "estado": 1,
+            "admin": {
+                "codigoFicha": "00012336",
+                "apellidosNombres": "SEGURA PERALTA, AMERICA GLADYS",
+                "codigoPuesto": "00005197",
+                "nombrePuesto": "Analista Principal de Sistemas"
+            },
+            "fecModificacion": "2024-10-30 11:33:34"
+        }
+    ],
+    "mensaje": "OK"
+}

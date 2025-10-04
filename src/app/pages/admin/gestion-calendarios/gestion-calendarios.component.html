@@ -1,0 +1,50 @@
+  <app-title titulo="GESTIÓN DE CALENDARIOS"></app-title>
+  <div class="contenedor">
+    <button class="DownloadMasive" [routerLink]="['/home/registro-calendario']">Registrar calendario</button>
+  </div> 
+  
+  <div class="relative overflow-x-auto h-screen">
+    <table class="min-w-full text-left text-gray-500" style="line-height: 1.25rem; table-layout: fixed;">
+      <thead class="text-xs text-gray-700 uppercase bg-gray-5">
+        <tr>
+          <th scope="col" class="px-6 py-3 border">
+            NOMBRE DE CALENDARIO
+          </th>
+          <th scope="col" class="px-6 py-3 border">
+            CÓDIGO DE CALENDARIO
+          </th>
+          <th scope="col" class="px-6 py-3 border">
+            TIPO DE CALENDARIO
+          </th>
+          <th scope="col" class="px-6 py-3 border">
+            INICIO DEL PERIODO
+          </th>
+          <th scope="col" class="px-6 py-3 border">
+            FIN DEL PERIODO
+          </th>
+          <th scope="col" class="px-6 py-3 border w-10">
+            Acciones
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of DataToShow">
+          <td class="px-6 py-4 text-black border">{{item.vNombre}}</td>
+          <td class="px-6 py-4 text-black border">{{item.vCodigo}}</td>
+          <td class="px-6 py-4 text-black border">{{item.tipo}}°</td>
+          <td class="px-6 py-4 text-black border">{{item.dPeriodoIni | date: 'dd/MM/yyyy'}}</td>
+          <td class="px-6 py-4 text-black border">{{item.dPeriodoFin | date: 'dd/MM/yyyy'}}</td>
+          <td class="px-6 py-4 text-black border">
+            <div class="flex gap-2">
+              <button type="button" [routerLink]="['/home/editar-calendario',item.vCodigo]" class="text-white bg-blue-500 hover:bg-blue-600 font-medium rounded-lg text-sm px-2.5 py-2.5">
+                Editar
+              </button>
+              <button type="button" [routerLink]="['/home/parametrizar-calendario',item.vCodigo]" class="text-white bg-green-500 hover:bg-green-600 font-medium rounded-lg text-sm px-2.5 py-2.5">
+                Configuración
+              </button>
+            </div>
+          </td>          
+        </tr>
+      </tbody>
+    </table>
+  </div>

@@ -1,0 +1,760 @@
+{
+    "registros": [
+        {
+            "idEvaluacionAsignacion": 2520,
+            "evaluador": {
+                "codigoFicha": "00013625",
+                "apellidosNombres": "HOLGUIN MEDINA, LILIANA MYRIAM",
+                "codigoPuesto": "00010750",
+                "nombrePuesto": "Analista Princ.de Reg.y Contr.Patrimon.",
+                "tipoEvaluador": 1
+            },
+            "evaluado": {
+                "codigoFicha": "00013794",
+                "apellidosNombres": "CORTEZ GARCIA, LIZBETH JUDITH",
+                "codigoPuesto": "00005896",
+                "nombrePuesto": "Jefe Eq.Gest.Ambie.y Servi.Ecosistémicos"
+            },
+            "calendario": {
+                "vCodigo": "C005",
+                "vNombre": "180 2025-I",
+                "tipo": "180"
+            },
+            "estado": 1,
+            "admin": {
+                "codigoFicha": "00012336",
+                "apellidosNombres": "SEGURA PERALTA, AMERICA GLADYS",
+                "codigoPuesto": "00005197",
+                "nombrePuesto": "Analista Principal de Sistemas"
+            },
+            "fecModificacion": "2024-11-27 11:33:34"
+        },
+        {
+            "idEvaluacionAsignacion": 2519,
+            "evaluador": {
+                "codigoFicha": "00012849",
+                "apellidosNombres": "FLORES ZURITA, CARMEN ANGELICA",
+                "codigoPuesto": "00013523",
+                "nombrePuesto": "Analista de Reg. y Control Patrimonial",
+                "tipoEvaluador": 2
+            },
+            "evaluado": {
+                "codigoFicha": "00013794",
+                "apellidosNombres": "CORTEZ GARCIA, LIZBETH JUDITH",
+                "codigoPuesto": "00005896",
+                "nombrePuesto": "Jefe Eq.Gest.Ambie.y Servi.Ecosistémicos"
+            },
+            "calendario": {
+                "vCodigo": "C005",
+                "vNombre": "180 2025-I",
+                "tipo": "180"
+            },
+            "estado": 1,
+            "admin": {
+                "codigoFicha": "00012336",
+                "apellidosNombres": "SEGURA PERALTA, AMERICA GLADYS",
+                "codigoPuesto": "00005197",
+                "nombrePuesto": "Analista Principal de Sistemas"
+            },
+            "fecModificacion": "2024-10-10 11:33:34"
+        },
+        {
+            "idEvaluacionAsignacion": 2521,
+            "evaluador": {
+                "codigoFicha": "00014859",
+                "apellidosNombres": "LIZARME RAMIREZ, KATIA",
+                "codigoPuesto": "00037778",
+                "nombrePuesto": "Esp.de Registro y Control Patrimonial",
+                "tipoEvaluador": 3
+            },
+            "evaluado": {
+                "codigoFicha": "00013794",
+                "apellidosNombres": "CORTEZ GARCIA, LIZBETH JUDITH",
+                "codigoPuesto": "00005896",
+                "nombrePuesto": "Jefe Eq.Gest.Ambie.y Servi.Ecosistémicos"
+            },
+            "calendario": {
+                "vCodigo": "C005",
+                "vNombre": "180 2025-I",
+                "tipo": "180"
+            },
+            "estado": 1,
+            "admin": {
+                "codigoFicha": "00012336",
+                "apellidosNombres": "SEGURA PERALTA, AMERICA GLADYS",
+                "codigoPuesto": "00005197",
+                "nombrePuesto": "Analista Principal de Sistemas"
+            },
+            "fecModificacion": "2024-10-30 11:33:34"
+        },
+        {
+            "idEvaluacionAsignacion": 2522,
+            "evaluador": {
+                "codigoFicha": "00015538",
+                "apellidosNombres": "CHIPOCO TOLEDO, JUAN CARLOS",
+                "codigoPuesto": "00027369",
+                "nombrePuesto": "Gerente de Logística y Servicios",
+                "tipoEvaluador": 4
+            },
+            "evaluado": {
+                "codigoFicha": "00013794",
+                "apellidosNombres": "CORTEZ GARCIA, LIZBETH JUDITH",
+                "codigoPuesto": "00005896",
+                "nombrePuesto": "Jefe Eq.Gest.Ambie.y Servi.Ecosistémicos"
+            },
+            "calendario": {
+                "vCodigo": "C005",
+                "vNombre": "180 2025-I",
+                "tipo": "180"
+            },
+            "estado": 1,
+            "admin": {
+                "codigoFicha": "00012336",
+                "apellidosNombres": "SEGURA PERALTA, AMERICA GLADYS",
+                "codigoPuesto": "00005197",
+                "nombrePuesto": "Analista Principal de Sistemas"
+            },
+            "fecModificacion": "2024-10-30 11:33:34"
+        },
+
+        {
+            "idEvaluacionAsignacion": 2524,
+            "evaluador": {
+                "codigoFicha": "00012849",
+                "apellidosNombres": "FLORES ZURITA, CARMEN ANGELICA",
+                "codigoPuesto": "00013523",
+                "nombrePuesto": "Analista de Reg. y Control Patrimonial",
+                "tipoEvaluador": 1
+            },
+            "evaluado": {
+                "codigoFicha": "00012069",
+                "apellidosNombres": "ZAVALA CISNEROS, JORGE CARLOS HERMINIO",
+                "codigoPuesto": "00014145",
+                "nombrePuesto": "Jefe del Equipo Comercial-Ate Vitarte"
+            },
+            "calendario": {
+                "vCodigo": "C005",
+                "vNombre": "180 2025-I",
+                "tipo": "180"
+            },
+            "estado": 1,
+            "admin": {
+                "codigoFicha": "00012336",
+                "apellidosNombres": "SEGURA PERALTA, AMERICA GLADYS",
+                "codigoPuesto": "00005197",
+                "nombrePuesto": "Analista Principal de Sistemas"
+            },
+            "fecModificacion": "2024-10-30 11:33:34"
+        },
+        {
+            "idEvaluacionAsignacion": 2525,
+            "evaluador": {
+                "codigoFicha": "00012878",
+                "apellidosNombres": "GARCIA ALCANTARA, ELIZABETH EUMELIA",
+                "codigoPuesto": "00036870",
+                "nombrePuesto": "Jefe del Equipo Comercial - Breña",
+                "tipoEvaluador": 2
+            },
+            "evaluado": {
+                "codigoFicha": "00012069",
+                "apellidosNombres": "ZAVALA CISNEROS, JORGE CARLOS HERMINIO",
+                "codigoPuesto": "00014145",
+                "nombrePuesto": "Jefe del Equipo Comercial-Ate Vitarte"
+            },
+            "calendario": {
+                "vCodigo": "C005",
+                "vNombre": "180 2025-I",
+                "tipo": "180"
+            },
+            "estado": 1,
+            "admin": {
+                "codigoFicha": "00012336",
+                "apellidosNombres": "SEGURA PERALTA, AMERICA GLADYS",
+                "codigoPuesto": "00005197",
+                "nombrePuesto": "Analista Principal de Sistemas"
+            },
+            "fecModificacion": "2024-10-30 11:33:34"
+        },
+        {
+            "idEvaluacionAsignacion": 2526,
+            "evaluador": {
+                "codigoFicha": "00014178",
+                "apellidosNombres": "BALLARTA MUÑOZ, SANDRO FRANCISCO",
+                "codigoPuesto": "00002001",
+                "nombrePuesto": "Jefe del Equipo Comercial - VES",
+                "tipoEvaluador": 3
+            },
+            "evaluado": {
+                "codigoFicha": "00012069",
+                "apellidosNombres": "ZAVALA CISNEROS, JORGE CARLOS HERMINIO",
+                "codigoPuesto": "00014145",
+                "nombrePuesto": "Jefe del Equipo Comercial-Ate Vitarte"
+            },
+            "calendario": {
+                "vCodigo": "C005",
+                "vNombre": "180 2025-I",
+                "tipo": "180"
+            },
+            "estado": 1,
+            "admin": {
+                "codigoFicha": "00012336",
+                "apellidosNombres": "SEGURA PERALTA, AMERICA GLADYS",
+                "codigoPuesto": "00005197",
+                "nombrePuesto": "Analista Principal de Sistemas"
+            },
+            "fecModificacion": "2024-10-30 11:33:34"
+        },
+        {
+            "idEvaluacionAsignacion": 2527,
+            "evaluador": {
+                "codigoFicha": "00014312",
+                "apellidosNombres": "CHONG SILVA, DAVID SALOMON",
+                "codigoPuesto": "00001878",
+                "nombrePuesto": "Jefe del Eq. Gest. Comercial y Micromedi",
+                "tipoEvaluador": 4
+            },
+            "evaluado": {
+                "codigoFicha": "00012069",
+                "apellidosNombres": "ZAVALA CISNEROS, JORGE CARLOS HERMINIO",
+                "codigoPuesto": "00014145",
+                "nombrePuesto": "Jefe del Equipo Comercial-Ate Vitarte"
+            },
+            "calendario": {
+                "vCodigo": "C005",
+                "vNombre": "180 2025-I",
+                "tipo": "180"
+            },
+            "estado": 1,
+            "admin": {
+                "codigoFicha": "00012336",
+                "apellidosNombres": "SEGURA PERALTA, AMERICA GLADYS",
+                "codigoPuesto": "00005197",
+                "nombrePuesto": "Analista Principal de Sistemas"
+            },
+            "fecModificacion": "2024-10-30 11:33:34"
+        },
+        {
+            "idEvaluacionAsignacion": 2528,
+            "evaluador": {
+                "codigoFicha": "00012550",
+                "apellidosNombres": "RAMIREZ RUIZ, JULIO FEDERICO",
+                "codigoPuesto": "00032844",
+                "nombrePuesto": "Gerente de Proyectos y Obras",
+                "tipoEvaluador": 5
+            },
+            "evaluado": {
+                "codigoFicha": "00012069",
+                "apellidosNombres": "ZAVALA CISNEROS, JORGE CARLOS HERMINIO",
+                "codigoPuesto": "00014145",
+                "nombrePuesto": "Jefe del Equipo Comercial-Ate Vitarte"
+            },
+            "calendario": {
+                "vCodigo": "C005",
+                "vNombre": "180 2025-I",
+                "tipo": "180"
+            },
+            "estado": 1,
+            "admin": {
+                "codigoFicha": "00012336",
+                "apellidosNombres": "SEGURA PERALTA, AMERICA GLADYS",
+                "codigoPuesto": "00005197",
+                "nombrePuesto": "Analista Principal de Sistemas"
+            },
+            "fecModificacion": "2024-10-30 11:33:34"
+        },
+        {
+            "idEvaluacionAsignacion": 2514,
+            "evaluador": {
+                "codigoFicha": "00012336",
+                "apellidosNombres": "SEGURA PERALTA, AMERICA GLADYS",
+                "codigoPuesto": "00005197",
+                "nombrePuesto": "Analista Principal de Sistemas",
+                "tipoEvaluador": 1
+            },
+            "evaluado": {
+                "codigoFicha": "00012845",
+                "apellidosNombres": "SANTOS MARTINEZ, ROLANDO",
+                "codigoPuesto": "00016707",
+                "nombrePuesto": "Analista Principal de Sistemas"
+            },
+            "calendario": {
+                "vCodigo": "C005",
+                "vNombre": "180 2025-I",
+                "tipo": "180"
+            },
+            "estado": 1,
+            "admin": {
+                "codigoFicha": "00012336",
+                "apellidosNombres": "SEGURA PERALTA, AMERICA GLADYS",
+                "codigoPuesto": "00005197",
+                "nombrePuesto": "Analista Principal de Sistemas"
+            },
+            "fecModificacion": "2024-10-30 11:33:34"
+        },
+        {
+            "idEvaluacionAsignacion": 2513,
+            "evaluador": {
+                "codigoFicha": "00012336",
+                "apellidosNombres": "SEGURA PERALTA, AMERICA GLADYS",
+                "codigoPuesto": "00005197",
+                "nombrePuesto": "Analista Principal de Sistemas",
+                "tipoEvaluador": 1
+            },
+            "evaluado": {
+                "codigoFicha": "00012845",
+                "apellidosNombres": "SANTOS MARTINEZ, ROLANDO",
+                "codigoPuesto": "00016707",
+                "nombrePuesto": "Analista Principal de Sistemas"
+            },
+            "calendario": {
+                "vCodigo": "C005",
+                "vNombre": "180 2025-I",
+                "tipo": "180"
+            },
+            "estado": 0,
+            "admin": {
+                "codigoFicha": "00012336",
+                "apellidosNombres": "SEGURA PERALTA, AMERICA GLADYS",
+                "codigoPuesto": "00005197",
+                "nombrePuesto": "Analista Principal de Sistemas"
+            },
+            "fecModificacion": "2024-10-30 11:33:34"
+        },
+        {
+            "idEvaluacionAsignacion": 2512,
+            "evaluador": {
+                "codigoFicha": "00012336",
+                "apellidosNombres": "SEGURA PERALTA, AMERICA GLADYS",
+                "codigoPuesto": "00005197",
+                "nombrePuesto": "Analista Principal de Sistemas",
+                "tipoEvaluador": 1
+            },
+            "evaluado": {
+                "codigoFicha": "00012845",
+                "apellidosNombres": "SANTOS MARTINEZ, ROLANDO",
+                "codigoPuesto": "00016707",
+                "nombrePuesto": "Analista Principal de Sistemas"
+            },
+            "calendario": {
+                "vCodigo": "C005",
+                "vNombre": "180 2025-I",
+                "tipo": "180"
+            },
+            "estado": 0,
+            "admin": {
+                "codigoFicha": "00012336",
+                "apellidosNombres": "SEGURA PERALTA, AMERICA GLADYS",
+                "codigoPuesto": "00005197",
+                "nombrePuesto": "Analista Principal de Sistemas"
+            },
+            "fecModificacion": "2024-10-30 11:33:34"
+        },
+        {
+            "idEvaluacionAsignacion": 2515,
+            "evaluador": {
+                "codigoFicha": "00015884",
+                "apellidosNombres": "BALDEON CAIRO, ELVIS ALCIDES",
+                "codigoPuesto": "00038057",
+                "nombrePuesto": "Técnico Administrativo",
+                "tipoEvaluador": 1
+            },
+            "evaluado": {
+                "codigoFicha": "00012845",
+                "apellidosNombres": "SANTOS MARTINEZ, ROLANDO",
+                "codigoPuesto": "00016707",
+                "nombrePuesto": "Analista Principal de Sistemas"
+            },
+            "calendario": {
+                "vCodigo": "C005",
+                "vNombre": "180 2025-I",
+                "tipo": "180"
+            },
+            "estado": 1,
+            "admin": {
+                "codigoFicha": "00012336",
+                "apellidosNombres": "SEGURA PERALTA, AMERICA GLADYS",
+                "codigoPuesto": "00005197",
+                "nombrePuesto": "Analista Principal de Sistemas"
+            },
+            "fecModificacion": "2024-10-30 11:33:34"
+        },
+        {
+            "idEvaluacionAsignacion": 2516,
+            "evaluador": {
+                "codigoFicha": "00013928",
+                "apellidosNombres": "DIAZ CABREJO, RICARDO NOE",
+                "codigoPuesto": "00019649",
+                "nombrePuesto": "Especialista de Oper. Manten. Electrom.",
+                "tipoEvaluador": 2
+            },
+            "evaluado": {
+                "codigoFicha": "00012845",
+                "apellidosNombres": "SANTOS MARTINEZ, ROLANDO",
+                "codigoPuesto": "00016707",
+                "nombrePuesto": "Analista Principal de Sistemas"
+            },
+            "calendario": {
+                "vCodigo": "C005",
+                "vNombre": "180 2025-I",
+                "tipo": "180"
+            },
+            "estado": 1,
+            "admin": {
+                "codigoFicha": "00012336",
+                "apellidosNombres": "SEGURA PERALTA, AMERICA GLADYS",
+                "codigoPuesto": "00005197",
+                "nombrePuesto": "Analista Principal de Sistemas"
+            },
+            "fecModificacion": "2024-10-30 11:33:34"
+        },
+        {
+            "idEvaluacionAsignacion": 2517,
+            "evaluador": {
+                "codigoFicha": "00012846",
+                "apellidosNombres": "ROJAS JAHUANCAMA, CARLOS ALBERTO",
+                "codigoPuesto": "00017452",
+                "nombrePuesto": "Desarrollador de Sistemas de Información",
+                "tipoEvaluador": 3
+            },
+            "evaluado": {
+                "codigoFicha": "00012845",
+                "apellidosNombres": "SANTOS MARTINEZ, ROLANDO",
+                "codigoPuesto": "00016707",
+                "nombrePuesto": "Analista Principal de Sistemas"
+            },
+            "calendario": {
+                "vCodigo": "C005",
+                "vNombre": "180 2025-I",
+                "tipo": "180"
+            },
+            "estado": 1,
+            "admin": {
+                "codigoFicha": "00012336",
+                "apellidosNombres": "SEGURA PERALTA, AMERICA GLADYS",
+                "codigoPuesto": "00005197",
+                "nombrePuesto": "Analista Principal de Sistemas"
+            },
+            "fecModificacion": "2024-10-30 11:33:34"
+        },
+        {
+            "idEvaluacionAsignacion": 2518,
+            "evaluador": {
+                "codigoFicha": "00016119",
+                "apellidosNombres": "DE LA ROCHA CORZO, JULIO CESAR",
+                "codigoPuesto": "00000451",
+                "nombrePuesto": "Gerente General",
+                "tipoEvaluador": 4
+            },
+            "evaluado": {
+                "codigoFicha": "00012845",
+                "apellidosNombres": "SANTOS MARTINEZ, ROLANDO",
+                "codigoPuesto": "00016707",
+                "nombrePuesto": "Analista Principal de Sistemas"
+            },
+            "calendario": {
+                "vCodigo": "C005",
+                "vNombre": "180 2025-I",
+                "tipo": "180"
+            },
+            "estado": 1,
+            "admin": {
+                "codigoFicha": "00012336",
+                "apellidosNombres": "SEGURA PERALTA, AMERICA GLADYS",
+                "codigoPuesto": "00005197",
+                "nombrePuesto": "Analista Principal de Sistemas"
+            },
+            "fecModificacion": "2024-10-30 11:33:34"
+        },
+        {
+            "idEvaluacionAsignacion": 2507,
+            "evaluador": {
+                "codigoFicha": "00013928",
+                "apellidosNombres": "DIAZ CABREJO, RICARDO NOE",
+                "codigoPuesto": "00019649",
+                "nombrePuesto": "Especialista de Oper. Manten. Electrom.",
+                "tipoEvaluador": 1
+            },
+            "evaluado": {
+                "codigoFicha": "00025133",
+                "apellidosNombres": "CIVICO MEJIA, MOISES ANACLETO",
+                "codigoPuesto": "00030570",
+                "nombrePuesto": "Oper.Esp.Oper.SCADA de Sis.de Bomb.de Ag"
+            },
+            "calendario": {
+                "vCodigo": "C005",
+                "vNombre": "180 2025-I",
+                "tipo": "180"
+            },
+            "estado": 0,
+            "admin": {
+                "codigoFicha": "00012336",
+                "apellidosNombres": "SEGURA PERALTA, AMERICA GLADYS",
+                "codigoPuesto": "00005197",
+                "nombrePuesto": "Analista Principal de Sistemas"
+            },
+            "fecModificacion": "2024-10-30 11:33:34"
+        },
+        {
+            "idEvaluacionAsignacion": 2502,
+            "evaluador": {
+                "codigoFicha": "00012846",
+                "apellidosNombres": "ROJAS JAHUANCAMA, CARLOS ALBERTO",
+                "codigoPuesto": "00017452",
+                "nombrePuesto": "Desarrollador de Sistemas de Información",
+                "tipoEvaluador": 1
+            },
+            "evaluado": {
+                "codigoFicha": "00025133",
+                "apellidosNombres": "CIVICO MEJIA, MOISES ANACLETO",
+                "codigoPuesto": "00030570",
+                "nombrePuesto": "Oper.Esp.Oper.SCADA de Sis.de Bomb.de Ag"
+            },
+            "calendario": {
+                "vCodigo": "C005",
+                "vNombre": "180 2025-I",
+                "tipo": "180"
+            },
+            "estado": 0,
+            "admin": {
+                "codigoFicha": "00012336",
+                "apellidosNombres": "SEGURA PERALTA, AMERICA GLADYS",
+                "codigoPuesto": "00005197",
+                "nombrePuesto": "Analista Principal de Sistemas"
+            },
+            "fecModificacion": "2024-10-30 11:33:34"
+        },
+        {
+            "idEvaluacionAsignacion": 2505,
+            "evaluador": {
+                "codigoFicha": "00013928",
+                "apellidosNombres": "DIAZ CABREJO, RICARDO NOE",
+                "codigoPuesto": "00019649",
+                "nombrePuesto": "Especialista de Oper. Manten. Electrom.",
+                "tipoEvaluador": 1
+            },
+            "evaluado": {
+                "codigoFicha": "00025133",
+                "apellidosNombres": "CIVICO MEJIA, MOISES ANACLETO",
+                "codigoPuesto": "00030570",
+                "nombrePuesto": "Oper.Esp.Oper.SCADA de Sis.de Bomb.de Ag"
+            },
+            "calendario": {
+                "vCodigo": "C005",
+                "vNombre": "180 2025-I",
+                "tipo": "180"
+            },
+            "estado": 0,
+            "admin": {
+                "codigoFicha": "00012336",
+                "apellidosNombres": "SEGURA PERALTA, AMERICA GLADYS",
+                "codigoPuesto": "00005197",
+                "nombrePuesto": "Analista Principal de Sistemas"
+            },
+            "fecModificacion": "2024-10-30 11:33:34"
+        },
+        {
+            "idEvaluacionAsignacion": 2504,
+            "evaluador": {
+                "codigoFicha": "00013928",
+                "apellidosNombres": "DIAZ CABREJO, RICARDO NOE",
+                "codigoPuesto": "00019649",
+                "nombrePuesto": "Especialista de Oper. Manten. Electrom.",
+                "tipoEvaluador": 1
+            },
+            "evaluado": {
+                "codigoFicha": "00025133",
+                "apellidosNombres": "CIVICO MEJIA, MOISES ANACLETO",
+                "codigoPuesto": "00030570",
+                "nombrePuesto": "Oper.Esp.Oper.SCADA de Sis.de Bomb.de Ag"
+            },
+            "calendario": {
+                "vCodigo": "C005",
+                "vNombre": "180 2025-I",
+                "tipo": "180"
+            },
+            "estado": 0,
+            "admin": {
+                "codigoFicha": "00012336",
+                "apellidosNombres": "SEGURA PERALTA, AMERICA GLADYS",
+                "codigoPuesto": "00005197",
+                "nombrePuesto": "Analista Principal de Sistemas"
+            },
+            "fecModificacion": "2024-10-30 11:33:34"
+        },
+        {
+            "idEvaluacionAsignacion": 2509,
+            "evaluador": {
+                "codigoFicha": "00013928",
+                "apellidosNombres": "DIAZ CABREJO, RICARDO NOE",
+                "codigoPuesto": "00019649",
+                "nombrePuesto": "Especialista de Oper. Manten. Electrom.",
+                "tipoEvaluador": 1
+            },
+            "evaluado": {
+                "codigoFicha": "00025133",
+                "apellidosNombres": "CIVICO MEJIA, MOISES ANACLETO",
+                "codigoPuesto": "00030570",
+                "nombrePuesto": "Oper.Esp.Oper.SCADA de Sis.de Bomb.de Ag"
+            },
+            "calendario": {
+                "vCodigo": "C005",
+                "vNombre": "180 2025-I",
+                "tipo": "180"
+            },
+            "estado": 0,
+            "admin": {
+                "codigoFicha": "00012336",
+                "apellidosNombres": "SEGURA PERALTA, AMERICA GLADYS",
+                "codigoPuesto": "00005197",
+                "nombrePuesto": "Analista Principal de Sistemas"
+            },
+            "fecModificacion": "2024-10-30 11:33:34"
+        },
+        {
+            "idEvaluacionAsignacion": 2508,
+            "evaluador": {
+                "codigoFicha": "00013928",
+                "apellidosNombres": "DIAZ CABREJO, RICARDO NOE",
+                "codigoPuesto": "00019649",
+                "nombrePuesto": "Especialista de Oper. Manten. Electrom.",
+                "tipoEvaluador": 1
+            },
+            "evaluado": {
+                "codigoFicha": "00025133",
+                "apellidosNombres": "CIVICO MEJIA, MOISES ANACLETO",
+                "codigoPuesto": "00030570",
+                "nombrePuesto": "Oper.Esp.Oper.SCADA de Sis.de Bomb.de Ag"
+            },
+            "calendario": {
+                "vCodigo": "C005",
+                "vNombre": "180 2025-I",
+                "tipo": "180"
+            },
+            "estado": 0,
+            "admin": {
+                "codigoFicha": "00012336",
+                "apellidosNombres": "SEGURA PERALTA, AMERICA GLADYS",
+                "codigoPuesto": "00005197",
+                "nombrePuesto": "Analista Principal de Sistemas"
+            },
+            "fecModificacion": "2024-10-30 11:33:34"
+        },
+        {
+            "idEvaluacionAsignacion": 2510,
+            "evaluador": {
+                "codigoFicha": "00012336",
+                "apellidosNombres": "SEGURA PERALTA, AMERICA GLADYS",
+                "codigoPuesto": "00005197",
+                "nombrePuesto": "Analista Principal de Sistemas",
+                "tipoEvaluador": 1
+            },
+            "evaluado": {
+                "codigoFicha": "00025133",
+                "apellidosNombres": "CIVICO MEJIA, MOISES ANACLETO",
+                "codigoPuesto": "00030570",
+                "nombrePuesto": "Oper.Esp.Oper.SCADA de Sis.de Bomb.de Ag"
+            },
+            "calendario": {
+                "vCodigo": "C005",
+                "vNombre": "180 2025-I",
+                "tipo": "90"
+            },
+            "estado": 0,
+            "admin": {
+                "codigoFicha": "00012336",
+                "apellidosNombres": "SEGURA PERALTA, AMERICA GLADYS",
+                "codigoPuesto": "00005197",
+                "nombrePuesto": "Analista Principal de Sistemas"
+            },
+            "fecModificacion": "2024-10-30 11:33:34"
+        },
+        {
+            "idEvaluacionAsignacion": 2506,
+            "evaluador": {
+                "codigoFicha": "00013928",
+                "apellidosNombres": "DIAZ CABREJO, RICARDO NOE",
+                "codigoPuesto": "00019649",
+                "nombrePuesto": "Especialista de Oper. Manten. Electrom.",
+                "tipoEvaluador": 1
+            },
+            "evaluado": {
+                "codigoFicha": "00025133",
+                "apellidosNombres": "CIVICO MEJIA, MOISES ANACLETO",
+                "codigoPuesto": "00030570",
+                "nombrePuesto": "Oper.Esp.Oper.SCADA de Sis.de Bomb.de Ag"
+            },
+            "calendario": {
+                "vCodigo": "C005",
+                "vNombre": "180 2025-I",
+                "tipo": "180"
+            },
+            "estado": 0,
+            "admin": {
+                "codigoFicha": "00012336",
+                "apellidosNombres": "SEGURA PERALTA, AMERICA GLADYS",
+                "codigoPuesto": "00005197",
+                "nombrePuesto": "Analista Principal de Sistemas"
+            },
+            "fecModificacion": "2024-10-30 11:33:34"
+        },
+        {
+            "idEvaluacionAsignacion": 2511,
+            "evaluador": {
+                "codigoFicha": "00012336",
+                "apellidosNombres": "SEGURA PERALTA, AMERICA GLADYS",
+                "codigoPuesto": "00005197",
+                "nombrePuesto": "Analista Principal de Sistemas",
+                "tipoEvaluador": 1
+            },
+            "evaluado": {
+                "codigoFicha": "00013255",
+                "apellidosNombres": "ZUÑIGA URDAY, PAOLA ARCELIA",
+                "codigoPuesto": "00038299",
+                "nombrePuesto": "Jefe del Equipo Evaluación y Proyección"
+            },
+            "calendario": {
+                "vCodigo": "C005",
+                "vNombre": "180 2025-I",
+                "tipo": "180"
+            },
+            "estado": 0,
+            "admin": {
+                "codigoFicha": "00012336",
+                "apellidosNombres": "SEGURA PERALTA, AMERICA GLADYS",
+                "codigoPuesto": "00005197",
+                "nombrePuesto": "Analista Principal de Sistemas"
+            },
+            "fecModificacion": "2024-10-30 11:33:34"
+        },
+        {
+            "idEvaluacionAsignacion": 2503,
+            "evaluador": {
+                "codigoFicha": "00015884",
+                "apellidosNombres": "BALDEON CAIRO, ELVIS ALCIDES",
+                "codigoPuesto": "00038057",
+                "nombrePuesto": "Técnico Administrativo",
+                "tipoEvaluador": 1
+            },
+            "evaluado": {
+                "codigoFicha": "00013255",
+                "apellidosNombres": "ZUÑIGA URDAY, PAOLA ARCELIA",
+                "codigoPuesto": "00038299",
+                "nombrePuesto": "Jefe del Equipo Evaluación y Proyección"
+            },
+            "calendario": {
+                "vCodigo": "C005",
+                "vNombre": "180 2025-I",
+                "tipo": "180"
+            },
+            "estado": 0,
+            "admin": {
+                "codigoFicha": "00012336",
+                "apellidosNombres": "SEGURA PERALTA, AMERICA GLADYS",
+                "codigoPuesto": "00005197",
+                "nombrePuesto": "Analista Principal de Sistemas"
+            },
+            "fecModificacion": "2024-10-30 11:33:34"
+        }
+    ],
+    "mensaje": "OK"
+}

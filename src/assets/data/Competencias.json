@@ -1,0 +1,362 @@
+{
+    "registros": [
+        {
+            "codigo": "C006",
+            "titulo": "ORIENTACIÓN A RESULTADOS",
+            "descripcion": "Es la capacidad de encaminar todos los actos al cumplimiento de lo esperado, actuando con velocidad y sentido de urgencia ante decisiones importantes necesarias para superar los obstáculos, respondiendo a las necesidades del cliente interno o externo, y grupos de interés para mejorar el desempeño de la empresa tomando en cuenta los aspectos económicos, sociales y ambientales.",
+            "estado": 1,
+            "grupo": {
+                "codigo": "GC001",
+                "descripcion": "Centrales"
+            },
+            "admin": {
+                "codigoFicha": "00012336",
+                "apellidosNombres": "SEGURA PERALTA, AMERICA GLADYS",
+                "codigoPuesto": "00005197",
+                "nombrePuesto": "Analista Principal de Sistemas"
+            },
+            "fecModificacion": "2024-10-30 11:33:34"
+        },
+        {
+            "codigo": "C001",
+            "titulo": "VOCACIÓN DE SERVICIO",
+            "descripcion": "Entiende, administra y responde a las expectativas y necesidades de los clientes internos, externos y grupos de interés de la empresa. Busca ofrecer un servicio excepcional, siendo empático y proactivo a las necesidades del cliente. Está atento a responder oportunamente y con efectividad, generando la creación de valor. Está orientado a fortalecer una cultura de calidad de servicio en la empresa.",
+            "estado": 1,
+            "grupo": {
+                "codigo": "GC001",
+                "descripcion": "Centrales"
+            },
+            "admin": {
+                "codigoFicha": "00012336",
+                "apellidosNombres": "SEGURA PERALTA, AMERICA GLADYS",
+                "codigoPuesto": "00005197",
+                "nombrePuesto": "Analista Principal de Sistemas"
+            },
+            "fecModificacion": "2024-10-30 11:33:34"
+        },
+        {
+            "codigo": "C002",
+            "titulo": "INNOVACIÓN",
+            "descripcion": "Actúa como un agente de cambio y mantiene un enfoque positivo con el objetivo de generar valor. Se adapta a las circunstancias de manera efectiva y ajusta las prioridades y planes para nuevos eventos, tanto en el ambiente como en la organización. Identifica oportunidades para mejorar y muestra interés activo en las iniciativas e ideas nuevas. Cuestiona siempre los procedimientos y procesos actuales, buscando la mejora continua. ",
+            "estado": 1,
+            "grupo": {
+                "codigo": "GC001",
+                "descripcion": "Centrales"
+            },
+            "admin": {
+                "codigoFicha": "00012336",
+                "apellidosNombres": "SEGURA PERALTA, AMERICA GLADYS",
+                "codigoPuesto": "00005197",
+                "nombrePuesto": "Analista Principal de Sistemas"
+            },
+            "fecModificacion": "2024-10-30 11:33:34"
+        },
+        {
+            "codigo": "C003",
+            "titulo": "COMPROMISO",
+            "descripcion": "Sentir como propios los objetivos de la organización, superando obstáculos que interfieran con el logro de los mismos. Promover una gestión sostenible y responsable de las normas sociales, ambientales, éticas y organizacionales en la realización de las actividades internas y externas. Hacerse cargo de las consecuencias de las decisiones tomadas con el fin de sostener el compromiso con las normas éticas y sociales aceptadas en las actividades relacionadas con el sector. ",
+            "estado": 0,
+            "grupo": {
+                "codigo": "GC001",
+                "descripcion": "Centrales"
+            },
+            "admin": {
+                "codigoFicha": "00012336",
+                "apellidosNombres": "SEGURA PERALTA, AMERICA GLADYS",
+                "codigoPuesto": "00005197",
+                "nombrePuesto": "Analista Principal de Sistemas"
+            },
+            "fecModificacion": "2024-10-30 11:33:34"
+        },
+        {
+            "codigo": "C004",
+            "titulo": "INTEGRIDAD",
+            "descripcion": "Es la capacidad de actuar basados en principios éticos, siendo consecuente con lo que se dice o se considera importante. Incluye comunicar las intenciones, ideas y sentimientos abierta y directamente y respetar la diversidad de creencias y opiniones. Implica estar dispuesto a actuar con honestidad incluso en negociaciones difíciles con agentes externos. ",
+            "estado": 1,
+            "grupo": {
+                "codigo": "GC001",
+                "descripcion": "Centrales"
+            },
+            "admin": {
+                "codigoFicha": "00012336",
+                "apellidosNombres": "SEGURA PERALTA, AMERICA GLADYS",
+                "codigoPuesto": "00005197",
+                "nombrePuesto": "Analista Principal de Sistemas"
+            },
+            "fecModificacion": "2024-10-30 11:33:34"
+        },
+        {
+            "codigo": "C005",
+            "titulo": "RESPONSABILIDAD SOCIAL",
+            "descripcion": "Contribuye con su actuar al mejoramiento económico, social y ambiental de SEDAPAL y los grupos de interés cuando corresponda. Fortalece relaciones con el cliente interno o externo, y grupos de interés de manera ética y responsables, respetando las obligaciones para lograr un desarrollo sostenible que constituyan un valor agregado para la vida de las comunidades en las que se opera, el medioambiente y sociedad en general.",
+            "estado": 1,
+            "grupo": {
+                "codigo": "GC001",
+                "descripcion": "Centrales"
+            },
+            "admin": {
+                "codigoFicha": "00012336",
+                "apellidosNombres": "SEGURA PERALTA, AMERICA GLADYS",
+                "codigoPuesto": "00005197",
+                "nombrePuesto": "Analista Principal de Sistemas"
+            },
+            "fecModificacion": "2024-10-30 11:33:34"
+        },
+        {
+            "codigo": "C010",
+            "titulo": "COLABORACIÓN E INFLUENCIA",
+            "descripcion": "Habilidad para construir y mantener relaciones relevantes para la organización, tanto internas como externas. Involucra la capacidad de lograr acuerdos, así como conformar redes y alianzas para lograr buen desempeño en un ambiente de comunicación y confianza.",
+            "estado": 1,
+            "grupo": {
+                "codigo": "GC002",
+                "descripcion": "Liderazgo"
+            },
+            "admin": {
+                "codigoFicha": "00012336",
+                "apellidosNombres": "SEGURA PERALTA, AMERICA GLADYS",
+                "codigoPuesto": "00005197",
+                "nombrePuesto": "Analista Principal de Sistemas"
+            },
+            "fecModificacion": "2024-10-30 11:33:34"
+        },
+        {
+            "codigo": "C012",
+            "titulo": "ALINEAMIENTO A LAS NORMAS",
+            "descripcion": "Implica el respeto y el cumplimiento de las normas que rigen en la organización. Es la capacidad de seguir los procesos definidos, buscando que no interfieran con el cumplimiento de las normas, políticas y lineamientos establecidos y en consecuencia, velar por la obtención adecuada de los resultados esperados.",
+            "estado": 1,
+            "grupo": {
+                "codigo": "GC002",
+                "descripcion": "Liderazgo"
+            },
+            "admin": {
+                "codigoFicha": "00012336",
+                "apellidosNombres": "SEGURA PERALTA, AMERICA GLADYS",
+                "codigoPuesto": "00005197",
+                "nombrePuesto": "Analista Principal de Sistemas"
+            },
+            "fecModificacion": "2024-10-30 11:33:34"
+        },
+        {
+            "codigo": "C011",
+            "titulo": "GESTIÓN DEL CAMBIO",
+            "descripcion": "Es la predisposición a comprender y apreciar perspectivas diferentes u opuestas, teniendo la capacidad para adaptarse y amoldarse a los cambios y de modificar la propia conducta para alcanzar determinados objetivos cuando surgen dificultades.",
+            "estado": 1,
+            "grupo": {
+                "codigo": "GC002",
+                "descripcion": "Liderazgo"
+            },
+            "admin": {
+                "codigoFicha": "00012336",
+                "apellidosNombres": "SEGURA PERALTA, AMERICA GLADYS",
+                "codigoPuesto": "00005197",
+                "nombrePuesto": "Analista Principal de Sistemas"
+            },
+            "fecModificacion": "2024-10-30 11:33:34"
+        },
+        {
+            "codigo": "C009",
+            "titulo": "GESTIÓN DE PERSONAS",
+            "descripcion": "Habilidad para conducir equipos de manera efectiva, orientando el trabajo a los objetivos de la organización, implica la capacidad de delegar responsablemente, brindando apoyo, asesoría, retroalimentación, motivación y reconocimiento para el desarrollo de sus colaboradores.",
+            "estado": 1,
+            "grupo": {
+                "codigo": "GC002",
+                "descripcion": "Liderazgo"
+            },
+            "admin": {
+                "codigoFicha": "00012336",
+                "apellidosNombres": "SEGURA PERALTA, AMERICA GLADYS",
+                "codigoPuesto": "00005197",
+                "nombrePuesto": "Analista Principal de Sistemas"
+            },
+            "fecModificacion": "2024-10-30 11:33:34"
+        },
+        {
+            "codigo": "C008",
+            "titulo": "CAPACIDAD DE DIRECCIÓN",
+            "descripcion": "Habilidad para establecer y lograr objetivos retadores, en línea con las prioridades estratégicas de la organización, implica gestionar eficientemente al equipo y los recursos, generando confianza para lograr mejores resultados.",
+            "estado": 1,
+            "grupo": {
+                "codigo": "GC002",
+                "descripcion": "Liderazgo"
+            },
+            "admin": {
+                "codigoFicha": "00012336",
+                "apellidosNombres": "SEGURA PERALTA, AMERICA GLADYS",
+                "codigoPuesto": "00005197",
+                "nombrePuesto": "Analista Principal de Sistemas"
+            },
+            "fecModificacion": "2024-10-30 11:33:34"
+        },
+        {
+            "codigo": "C007",
+            "titulo": "VISIÓN ESTRATÉGICA",
+            "descripcion": "Capacidad para identificar escenarios futuros, interpretar tendencias y determinar impacto del entorno en la organización; con la finalidad de definir estrategias a largo plazo alineadas con las perspectivas organizacionales, realizar los ajustes estratégicos necesarios, minimizar las debilidades y potenciar las fortalezas.",
+            "estado": 1,
+            "grupo": {
+                "codigo": "GC002",
+                "descripcion": "Liderazgo"
+            },
+            "admin": {
+                "codigoFicha": "00012336",
+                "apellidosNombres": "SEGURA PERALTA, AMERICA GLADYS",
+                "codigoPuesto": "00005197",
+                "nombrePuesto": "Analista Principal de Sistemas"
+            },
+            "fecModificacion": "2024-10-30 11:33:34"
+        },
+        {
+            "codigo": "C019",
+            "titulo": "CUMPLIMIENTO DE NORMAS",
+            "descripcion": "Actitud de cumplir con las normas legales que rigen el funcionamiento de la empresa basado en el conocimiento, entendimiento e interpretación del marco jurídico. Demuestra capacidad de adaptar y administrar los procesos para que no interfieran con el cumplimiento de las normas, políticas, directivas de gestión y lineamientos establecidos y, en consecuencia, velar por la consecución de los resultados esperados. Su entendimiento del marco jurídico le permite aportes para su mejoramiento.",
+            "estado": 1,
+            "grupo": {
+                "codigo": "GC003",
+                "descripcion": "Funcionales"
+            },
+            "admin": {
+                "codigoFicha": "00012336",
+                "apellidosNombres": "SEGURA PERALTA, AMERICA GLADYS",
+                "codigoPuesto": "00005197",
+                "nombrePuesto": "Analista Principal de Sistemas"
+            },
+            "fecModificacion": "2024-10-30 11:33:34"
+        },
+        {
+            "codigo": "C013",
+            "titulo": "TRABAJO EN EQUIPO",
+            "descripcion": "Capacidad de fomentar el compromiso y la colaboración entre los colaboradores hacia la búsqueda de objetivos comunes que agreguen valor al cliente, la sociedad y el país. Crea un ambiente que valora las opiniones individuales y anima a compartir información e ideas. Entrega poder a los demás para hacer el mejor trabajo posible.",
+            "estado": 1,
+            "grupo": {
+                "codigo": "GC003",
+                "descripcion": "Funcionales"
+            },
+            "admin": {
+                "codigoFicha": "00012336",
+                "apellidosNombres": "SEGURA PERALTA, AMERICA GLADYS",
+                "codigoPuesto": "00005197",
+                "nombrePuesto": "Analista Principal de Sistemas"
+            },
+            "fecModificacion": "2024-10-30 11:33:34"
+        },
+        {
+            "codigo": "C014",
+            "titulo": "CAPACIDAD ANALITICA",
+            "descripcion": "Capacidad para identificar, comprender y evaluar las diferentes variables inmersas dentro de una situación, identificando causas y relaciones que faciliten el manejo de situaciones, la resolución de problemas, y la toma de decisiones.",
+            "estado": 1,
+            "grupo": {
+                "codigo": "GC003",
+                "descripcion": "Funcionales"
+            },
+            "admin": {
+                "codigoFicha": "00012336",
+                "apellidosNombres": "SEGURA PERALTA, AMERICA GLADYS",
+                "codigoPuesto": "00005197",
+                "nombrePuesto": "Analista Principal de Sistemas"
+            },
+            "fecModificacion": "2024-10-30 11:33:34"
+        },
+        {
+            "codigo": "C018",
+            "titulo": "SUPERVISIÓN EFECTIVA",
+            "descripcion": "Habilidad para trabajar de manera armónica e interdependiente, distribuyendo actividades a desempeñar por distintas personas dentro y fuera de su área de trabajo con el fin de conseguir una meta común. Además, implica llevar un control y seguimiento de las diferentes actividades asignadas con el fin de lograr efectividad en las tareas.",
+            "estado": 1,
+            "grupo": {
+                "codigo": "GC003",
+                "descripcion": "Funcionales"
+            },
+            "admin": {
+                "codigoFicha": "00012336",
+                "apellidosNombres": "SEGURA PERALTA, AMERICA GLADYS",
+                "codigoPuesto": "00005197",
+                "nombrePuesto": "Analista Principal de Sistemas"
+            },
+            "fecModificacion": "2024-10-30 11:33:34"
+        },
+        {
+            "codigo": "P001",
+            "titulo": "PRUEBA COMPETENCIA 2",
+            "descripcion": "DESCRIPCION PRUEBA COMPETENCIA 2",
+            "estado": 0,
+            "grupo": {
+                "codigo": "GC003",
+                "descripcion": "Funcionales"
+            },
+            "admin": {
+                "codigoFicha": "00012336",
+                "apellidosNombres": "SEGURA PERALTA, AMERICA GLADYS",
+                "codigoPuesto": "00005197",
+                "nombrePuesto": "Analista Principal de Sistemas"
+            },
+            "fecModificacion": "2024-10-30 11:33:34"
+        },
+        {
+            "codigo": "C017",
+            "titulo": "PLANIFICACIÓN ESTRATÉGICA",
+            "descripcion": "Capacidad para determinar eficazmente las metas y prioridades en el desarrollo de tareas a su cargo, proyectos y/o área de trabajo, estipulando la acción, plazos y los recursos requeridos. Incluye utilizar mecanismos de seguimiento y verificación de los grados de avance de distintas tareas para mantener el control del proceso y aplicar las medidas correctivas necesarias.",
+            "estado": 1,
+            "grupo": {
+                "codigo": "GC003",
+                "descripcion": "Funcionales"
+            },
+            "admin": {
+                "codigoFicha": "00012336",
+                "apellidosNombres": "SEGURA PERALTA, AMERICA GLADYS",
+                "codigoPuesto": "00005197",
+                "nombrePuesto": "Analista Principal de Sistemas"
+            },
+            "fecModificacion": "2024-10-30 11:33:34"
+        },
+        {
+            "codigo": "C016",
+            "titulo": "COMUNICACIÓN EFECTIVA",
+            "descripcion": "Habilidad para entender y expresar ideas de manera organizada, clara y exacta, mediante el uso de habilidades de comunicación, con el fin de obtener y entregar información relevante para el cumplimiento de sus funciones.",
+            "estado": 1,
+            "grupo": {
+                "codigo": "GC003",
+                "descripcion": "Funcionales"
+            },
+            "admin": {
+                "codigoFicha": "00012336",
+                "apellidosNombres": "SEGURA PERALTA, AMERICA GLADYS",
+                "codigoPuesto": "00005197",
+                "nombrePuesto": "Analista Principal de Sistemas"
+            },
+            "fecModificacion": "2024-10-30 11:33:34"
+        },
+        {
+            "codigo": "C015",
+            "titulo": "INFLUENCIA Y NEGOCIACIÓN",
+            "descripcion": "Habilidad para llegar a acuerdos ventajosos en una situación con disparidad de intereses a través del intercambio de información, debate de ideas y utilización de estrategias efectivas de comunicación y persuasión, con personas o grupos que puedan representar alto interés para la empresa.",
+            "estado": 1,
+            "grupo": {
+                "codigo": "GC003",
+                "descripcion": "Funcionales"
+            },
+            "admin": {
+                "codigoFicha": "00012336",
+                "apellidosNombres": "SEGURA PERALTA, AMERICA GLADYS",
+                "codigoPuesto": "00005197",
+                "nombrePuesto": "Analista Principal de Sistemas"
+            },
+            "fecModificacion": "2024-10-30 11:33:34"
+        },
+        {
+            "codigo": "C020",
+            "titulo": "EFICIENCIA",
+            "descripcion": "Estilo de trabajo orientado a la búsqueda de incrementar el desempeño de los procesos y métodos de trabajo en su área de responsabilidad y en la organización con un enfoque en el cliente y en la calidad. Logra alcanzar y superar los estándares de calidad de los procesos.",
+            "estado": 1,
+            "grupo": {
+                "codigo": "GC003",
+                "descripcion": "Funcionales"
+            },
+            "admin": {
+                "codigoFicha": "00012336",
+                "apellidosNombres": "SEGURA PERALTA, AMERICA GLADYS",
+                "codigoPuesto": "00005197",
+                "nombrePuesto": "Analista Principal de Sistemas"
+            },
+            "fecModificacion": "2024-10-30 11:33:34"
+        }
+    ],
+    "mensaje": "OK"
+}

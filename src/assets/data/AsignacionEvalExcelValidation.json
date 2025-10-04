@@ -1,0 +1,109 @@
+{
+    "datos": {
+        "listadoCorrectos": [
+            {
+                "evaluador": {
+                    "codigoFicha": "00012846",
+                    "apellidosNombres": "ROJAS JAHUANCAMA, CARLOS ALBERTO",
+                    "codigoPuesto": "00017452",
+                    "nombrePuesto": "Desarrollador de Sistemas de Información",
+                    "tipoEvaluador": 1
+                },
+                "evaluado": {
+                    "codigoFicha": "00025133",
+                    "apellidosNombres": "CIVICO MEJIA, MOISES ANACLETO",
+                    "codigoPuesto": "00030570",
+                    "nombrePuesto": "Oper.Esp.Oper.SCADA de Sis.de Bomb.de Ag"
+                },
+                "calendario": {
+                    "vCodigo": "C005",
+                    "vNombre": "180 2025-I"
+                },
+                "mensajesError": ""
+            },
+            {
+                "evaluador": {
+                    "codigoFicha": "00012846",
+                    "apellidosNombres": "ROJAS JAHUANCAMA, CARLOS ALBERTO",
+                    "codigoPuesto": "00017452",
+                    "nombrePuesto": "Desarrollador de Sistemas de Información",
+                    "tipoEvaluador": 2
+                },
+                "evaluado": {
+                    "codigoFicha": "00025133",
+                    "apellidosNombres": "CIVICO MEJIA, MOISES ANACLETO",
+                    "codigoPuesto": "00030570",
+                    "nombrePuesto": "Oper.Esp.Oper.SCADA de Sis.de Bomb.de Ag"
+                },
+                "calendario": {
+                    "vCodigo": "C005",
+                    "vNombre": "180 2025-I"
+                },
+                "mensajesError": ""
+            },
+            {
+                "evaluador": {
+                    "codigoFicha": "00012846",
+                    "apellidosNombres": "ROJAS JAHUANCAMA, CARLOS ALBERTO",
+                    "codigoPuesto": "00017452",
+                    "nombrePuesto": "Desarrollador de Sistemas de Información",
+                    "tipoEvaluador": 3
+                },
+                "evaluado": {
+                    "codigoFicha": "00025133",
+                    "apellidosNombres": "CIVICO MEJIA, MOISES ANACLETO",
+                    "codigoPuesto": "00030570",
+                    "nombrePuesto": "Oper.Esp.Oper.SCADA de Sis.de Bomb.de Ag"
+                },
+                "calendario": {
+                    "vCodigo": "C005",
+                    "vNombre": "180 2025-I"
+                },
+                "mensajesError": ""
+            },
+            {
+                "evaluador": {
+                    "codigoFicha": "00012846",
+                    "apellidosNombres": "ROJAS JAHUANCAMA, CARLOS ALBERTO",
+                    "codigoPuesto": "00017452",
+                    "nombrePuesto": "Desarrollador de Sistemas de Información",
+                    "tipoEvaluador": 4
+                },
+                "evaluado": {
+                    "codigoFicha": "00025133",
+                    "apellidosNombres": "CIVICO MEJIA, MOISES ANACLETO",
+                    "codigoPuesto": "00030570",
+                    "nombrePuesto": "Oper.Esp.Oper.SCADA de Sis.de Bomb.de Ag"
+                },
+                "calendario": {
+                    "vCodigo": "C005",
+                    "vNombre": "180 2025-I"
+                },
+                "mensajesError": ""
+            }
+        ],
+        "listadoIncorrectos": [
+            {
+                "evaluador": {
+                    "codigoFicha": "00012846",
+                    "apellidosNombres": "ROJAS JAHUANCAMA, CARLOS ALBERTO",
+                    "codigoPuesto": "00017452",
+                    "nombrePuesto": "Desarrollador de Sistemas de Información",
+                    "tipoEvaluador": 2
+                },
+                "evaluado": {
+                    "codigoFicha": "00025133",
+                    "apellidosNombres": "CIVICO MEJIA, MOISES ANACLETO",
+                    "codigoPuesto": "00030570",
+                    "nombrePuesto": "Oper.Esp.Oper.SCADA de Sis.de Bomb.de Ag"
+                },
+                "calendario": {
+                    "vCodigo": "C005",
+                    "vNombre": "180 2025-I"
+                },
+                "mensajesError": "6"
+            }
+        ]
+    },
+    "mensaje": "Archivo procesado exitosamente"
+}

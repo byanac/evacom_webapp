@@ -1,0 +1,31 @@
+
+thead tr th{
+    background: rgb(0,211,255,1) !important;
+    background: linear-gradient(180deg, rgba(191,219,254,1) 0%, rgb(0, 204, 255) 100%) !important; 
+    font-size: 16px;
+    color: rgb(49, 49, 49);
+  }
+  
+  th,td{
+    border: solid rgb(153, 153, 153) 1px !important;
+  }
+
+  .badgegreen {
+    color: white;
+    padding: 4px 20px;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 13px;
+    font-weight: bolder;
+    width: 100%;
+  }
+  
+  .badgered {
+    color: white;
+    padding: 4px 8px;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 13px;
+    font-weight: bolder;
+    width: 100%;
+  }

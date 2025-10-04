@@ -1,0 +1,101 @@
+{
+    "registros": [
+        {
+            "codigo": "GC006",
+            "descripcion": "a ver",
+            "estado": 1,
+            "admin": {
+                "codigoFicha": "00012336",
+                "apellidosNombres": "SEGURA PERALTA, AMERICA GLADYS",
+                "codigoPuesto": "00005197",
+                "nombrePuesto": "Analista Principal de Sistemas"
+            },
+            "fecModificacion": "2024-10-30 11:33:34"
+        },
+        {
+            "codigo": "GC005",
+            "descripcion": "TestAVER",
+            "estado": 1,
+            "admin": {
+                "codigoFicha": "00012336",
+                "apellidosNombres": "SEGURA PERALTA, AMERICA GLADYS",
+                "codigoPuesto": "00005197",
+                "nombrePuesto": "Analista Principal de Sistemas"
+            },
+            "fecModificacion": "2024-10-30 12:33:34"
+        },
+        {
+            "codigo": "TEST",
+            "descripcion": "TESTxd",
+            "estado": 0,
+            "admin": {
+                "codigoFicha": "00012336",
+                "apellidosNombres": "SEGURA PERALTA, AMERICA GLADYS",
+                "codigoPuesto": "00005197",
+                "nombrePuesto": "Analista Principal de Sistemas"
+            },
+            "fecModificacion": "2024-10-30 11:33:34"
+        },
+        {
+            "codigo": "GC001",
+            "descripcion": "Centrales",
+            "estado": 1,
+            "admin": {
+                "codigoFicha": "00012336",
+                "apellidosNombres": "SEGURA PERALTA, AMERICA GLADYS",
+                "codigoPuesto": "00005197",
+                "nombrePuesto": "Analista Principal de Sistemas"
+            },
+            "fecModificacion": "2024-10-30 11:33:34"
+        },
+        {
+            "codigo": "GC002",
+            "descripcion": "Liderazgo",
+            "estado": 1,
+            "admin": {
+                "codigoFicha": "00012336",
+                "apellidosNombres": "SEGURA PERALTA, AMERICA GLADYS",
+                "codigoPuesto": "00005197",
+                "nombrePuesto": "Analista Principal de Sistemas"
+            },
+            "fecModificacion": "2024-10-30 11:33:34"
+        },
+        {
+            "codigo": "GC003",
+            "descripcion": "Funcionales",
+            "estado": 1,
+            "admin": {
+                "codigoFicha": "00012336",
+                "apellidosNombres": "SEGURA PERALTA, AMERICA GLADYS",
+                "codigoPuesto": "00005197",
+                "nombrePuesto": "Analista Principal de Sistemas"
+            },
+            "fecModificacion": "2024-10-30 11:33:34"
+        },
+        {
+            "codigo": "GC004",
+            "descripcion": "Prueba grupo",
+            "estado": 1,
+            "admin": {
+                "codigoFicha": "00012336",
+                "apellidosNombres": "SEGURA PERALTA, AMERICA GLADYS",
+                "codigoPuesto": "00005197",
+                "nombrePuesto": "Analista Principal de Sistemas"
+            },
+            "fecModificacion": "2024-10-30 11:33:34"
+        },
+        {
+            "codigo": "test",
+            "descripcion": "testtt",
+            "estado": 1,
+            "admin": {
+                "codigoFicha": "00012336",
+                "apellidosNombres": "SEGURA PERALTA, AMERICA GLADYS",
+                "codigoPuesto": "00005197",
+                "nombrePuesto": "Analista Principal de Sistemas"
+            },
+            "fecModificacion": "2024-10-30 11:33:34"
+        }
+    ],
+    "mensaje": "OK"
+}

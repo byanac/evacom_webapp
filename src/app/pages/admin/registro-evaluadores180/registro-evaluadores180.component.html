@@ -1,0 +1,386 @@
+<div class="min-h-screen bg-gray-100 flex flex-col">
+  <header class="text-white py-4 px-6" style="background-color: #3776ff;">
+    <h1 class="text-2xl font-bold mb-0">Registro de evaluadores y evaluados 180° - {{CalendarName}}</h1>
+  </header>
+  
+  <main class="flex-grow ">
+    <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+      <div>
+        <table class="w-full border-collapse border border-gray-300">
+          <thead>
+            <tr class="bg-gray-100">
+              <th class="border border-gray-300 px-4 py-2">Código de Ficha</th>
+              <th class="border border-gray-300 px-4 py-2">Tipo</th>
+              <th class="border border-gray-300 px-4 py-2">Nombres y apellidos</th>
+              <th class="border border-gray-300 px-4 py-2">Correo</th>
+              <th class="border border-gray-300 px-4 py-2">Denominación del puesto</th>
+              <!-- <th class="border border-gray-300 px-4 py-2">Evaluador</th> -->
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let evaluator of evaluators; let i = index" [ngClass]="{'bg-blue-100': i === 0, 'bg-green-100': i === 1}">
+              <td class="border border-gray-300 px-4 py-2">
+                <input [(ngModel)]="evaluator.fileCode" maxlength="8" (blur)="onSearchWorker(i)" class="w-full p-1 border rounded" [disabled]="evaluator.isEditing" required>
+              </td>
+              <td class="border border-gray-300 px-4 py-2">
+                <input disabled [(ngModel)]="evaluator.type" class="w-full p-1 border rounded" required>
+              </td>
+              <td class="border border-gray-300 px-4 py-2">
+                <input disabled [(ngModel)]="evaluator.name" class="w-full p-1 border rounded" required>
+              </td>
+              <td class="border border-gray-300 px-4 py-2">
+                <input disabled [(ngModel)]="evaluator.email" class="w-full p-1 border rounded" required>
+              </td>
+              <td class="border border-gray-300 px-4 py-2">
+                <input disabled [(ngModel)]="evaluator.denominacion" class="w-full p-1 border rounded" required>
+              </td>
+              <!-- <td class="border border-gray-300 px-4 py-2">
+                <input type="checkbox" [(ngModel)]="evaluator.isEvaluator" [disabled]="!isEditing || i < 2">
+              </td> -->
+            </tr>
+          </tbody>
+        </table>
+        <div class="mt-4">
+          <div class="flex gap-2"> 
+            <button type="submit" (click)="handleSubmit()" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+              {{ editingItem ? 'Editar' : 'Añadir' }} Registro 
+            </button>
+            <button class="uploadbtn" type="button" (click)="openUploadExcelEvaluators90Dialog()">
+              <svg class="mr-2" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="white" d="m2.859 2.877l12.57-1.795a.5.5 0 0 1 .571.494v20.848a.5.5 0 0 1-.57.494L2.858 21.123a1 1 0 0 1-.859-.99V3.867a1 1 0 0 1 .859-.99M17 3h4a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1h-4zm-6.8 9L13 8h-2.4L9 10.286L7.4 8H5l2.8 4L5 16h2.4L9 13.714L10.6 16H13z"/></svg>
+              <span>Subir excel</span>
+            </button> 
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="bg-white shadow-md rounded px-8 pt-6 pb-8">
+      <h2 class="text-xl font-semibold mb-4">Registro de evaluadores y evaluados 180° - Registros</h2>
+      <table mat-table [dataSource]="dataSource" multiTemplateDataRows class="w-full">
+        <!-- Expand Column -->
+        <ng-container matColumnDef="expand">
+          <th mat-header-cell *matHeaderCellDef></th>
+          <td mat-cell *matCellDef="let element" style="padding-left: 0px !important; text-align: center !important;">
+            <button mat-icon-button>
+              <mat-icon  (click)="toggleRow(element)">
+                {{element.expanded ? 'expand_more' : 'chevron_right'}}
+              </mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="nombreCortoUO" >
+          <th mat-header-cell *matHeaderCellDef >Nombre Corto Unidad Organizativa</th>
+          <td mat-cell *matCellDef="let element" >
+            {{element.evaluado.equipo_codigo}}
+          </td>
+        </ng-container>
+  
+              <!-- Puesto del Evaluado Column -->
+        <ng-container matColumnDef="puestoEvaluado" >
+          <th mat-header-cell *matHeaderCellDef >Puesto del Evaluado</th>
+          <td mat-cell *matCellDef="let element" >
+            {{element.evaluado.codigoPuesto}}
+          </td>
+        </ng-container>
+
+       
+        <!-- Denominación del puesto del Evaluado Column -->
+        <ng-container matColumnDef="denominacionPuestoEvaluado">
+          <th mat-header-cell *matHeaderCellDef>Denominación del puesto del Evaluado</th>
+          <td mat-cell *matCellDef="let element">
+            {{element.evaluado.nombrePuesto}}
+          </td>
+        </ng-container>
+
+        <!-- Ficha del Evaluado Column -->
+        <ng-container matColumnDef="fichaEvaluado">
+          <th mat-header-cell *matHeaderCellDef>Ficha del Evaluado</th>
+          <td mat-cell *matCellDef="let element">
+            {{element.evaluado.codigoFicha}}
+          </td>
+        </ng-container>
+
+        <!-- Nombres y Apellidos del Evaluado Column -->
+        <ng-container matColumnDef="nombreEvaluado">
+          <th mat-header-cell *matHeaderCellDef>Nombres y Apellidos del Evaluado</th>
+          <td mat-cell *matCellDef="let element">
+            {{element.evaluado.apellidosNombres}}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="ultimaModificacion">
+          <th mat-header-cell *matHeaderCellDef>Última Modificación</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.ultimaModificacion | date: 'dd/MM/yyyy' }}
+          </td>
+        </ng-container>
+        
+
+        <ng-container matColumnDef="ultimoAdmin">
+          <th mat-header-cell *matHeaderCellDef>Último Admin</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.adminModificacion?.apellidosNombres }}
+          </td>
+        </ng-container>
+        
+
+        <!-- Estado Column -->
+        <ng-container matColumnDef="estado">
+          <th mat-header-cell *matHeaderCellDef>Estado</th>
+          <td mat-cell *matCellDef="let element">
+            {{element.estado === 1 ? 'Activo' : 'Inactivo'}}
+          </td>
+        </ng-container>
+
+  
+        <!-- Acciones Column -->
+        <ng-container matColumnDef="acciones">
+          <th mat-header-cell *matHeaderCellDef>Acciones</th>
+          <td mat-cell *matCellDef="let element">
+            <button *ngIf="element?.estado === 1" (click)="handleEdit(element)" class="text-indigo-600 hover:text-indigo-900"><mat-icon>edit</mat-icon></button>
+            <button *ngIf="element?.estado === 1" (click)="handleDelete(element)" class="text-red-600 hover:text-red-900"><mat-icon>delete</mat-icon></button>
+            <button *ngIf="element?.estado === 0" (click)="handleActivate(element)" class="text-green-600 hover:text-green-900"><mat-icon>settings_backup_restore</mat-icon></button>
+          </td>
+        </ng-container>
+  
+        <!-- Expanded Content Column -->
+        <ng-container matColumnDef="expandedDetail">
+          <td mat-cell *matCellDef="let element" [attr.colspan]="displayedColumns.length" style="padding: 0px !important;">
+            <div class="element-detail" [@detailExpand]="element.expanded ? 'expanded' : 'collapsed'">
+              <table class="w-full">
+                <thead>
+                  <tr>
+                    <th>Ficha del Evaluador</th>
+                    <th>Nombres y Apellidos del Evaluador</th>
+                    <th>Nombre Corto Unidad Organizativa</th>
+                    <th>Puesto del Evaluador</th>
+                    <th>Denominación del puesto del Evaluador</th>
+                    <th>Tipo</th>
+                    <th>Estado</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let evaluator of element.evaluators">
+                    <td>{{evaluator.evaluador.codigoFicha}}</td>
+                    <td>{{evaluator.evaluador.apellidosNombres}}</td>
+                    <td>{{evaluator.evaluador.equipo_codigo}}</td>
+                    <td>{{evaluator.evaluador.codigoPuesto}}</td>
+                    <td>{{evaluator.evaluador.nombrePuesto}}</td>
+                    <td>{{getEvaluatorRole(evaluator.evaluador.tipoEvaluador)}}</td>
+                    <td>{{evaluator.estado === 1 ? 'Activo' : 'Inactivo'}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </td>
+        </ng-container>
+  
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let element; columns: displayedColumns;"
+            class="element-row"
+            [class.expanded-row]="element.expanded"
+            (click)="toggleRow(element)">
+        </tr>
+        <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" 
+            class="detail-row">
+        </tr>
+     
+      </table>   
+      <mat-paginator [pageSizeOptions]="[10, 15, 20, 25 ,30]" showFirstLastButtons></mat-paginator>
+    </div>
+  </main>
+  
+
+<!-- <footer class="bottom-0 left-0 right-0 bg-white border-t border-gray-200 p-4">
+  <div class="mx-auto flex justify-end space-x-4">
+    <button type="button" class="px-4 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+      Cancelar
+    </button>
+    <button type="submit" class="px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+      <svg class="inline-block mr-2 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+        <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM6.293 6.707a1 1 0 010-1.414l3-3a1 1 0 011.414 0l3 3a1 1 0 01-1.414 1.414L11 5.414V13a1 1 0 11-2 0V5.414L7.707 6.707a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+      </svg>
+      Guardar Registros de Evaluadores 90°
+    </button>
+  </div>
+</footer>
+       -->
+
+
+       <ng-template #UploadExcelEvaluators90Dialog>
+        <h1 mat-dialog-title>Subir excel de evaluadores y evaluados 180°</h1>       
+        <button (click)="fileInput.click()" mat-icon-button color="primary" class="addbtn" style="gap: 5px !important;">
+          <mat-icon>cloud_upload</mat-icon>
+          <span>Subir archivo</span>
+        </button>
+        <input #fileInput type="file" accept=".xlsx,.xls" (change)="onFileSelectedEvaluatorsRegister($event)" style="display: none;" />
+        <mat-dialog-content class="w-full flex justify-center" style="margin: 0px !important; padding: 0px !important;">
+          <div class="flex gap-4 w-full justify-center">
+            <div *ngIf="EvalAsignacionExcel && EvalAsignacionExcel.datos && EvalAsignacionExcel.datos.listadoCorrectos && EvalAsignacionExcel.datos.listadoCorrectos.length > 0"   
+            [ngClass]="{
+              'w-1/2': EvalAsignacionExcel?.datos?.listadoIncorrectos?.length > 0,
+              'w-full': EvalAsignacionExcel?.datos?.listadoIncorrectos?.length === 0}">
+              <h4 class="mt-4">Correctos</h4>
+              <mat-table [dataSource]="EvalAsignacionExcel.datos.listadoCorrectos" class="mt-4 w-full border border-gray-300">
+                
+                    <!-- Código de Calendario Column -->
+              <ng-container matColumnDef="codigoCalendario">
+                <mat-header-cell *matHeaderCellDef> Calendario </mat-header-cell>
+                <mat-cell *matCellDef="let registros"> {{ registros?.calendario?.vNombre }} </mat-cell>
+              </ng-container>
+      
+              <!-- Posición del Evaluador Column -->
+              <ng-container matColumnDef="posicionEvaluador">
+                <mat-header-cell *matHeaderCellDef> Denominación del puesto del Evaluador </mat-header-cell>
+                <mat-cell *matCellDef="let registros"> {{ registros?.evaluador?.nombrePuesto }} </mat-cell>
+              </ng-container>
+      
+              <!-- Ficha del Evaluador Column -->
+              <ng-container matColumnDef="fichaEvaluador">
+                <mat-header-cell *matHeaderCellDef> Ficha del Evaluador </mat-header-cell>
+                <mat-cell *matCellDef="let registros"> {{ registros?.evaluador?.codigoFicha }} </mat-cell>
+              </ng-container>
+
+              <ng-container matColumnDef="tipoevaluador">
+                <mat-header-cell *matHeaderCellDef> Tipo de Evaluador </mat-header-cell>
+                <mat-cell *matCellDef="let registros"> {{ this.getEvaluatorRole(registros?.evaluador?.tipoEvaluador) }} </mat-cell>
+              </ng-container>
+              <!-- Rol del Evaluador Column -->
+              <ng-container matColumnDef="rolEvaluador">
+                <mat-header-cell *matHeaderCellDef> Puesto del Evaluador </mat-header-cell>
+                <mat-cell *matCellDef="let registros"> {{ registros?.evaluador?.codigoPuesto }} </mat-cell>
+              </ng-container>
+      
+              <!-- Nombre Completo del Evaluador Column -->
+              <ng-container matColumnDef="nombreEvaluador">
+                <mat-header-cell *matHeaderCellDef> Nombres y Apellidos del Evaluador </mat-header-cell>
+                <mat-cell *matCellDef="let registros"> {{ registros?.evaluador?.apellidosNombres }} </mat-cell>
+              </ng-container>
+              
+              <!-- Posición del Evaluado Column -->
+              <ng-container matColumnDef="posicionEvaluado">
+                <mat-header-cell *matHeaderCellDef> Denominación del puesto del Evaluado </mat-header-cell>
+                <mat-cell *matCellDef="let registros"> {{ registros?.evaluado?.nombrePuesto }} </mat-cell>
+              </ng-container>
+      
+              <!-- Ficha del Evaluado Column -->
+              <ng-container matColumnDef="fichaEvaluado">
+                <mat-header-cell *matHeaderCellDef> Ficha del Evaluado </mat-header-cell>
+                <mat-cell *matCellDef="let registros"> {{ registros?.evaluado?.codigoFicha }} </mat-cell>
+              </ng-container>
+      
+              <ng-container matColumnDef="rolEvaluado">
+                <mat-header-cell *matHeaderCellDef> Puesto del Evaluado </mat-header-cell>
+                <mat-cell *matCellDef="let registros"> {{ registros?.evaluado?.codigoPuesto }} </mat-cell>
+              </ng-container>
+      
+              <!-- Nombre Completo del Evaluado Column -->
+              <ng-container matColumnDef="nombreEvaluado">
+                <mat-header-cell *matHeaderCellDef> Nombres y Apellidos del Evaluado </mat-header-cell>
+                <mat-cell *matCellDef="let registros"> {{ registros?.evaluado?.apellidosNombres }} </mat-cell>
+              </ng-container>
+                
+                <ng-container matColumnDef="observacion">
+                  <mat-header-cell *matHeaderCellDef>Observación</mat-header-cell>
+                  <mat-cell *matCellDef="let registro"></mat-cell>
+                </ng-container>
+                
+                <mat-header-row *matHeaderRowDef="displayedColumnsDialog"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumnsDialog;"></mat-row>
+              </mat-table>
+            </div>
+        
+            <div *ngIf="EvalAsignacionExcel && EvalAsignacionExcel.datos && EvalAsignacionExcel.datos.listadoIncorrectos && EvalAsignacionExcel.datos.listadoIncorrectos.length > 0"   
+            [ngClass]="{
+              'w-1/2': EvalAsignacionExcel?.datos?.listadoCorrectos?.length > 0,
+              'w-full': EvalAsignacionExcel?.datos?.listadoCorrectos?.length === 0}">
+              <h4 class="mt-4">Incorrectos</h4>
+              <mat-table [dataSource]="EvalAsignacionExcel.datos.listadoIncorrectos" class="mt-4 w-full border border-gray-300">
+              
+                            <!-- Código de Calendario Column -->
+              <ng-container matColumnDef="codigoCalendario">
+                <mat-header-cell *matHeaderCellDef> Calendario </mat-header-cell>
+                <mat-cell *matCellDef="let registros"> {{ registros?.calendario?.vNombre }} </mat-cell>
+              </ng-container>
+      
+              <!-- Posición del Evaluador Column -->
+              <ng-container matColumnDef="posicionEvaluador">
+                <mat-header-cell *matHeaderCellDef> Denominación del puesto del Evaluador </mat-header-cell>
+                <mat-cell *matCellDef="let registros"> {{ registros?.evaluador?.nombrePuesto }} </mat-cell>
+              </ng-container>
+      
+              <!-- Ficha del Evaluador Column -->
+              <ng-container matColumnDef="fichaEvaluador">
+                <mat-header-cell *matHeaderCellDef> Ficha del Evaluador </mat-header-cell>
+                <mat-cell *matCellDef="let registros"> {{ registros?.evaluador?.codigoFicha }} </mat-cell>
+              </ng-container>
+
+              <ng-container matColumnDef="tipoevaluador">
+                <mat-header-cell *matHeaderCellDef> Tipo de Evaluador </mat-header-cell>
+                <mat-cell *matCellDef="let registros"> {{ this.getEvaluatorRole(registros?.evaluador?.tipoEvaluador) }} </mat-cell>
+              </ng-container>
+              <!-- Rol del Evaluador Column -->
+              <ng-container matColumnDef="rolEvaluador">
+                <mat-header-cell *matHeaderCellDef> Puesto del Evaluador </mat-header-cell>
+                <mat-cell *matCellDef="let registros"> {{ registros?.evaluador?.codigoPuesto }} </mat-cell>
+              </ng-container>
+      
+              <!-- Nombre Completo del Evaluador Column -->
+              <ng-container matColumnDef="nombreEvaluador">
+                <mat-header-cell *matHeaderCellDef> Nombres y Apellidos del Evaluador </mat-header-cell>
+                <mat-cell *matCellDef="let registros"> {{ registros?.evaluador?.apellidosNombres }} </mat-cell>
+              </ng-container>
+              
+              <!-- Posición del Evaluado Column -->
+              <ng-container matColumnDef="posicionEvaluado">
+                <mat-header-cell *matHeaderCellDef> Denominación del puesto del Evaluado </mat-header-cell>
+                <mat-cell *matCellDef="let registros"> {{ registros?.evaluado?.nombrePuesto }} </mat-cell>
+              </ng-container>
+      
+              <!-- Ficha del Evaluado Column -->
+              <ng-container matColumnDef="fichaEvaluado">
+                <mat-header-cell *matHeaderCellDef> Ficha del Evaluado </mat-header-cell>
+                <mat-cell *matCellDef="let registros"> {{ registros?.evaluado?.codigoFicha }} </mat-cell>
+              </ng-container>
+      
+              <ng-container matColumnDef="rolEvaluado">
+                <mat-header-cell *matHeaderCellDef> Puesto del Evaluado </mat-header-cell>
+                <mat-cell *matCellDef="let registros"> {{ registros?.evaluado?.codigoPuesto }} </mat-cell>
+              </ng-container>
+      
+              <!-- Nombre Completo del Evaluado Column -->
+              <ng-container matColumnDef="nombreEvaluado">
+                <mat-header-cell *matHeaderCellDef> Nombres y Apellidos del Evaluado </mat-header-cell>
+                <mat-cell *matCellDef="let registros"> {{ registros?.evaluado?.apellidosNombres }} </mat-cell>
+              </ng-container>
+  
+                
+                <ng-container matColumnDef="observacion">
+                  <mat-header-cell *matHeaderCellDef>Observación</mat-header-cell>
+                  <mat-cell *matCellDef="let registros">
+                    <ng-container *ngIf="registros.mensajesError">
+                      <ul class="dotted-list">
+                        <ng-container *ngFor="let mensaje of registros.mensajesError.split('|')">
+                          <li>{{ RegisterEvaluatorAndEvaluatedErrors[mensaje] }}</li>
+                        </ng-container>
+                      </ul>
+                    </ng-container>
+                  </mat-cell>
+                </ng-container>
+        
+                <mat-header-row *matHeaderRowDef="displayedColumnsDialog"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumnsDialog;"></mat-row>
+              </mat-table>
+            </div>
+            
+          </div>
+        </mat-dialog-content>
+        
+        <h5 class="my-4 text-red-600"><b>AVISO:</b> Todos los registros deben estar correctos para continuar.</h5>
+      
+        <mat-dialog-actions class="gap-2" align="end">
+          <button type="button" mat-dialog-close class="inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto">Cancelar</button>   
+          <button type="button" [mat-dialog-close]="true" (click)="SendEvalGroupsAsignationData()" *ngIf="EvalAsignacionExcel != undefined && EvalAsignacionExcel?.datos?.listadoIncorrectos.length === 0" class="inline-flex w-full justify-center rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-blue-500 sm:mt-0 sm:w-auto" >Confirmar</button>  
+        </mat-dialog-actions>
+      </ng-template>

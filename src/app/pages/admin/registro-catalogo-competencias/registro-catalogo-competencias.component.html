@@ -1,0 +1,579 @@
+<div class="min-h-screen bg-gray-100 flex flex-col">
+  <header class="text-white py-4 px-6" style="background-color: #3776ff;">
+    <h1 class="text-2xl font-bold mb-0">Catálogo de competencias</h1>
+  </header>
+
+  <main class="flex-grow p-4">
+    <mat-horizontal-stepper [linear]="true" #stepper class="bg-white p-6 rounded-lg shadow-lg">
+
+    <!-- Paso 1: Grupos de Competencias -->
+    <mat-step label="Grupos de Competencias" [stepControl]="grupoCompetenciaForm">
+      <form [formGroup]="grupoCompetenciaForm" class="space-y-4">
+        <ng-template matStepLabel>Registro de Grupos de Competencias</ng-template>
+        <mat-card-header>
+          <mat-card-subtitle>Añade, edita o elimina grupos de competencias</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content class="space-y-4">
+          <mat-form-field appearance="outline" class="w-full">
+            <mat-label>Código</mat-label>
+            <input matInput formControlName="codigo" maxlength="5">
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="w-full">
+            <mat-label>Descripción</mat-label>
+            <input matInput formControlName="descripcion" maxlength="500">
+          </mat-form-field>
+        </mat-card-content>
+      
+        <div class="flex gap-2">
+          <button (click)="onSubmit('grupoCompetencia')" *ngIf="!editingCompetencyGroups" mat-icon-button color="warn" type="submit" class="addbtn" >
+            <mat-icon>add</mat-icon>
+            <span>Añadir</span>
+          </button>
+          <button (click)="onEditCompetencyGroups()" *ngIf="editingCompetencyGroups" mat-icon-button color="warn" class="addbtn">
+            <mat-icon>edit</mat-icon>
+            <span>Editar</span>
+          </button>
+        </div>
+
+        <mat-table [dataSource]="dataSourceGruposCompetencia" class="mt-4 w-full">
+          <!-- Columnas de la tabla -->
+          <ng-container matColumnDef="codigo">
+            <mat-header-cell *matHeaderCellDef>Código</mat-header-cell>
+            <mat-cell *matCellDef="let grupo">{{ grupo?.codigo }}</mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="descripcion">
+            <mat-header-cell *matHeaderCellDef>Descripcion</mat-header-cell>
+            <mat-cell *matCellDef="let grupo">{{ grupo?.descripcion }}</mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="ultimamodific">
+            <mat-header-cell *matHeaderCellDef>Fecha de modificación</mat-header-cell>
+            <mat-cell *matCellDef="let grupo">{{ grupo?.fecModificacion | date:'dd/MM/yyyy'}}</mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="adminmodific">
+            <mat-header-cell *matHeaderCellDef>Modificación realizada por</mat-header-cell>
+            <mat-cell *matCellDef="let grupo">{{ grupo?.admin.apellidosNombres }}</mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="estado">
+            <mat-header-cell *matHeaderCellDef>Estado</mat-header-cell>
+            <mat-cell *matCellDef="let grupo">{{ grupo?.estado === 0 ? 'Inactivo' : 'Activo' }}</mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="acciones">
+            <mat-header-cell *matHeaderCellDef>Acciones</mat-header-cell>
+            <mat-cell *matCellDef="let grupo">
+              <button *ngIf="grupo?.estado === 0"  class="text-green-600 hover:text-green-900" (click)="handleActivateCompetencyGroups(grupo)"><mat-icon>settings_backup_restore</mat-icon></button>
+              <button mat-icon-button color="primary" *ngIf="grupo?.estado === 1" class="text-indigo-600 hover:text-indigo-900" type="button" (click)="handleCompetencyGroupsEdit(grupo)"><mat-icon>edit</mat-icon></button>
+              <button mat-icon-button color="warn" *ngIf="grupo?.estado === 1" class="text-red-600 hover:text-red-900" type="button" (click)="onDeleteCompetencyGroups(grupo)"><mat-icon>delete</mat-icon></button>
+            </mat-cell>
+          </ng-container>
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+        <mat-paginator #paginatorGrupos [pageSizeOptions]="[10, 15, 20, 25 ,30]" showFirstLastButtons></mat-paginator>
+        <mat-card-actions class="justify-end ml-0 mr-0" style="display: flex !important;">
+          <button mat-button type="reset" class="addbtn" matStepperNext [disabled]="gruposCompetencias.length === 0">
+            <span>Siguiente</span>
+            <mat-icon style="width: 20px; height: 23px;">arrow_forward_ios</mat-icon>
+          </button>
+        </mat-card-actions>
+      </form>
+    </mat-step>
+
+    <!-- Paso 2: Competencias -->
+    <mat-step label="Competencias" [stepControl]="competenciaForm">
+      <form [formGroup]="competenciaForm" class="space-y-4">
+        <ng-template matStepLabel>Registro de Competencias</ng-template>
+        <mat-card-header>
+          <mat-card-subtitle>Añade, edita o elimina competencias</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content class="space-y-4">
+          <mat-form-field appearance="outline" class="w-full">
+            <mat-label>Código</mat-label>
+            <input matInput formControlName="codigo" maxlength="5">
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="w-full">
+            <mat-label>Título</mat-label>
+            <input matInput formControlName="titulo" maxlength="200">
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="w-full">
+            <mat-label>Descripción</mat-label>
+            <textarea matInput formControlName="descripcion" maxlength="500"></textarea>
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="w-full">
+            <mat-label>Grupo de Competencia</mat-label>
+            <mat-select [formControl]="competenciaForm.get('grupo.codigo')">
+              <mat-option *ngFor="let grupo of gruposCompetenciasActivos" [value]="grupo.codigo">
+                {{ grupo.descripcion }}
+              </mat-option>
+            </mat-select>
+            
+          </mat-form-field>
+          
+          <div class="flex gap-2">
+            <button (click)="onSubmit('competencia')" *ngIf="!editingCompetency" mat-icon-button color="warn" class="addbtn">
+              <mat-icon>add</mat-icon>
+              <span>Añadir</span>
+            </button>
+            <button *ngIf="editingCompetency" (click)="onEditCompetency()" mat-icon-button color="warn" class="addbtn">
+              <mat-icon>edit</mat-icon>
+              <span>Editar</span>
+            </button>
+            <button mat-icon-button color="warn" class="uploadbtn" (click)="openUploadExcelCompetencyDialog()">
+              <svg class="mr-2" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="white" d="m2.859 2.877l12.57-1.795a.5.5 0 0 1 .571.494v20.848a.5.5 0 0 1-.57.494L2.858 21.123a1 1 0 0 1-.859-.99V3.867a1 1 0 0 1 .859-.99M17 3h4a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1h-4zm-6.8 9L13 8h-2.4L9 10.286L7.4 8H5l2.8 4L5 16h2.4L9 13.714L10.6 16H13z"/></svg>
+              <span>Subir excel</span>
+            </button>
+          </div>
+
+          <ng-template #dialogContent>
+            <h1 mat-dialog-title>Subir excel de competencias</h1>       
+            <button (click)="fileInput.click()" mat-icon-button color="primary" class="addbtn" style="gap: 5px !important;">
+              <mat-icon>cloud_upload</mat-icon>
+              <span>Subir archivo</span>
+            </button>
+            <input #fileInput type="file" accept=".xlsx,.xls" (change)="onFileSelectedCompetency($event)" style="display: none;" />
+            <mat-dialog-content class="w-full flex justify-center" style="margin: 0px !important; padding: 0px !important;">
+              <div class="flex gap-4 w-full justify-center">
+                
+                <div *ngIf="competenciasExcel && competenciasExcel.datos && competenciasExcel.datos.listadoCorrectos && competenciasExcel.datos.listadoCorrectos.length > 0"   
+                [ngClass]="{
+                  'w-1/2': competenciasExcel?.datos?.listadoIncorrectos?.length > 0,
+                  'w-full': competenciasExcel?.datos?.listadoIncorrectos?.length === 0}">
+                  <h4 class="mt-4">Correctos</h4>
+                  <mat-table 
+                             [dataSource]="competenciasExcel.datos.listadoCorrectos" class="mt-4 w-full border border-gray-300">
+                    
+                    <!-- Columnas de la tabla -->
+                    <ng-container matColumnDef="codigo">
+                      <mat-header-cell *matHeaderCellDef>ID</mat-header-cell>
+                      <mat-cell *matCellDef="let competencia">{{ competencia?.codigo }}</mat-cell>
+                    </ng-container>
+                    
+                    <ng-container matColumnDef="titulo">
+                      <mat-header-cell *matHeaderCellDef>Título</mat-header-cell>
+                      <mat-cell *matCellDef="let competencia">{{ competencia?.titulo }}</mat-cell>
+                    </ng-container>
+                    
+                    <ng-container matColumnDef="descripcion">
+                      <mat-header-cell *matHeaderCellDef>Descripción</mat-header-cell>
+                      <mat-cell *matCellDef="let competencia">{{ competencia?.descripcion }}</mat-cell>
+                    </ng-container>
+                    
+                    <ng-container matColumnDef="grupocompetencia">
+                      <mat-header-cell *matHeaderCellDef>Grupo competencia</mat-header-cell>
+                      <mat-cell *matCellDef="let competencia">{{ competencia?.grupo?.descripcion }}</mat-cell>
+                    </ng-container>
+                    
+                    <ng-container matColumnDef="mensajeserror">
+                      <mat-header-cell *matHeaderCellDef>Observación</mat-header-cell>
+                      <mat-cell *matCellDef="let competencia"></mat-cell>
+                    </ng-container>
+                    
+                    <mat-header-row *matHeaderRowDef="displayedColumnsCompetencyModal"></mat-header-row>
+                    <mat-row *matRowDef="let row; columns: displayedColumnsCompetencyModal;"></mat-row>
+                  </mat-table>
+                </div>
+            
+                <div *ngIf="competenciasExcel && competenciasExcel.datos && competenciasExcel.datos.listadoIncorrectos && competenciasExcel.datos.listadoIncorrectos.length > 0"   
+                [ngClass]="{
+                  'w-1/2': competenciasExcel?.datos?.listadoCorrectos?.length > 0,
+                  'w-full': competenciasExcel?.datos?.listadoCorrectos?.length === 0}">
+                  <h4 class="mt-4">Incorrectos</h4>
+                  <mat-table 
+                             [dataSource]="competenciasExcel.datos.listadoIncorrectos" class="mt-4 w-full border border-gray-300">
+                    
+                    <!-- Columnas de la tabla -->
+                    <ng-container matColumnDef="codigo">
+                      <mat-header-cell *matHeaderCellDef>ID</mat-header-cell>
+                      <mat-cell *matCellDef="let competencia">{{ competencia?.codigo }}</mat-cell>
+                    </ng-container>
+                    
+                    <ng-container matColumnDef="titulo">
+                      <mat-header-cell *matHeaderCellDef>Título</mat-header-cell>
+                      <mat-cell *matCellDef="let competencia">{{ competencia?.titulo }}</mat-cell>
+                    </ng-container>
+                    
+                    <ng-container matColumnDef="descripcion">
+                      <mat-header-cell *matHeaderCellDef>Descripción</mat-header-cell>
+                      <mat-cell *matCellDef="let competencia">{{ competencia?.descripcion }}</mat-cell>
+                    </ng-container>
+                    
+                    <ng-container matColumnDef="grupocompetencia">
+                      <mat-header-cell *matHeaderCellDef>Grupo competencia</mat-header-cell>
+                      <mat-cell *matCellDef="let competencia">{{ competencia?.grupo?.descripcion }}</mat-cell>
+                    </ng-container>
+                    
+                    <ng-container matColumnDef="mensajeserror">
+                      <mat-header-cell *matHeaderCellDef>Observación</mat-header-cell>
+                      <mat-cell *matCellDef="let competencia">
+                        <ng-container *ngIf="competencia.mensajesError">
+                          <ul class="dotted-list">
+                            <ng-container *ngFor="let mensaje of competencia.mensajesError.split('|')">
+                              <li>{{ CompetencyErrors[mensaje] }}</li>
+                            </ng-container>
+                          </ul>
+                        </ng-container>
+                      </mat-cell>
+                    </ng-container>
+            
+                    <mat-header-row *matHeaderRowDef="displayedColumnsCompetencyModal"></mat-header-row>
+                    <mat-row *matRowDef="let row; columns: displayedColumnsCompetencyModal;"></mat-row>
+                  </mat-table>
+                </div>
+                
+              </div>
+            </mat-dialog-content>
+            
+            
+            <h5 class="my-4 text-red-600"><b>AVISO:</b> Todos los registros deben estar correctos para continuar.</h5>
+    
+            <mat-dialog-actions class="gap-2" align="end">
+              <button type="button" mat-dialog-close class="inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto">Cancelar</button>   
+              <button type="button" *ngIf="competenciasExcel === undefined && competenciasExcel?.datos?.listadoIncorrectos.length > 0" class="inline-flex w-full justify-center rounded-md bg-gray-600 px-3 py-2 text-sm font-semibold text-white shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-500 sm:mt-0 sm:w-auto" >Confirmar</button>  
+              <button type="button" (click)="SendCompetenciesData()" *ngIf="competenciasExcel != undefined && competenciasExcel?.datos?.listadoIncorrectos.length === 0" class="inline-flex w-full justify-center rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-blue-500 sm:mt-0 sm:w-auto" >Confirmar</button>  
+            </mat-dialog-actions>
+          </ng-template>
+          
+          <mat-table [dataSource]="dataSourceCompetencias" class="mt-4 w-full">
+            <!-- Columnas de la tabla -->
+            <ng-container matColumnDef="codigo">
+              <mat-header-cell *matHeaderCellDef>Código</mat-header-cell>
+              <mat-cell *matCellDef="let competencia">{{ competencia.codigo }}</mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="titulo">
+              <mat-header-cell *matHeaderCellDef>Título</mat-header-cell>
+              <mat-cell *matCellDef="let competencia">{{ competencia.titulo }}</mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="codigoGrupo">
+              <mat-header-cell *matHeaderCellDef>Cod. Grupo de Competencia</mat-header-cell>
+              <mat-cell *matCellDef="let competencia">{{ competencia.grupo.codigo }}</mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="grupocompetencia">
+              <mat-header-cell *matHeaderCellDef>Grupo de competencia</mat-header-cell>
+              <mat-cell *matCellDef="let competencia">{{ competencia.grupo.descripcion }}</mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="ultimamodific">
+              <mat-header-cell *matHeaderCellDef>Fecha de modificación</mat-header-cell>
+              <mat-cell *matCellDef="let competencia">{{ competencia?.fecModificacion | date:'dd/MM/yyyy'}}</mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="adminmodific">
+              <mat-header-cell *matHeaderCellDef>Modificación realizada por</mat-header-cell>
+              <mat-cell *matCellDef="let competencia">{{ competencia?.admin.apellidosNombres }}</mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="estado">
+              <mat-header-cell *matHeaderCellDef>Estado</mat-header-cell>
+              <mat-cell *matCellDef="let competencia">{{ competencia?.estado === 0 ? 'Inactivo' : 'Activo' }}</mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="acciones">
+              <mat-header-cell *matHeaderCellDef>Acciones</mat-header-cell>
+              <mat-cell *matCellDef="let competencia">
+                <button *ngIf="competencia?.estado === 0"  class="text-green-600 hover:text-green-900" (click)="handleActivateCompetency(competencia)"><mat-icon>settings_backup_restore</mat-icon></button>
+                <button mat-icon-button color="primary" *ngIf="competencia?.estado === 1" class="text-indigo-600 hover:text-indigo-900" type="button" (click)="handleCompetencyEdit(competencia)"><mat-icon>edit</mat-icon></button>
+                <button mat-icon-button color="warn" *ngIf="competencia?.estado === 1" class="text-red-600 hover:text-red-900" type="button" (click)="onDeleteCompetency(competencia)"><mat-icon>delete</mat-icon></button>
+              </mat-cell>
+            </ng-container>
+            <mat-header-row *matHeaderRowDef="displayedColumns2"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns2;"></mat-row>
+          </mat-table>
+          <mat-paginator #paginatorCompetencias  [pageSizeOptions]="[10, 15, 20, 25 ,30]" showFirstLastButtons></mat-paginator>
+        </mat-card-content>
+        <mat-card-actions class="ml-0 mr-0" style="display: flex !important; justify-content:space-between;">
+          <button mat-button type="button" class="addbtn" matStepperPrevious><mat-icon style="width: 20px; height: 23px;">arrow_back_ios</mat-icon> <span>Anterior</span></button>
+          <button mat-button type="button" class="addbtn" matStepperNext [disabled]="competencias.length === 0"><span>Siguiente</span> <mat-icon style="width: 20px; height: 23px;">arrow_forward_ios</mat-icon></button>
+        </mat-card-actions>
+      </form>
+    </mat-step>
+
+    <!-- Paso 3: Niveles -->
+    <mat-step label="Niveles" [stepControl]="nivelForm">
+      <form [formGroup]="nivelForm" class="space-y-4">
+        <ng-template matStepLabel>Registro de Niveles</ng-template>
+        <mat-card-header>
+          <mat-card-subtitle>Añade, edita o elimina niveles</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content class="space-y-4">
+          <mat-form-field appearance="outline" class="w-full">
+            <mat-label>Código</mat-label>
+            <input matInput formControlName="codigo" maxlength="5" >
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="w-full">
+            <mat-label>Nombre</mat-label>
+            <input matInput formControlName="nombre" maxlength="200" >
+          </mat-form-field>
+
+          <div class="flex gap-2">
+            <button (click)="onSubmit('nivel')" *ngIf="!editingLevel" mat-icon-button color="warn" class="addbtn">
+              <mat-icon>add</mat-icon>
+              <span>Añadir</span>
+            </button>
+            <button (click)="onEditLevel()" *ngIf="editingLevel" mat-icon-button color="warn" class="addbtn">
+              <mat-icon>edit</mat-icon>
+              <span>Editar</span>
+            </button>
+          </div>
+
+          <mat-table [dataSource]="dataSourceNiveles" class="mt-4 w-full">
+            <!-- Columnas de la tabla -->
+            <ng-container matColumnDef="codigo">
+              <mat-header-cell *matHeaderCellDef>Código</mat-header-cell>
+              <mat-cell *matCellDef="let nivel">{{ nivel.codigo }}</mat-cell>
+            </ng-container>
+          
+            <ng-container matColumnDef="nombre">
+              <mat-header-cell *matHeaderCellDef>Nombre</mat-header-cell>
+              <mat-cell *matCellDef="let nivel">{{ nivel.nombre }}</mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="ultimamodific">
+              <mat-header-cell *matHeaderCellDef>Fecha de modificación</mat-header-cell>
+              <mat-cell *matCellDef="let nivel">{{ nivel?.fecModificacion | date:'dd/MM/yyyy'}}</mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="adminmodific">
+              <mat-header-cell *matHeaderCellDef>Modificación realizada por</mat-header-cell>
+              <mat-cell *matCellDef="let nivel">{{ nivel?.admin.apellidosNombres }}</mat-cell>
+            </ng-container>
+          
+            <ng-container matColumnDef="estado">
+              <mat-header-cell *matHeaderCellDef>Estado</mat-header-cell>
+              <mat-cell *matCellDef="let nivel">{{ nivel?.estado === 0 ? 'Inactivo' : 'Activo' }}</mat-cell>
+            </ng-container>
+          
+            <ng-container matColumnDef="acciones">
+              <mat-header-cell *matHeaderCellDef>Acciones</mat-header-cell>
+              <mat-cell *matCellDef="let nivel">
+                <button *ngIf="nivel?.estado === 0"  class="text-green-600 hover:text-green-900" (click)="handleActivateLevels(nivel)"><mat-icon>settings_backup_restore</mat-icon></button>
+                <button mat-icon-button color="primary" *ngIf="nivel?.estado === 1" (click)="handleLevelEdit(nivel)" class="text-indigo-600 hover:text-indigo-900">
+                  <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-icon-button color="warn" *ngIf="nivel?.estado === 1" (click)="onDeleteLevel(nivel)" class="text-red-600 hover:text-red-900">
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </mat-cell>
+            </ng-container>
+          
+            <mat-header-row *matHeaderRowDef="displayedColumns3"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns3;"></mat-row>
+          </mat-table>
+          
+          <mat-paginator #paginatorNiveles [pageSizeOptions]="[10, 15, 20, 25 ,30]" showFirstLastButtons></mat-paginator>
+          
+        </mat-card-content>
+        
+        <mat-card-actions class="ml-0 mr-0" style="display: flex !important; justify-content:space-between;">
+          <button mat-button type="button" class="addbtn" matStepperPrevious><mat-icon style="width: 20px; height: 23px;">arrow_back_ios</mat-icon> <span>Anterior</span></button>
+          <button mat-button type="button" class="addbtn" matStepperNext [disabled]="niveles.length === 0"><span>Siguiente</span> <mat-icon style="width: 20px; height: 23px;">arrow_forward_ios</mat-icon></button>
+        </mat-card-actions>
+      </form>
+    </mat-step>
+
+    <!-- Paso 4: Comportamientos -->
+    <mat-step label="Comportamientos" [stepControl]="comportamientoForm">
+      <form [formGroup]="comportamientoForm"  class="space-y-4">
+        <ng-template matStepLabel>Registro de Comportamientos</ng-template>
+        <mat-card-header>
+          <mat-card-subtitle>Añade, edita o elimina comportamientos</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content class="space-y-4">
+          <mat-form-field appearance="outline" class="w-full">
+            <mat-label>Código</mat-label>
+            <input matInput formControlName="codigo" maxlength="7">
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="w-full">
+            <mat-label>Descripción del comportamiento</mat-label>
+            <textarea matInput formControlName="descripcion" maxlength="500"></textarea>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="w-full">
+            <mat-label>Competencia</mat-label>
+            <mat-select [formControl]="comportamientoForm.get('competencia.codigo')" >
+              <mat-option *ngFor="let competencia of CompetenciasActivos" [value]="competencia.codigo">{{ competencia.titulo }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="w-full">
+            <mat-label>Nivel</mat-label>
+            <mat-select [formControl]="comportamientoForm.get('nivel.codigo')" >
+              <mat-option *ngFor="let nivel of NivelesActivos" [value]="nivel.codigo">{{ nivel.nombre }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+        </mat-card-content>
+
+        <div class="flex gap-2">
+          <button (click)="onSubmit('comportamiento')" *ngIf="!editingBehaviors" mat-icon-button color="warn" class="addbtn">
+            <mat-icon>add</mat-icon>
+            <span>Añadir</span>
+          </button>
+          <button (click)="onEditBehavior()" *ngIf="editingBehaviors" mat-icon-button color="warn" class="addbtn">
+            <mat-icon>edit</mat-icon>
+            <span>Editar</span>
+          </button>
+          <button mat-icon-button color="warn" class="uploadbtn" (click)="openUploadExcelComportamientoDialog()">
+            <svg class="mr-2" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="white" d="m2.859 2.877l12.57-1.795a.5.5 0 0 1 .571.494v20.848a.5.5 0 0 1-.57.494L2.858 21.123a1 1 0 0 1-.859-.99V3.867a1 1 0 0 1 .859-.99M17 3h4a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1h-4zm-6.8 9L13 8h-2.4L9 10.286L7.4 8H5l2.8 4L5 16h2.4L9 13.714L10.6 16H13z"/></svg>
+            <span>Subir excel</span>
+          </button>
+        </div>
+     
+        <mat-table [dataSource]="dataSourceComportamientos" class="mt-4 w-full">
+          <!-- Columnas de la tabla -->
+          <ng-container matColumnDef="codigo">
+            <mat-header-cell *matHeaderCellDef>Código</mat-header-cell>
+            <mat-cell *matCellDef="let comportamiento">{{ comportamiento?.codigo }}</mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="codigoCompetencia">
+            <mat-header-cell *matHeaderCellDef>Cod. Competencia</mat-header-cell>
+            <mat-cell *matCellDef="let comportamiento">{{ comportamiento?.competencia?.codigo }}</mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="competencia">
+            <mat-header-cell *matHeaderCellDef>Competencia</mat-header-cell>
+            <mat-cell *matCellDef="let comportamiento">{{ comportamiento?.competencia?.titulo }}</mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="nivel">
+            <mat-header-cell *matHeaderCellDef>Nivel</mat-header-cell>
+            <mat-cell *matCellDef="let comportamiento">{{ comportamiento?.nivel?.nombre  }}</mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="ultimamodific">
+            <mat-header-cell *matHeaderCellDef>Fecha de modificación</mat-header-cell>
+            <mat-cell *matCellDef="let comportamiento">{{ comportamiento?.fecModificacion | date:'dd/MM/yyyy'}}</mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="adminmodific">
+            <mat-header-cell *matHeaderCellDef>Modificación realizada por</mat-header-cell>
+            <mat-cell *matCellDef="let comportamiento">{{ comportamiento?.admin.apellidosNombres }}</mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="estado">
+            <mat-header-cell *matHeaderCellDef>Estado</mat-header-cell>
+            <mat-cell *matCellDef="let comportamiento">{{ comportamiento?.estado === 0 ? 'Inactivo' : 'Activo' }}</mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="acciones">
+            <mat-header-cell *matHeaderCellDef>Acciones</mat-header-cell>
+            <mat-cell *matCellDef="let comportamiento">
+              <button *ngIf="comportamiento?.estado === 0"  class="text-green-600 hover:text-green-900" (click)="handleActivateBehaviors(comportamiento)"><mat-icon>settings_backup_restore</mat-icon></button>
+              <button mat-icon-button (click)="handleBehaviorEdit(comportamiento)" color="primary" *ngIf="comportamiento?.estado === 1" class="text-indigo-600 hover:text-indigo-900"><mat-icon>edit</mat-icon></button>
+              <button mat-icon-button (click)="onDeleteBehaviors(comportamiento)" color="warn" *ngIf="comportamiento?.estado === 1" class="text-red-600 hover:text-red-900"><mat-icon>delete</mat-icon></button>
+            </mat-cell>
+          </ng-container>
+          <mat-header-row *matHeaderRowDef="displayedColumns4"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns4;"></mat-row>
+        </mat-table>
+        <mat-paginator #paginatorComportamientos [pageSizeOptions]="[10, 15, 20, 25 ,30]" showFirstLastButtons></mat-paginator>
+        <mat-card-actions class="ml-0 mr-0" style="display: flex !important; justify-content:space-between;">
+          <button mat-button type="button" class="addbtn" matStepperPrevious><mat-icon style="width: 20px; height: 23px;">arrow_back_ios</mat-icon> <span>Anterior</span></button>
+        </mat-card-actions>
+      </form>
+    </mat-step>
+
+    </mat-horizontal-stepper>
+  </main>
+
+
+    <ng-template #UploadExcelBehaviorsDialog>
+        <h1 mat-dialog-title>Subir excel de comportamientos</h1>       
+        <button (click)="fileInput.click()" mat-icon-button color="primary" class="addbtn" style="gap: 5px !important;">
+          <mat-icon>cloud_upload</mat-icon>
+          <span>Subir archivo</span>
+        </button>
+        <input #fileInput type="file" accept=".xlsx,.xls" (change)="onFileSelectedBehaviors($event)" style="display: none;" />
+        <mat-dialog-content class="w-full flex justify-center" style="margin: 0px !important; padding: 0px !important;">
+          <div class="flex gap-4 w-full justify-center">
+            
+            <div *ngIf="comportamientoExcel && comportamientoExcel.datos && comportamientoExcel.datos.listadoCorrectos && comportamientoExcel.datos.listadoCorrectos.length > 0"   
+            [ngClass]="{
+              'w-1/2': comportamientoExcel?.datos?.listadoIncorrectos?.length > 0,
+              'w-full': comportamientoExcel?.datos?.listadoIncorrectos?.length === 0}">
+              <h4 class="mt-4">Correctos</h4>
+              <mat-table 
+                         [dataSource]="comportamientoExcel.datos.listadoCorrectos" class="mt-4 w-full border border-gray-300">
+                
+                <!-- Columnas de la tabla -->
+                <ng-container matColumnDef="codigo">
+                  <mat-header-cell *matHeaderCellDef>ID</mat-header-cell>
+                  <mat-cell *matCellDef="let comportamiento">{{ comportamiento?.codigo }}</mat-cell>
+                </ng-container>
+                
+                <ng-container matColumnDef="codigoCompetencia">
+                  <mat-header-cell *matHeaderCellDef>Código Competencia</mat-header-cell>
+                  <mat-cell *matCellDef="let comportamiento">{{ comportamiento?.competencia?.codigo }}</mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="competencia">
+                  <mat-header-cell *matHeaderCellDef>Competencia</mat-header-cell>
+                  <mat-cell *matCellDef="let comportamiento">{{ comportamiento?.competencia?.titulo }}</mat-cell>
+                </ng-container>
+                
+                <ng-container matColumnDef="nivel">
+                  <mat-header-cell *matHeaderCellDef>Nivel</mat-header-cell>
+                  <mat-cell *matCellDef="let comportamiento">{{ comportamiento?.nivel?.nombre }}</mat-cell>
+                </ng-container>
+                
+                <ng-container matColumnDef="mensajeserror">
+                  <mat-header-cell *matHeaderCellDef>Observación</mat-header-cell>
+                  <mat-cell *matCellDef="let comportamiento"></mat-cell>
+                </ng-container>
+                
+                <mat-header-row *matHeaderRowDef="displayedColumnsBehaviorsGroupModal"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumnsBehaviorsGroupModal;"></mat-row>
+              </mat-table>
+            </div>
+        
+            <div *ngIf="comportamientoExcel && comportamientoExcel.datos && comportamientoExcel.datos.listadoIncorrectos && comportamientoExcel.datos.listadoIncorrectos.length > 0"   
+            [ngClass]="{
+              'w-1/2': comportamientoExcel?.datos?.listadoCorrectos?.length > 0,
+              'w-full': comportamientoExcel?.datos?.listadoCorrectos?.length === 0}">
+              <h4 class="mt-4">Incorrectos</h4>
+              <mat-table 
+                         [dataSource]="comportamientoExcel.datos.listadoIncorrectos" class="mt-4 w-full border border-gray-300">
+                
+                <!-- Columnas de la tabla -->
+                <ng-container matColumnDef="codigo">
+                  <mat-header-cell *matHeaderCellDef>ID</mat-header-cell>
+                  <mat-cell *matCellDef="let comportamiento">{{ comportamiento?.codigo }}</mat-cell>
+                </ng-container>
+                
+                <ng-container matColumnDef="codigoCompetencia">
+                  <mat-header-cell *matHeaderCellDef>Cod. Competencia</mat-header-cell>
+                  <mat-cell *matCellDef="let comportamiento">{{ comportamiento?.competencia?.codigo }}</mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="competencia">
+                  <mat-header-cell *matHeaderCellDef>Competencia</mat-header-cell>
+                  <mat-cell *matCellDef="let comportamiento">{{ comportamiento?.competencia?.titulo }}</mat-cell>
+                </ng-container>
+                
+                <ng-container matColumnDef="nivel">
+                  <mat-header-cell *matHeaderCellDef>Nivel</mat-header-cell>
+                  <mat-cell *matCellDef="let comportamiento">{{ comportamiento?.nivel?.nombre }}</mat-cell>
+                </ng-container>
+                
+                <ng-container matColumnDef="mensajeserror">
+                  <mat-header-cell *matHeaderCellDef>Observación</mat-header-cell>
+                  <mat-cell *matCellDef="let comportamiento">
+                    <ng-container *ngIf="comportamiento.mensajesError">
+                      <ul class="dotted-list">
+                        <ng-container *ngFor="let mensaje of comportamiento.mensajesError.split('|')">
+                          <li>{{ BehaviorErrors[mensaje] }}</li>
+                        </ng-container>
+                      </ul>
+                    </ng-container>
+                  </mat-cell>
+                </ng-container>
+        
+                <mat-header-row *matHeaderRowDef="displayedColumnsBehaviorsGroupModal"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumnsBehaviorsGroupModal;"></mat-row>
+              </mat-table>
+            </div>
+            
+          </div>
+        </mat-dialog-content>
+        
+        
+        <h5 class="my-4 text-red-600"><b>AVISO:</b> Todos los registros deben estar correctos para continuar.</h5>
+
+        <mat-dialog-actions class="gap-2" align="end">
+          <button type="button" mat-dialog-close class="inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto">Cancelar</button>   
+          <button type="button" *ngIf="comportamientoExcel === undefined && comportamientoExcel?.datos?.listadoIncorrectos.length > 0" class="inline-flex w-full justify-center rounded-md bg-gray-600 px-3 py-2 text-sm font-semibold text-white shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-500 sm:mt-0 sm:w-auto" >Confirmar</button>  
+          <button type="button" (click)="SendBehaviorsData()" *ngIf="comportamientoExcel != undefined && comportamientoExcel?.datos?.listadoIncorrectos.length === 0" class="inline-flex w-full justify-center rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-blue-500 sm:mt-0 sm:w-auto" >Confirmar</button>  
+        </mat-dialog-actions>
+      </ng-template>
+
+        

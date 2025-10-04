@@ -1,0 +1,75 @@
+{
+    "registros": [
+        {
+            "codigo": "00000027",
+            "nombreCorto": "120-GG",
+            "nombre": "Gerencia General"
+        },
+        {
+            "codigo": "00000028",
+            "nombreCorto": "210-GRH",
+            "nombre": "Gerencia de Recursos Humanos"
+        },
+        {
+            "codigo": "00000030",
+            "nombreCorto": "220-GF",
+            "nombre": "Gerencia de Finanzas"
+        },
+        {
+            "codigo": "00000031",
+            "nombreCorto": "230-GLS",
+            "nombre": "Gerencia de Logística y Servicios"
+        },
+        {
+            "codigo": "00000032",
+            "nombreCorto": "310-GDI",
+            "nombre": "Gerencia de Desarrollo e Investigación"
+        },
+        {
+            "codigo": "00000035",
+            "nombreCorto": "420-GSN",
+            "nombre": "Gerencia de Servicios Norte"
+        },
+        {
+            "codigo": "00000036",
+            "nombreCorto": "430-GSC",
+            "nombre": "Gerencia de Servicios Centro"
+        },
+        {
+            "codigo": "00000037",
+            "nombreCorto": "440-GSS",
+            "nombre": "Gerencia de Servicios Sur"
+        },
+        {
+            "codigo": "00003401",
+            "nombreCorto": "330-GC",
+            "nombre": "Gerencia Comercial"
+        },
+        {
+            "codigo": "00003598",
+            "nombreCorto": "150-GAI",
+            "nombre": "Gerencia de Auditoría Interna"
+        },
+        {
+            "codigo": "00003798",
+            "nombreCorto": "450-GPDP",
+            "nombre": "Gerencia de Producc.y Distribuc.Primaria"
+        },
+        {
+            "codigo": "00003873",
+            "nombreCorto": "350-GPO",
+            "nombre": "Gerencia de Proyectos y Obras"
+        },
+        {
+            "codigo": "00003923",
+            "nombreCorto": "370-GALR",
+            "nombre": "Gerencia de Asuntos Legales y R"
+        },
+        {
+            "codigo": "00004303",
+            "nombreCorto": "480-GGAR",
+            "nombre": "Gerencia de Gestión de Aguas Residuales"
+        }
+    ],
+    "mensaje": "OK"
+}

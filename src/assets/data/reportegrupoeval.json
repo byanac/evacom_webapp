@@ -1,0 +1,14 @@
+{
+    "registros": [
+        {
+            "codigoFicha": "00010884",
+            "apellidosNombres": "CALDERON LLAGUENTO, JUAN GELASIO",
+            "unidadOrganica": "220-GF",
+            "codigoPuesto": "00037719",
+            "nombrePuesto": "Gerente de Finanzas",
+            "codGrupoEvaluacion": "GE1",
+            "desGrupoEvaluacion": "Gerentes"
+        }
+    ],
+    "mensaje": "OK"
+}

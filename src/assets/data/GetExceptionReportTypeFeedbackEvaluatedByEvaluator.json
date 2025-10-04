@@ -1,0 +1,77 @@
+{
+    "registros": [
+        {
+            "evaluador": {
+                "codigoFicha": "00012336",
+                "apellidosNombres": "SEGURA PERALTA, AMERICA GLADYS",
+                "codigoPuesto": "00005197",
+                "nombrePuesto": "Analista Principal de Sistemas"
+            },
+            "evaluado": {
+                "codigoFicha": "00024547",
+                "apellidosNombres": "HERRERA GARCIA, ANDY OMAR",
+                "unidadOrganica": "458-EOMASBA",
+                "codigoPuesto": "00017394",
+                "nombrePuesto": "Oper.Espec.de Maqui.Pesada y Operaciones",
+                "foto": "https://webapp16.sedapal.com.pe/imgsedatel/ficha/24547.jpg"
+            },
+            "admin": {
+                "codigoFicha": "00012336",
+                "apellidosNombres": "SEGURA PERALTA, AMERICA GLADYS",
+                "codigoPuesto": "00005197",
+                "nombrePuesto": "Analista Principal de Sistemas"
+            },
+            "fechaRegistro": "2024-12-10 15:00:19",
+            "fechaLimite": "2025-01-15 00:00:00",
+            "calendario": {
+                "vCodigo": "C003",
+                "vNombre": "90° 2024-I",
+                "tipo": "90"
+            },
+            "idExcepcion": 6,
+            "estadoExcepcion": false,
+            "fase": "RETROALIMENTACION",
+            "codigoFase": " ",
+            "estadoEvaluado": false,
+            "estadoEvaluador": false,
+            "estadoVeredicto": false
+        },
+        {
+            "evaluador": {
+                "codigoFicha": "00012336",
+                "apellidosNombres": "SEGURA PERALTA, AMERICA GLADYS",
+                "codigoPuesto": "00005197",
+                "nombrePuesto": "Analista Principal de Sistemas"
+            },
+            "evaluado": {
+                "codigoFicha": "00025110",
+                "apellidosNombres": "ALCARRAZ GUIA, ROBERTO",
+                "unidadOrganica": "458-EOMASBA",
+                "codigoPuesto": "00001379",
+                "nombrePuesto": "Ope. Espec. de Opera. y Mantto. Electro.",
+                "foto": "https://webapp16.sedapal.com.pe/imgsedatel/ficha/25110.jpg"
+            },
+            "admin": {
+                "codigoFicha": "00012336",
+                "apellidosNombres": "SEGURA PERALTA, AMERICA GLADYS",
+                "codigoPuesto": "00005197",
+                "nombrePuesto": "Analista Principal de Sistemas"
+            },
+            "fechaRegistro": "2024-12-10 19:34:09",
+            "fechaLimite": "2024-12-11 00:00:00",
+            "calendario": {
+                "vCodigo": "C003",
+                "vNombre": "90° 2024-I",
+                "tipo": "90"
+            },
+            "idExcepcion": 8,
+            "estadoExcepcion": false,
+            "fase": "RETROALIMENTACION",
+            "codigoFase": " ",
+            "estadoEvaluado": false,
+            "estadoEvaluador": false,
+            "estadoVeredicto": false
+        }
+    ],
+    "mensaje": "OK"
+}

@@ -1,0 +1,304 @@
+<div class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+  <div class="fixed inset-0 bg-gray-900/50 transition-opacity"></div>
+    <div class="fixed inset-0 z-10 overflow-y-auto">
+      <div class="flex min-h-full items-center justify-center p-4 text-center sm:items-center sm:p-0">
+        <div class="relative transform overflow-hidden rounded-lg  text-left shadow-xl transition-all w-full">
+            <div class="bg-white shadow-md rounded-lg overflow-hidden">
+              <div
+                class="bg-primary p-6 text-primary-foreground flex justify-between items-center bg-blue-600 text-white"
+              >
+                <h1 class="text-2xl font-bold mb-0">
+                  Visualización de histórico de calibración
+                </h1>     
+                <button
+                  (click)="CloseModal()"
+                  class="inline-flex items-center hover:bg-white hover:text-gray-500 justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 text-primary-foreground"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="h-6 w-6"
+                  >
+                    <path d="M18 6 6 18"></path>
+                    <path d="m6 6 12 12"></path>
+                  </svg>
+                </button>
+              </div>
+              <div class="overflow-x-auto">
+                <section class="flex gap-6">
+                  <table border="1" style="width:100%" *ngIf="response1">
+                    <thead>
+                      <tr class="bg-primary text-white text-center">
+                        <th>Evaluación original</th>
+                        <th>Calibración</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>
+                          <div *ngIf="response1">
+                            <div class="text-center mt-6">
+                            <h1 class="text-lg" style="text-transform: uppercase;">VISUALIZACIÓN DE RESULTADOS DE EVALUACIÓN DE DESEMPEÑO POR COMPETENCIAS {{response1?.registros?.tipo}}°</h1>
+                            </div>
+                            <section class="m-4">
+                              <hr>
+                              <div>
+                                <p class="font-bold mb-0">Datos del evaluado:</p>
+                              </div>
+                              <div>
+                                <table>
+                                  <tr>
+                                    <td class="flex font-bold justify-between"><p>Ficha:</p> <p>{{removeLeadingZeros(response1?.registros.ficha)}}</p></td>
+                                    <td class="font-bold pl-4">Nombre: {{response1?.registros.nombre}}</td>
+                                  </tr>
+                                  <tr>
+                                    <td class="flex font-bold justify-between"><p>Unidad Orgánica: {{response1?.registros.unidadOrganica}}</p></td>
+                                    <td class="font-bold pl-4">Cargo:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{response1?.registros.cargo}}</td>
+                                  </tr>
+                                </table>
+                              </div>
+                              <hr class="mt-2">
+                              <div>
+                                <p class="font-bold mb-0">Datos del evaluador:</p>
+                              </div>
+                              <div>
+                                <table>
+                                  <tr>
+                                    <td class="flex font-bold justify-between"><p>Ficha:</p> <p>{{removeLeadingZeros(response1?.registros.fichaEvaluador)}}</p></td>
+                                    <td class="font-bold pl-4">Nombre: {{response1?.registros.nombreEvaluador}}</td>
+                                  </tr>
+                                  <tr>
+                                    <td class="flex font-bold justify-between"><p>Unidad Orgánica: {{response1?.registros.unidadOrganicaEvaluador}}</p></td>
+                                    <td class="font-bold pl-4">Cargo:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{response1?.registros.cargoEvaluador}}</td>
+                                  </tr>
+                                </table>
+                              </div>
+                              <hr class="mt-2">
+                            </section>
+                            
+                            
+                              <div *ngFor="let item of response1?.registros?.competenciasResultado; index as i" class="relative overflow-x-auto m-4 mt-1">
+                                <table class="w-full text-sm text-left rtl:text-right text-gray-500  mb-4">
+                                    <thead class="text-xs text-gray-700 bg-blue-200">
+                                        <tr class="border border-black border-solid  text-black">
+                                            <th scope="col" class="px-6 py-3"></th>
+                                            <th scope="col" class="py-3" *ngIf="item.titulo != undefined">
+                                                {{item.titulo + ":"}}
+                                                <div class="normal-case">
+                                                {{item.descripcion}}
+                                                </div>
+                                            </th>
+                                            <th class="text-center border-solid border-1 " style="width: 6rem;">
+                                                <p class="mb-0">Calificación por Comportamiento</p>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody *ngFor="let question of item.comportamientosResultado; index as i">
+                                        <tr class="bg-white border border-black border-solid">
+                                            <td class="text-center text-gray-900">
+                                              {{i+1}}
+                                            </td>
+                                            <td scope="row" class="flex font-medium text-gray-900">
+                                                <div>{{question.descripcion}}</div>
+                                            </td>
+                                            <td class="text-center border-solid border-1 bg-blue-300" [ngSwitch]="question.resultado">
+                                              <p class="text-black" *ngSwitchCase="0">No se ingresó un valor</p>
+                                                <p class="text-black" *ngSwitchCase="1">0%</p>
+                                                <p class="text-black" *ngSwitchCase="2">25%</p>
+                                                <p class="text-black" *ngSwitchCase="3">50%</p>
+                                                <p class="text-black" *ngSwitchCase="4">75%</p>
+                                                <p class="text-black" *ngSwitchCase="5">100%</p>
+                                            </td>
+                                        </tr>  
+                                    </tbody>
+                                    <tr class="bg-blue-900 text-white">
+                                      <td colspan="2">Calificación por competencia {{item.titulo}}</td>
+                                      <td class="font-bold text-center">{{calcularPromedioPonderado(item.resultado)}} <br> {{ObtenerLabeldeEstado(item.resultado)}}</td>
+                                    </tr>
+                                </table>
+                              </div>
+                            
+                              <div class="m-4">
+                                <table class="w-full text-sm text-left rtl:text-right text-gray-500">
+                                  <tbody>
+                                    <tr class="bg-white border border-black border-solid">
+                                      <td class="w-1/2 bg-blue-900 text-white">Competencia con mayor FORTALEZA: Indicar hechos y datos que lo evidencien.</td>
+                                      <td class="w-1/2 font-medium text-gray-900"><b>{{obtenerNombreCompetenciasFiltrada1(response1?.registros?.competenciaFortaleza)}}</b><br>{{response1?.registros?.fortaleza}}</td>
+                                    </tr>
+                                    <tr class="bg-white border border-black border-solid">
+                                      <td class="w-1/2 bg-blue-900 text-white">Competencia con mayor OPORTUNIDAD DE MEJORA: Indicar hechos y datos que lo evidencien.</td>
+                                      <td class="w-1/2 font-medium text-gray-900"><b>{{obtenerNombreCompetenciasFiltrada1(response1?.registros?.competenciaOportunidad)}}</b><br>{{response1?.registros?.oportunidad}}</td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                              
+                            <div class="m-4">
+                            <table class="w-full text-sm text-left rtl:text-right text-gray-500 ">
+                              <tbody>
+                                  <tr class="bg-white  border border-black border-solid">
+                                      <td rowspan="4" class="bg-blue-900 text-white">
+                                        RESULTADO DE EVALUACIÓN DEL DESEMPEÑO
+                                      </td>
+                                      <td scope="row" class="flex font-medium text-gray-900">
+                                        RESULTADO DE EVALUACIÓN DE COMPETENCIAS
+                                      </td>
+                                      <td class="bg-blue-900 text-white text-center">
+                                          <p class="text-white font-bold">{{calcularPromedioFinal(EvaluationResult1) + "%"}}</p>
+                                      </td>
+                                  </tr>  
+                                  <tr class="bg-white  border border-black border-solid">
+                                    <td scope="row" class="flex font-medium text-gray-900">
+                                      VALORACIÓN DEL DESEMPEÑO
+                                    </td>
+                                    <td class="bg-blue-900 text-white text-center">
+                                        <p class="text-white font-bold">{{ObtenerLabeldeEstado(EvaluationResult1)}}</p>
+                                    </td>
+                                </tr> 
+                              </tbody>
+                            </table>
+                            </div>
+                          </div>
+                        </td>
+                        <td>
+                          <div *ngIf="response2">
+                            <div class="text-center mt-6">
+                            <h1 class="text-lg" style="text-transform: uppercase;">VISUALIZACIÓN DE RESULTADOS DE EVALUACIÓN DE DESEMPEÑO POR COMPETENCIAS {{response2?.registros?.tipo}}°</h1>
+                            </div>
+                            <section class="m-4">
+                              <hr>
+                              <div>
+                                <p class="font-bold mb-0">Datos del evaluado:</p>
+                              </div>
+                              <div>
+                                <table>
+                                  <tr>
+                                    <td class="flex font-bold justify-between"><p>Ficha:</p> <p>{{removeLeadingZeros(response2?.registros.ficha)}}</p></td>
+                                    <td class="font-bold pl-4">Nombre: {{response2?.registros.nombre}}</td>
+                                  </tr>
+                                  <tr>
+                                    <td class="flex font-bold justify-between"><p>Unidad Orgánica: {{response2?.registros.unidadOrganica}}</p></td>
+                                    <td class="font-bold pl-4">Cargo:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{response2?.registros.cargo}}</td>
+                                  </tr>
+                                </table>
+                              </div>
+                              <hr class="mt-2">
+                              <div>
+                                <p class="font-bold mb-0">Datos del evaluador:</p>
+                              </div>
+                              <div>
+                                <table>
+                                  <tr>
+                                    <td class="flex font-bold justify-between"><p>Ficha:</p> <p>{{removeLeadingZeros(response2?.registros.fichaEvaluador)}}</p></td>
+                                    <td class="font-bold pl-4">Nombre: {{response2?.registros.nombreEvaluador}}</td>
+                                  </tr>
+                                  <tr>
+                                    <td class="flex font-bold justify-between"><p>Unidad Orgánica: {{response2?.registros.unidadOrganicaEvaluador}}</p></td>
+                                    <td class="font-bold pl-4">Cargo:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{response2?.registros.cargoEvaluador}}</td>
+                                  </tr>
+                                </table>
+                              </div>
+                              <hr class="mt-2">
+                            </section>
+                            
+                            
+                              <div *ngFor="let item of response2?.registros?.competenciasResultado; index as i" class="relative overflow-x-auto m-4 mt-1">
+                                <table class="w-full text-sm text-left rtl:text-right text-gray-500  mb-4">
+                                    <thead class="text-xs text-gray-700 bg-blue-200">
+                                        <tr class="border border-black border-solid  text-black">
+                                            <th scope="col" class="px-6 py-3"></th>
+                                            <th scope="col" class="py-3" *ngIf="item.titulo != undefined">
+                                                {{item.titulo + ":"}}
+                                                <div class="normal-case">
+                                                {{item.descripcion}}
+                                                </div>
+                                            </th>
+                                            <th class="text-center border-solid border-1 " style="width: 6rem;">
+                                                <p class="mb-0">Calificación por Comportamiento</p>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody *ngFor="let question of item.comportamientosResultado; index as i">
+                                        <tr class="bg-white border border-black border-solid">
+                                            <td class="text-center text-gray-900">
+                                              {{i+1}}
+                                            </td>
+                                            <td scope="row" class="flex font-medium text-gray-900">
+                                                <div>{{question.descripcion}}</div>
+                                            </td>
+                                            <td class="text-center border-solid border-1 bg-blue-300" [ngSwitch]="question.resultado">
+                                              <p class="text-black" *ngSwitchCase="0">No se ingresó un valor</p>
+                                                <p class="text-black" *ngSwitchCase="1">0%</p>
+                                                <p class="text-black" *ngSwitchCase="2">25%</p>
+                                                <p class="text-black" *ngSwitchCase="3">50%</p>
+                                                <p class="text-black" *ngSwitchCase="4">75%</p>
+                                                <p class="text-black" *ngSwitchCase="5">100%</p>
+                                            </td>
+                                        </tr>  
+                                    </tbody>
+                                    <tr class="bg-blue-900 text-white">
+                                      <td colspan="2">Calificación por competencia {{item.titulo}}</td>
+                                      <td class="font-bold text-center">{{calcularPromedioPonderado(item.resultado)}} <br> {{ObtenerLabeldeEstado(item.resultado)}}</td>
+                                    </tr>
+                                </table>
+                              </div>
+                            
+                              <div class="m-4">
+                                <table class="w-full text-sm text-left rtl:text-right text-gray-500">
+                                  <tbody>
+                                    <tr class="bg-white border border-black border-solid">
+                                      <td class="w-1/2 bg-blue-900 text-white">Competencia con mayor FORTALEZA: Indicar hechos y datos que lo evidencien.</td>
+                                      <td class="w-1/2 font-medium text-gray-900"><b>{{obtenerNombreCompetenciasFiltrada2(response1?.registros?.competenciaFortaleza)}}</b><br>{{response1?.registros?.fortaleza}}</td>
+                                    </tr>
+                                    <tr class="bg-white border border-black border-solid">
+                                      <td class="w-1/2 bg-blue-900 text-white">Competencia con mayor OPORTUNIDAD DE MEJORA: Indicar hechos y datos que lo evidencien.</td>
+                                      <td class="w-1/2 font-medium text-gray-900"><b>{{obtenerNombreCompetenciasFiltrada2(response1?.registros?.competenciaOportunidad)}}</b><br>{{response1?.registros?.oportunidad}}</td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                              
+                            <div class="m-4">
+                            <table class="w-full text-sm text-left rtl:text-right text-gray-500 ">
+                              <tbody>
+                                  <tr class="bg-white  border border-black border-solid">
+                                      <td rowspan="4" class="bg-blue-900 text-white">
+                                        RESULTADO DE EVALUACIÓN DEL DESEMPEÑO
+                                      </td>
+                                      <td scope="row" class="flex font-medium text-gray-900">
+                                        RESULTADO DE EVALUACIÓN DE COMPETENCIAS
+                                      </td>
+                                      <td class="bg-blue-900 text-white text-center">
+                                          <p class="text-white font-bold">{{calcularPromedioFinal(EvaluationResult2) + "%"}}</p>
+                                      </td>
+                                  </tr>  
+                                  <tr class="bg-white  border border-black border-solid">
+                                    <td scope="row" class="flex font-medium text-gray-900">
+                                      VALORACIÓN DEL DESEMPEÑO
+                                    </td>
+                                    <td class="bg-blue-900 text-white text-center">
+                                        <p class="text-white font-bold">{{ObtenerLabeldeEstado(EvaluationResult2)}}</p>
+                                    </td>
+                                </tr> 
+                              </tbody>
+                            </table>
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>    
+                </section>
+              </div> 
+            </div>
+        </div>
+    </div>
+  </div>
+</div>

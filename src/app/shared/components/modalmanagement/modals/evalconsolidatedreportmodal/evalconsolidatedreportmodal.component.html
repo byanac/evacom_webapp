@@ -1,0 +1,31 @@
+
+          <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
+            <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0 mobilemode">
+              <div class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
+                <div class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
+                  <div>
+                    <div class="text-center">
+                      <h3 class="text-base font-semibold leading-6 text-gray-900 mb-4" id="modal-title">Reporte de consolidado de evaluaciones</h3>
+                      <div class="mt-2">
+                        <mat-form-field appearance="outline" class="w-full">
+                          <mat-label>Seleccionar el periodo a generar reporte</mat-label>
+                          <mat-select *ngIf="CalendarData === undefined" placeholder="Seleccionar el periodo" [(ngModel)]="CodCalendar">
+                            <mat-option value="">Seleccionar el periodo a generar reporte</mat-option>
+                          </mat-select>
+                        
+                          <mat-select *ngIf="CalendarData != undefined" placeholder="Seleccionar el periodo" [(ngModel)]="CodCalendar">
+                            <mat-option value="">Seleccionar el periodo a generar reporte</mat-option>
+                            <mat-option *ngFor="let item of CalendarData.registros" [value]="item.vCodigo">{{ item.vNombre }}</mat-option>
+                          </mat-select>
+                        </mat-form-field>           
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6 gap-4"> 
+                  <button type="button" class="inline-flex w-full justify-center rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-blue-500 sm:mt-0 sm:w-auto" (click)="DownloadExcel()">Descargar</button>   
+                  <button type="button" class="inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto" (click)="CloseModal()" >Cancelar</button>        
+                </div>
+              </div>
+            </div>
+          </div>

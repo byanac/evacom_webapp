@@ -1,0 +1,87 @@
+<div class="min-h-screen bg-gray-100 flex flex-col">
+  <header class="text-white py-4 px-6" style="background-color: #3776ff;">
+    <h1 class="text-2xl font-bold mb-0">Carga Automatica de Asignación de Grupos de Evaluación</h1>
+  </header>
+
+<main class="flex-grow p-6">
+    <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+      <form [formGroup]="form" class="space-y-4">
+        <div class="grid gap-4">
+          <div class="space-y-2">
+            <mat-form-field appearance="outline" class="w-full">
+              <mat-label>Grupo de evaluación</mat-label>
+              <mat-select 
+                id="idGrupoEvaluacion" 
+                formControlName="idGrupoEvaluacion" 
+                required>
+                <mat-option *ngFor="let grupo of gruposEvaluacionSelect" [value]="grupo.codigo">
+                  {{ grupo.descripcion }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            
+          </div>
+          <div class="space-y-2">
+            <mat-form-field appearance="outline" class="w-full">
+              <mat-label>Unidad Organizativa</mat-label>
+              <mat-select 
+                id="codigo"  (selectionChange)="onGetEvaluadorByUO($event.value)"
+                formControlName="codigo" 
+                required>
+                <mat-option disabled>
+                  <input matInput placeholder="Buscar..." [formControl]="uoFilterCtrl"
+                    (keydown)="$event.stopPropagation()">
+                </mat-option>
+
+                <!-- Opciones filtradas -->
+                <mat-option *ngFor="let uo of filteredUnidadOrganizativa | async" [value]="uo.codigo">
+                  {{ uo.nombre }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>            
+          </div>      
+        </div>
+      </form>
+    </div>
+    <div class="bg-white shadow-md rounded px-8 pt-6 pb-8">
+    <div class="flex justify-between items-center mb-4">
+        <h2 class="text-xl font-semibold">Evaluados por Asignar</h2>
+        <button (click)="cargaAutomaticaAsignacion()" type="submit"
+            class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+            Carga Automática
+        </button>
+    </div>
+      <mat-table [dataSource]="dataSourceMembers">
+        <ng-container matColumnDef="select">
+          <mat-header-cell *matHeaderCellDef>
+            <mat-checkbox (change)="masterToggle($event)" [checked]="isAllSelected()" [indeterminate]="isPartialSelected()">
+            </mat-checkbox>
+          </mat-header-cell>
+          <mat-cell *matCellDef="let row">
+            <mat-checkbox (click)="$event.stopPropagation()" (change)="toggleSelection(row)"  [checked]="selection.isSelected(row)">
+            </mat-checkbox>
+          </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="ficha">
+          <mat-header-cell *matHeaderCellDef>Ficha</mat-header-cell>
+          <mat-cell *matCellDef="let members">{{ members?.trabajador.codigoFicha }}</mat-cell> 
+        </ng-container>        
+        <ng-container matColumnDef="nombresApellidos">
+          <mat-header-cell *matHeaderCellDef>Nombres y Apellidos Evaluado</mat-header-cell>
+         <!--  <mat-cell *matCellDef="let members">{{ members?.nombre }} {{ members?.apellidos }}</mat-cell> --> 
+           <mat-cell *matCellDef="let members">{{ members?.trabajador.apellidosNombres }}</mat-cell>
+        </ng-container>   
+        <ng-container matColumnDef="codPuesto">
+          <mat-header-cell *matHeaderCellDef>Cod. Puesto</mat-header-cell>
+          <mat-cell *matCellDef="let members">{{ members?.trabajador.codigoPuesto }}</mat-cell> 
+        </ng-container>
+        <ng-container matColumnDef="puesto">
+          <mat-header-cell *matHeaderCellDef>Puesto</mat-header-cell>
+          <mat-cell *matCellDef="let members">{{ members?.trabajador.nombrePuesto }}</mat-cell> 
+        </ng-container>
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
+      <mat-paginator #paginatorMembers [pageSizeOptions]="[10, 15, 20, 25 ,30]" showFirstLastButtons></mat-paginator>
+    </div>
+</main>

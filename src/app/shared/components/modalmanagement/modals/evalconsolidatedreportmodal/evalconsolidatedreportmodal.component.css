@@ -1,0 +1,7 @@
+/* Estilos para dispositivos móviles */
+@media only screen and (max-width: 639px) {
+  .mobilemode {
+    align-content: center !important;
+    flex-wrap: wrap !important;
+  }
+}

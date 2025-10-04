@@ -1,0 +1,75 @@
+{
+    "registros": [
+        {
+            "codigo": "00003874",
+            "nombreCorto": "357-EGP-N",
+            "nombre": "Equipo Gestión de Proyectos-Norte"
+        },
+        {
+            "codigo": "00003876",
+            "nombreCorto": "358-EGP-C",
+            "nombre": "Equipo Gestión de Proyectos-Centro"
+        },
+        {
+            "codigo": "00003877",
+            "nombreCorto": "359-EGP-S",
+            "nombre": "Equipo Gestión de Proyectos-Sur"
+        },
+        {
+            "codigo": "00003879",
+            "nombreCorto": "356-ELC",
+            "nombre": "Equipo Licitaciones y Contratos"
+        },
+        {
+            "codigo": "00003900",
+            "nombreCorto": "361-EGSP",
+            "nombre": "Equipo Gestión Social de Proyectos"
+        },
+        {
+            "codigo": "00003924",
+            "nombreCorto": "371-ER",
+            "nombre": "Equipo Regulación"
+        },
+        {
+            "codigo": "00003925",
+            "nombreCorto": "372-EAL",
+            "nombre": "Equipo Asuntos Legal"
+        },
+        {
+            "codigo": "00004250",
+            "nombreCorto": "373-EGLA",
+            "nombre": "Equipo Gestión Legal y Administrativa"
+        },
+        {
+            "codigo": "00004325",
+            "nombreCorto": "363-EPE",
+            "nombre": "Equipo Proyectos Especiales"
+        },
+        {
+            "codigo": "00004423",
+            "nombreCorto": "374-ESPS",
+            "nombre": "Eq. Saneamiento de Propi. y Servidumbres"
+        },
+        {
+            "codigo": "00004424",
+            "nombreCorto": "375-ECo",
+            "nombre": "Equipo Contrataciones"
+        },
+        {
+            "codigo": "00004523",
+            "nombreCorto": "364-EEPre",
+            "nombre": "Equipo Estudios Preliminares"
+        },
+        {
+            "codigo": "00004524",
+            "nombreCorto": "365-EEDef",
+            "nombre": "Equipo Estudios Definitivos"
+        },
+        {
+            "codigo": "00004525",
+            "nombreCorto": "366-EO",
+            "nombre": "Equipo Obras"
+        }
+    ],
+    "mensaje": "OK"
+}

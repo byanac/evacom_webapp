@@ -1,0 +1,68 @@
+
+<app-title titulo="Histórico del personal a ser evaluado a cargo de {{EvaluatorName}} - {{PeriodName}}"></app-title>
+
+<app-targetscounters *ngIf="TableData != undefined" [DataToCount]="TableData" [ConfirmedEntryName]="'estadoEvaluacion'" [ConfirmText]="'Evaluado'" [NotConfirmedText]="'No evaluado'"></app-targetscounters>
+
+<div class="relative overflow-x-auto">
+  <table class="w-full text-sm text-left rtl:text-right text-gray-500 border solid">
+      <thead class="text-xs text-gray-700 uppercase bg-gray-5">
+          <tr>
+              <th scope="col" class="px-6 py-3 border" style="width: 8rem;">Foto</th>
+              <th scope="col" class="px-6 py-3 border" style="width: 5.9rem;">COD. FICHA</th>
+              <th scope="col" class="px-6 py-3 border" style="width: 35rem;">APELLIDOS Y NOMBRES</th>
+              <th scope="col" class="px-6 py-3 border" style="width: 8.5rem;">UNIDAD ORGÁNICA</th>
+              <th scope="col" class="px-6 py-3 border" style="width: 6.8rem;">COD. PUESTO</th>
+              <th scope="col" class="px-6 py-3 border text-wrap" style="width: 35rem;">PUESTO</th>
+              <th scope="col" class="px-6 py-3 border" style="width: 7rem;">Evaluación</th>
+              <th scope="col" class="px-6 py-3 border" style="width: 3rem;">Acciones</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let item of TableData" class="border hover:bg-gray-100">
+              <!-- Foto -->
+              <td class="px-6 py-4 text-black border">
+                  <img class="w-20 h-20" [src]="item?.foto" loading="lazy" 
+                    crossorigin="anonymous" (error)="onImgError($event)" alt="Foto">
+              </td>
+              <!-- COD. Ficha -->
+              <td class="px-6 py-4 text-gray-900 whitespace-nowrap">
+                  <div class="text-base font-semibold">{{removeLeadingZeros(item.codigoFicha)}}</div>
+              </td>
+              <!-- APELLIDOS Y NOMBRES -->
+              <td class="px-6 py-4 text-black border">{{item?.apellidosNombres}}</td>
+              <!-- UNIDAD ORGÁNICA -->
+              <td class="px-6 py-4 text-black border">{{item?.unidadOrganica}}</td>
+              <!-- COD. PUESTO -->
+              <td class="px-6 py-4 text-black border">{{item?.codigoPuesto}}</td>
+              <!-- PUESTO -->
+              <td class="px-6 py-4 text-black border">{{item?.nombrePuesto}}</td>
+              <!-- Evaluación -->
+              <td class="px-6 py-4 text-black border">
+                  <div *ngIf="item?.estadoEvaluacion" class="flex items-center">
+                      <span class="badgegreen bg-green-500">EVALUADO</span>
+                  </div>
+                  <div *ngIf="!item?.estadoEvaluacion" class="flex items-center">
+                      <span class="badgered bg-red-500">NO EVALUADO</span>
+                  </div>
+              </td>
+              <td class="px-6 py-4">
+                  <div class="flex items-center">
+                      <div class="w-full">
+                          <button type="button" *ngIf="item?.estadoEvaluacion" 
+                                  [routerLink]="['/home/resultado-trabajador-historico',item.codigoFicha,item.codigoPuesto,this.EvaluatorFile,this.EvaluatorPosition,this.CalendarCode]" 
+                                  class="text-white bg-green-500 hover:bg-green-600 font-medium rounded-lg text-sm px-2.5 py-2.5 w-full">
+                              Ver resultados
+                          </button>
+                          <button type="button" *ngIf="!item?.estadoEvaluacion" 
+                                  style="cursor: not-allowed;"
+                                  class="text-white bg-gray-500 font-medium rounded-lg text-sm px-2.5 py-2.5 w-full cursor-not-allowed">
+                              Ver resultados
+                          </button>
+                      </div>
+                  </div>                    
+              </td>
+          </tr>
+      </tbody>
+  </table>
+</div>
+

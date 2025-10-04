@@ -1,0 +1,11 @@
+mat-form-field::ng-deep .mat-form-field-wrapper .mat-form-field-flex {
+    align-items: center !important;
+  }
+  
+/* 
+  @media (max-width: 765px) {
+    ::ng-deep div.ui-picklist.ui-widget.ui-helper-clearfix.ui-picklist-responsive {
+      display: block !important;
+    }
+  } */
+  

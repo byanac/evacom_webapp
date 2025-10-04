@@ -1,0 +1,69 @@
+<div class="flex" style="width: 14.5rem; justify-content: space-between;">
+<form class="" (click)="$event.stopPropagation()">
+    <button id="dropdownBgHoverButton" *ngIf="GerencybuttonDisabled" (click)="OpenGerencymultiselectmenu()" data-dropdown-toggle="dropdownBgHover" style="border: solid 1px #cbcbcb;" class="text-black bg-white hover:bg-gray-500 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3.5 py-2.5 text-center inline-flex items-center" type="button">Gerencias 
+        <svg class="w-2.5 h-2.5 ms-3"  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+            <path stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+        </svg>
+    </button>
+    <button id="dropdownBgHoverButton" *ngIf="!GerencybuttonDisabled"  data-dropdown-toggle="dropdownBgHover"  style="border: solid 1px #cbcbcb;" class="text-black bg-gray-200 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3.5 py-2.5 text-center inline-flex items-center">Gerencias 
+        <svg class="w-2.5 h-2.5 ms-3"  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+            <path stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+        </svg>
+    </button>
+    <div [hidden]="!Gerencymultiselectswitch"  id="dropdownBgHover" class="z-10 w-8.5 bg-white rounded-lg shadow fixed text-opacity-10 top-14 fixedpopup" style="width: 11rem; margin-left: -2rem; height: 17rem; overflow: overlay;">
+        <div *ngIf="gerencydata != null">
+        <ul class="p-3 space-y-1 text-sm text-black  mb-0" aria-labelledby="dropdownBgHoverButton">
+            <div *ngIf="Gerencyallcheckbox" class="flex items-center p-2 rounded hover:bg-gray-100">
+                <input value="all" (change)="onChangeGerency('all', null)" id="checkbox-item-select-all" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500">
+                <label for="checkbox-item-select-all" class="w-full ms-2 text-sm font-medium text-black rounded " style="color: black !important; margin: 0px 0px 0px 10px !important">Todos</label>
+            </div>
+            <div *ngIf="!Gerencyallcheckbox" class="flex items-center p-2 rounded hover:bg-gray-100">
+                <input checked value="all" (change)="onChangeGerency('deleteall', null)" id="checkbox-item-select-none" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500">
+                <label for="checkbox-item-select-none" class="w-full ms-2 text-sm font-medium text-black rounded " style="color: black !important; margin: 0px 0px 0px 10px !important">Todos</label>
+            </div>
+            <hr>
+        <li *ngFor="let gerency of gerencydata[0].registros; index as i" [value]="gerency.codigo">
+            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                <input [value]="gerency.codigo" (change)="onChangeGerency(gerency.codigo,i)" [disabled]="Gerencycheckboxesdisabled"  [checked]="Gerencycheckboxeschecked" id="checkbox-item-{{gerency.codigo}}" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500">
+                <label for="checkbox-item-{{gerency.codigo}}" class="w-full ms-2 text-sm font-medium text-black rounded " style="color: black !important; margin: 0px 0px 0px 10px !important">{{gerency.nombre}}</label>
+            </div>
+        </li>
+        </ul>
+        </div>
+    </div>
+</form> 
+<form class="" (click)="$event.stopPropagation()">
+    <button id="dropdownBgHoverButton" *ngIf="TeamButtonDisabled" (click)="OpenTeamymultiselectmenu()" data-dropdown-toggle="dropdownBgHover" style="border: solid 1px #cbcbcb;" class="text-black bg-white hover:bg-gray-500 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3.5 py-2.5 text-center inline-flex items-center" type="button">Equipos
+        <svg class="w-2.5 h-2.5 ms-3"  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+            <path stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+        </svg>
+    </button>
+    <button id="dropdownBgHoverButton" disabled *ngIf="!TeamButtonDisabled" data-dropdown-toggle="dropdownBgHover" style="border: solid 1px #cbcbcb;" class="cursor-not-allowed text-black bg-gray-200 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3.5 py-2.5 text-center inline-flex items-center" type="button">Equipos 
+        <svg class="w-2.5 h-2.5 ms-3"  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+            <path stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+        </svg>
+    </button>
+
+    <div [hidden]="!Teammultiselectswitch" id="dropdownBgHover" class="fixedpopup z-10 w-8.5 bg-white rounded-lg shadow fixed text-opacity-10 top-14" style="width: 11rem; margin-left: -2rem; height: 17rem; overflow: overlay;">
+        <div *ngIf="Teamdata != null">
+        <ul class="p-3 space-y-1 text-sm text-black  mb-0" aria-labelledby="dropdownBgHoverButton">
+            <div *ngIf="Teamallcheckbox" class="flex items-center p-2 rounded hover:bg-gray-100">
+                <input value="all" (change)="onChangeTeam('all', null)" id="checkbox-item-team-select-all" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500">
+                <label for="checkbox-item-team-select-all" class="w-full ms-2 text-sm font-medium text-black rounded " style="color: black !important; margin: 0px 0px 0px 10px !important">Todos</label>
+            </div>
+            <div *ngIf="!Teamallcheckbox" class="flex items-center p-2 rounded hover:bg-gray-100">
+                <input checked value="all" (change)="onChangeTeam('', null)" id="checkbox-item-team-select-none" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500">
+                <label for="checkbox-item-team-select-none" class="w-full ms-2 text-sm font-medium text-black rounded " style="color: black !important; margin: 0px 0px 0px 10px !important">Todos</label>
+            </div>
+            <hr>
+        <li *ngFor="let team of Teamdata![0].registros; index as i" [value]="team.codigo">
+            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                <input [value]="team.codigo" [disabled]="Teamcheckboxesdisabled" (change)="onChangeTeam(team.codigo,i)" [checked]="Teamcheckboxesdisabled" id="checkbox-item-{{team.nombre}}" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500">
+                <label for="checkbox-item-{{team.nombre}}" class="w-full ms-2 text-sm font-medium text-black rounded " style="color: black !important; margin: 0px 0px 0px 10px !important">{{team.nombre}}</label>
+            </div>
+        </li>
+        </ul>
+    </div>
+    </div>
+</form> 
+</div>

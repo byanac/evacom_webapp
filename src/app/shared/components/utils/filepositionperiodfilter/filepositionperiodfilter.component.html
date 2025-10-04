@@ -1,0 +1,65 @@
+<div class="flex flex-wrap justify-center gap-2 sm:gap-2">
+  <!-- Campo Cod.Ficha -->
+  <div class="w-full sm:w-auto sm:ml-0">
+    <mat-form-field class="mat-text w-full sm:w-auto" appearance="outline">
+      <mat-label>Cod.Ficha</mat-label>
+      <input 
+        matInput 
+        (keyup)="OnTypingFicha($event.target.value)" 
+        maxlength="8" 
+        type="text" 
+        [(ngModel)]="Ficha" 
+        onlyNumber 
+        [disabled]="disablefichafield">
+    </mat-form-field>
+  </div>
+
+  <!-- Campo Cod.Puesto -->
+  <div class="w-full sm:w-auto sm:ml-0">
+    <mat-form-field class="mat-text w-full sm:w-auto" appearance="outline">
+      <mat-label>Cod.Puesto</mat-label>
+      <input 
+        matInput 
+        (keyup)="OnTypingPuesto($event.target.value)" 
+        maxlength="8" 
+        type="text" 
+        [(ngModel)]="Puesto" 
+        onlyNumber 
+        [disabled]="disablepuestofield">
+    </mat-form-field>
+  </div>
+
+  <!-- Selección de Periodo -->
+  <div class="w-full sm:w-auto sm:ml-0">
+    <mat-form-field class="mat-text w-full sm:w-auto" appearance="outline">
+      <mat-select 
+        placeholder="Periodo" 
+        (selectionChange)="SendCalendarCode()" 
+        [(ngModel)]="Periodo"
+        [disabled]="calendarData.length === 0">
+        <mat-option *ngIf="!calendarData || calendarData.length === 0" [disabled]="true">
+          Cargando...
+        </mat-option>
+        <mat-option 
+          *ngFor="let item of calendarData?.registros" 
+          [value]="item?.vCodigo">
+          {{ item?.vNombre }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <!-- Estado de confirmación -->
+  <div class="w-full sm:w-auto sm:ml-0" *ngIf="ShowStatusModal">
+    <mat-form-field class="mat-text w-full sm:w-auto" appearance="outline">
+      <mat-select 
+        [placeholder]="StatusPlaceHolder" 
+        (selectionChange)="SendStatusValue()" 
+        [(ngModel)]="Estado">
+        <mat-option value="">{{StatusPlaceHolder}}</mat-option>
+        <mat-option value="false">{{ FalseText }}</mat-option>
+        <mat-option value="true">{{ TrueText }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+</div>

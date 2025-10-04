@@ -1,0 +1,4 @@
+mat-form-field::ng-deep .mat-form-field-wrapper .mat-form-field-flex {
+    align-items: center !important;
+  }
+  

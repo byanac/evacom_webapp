@@ -1,0 +1,21 @@
+{
+    "registros": [
+        {
+            "codigo": "GE1",
+            "descripcion": "Gerentes"
+        },
+        {
+            "codigo": "GE2",
+            "descripcion": "Jefes"
+        },
+        {
+            "codigo": "GE3",
+            "descripcion": "Trabajadores con Rol de Supervisión de Personal"
+        },
+        {
+            "codigo": "GE4",
+            "descripcion": "Trabajadores sin Rol de Supervisión de Personal"
+        }
+    ],
+    "mensaje": "OK"
+}

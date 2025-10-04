@@ -1,0 +1,131 @@
+{
+    "registros": {
+        "evaluado": {
+            "codigoFicha": "12810",
+            "apellidosNombres": "QUIÑONES RAMIREZ, BELINDA ELIZABETH",
+            "codigoPuesto": "00037752",
+            "nombrePuesto": "Jefe del Equipo Capacitación",
+            "equipo_codigo": "00000040",
+            "equipo_nombre": "Equipo Evaluación y Proyección",
+            "gerencia_codigo": "00000028",
+            "gerencia_nombre": "Gerencia de Recursos Humanos",
+            "grupo_eval_codigo": "GE2",
+            "grupo_eval_nombre": "Jefes",
+            "grupo_ocupacional": " "
+        },
+        "evaluador": {
+            "codigoFicha": "00012336",
+            "apellidosNombres": "SEGURA PERALTA, AMERICA GLADYS",
+            "codigoPuesto": "00005197",
+            "nombrePuesto": "Analista Principal de Sistemas"
+        },
+        "competencia": [
+            {
+                "codigo": "C007",
+                "titulo": "VISIÓN ESTRATÉGICA",
+                "descripcion": "Capacidad para identificar escenarios futuros, interpretar tendencias y determinar impacto del entorno en la organización; con la finalidad de definir estrategias a largo plazo alineadas con las perspectivas organizacionales, realizar los ajustes estratégicos necesarios, minimizar las debilidades y potenciar las fortalezas.",
+                "promedio": 75.0,
+                "promedioAuto": 100.0,
+                "promedioSubalternos": 53.3,
+                "promedioFinal": 68.5
+            },
+            {
+                "codigo": "C008",
+                "titulo": "CAPACIDAD DE DIRECCIÓN",
+                "descripcion": "Habilidad para establecer y lograr objetivos retadores, en línea con las prioridades estratégicas de la organización, implica gestionar eficientemente al equipo y los recursos, generando confianza para lograr mejores resultados.",
+                "promedio": 75.0,
+                "promedioAuto": 100.0,
+                "promedioSubalternos": 48.3,
+                "promedioFinal": 67.0
+            },
+            {
+                "codigo": "C009",
+                "titulo": "GESTIÓN DE PERSONAS",
+                "descripcion": "Habilidad para conducir equipos de manera efectiva, orientando el trabajo a los objetivos de la organización, implica la capacidad de delegar responsablemente, brindando apoyo, asesoría, retroalimentación, motivación y reconocimiento para el desarrollo de sus colaboradores.",
+                "promedio": 75.0,
+                "promedioAuto": 100.0,
+                "promedioSubalternos": 40.0,
+                "promedioFinal": 64.5
+            },
+            {
+                "codigo": "C010",
+                "titulo": "COLABORACIÓN E INFLUENCIA",
+                "descripcion": "Habilidad para construir y mantener relaciones relevantes para la organización, tanto internas como externas. Involucra la capacidad de lograr acuerdos, así como conformar redes y alianzas para lograr buen desempeño en un ambiente de comunicación y confianza.",
+                "promedio": 75.0,
+                "promedioAuto": 100.0,
+                "promedioSubalternos": 37.5,
+                "promedioFinal": 63.75
+            },
+            {
+                "codigo": "C011",
+                "titulo": "GESTIÓN DEL CAMBIO",
+                "descripcion": "Es la predisposición a comprender y apreciar perspectivas diferentes u opuestas, teniendo la capacidad para adaptarse y amoldarse a los cambios y de modificar la propia conducta para alcanzar determinados objetivos cuando surgen dificultades.",
+                "promedio": 75.0,
+                "promedioAuto": 100.0,
+                "promedioSubalternos": 37.5,
+                "promedioFinal": 63.75
+            },
+            {
+                "codigo": "C012",
+                "titulo": "ALINEAMIENTO A LAS NORMAS",
+                "descripcion": "Implica el respeto y el cumplimiento de las normas que rigen en la organización. Es la capacidad de seguir los procesos definidos, buscando que no interfieran con el cumplimiento de las normas, políticas y lineamientos establecidos y en consecuencia, velar por la obtención adecuada de los resultados esperados.",
+                "promedio": 75.0,
+                "promedioAuto": 100.0,
+                "promedioSubalternos": 37.5,
+                "promedioFinal": 63.75
+            }
+        ],
+        "cualitativa": [
+            {
+                "nivel": 0,
+                "fortaleza": "TESTA",
+                "oportunidad": "TESTA",
+                "competencia_codigo_fortaleza": "C009",
+                "competencia_nombre_fortaleza": "GESTIÓN DE PERSONAS",
+                "competencia_codigo_oportunidad": "C008",
+                "competencia_nombre_oportunidad": "CAPACIDAD DE DIRECCIÓN"
+            },
+            {
+                "nivel": 1,
+                "fortaleza": "TEST1",
+                "oportunidad": "TEST1",
+                "competencia_codigo_fortaleza": "C008",
+                "competencia_nombre_fortaleza": "CAPACIDAD DE DIRECCIÓN",
+                "competencia_codigo_oportunidad": "C008",
+                "competencia_nombre_oportunidad": "CAPACIDAD DE DIRECCIÓN"
+            },
+            {
+                "nivel": 2,
+                "fortaleza": "TEST2",
+                "oportunidad": "TEST2",
+                "competencia_codigo_fortaleza": "C008",
+                "competencia_nombre_fortaleza": "CAPACIDAD DE DIRECCIÓN",
+                "competencia_codigo_oportunidad": "C009",
+                "competencia_nombre_oportunidad": "GESTIÓN DE PERSONAS"
+            },
+            {
+                "nivel": 3,
+                "fortaleza": "TEST3",
+                "oportunidad": "TEST3",
+                "competencia_codigo_fortaleza": "C009",
+                "competencia_nombre_fortaleza": "GESTIÓN DE PERSONAS",
+                "competencia_codigo_oportunidad": "C008",
+                "competencia_nombre_oportunidad": "CAPACIDAD DE DIRECCIÓN"
+            },
+            {
+                "nivel": 4,
+                "fortaleza": "test4",
+                "oportunidad": "TEST4",
+                "competencia_codigo_fortaleza": "C008",
+                "competencia_nombre_fortaleza": "CAPACIDAD DE DIRECCIÓN",
+                "competencia_codigo_oportunidad": "C007",
+                "competencia_nombre_oportunidad": "VISIÓN ESTRATÉGICA"
+            }
+        ],
+        "promedioJefe": 75.0,
+        "promedioSubalternos": 42.36,
+        "promedioFinal": 65.21,
+        "promedioAutoevaluacion": 100.0
+    },
+    "mensaje": "OK"
+}

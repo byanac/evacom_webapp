@@ -1,0 +1,30 @@
+{
+    "registros": [
+        {
+            "codigoFicha": "00012907",
+            "apellidosNombres": "HUAYTALLA RAMOS, EDISON JUAN",
+            "codigoPuesto": "00001239",
+            "nombrePuesto": "Gerente de Servicios Norte",
+            "foto": "https://webapp16.sedapal.com.pe/imgsedatel/ficha/12907.jpg",
+            "habilitaExcepcion": true
+        },
+        {
+            "codigoFicha": "00012770",
+            "apellidosNombres": "VASQUEZ ESPINOZA, RICARDO AUGUSTO",
+            "codigoPuesto": "00001929",
+            "nombrePuesto": "Jefe del Equipo Técnico - Norte",
+            "foto": "https://webapp16.sedapal.com.pe/imgsedatel/ficha/12770.jpg",
+            "habilitaExcepcion": true
+        },
+        {
+            "codigoFicha": "00012889",
+            "apellidosNombres": "CHUQUIYURI CUELLAR, NICOLAS",
+            "codigoPuesto": "00001241",
+            "nombrePuesto": "Jefe Equipo Oper.y Mantto Redes - Callao",
+            "foto": "https://webapp16.sedapal.com.pe/imgsedatel/ficha/12889.jpg",
+            "observaciones": "nada",
+            "habilitaExcepcion": false
+        }
+    ],
+    "mensaje": "OK"
+}

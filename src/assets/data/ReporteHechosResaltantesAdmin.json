@@ -1,0 +1,32 @@
+{
+    "registros": [
+        {
+            "codigoFicha": "16119",
+            "apellidosNombres": "DE LA ROCHA CORZO, JULIO CESAR",
+            "unidadOrganica": "120-GG",
+            "codigoPuesto": "00000451",
+            "nombrePuesto": "Gerente General",
+            "foto": "https://webapp16.sedapal.com.pe/imgsedatel/ficha/16119.jpg",
+            "registraHechos": true
+        },
+        {
+            "codigoFicha": "13660",
+            "apellidosNombres": "TAPIA SANCHEZ, EDITH LUZ",
+            "unidadOrganica": "122-ESG",
+            "codigoPuesto": "00008796",
+            "nombrePuesto": "Asistente Administrativo",
+            "foto": "https://webapp16.sedapal.com.pe/imgsedatel/ficha/13660.jpg",
+            "registraHechos": false
+        },
+        {
+            "codigoFicha": "14004",
+            "apellidosNombres": "NORIEGA SANDOVAL, FANNY YOJANNA",
+            "unidadOrganica": "122-ESG",
+            "codigoPuesto": "00018122",
+            "nombrePuesto": "Técnico Administrativo",
+            "foto": "https://webapp16.sedapal.com.pe/imgsedatel/ficha/14004.jpg",
+            "registraHechos": false
+        }
+    ],
+    "mensaje": "OK"
+}

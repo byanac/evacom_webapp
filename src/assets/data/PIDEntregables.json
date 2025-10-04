@@ -1,0 +1,75 @@
+{
+    "registros": [
+        {
+            "codigo": 23,
+            "grupo": "ENTREGABLE",
+            "valor": "Carta",
+            "descripcion": "Entregable de Carta",
+            "estado": 1
+        },
+        {
+            "codigo": 24,
+            "grupo": "ENTREGABLE",
+            "valor": "Memorando",
+            "descripcion": "Entregable de Memorando",
+            "estado": 0
+        },
+        {
+            "codigo": 25,
+            "grupo": "ENTREGABLE",
+            "valor": "Informe",
+            "descripcion": "Entregable de Informe",
+            "estado": 0
+        },
+        {
+            "codigo": 26,
+            "grupo": "ENTREGABLE",
+            "valor": "Foto",
+            "descripcion": "Entregable de Foto",
+            "estado": 1
+        },
+        {
+            "codigo": 27,
+            "grupo": "ENTREGABLE",
+            "valor": "Lista de Asistencia",
+            "descripcion": "Entregable de Lista de Asistencia",
+            "estado": 1
+        },
+        {
+            "codigo": 13,
+            "grupo": "ENTREGABLE",
+            "valor": "Documentos",
+            "descripcion": "Entregable de Documentos",
+            "estado": 1
+        },
+        {
+            "codigo": 12,
+            "grupo": "ENTREGABLE",
+            "valor": "Actas de Reunion",
+            "descripcion": "Entregable de Actas de Reunion",
+            "estado": 1
+        },
+        {
+            "codigo": 30,
+            "grupo": "ENTREGABLE",
+            "valor": "Test Entregable edito",
+            "descripcion": "Test Entregable edito",
+            "estado": 0
+        },
+        {
+            "codigo": 32,
+            "grupo": "ENTREGABLE",
+            "valor": "TEST2",
+            "descripcion": "TEST2",
+            "estado": 0
+        },
+        {
+            "codigo": 29,
+            "grupo": "ENTREGABLE",
+            "valor": "Nuevo Entregable EDITADO 2",
+            "descripcion": "Entregable de PB3 EDITADO 2",
+            "estado": 0
+        }
+    ],
+    "mensaje": "OK"
+}

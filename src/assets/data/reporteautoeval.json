@@ -1,0 +1,621 @@
+{
+    "registros": [
+        {
+            "codigoFicha": "00012872",
+            "apellidosNombres": "ACOSTA VERA, WILLIAM",
+            "unidadOrganica": "312-EPOF",
+            "codigoPuesto": "00008794",
+            "nombrePuesto": "Especialista de Tarifas",
+            "estadoAutoevaluacion": false
+        },
+        {
+            "codigoFicha": "00013980",
+            "apellidosNombres": "OSORIO HUATUCO, IRIS IVONNE",
+            "unidadOrganica": "312-EPOF",
+            "codigoPuesto": "00036871",
+            "nombrePuesto": "Analista de Planeamiento",
+            "estadoAutoevaluacion": false
+        },
+        {
+            "codigoFicha": "00014213",
+            "apellidosNombres": "AMBROSIO CAPA, MARCO ROSARIO",
+            "unidadOrganica": "312-EPOF",
+            "codigoPuesto": "00010144",
+            "nombrePuesto": "Analista Principal de Planeamiento",
+            "estadoAutoevaluacion": false
+        },
+        {
+            "codigoFicha": "00014361",
+            "apellidosNombres": "ZAMORA ORMEÑO, MARIA CECILIA",
+            "unidadOrganica": "312-EPOF",
+            "codigoPuesto": "00037321",
+            "nombrePuesto": "Asistente Administrativo",
+            "estadoAutoevaluacion": false
+        },
+        {
+            "codigoFicha": "00015109",
+            "apellidosNombres": "CALLE LUQUE, MOISES",
+            "unidadOrganica": "312-EPOF",
+            "codigoPuesto": "00038419",
+            "nombrePuesto": "Analista Princ. en Sist.de Inf.Gerencial",
+            "estadoAutoevaluacion": false
+        },
+        {
+            "codigoFicha": "00015299",
+            "apellidosNombres": "ROJAS NOSTADEZ, DIEGO EDUARDO",
+            "unidadOrganica": "312-EPOF",
+            "codigoPuesto": "00016247",
+            "nombrePuesto": "Analista de Planeamiento",
+            "estadoAutoevaluacion": false
+        },
+        {
+            "codigoFicha": "00015311",
+            "apellidosNombres": "CASTILLO CORDOVA, PEDRO PABLO",
+            "unidadOrganica": "312-EPOF",
+            "codigoPuesto": "00000679",
+            "nombrePuesto": "Analista Principal de Planeamiento",
+            "estadoAutoevaluacion": false
+        },
+        {
+            "codigoFicha": "00015849",
+            "apellidosNombres": "ZUÑIGA PINILLOS, ANDRES  ALEJANDRO",
+            "unidadOrganica": "312-EPOF",
+            "codigoPuesto": "00030270",
+            "nombrePuesto": "Técnico de Tarifas",
+            "estadoAutoevaluacion": false
+        },
+        {
+            "codigoFicha": "00015863",
+            "apellidosNombres": "VICTORIO CARBAJAL, ROBERTO CARLOS",
+            "unidadOrganica": "312-EPOF",
+            "codigoPuesto": "00015050",
+            "nombrePuesto": "Técnico de Tarifas",
+            "estadoAutoevaluacion": false
+        },
+        {
+            "codigoFicha": "00016059",
+            "apellidosNombres": "BONIFAZ SOTA, PAOLA",
+            "unidadOrganica": "312-EPOF",
+            "codigoPuesto": "00038374",
+            "nombrePuesto": "Contratado",
+            "estadoAutoevaluacion": false
+        },
+        {
+            "codigoFicha": "00010325",
+            "apellidosNombres": "MINAYA MENDEZ, ELIAS",
+            "unidadOrganica": "302-ETIC",
+            "codigoPuesto": "00000692",
+            "nombrePuesto": "Analista Principal de Sistemas",
+            "estadoAutoevaluacion": false
+        },
+        {
+            "codigoFicha": "00010737",
+            "apellidosNombres": "AVALOS YATACO, TEODORO ALEXANDER",
+            "unidadOrganica": "302-ETIC",
+            "codigoPuesto": "00024194",
+            "nombrePuesto": "Analista de Sistemas",
+            "estadoAutoevaluacion": false
+        },
+        {
+            "codigoFicha": "00012182",
+            "apellidosNombres": "CHUQUILLANQUI DOMINGUEZ, EDWIN FIDEL",
+            "unidadOrganica": "302-ETIC",
+            "codigoPuesto": "00000685",
+            "nombrePuesto": "Especialista de Sistemas",
+            "estadoAutoevaluacion": false
+        },
+        {
+            "codigoFicha": "00012336",
+            "apellidosNombres": "SEGURA PERALTA, AMERICA GLADYS",
+            "unidadOrganica": "302-ETIC",
+            "codigoPuesto": "00005197",
+            "nombrePuesto": "Analista Principal de Sistemas",
+            "estadoAutoevaluacion": false
+        },
+        {
+            "codigoFicha": "00012388",
+            "apellidosNombres": "AREVALO SOTO, LOURDES MILDRED",
+            "unidadOrganica": "302-ETIC",
+            "codigoPuesto": "00008339",
+            "nombrePuesto": "Analista Principal de Sistemas",
+            "estadoAutoevaluacion": false
+        },
+        {
+            "codigoFicha": "00012470",
+            "apellidosNombres": "REYES VIGO, LUIS ALBERTO",
+            "unidadOrganica": "302-ETIC",
+            "codigoPuesto": "00005195",
+            "nombrePuesto": "Analista Principal de Sistemas",
+            "estadoAutoevaluacion": false
+        },
+        {
+            "codigoFicha": "00012845",
+            "apellidosNombres": "SANTOS MARTINEZ, ROLANDO",
+            "unidadOrganica": "302-ETIC",
+            "codigoPuesto": "00016707",
+            "nombrePuesto": "Analista Principal de Sistemas",
+            "estadoAutoevaluacion": true
+        },
+        {
+            "codigoFicha": "00012846",
+            "apellidosNombres": "ROJAS JAHUANCAMA, CARLOS ALBERTO",
+            "unidadOrganica": "302-ETIC",
+            "codigoPuesto": "00017452",
+            "nombrePuesto": "Desarrollador de Sistemas de Información",
+            "estadoAutoevaluacion": false
+        },
+        {
+            "codigoFicha": "00012850",
+            "apellidosNombres": "CORDOVA DE LA MEZA, HAYDEE ELIZABETH",
+            "unidadOrganica": "302-ETIC",
+            "codigoPuesto": "00024619",
+            "nombrePuesto": "Analista deTecnologías de la Información",
+            "estadoAutoevaluacion": false
+        },
+        {
+            "codigoFicha": "00012861",
+            "apellidosNombres": "AVILA RUIZ, ALINA MARTHA",
+            "unidadOrganica": "302-ETIC",
+            "codigoPuesto": "00000694",
+            "nombrePuesto": "Analista Principal de Sistemas",
+            "estadoAutoevaluacion": false
+        },
+        {
+            "codigoFicha": "00012867",
+            "apellidosNombres": "FIGUEROA CALATAYUD, LUIS DAMIAN",
+            "unidadOrganica": "302-ETIC",
+            "codigoPuesto": "00017770",
+            "nombrePuesto": "Especialista de Telecomunicaciones",
+            "estadoAutoevaluacion": false
+        },
+        {
+            "codigoFicha": "00012868",
+            "apellidosNombres": "MARTICORENA GRANDA, ROBERTO CARLOS",
+            "unidadOrganica": "302-ETIC",
+            "codigoPuesto": "00023145",
+            "nombrePuesto": "Asistente de Telecomunicaciones",
+            "estadoAutoevaluacion": false
+        },
+        {
+            "codigoFicha": "00012869",
+            "apellidosNombres": "YABAR CARDOZO, JUAN ALFREDO",
+            "unidadOrganica": "302-ETIC",
+            "codigoPuesto": "00013511",
+            "nombrePuesto": "Técnico de Telecomunicaciones",
+            "estadoAutoevaluacion": false
+        },
+        {
+            "codigoFicha": "00012875",
+            "apellidosNombres": "ASCHIERO PEREA, ALEJANDRO RENE",
+            "unidadOrganica": "302-ETIC",
+            "codigoPuesto": "00000696",
+            "nombrePuesto": "Analista Principal de Sistemas",
+            "estadoAutoevaluacion": false
+        },
+        {
+            "codigoFicha": "00012877",
+            "apellidosNombres": "GUEVARA CHAVEZ, VICTOR ALDRHING",
+            "unidadOrganica": "302-ETIC",
+            "codigoPuesto": "00026095",
+            "nombrePuesto": "Especialista de Sistemas",
+            "estadoAutoevaluacion": false
+        },
+        {
+            "codigoFicha": "00012944",
+            "apellidosNombres": "CABRERA MORENO, ROSANNA MABEL",
+            "unidadOrganica": "302-ETIC",
+            "codigoPuesto": "00025026",
+            "nombrePuesto": "Analista deTecnologías de la Información",
+            "estadoAutoevaluacion": false
+        },
+        {
+            "codigoFicha": "00013008",
+            "apellidosNombres": "IRIARTE DELGADO, JOSE HUMBERTO",
+            "unidadOrganica": "302-ETIC",
+            "codigoPuesto": "00000691",
+            "nombrePuesto": "Técnico Especialista de Sistemas",
+            "estadoAutoevaluacion": false
+        },
+        {
+            "codigoFicha": "00013098",
+            "apellidosNombres": "AGREDA DIAZ, PABLO JOSEPH",
+            "unidadOrganica": "302-ETIC",
+            "codigoPuesto": "00000686",
+            "nombrePuesto": "Especialista de Sistemas",
+            "estadoAutoevaluacion": false
+        },
+        {
+            "codigoFicha": "00013104",
+            "apellidosNombres": "PALOMINO SUAREZ, LUZ ANGELICA",
+            "unidadOrganica": "302-ETIC",
+            "codigoPuesto": "00025025",
+            "nombrePuesto": "Analista de Sistemas",
+            "estadoAutoevaluacion": false
+        },
+        {
+            "codigoFicha": "00013160",
+            "apellidosNombres": "OCHOA CORDOVA, ROMAN GUSTAVO",
+            "unidadOrganica": "302-ETIC",
+            "codigoPuesto": "00000698",
+            "nombrePuesto": "Analista de Sistemas",
+            "estadoAutoevaluacion": false
+        },
+        {
+            "codigoFicha": "00013803",
+            "apellidosNombres": "CRUZ ARMAS, JUANA MAVILA",
+            "unidadOrganica": "302-ETIC",
+            "codigoPuesto": "00030271",
+            "nombrePuesto": "Analista Principal de Sistemas",
+            "estadoAutoevaluacion": false
+        },
+        {
+            "codigoFicha": "00013815",
+            "apellidosNombres": "BARRIENTOS TORRES, MIRELLA DEL CARMEN",
+            "unidadOrganica": "302-ETIC",
+            "codigoPuesto": "00005212",
+            "nombrePuesto": "Agente Telefónico",
+            "estadoAutoevaluacion": false
+        },
+        {
+            "codigoFicha": "00013816",
+            "apellidosNombres": "MESARINA REYES, MONICA YASMIN",
+            "unidadOrganica": "302-ETIC",
+            "codigoPuesto": "00005213",
+            "nombrePuesto": "Agente Telefónico",
+            "estadoAutoevaluacion": false
+        },
+        {
+            "codigoFicha": "00013822",
+            "apellidosNombres": "ALIAGA BASTIAS, IVONNE",
+            "unidadOrganica": "302-ETIC",
+            "codigoPuesto": "00005219",
+            "nombrePuesto": "Agente Telefónico",
+            "estadoAutoevaluacion": false
+        },
+        {
+            "codigoFicha": "00013862",
+            "apellidosNombres": "RODRIGUEZ ROQUE, MARK VALERY",
+            "unidadOrganica": "302-ETIC",
+            "codigoPuesto": "00010557",
+            "nombrePuesto": "Analista de Sistemas",
+            "estadoAutoevaluacion": false
+        },
+        {
+            "codigoFicha": "00013865",
+            "apellidosNombres": "VASQUEZ SANCHEZ, ROSSANA GABRIELA",
+            "unidadOrganica": "302-ETIC",
+            "codigoPuesto": "00012375",
+            "nombrePuesto": "Analista de Telecomunicaciones",
+            "estadoAutoevaluacion": false
+        },
+        {
+            "codigoFicha": "00013900",
+            "apellidosNombres": "DIAZ HORNA, ELI",
+            "unidadOrganica": "302-ETIC",
+            "codigoPuesto": "00006419",
+            "nombrePuesto": "Analista de Sistemas",
+            "estadoAutoevaluacion": false
+        },
+        {
+            "codigoFicha": "00013926",
+            "apellidosNombres": "IBAÑEZ ROJAS, MARIA ELENA",
+            "unidadOrganica": "302-ETIC",
+            "codigoPuesto": "00009898",
+            "nombrePuesto": "Analista de Sistemas",
+            "estadoAutoevaluacion": false
+        },
+        {
+            "codigoFicha": "00013958",
+            "apellidosNombres": "COCA ZUMARAN, JOSE MANUEL",
+            "unidadOrganica": "302-ETIC",
+            "codigoPuesto": "00017453",
+            "nombrePuesto": "Desarrollador de Sistemas de Información",
+            "estadoAutoevaluacion": false
+        },
+        {
+            "codigoFicha": "00013985",
+            "apellidosNombres": "LAZO HINOJOSA, LUIS HUMBERTO",
+            "unidadOrganica": "302-ETIC",
+            "codigoPuesto": "00005192",
+            "nombrePuesto": "Técnico de Informática",
+            "estadoAutoevaluacion": false
+        },
+        {
+            "codigoFicha": "00014060",
+            "apellidosNombres": "ESPINO CARDENAS, HANS ALEXANDER",
+            "unidadOrganica": "302-ETIC",
+            "codigoPuesto": "00000697",
+            "nombrePuesto": "Analista de Sistemas",
+            "estadoAutoevaluacion": false
+        },
+        {
+            "codigoFicha": "00014069",
+            "apellidosNombres": "DE LOS SANTOS ROBLES, VICTOR JESUS",
+            "unidadOrganica": "302-ETIC",
+            "codigoPuesto": "00022496",
+            "nombrePuesto": "Técnico de Informática",
+            "estadoAutoevaluacion": false
+        },
+        {
+            "codigoFicha": "00014070",
+            "apellidosNombres": "GONZALES SOTO, WILFREDO MARTIN",
+            "unidadOrganica": "302-ETIC",
+            "codigoPuesto": "00005196",
+            "nombrePuesto": "Analista Principal de Sistemas",
+            "estadoAutoevaluacion": false
+        },
+        {
+            "codigoFicha": "00014097",
+            "apellidosNombres": "LOPEZ MORENO, ROXANA HORTENCIA",
+            "unidadOrganica": "302-ETIC",
+            "codigoPuesto": "00009897",
+            "nombrePuesto": "Analista de Sistemas",
+            "estadoAutoevaluacion": false
+        },
+        {
+            "codigoFicha": "00014104",
+            "apellidosNombres": "SUCASACA RUELAS, OSWALDO VIRGILIO",
+            "unidadOrganica": "302-ETIC",
+            "codigoPuesto": "00017470",
+            "nombrePuesto": "Analista Principal de Sistemas",
+            "estadoAutoevaluacion": false
+        },
+        {
+            "codigoFicha": "00014163",
+            "apellidosNombres": "AGUILAR SANTUR, MARIA SANDRA",
+            "unidadOrganica": "302-ETIC",
+            "codigoPuesto": "00023096",
+            "nombrePuesto": "Agente Telefónico",
+            "estadoAutoevaluacion": false
+        },
+        {
+            "codigoFicha": "00014243",
+            "apellidosNombres": "BARBOZA VIZCONDE, MILUSKA GISELA",
+            "unidadOrganica": "302-ETIC",
+            "codigoPuesto": "00000693",
+            "nombrePuesto": "Analista Principal de Sistemas",
+            "estadoAutoevaluacion": false
+        },
+        {
+            "codigoFicha": "00014245",
+            "apellidosNombres": "MOYANO LAZO, JULIO JOSE",
+            "unidadOrganica": "302-ETIC",
+            "codigoPuesto": "00021726",
+            "nombrePuesto": "Analista Principal Funcional",
+            "estadoAutoevaluacion": false
+        },
+        {
+            "codigoFicha": "00014246",
+            "apellidosNombres": "BERNILLA SANCHEZ, LUIS MIGUEL",
+            "unidadOrganica": "302-ETIC",
+            "codigoPuesto": "00023144",
+            "nombrePuesto": "Analista Principal de Sistemas",
+            "estadoAutoevaluacion": false
+        },
+        {
+            "codigoFicha": "00014278",
+            "apellidosNombres": "CARRASCO GALLOZO, MANOLO ALEJANDRO",
+            "unidadOrganica": "302-ETIC",
+            "codigoPuesto": "00000645",
+            "nombrePuesto": "Asistente de Telecomunicaciones",
+            "estadoAutoevaluacion": false
+        },
+        {
+            "codigoFicha": "00014562",
+            "apellidosNombres": "LINARES BARDALES, DISNARDA",
+            "unidadOrganica": "302-ETIC",
+            "codigoPuesto": "00009769",
+            "nombrePuesto": "Agente Telefónico",
+            "estadoAutoevaluacion": false
+        },
+        {
+            "codigoFicha": "00014817",
+            "apellidosNombres": "ASIN VELA, CLAUDIA PAMELA",
+            "unidadOrganica": "302-ETIC",
+            "codigoPuesto": "00000644",
+            "nombrePuesto": "Analista de Telecomunicaciones",
+            "estadoAutoevaluacion": false
+        },
+        {
+            "codigoFicha": "00014978",
+            "apellidosNombres": "HUIZA LITANO, CESAR ENRIQUE",
+            "unidadOrganica": "302-ETIC",
+            "codigoPuesto": "00013507",
+            "nombrePuesto": "Técnico de Telecomunicaciones",
+            "estadoAutoevaluacion": false
+        },
+        {
+            "codigoFicha": "00015188",
+            "apellidosNombres": "PALOMINO RODRIGUEZ, JULIO CESAR",
+            "unidadOrganica": "302-ETIC",
+            "codigoPuesto": "00022183",
+            "nombrePuesto": "Contratado",
+            "estadoAutoevaluacion": false
+        },
+        {
+            "codigoFicha": "00015356",
+            "apellidosNombres": "DIAZ GAMBOA, ROLANDO YENNER",
+            "unidadOrganica": "302-ETIC",
+            "codigoPuesto": "00032102",
+            "nombrePuesto": "Técnico de Base de Datos",
+            "estadoAutoevaluacion": false
+        },
+        {
+            "codigoFicha": "00015745",
+            "apellidosNombres": "MARIN VASQUEZ, ANDERSON OMAR",
+            "unidadOrganica": "302-ETIC",
+            "codigoPuesto": "00004872",
+            "nombrePuesto": "Analista Principal de Telecomunicaciones",
+            "estadoAutoevaluacion": false
+        },
+        {
+            "codigoFicha": "00015764",
+            "apellidosNombres": "DIONICIO ANTUNEZ, GRECIA MELISSA",
+            "unidadOrganica": "302-ETIC",
+            "codigoPuesto": "00012378",
+            "nombrePuesto": "Asistente de Telecomunicaciones",
+            "estadoAutoevaluacion": false
+        },
+        {
+            "codigoFicha": "00015785",
+            "apellidosNombres": "VICENTE LEIVA, PERCY DAVID",
+            "unidadOrganica": "302-ETIC",
+            "codigoPuesto": "00037785",
+            "nombrePuesto": "Técnico de Telemetría",
+            "estadoAutoevaluacion": false
+        },
+        {
+            "codigoFicha": "00015817",
+            "apellidosNombres": "HUERTA TURIN, JULIO ENRIQUE",
+            "unidadOrganica": "302-ETIC",
+            "codigoPuesto": "00016881",
+            "nombrePuesto": "Técnico de Informática",
+            "estadoAutoevaluacion": false
+        },
+        {
+            "codigoFicha": "00015916",
+            "apellidosNombres": "PALOMINO GUTIERREZ, ELENA ANDREA",
+            "unidadOrganica": "302-ETIC",
+            "codigoPuesto": "00010269",
+            "nombrePuesto": "Técnico Administrativo",
+            "estadoAutoevaluacion": false
+        },
+        {
+            "codigoFicha": "00024738",
+            "apellidosNombres": "CHUMPITAZ CCENCHO, ANTHONY LUIS",
+            "unidadOrganica": "302-ETIC",
+            "codigoPuesto": "00027020",
+            "nombrePuesto": "Operario Espec. en Tecnologías de Inform",
+            "estadoAutoevaluacion": false
+        },
+        {
+            "codigoFicha": "00024881",
+            "apellidosNombres": "LEYVA HERRERA, KILDER ORLANDO",
+            "unidadOrganica": "302-ETIC",
+            "codigoPuesto": "00018645",
+            "nombrePuesto": "Operario Espec. en Tecnologias de Infor.",
+            "estadoAutoevaluacion": false
+        },
+        {
+            "codigoFicha": "00013254",
+            "apellidosNombres": "CHAVEZ SEVILLANO, YESSICA LILETTE",
+            "unidadOrganica": "303-EIIN",
+            "codigoPuesto": "00024795",
+            "nombrePuesto": "Especialista de Investigac. e Innovación",
+            "estadoAutoevaluacion": false
+        },
+        {
+            "codigoFicha": "00013671",
+            "apellidosNombres": "MESTA MEL, MARLENE MARIA",
+            "unidadOrganica": "303-EIIN",
+            "codigoPuesto": "00020694",
+            "nombrePuesto": "Técnico Administrativo",
+            "estadoAutoevaluacion": false
+        },
+        {
+            "codigoFicha": "00014040",
+            "apellidosNombres": "QUINTEROS HIJAR, ELMER GERMAN",
+            "unidadOrganica": "303-EIIN",
+            "codigoPuesto": "00021095",
+            "nombrePuesto": "Especialista de Investigac.e Innovación",
+            "estadoAutoevaluacion": false
+        },
+        {
+            "codigoFicha": "00014238",
+            "apellidosNombres": "VALER SULLCAHUAMAN, CIRILA NANCY",
+            "unidadOrganica": "303-EIIN",
+            "codigoPuesto": "00020185",
+            "nombrePuesto": "Analista de Investigación e Innovación",
+            "estadoAutoevaluacion": false
+        },
+        {
+            "codigoFicha": "00014445",
+            "apellidosNombres": "MOLINA PERALTA, WALTER",
+            "unidadOrganica": "303-EIIN",
+            "codigoPuesto": "00021096",
+            "nombrePuesto": "Especialista de Investigac. y Desarrollo",
+            "estadoAutoevaluacion": false
+        },
+        {
+            "codigoFicha": "00014585",
+            "apellidosNombres": "GALINDO QUISPE, RICARDO MARCELINO",
+            "unidadOrganica": "303-EIIN",
+            "codigoPuesto": "00031446",
+            "nombrePuesto": "Analista de Investigación y Desarrollo",
+            "estadoAutoevaluacion": false
+        },
+        {
+            "codigoFicha": "00015094",
+            "apellidosNombres": "APACLLA ENRIQUEZ, CYNTHIA JESSICA",
+            "unidadOrganica": "303-EIIN",
+            "codigoPuesto": "00021098",
+            "nombrePuesto": "Analista de Investigación y Desarrollo",
+            "estadoAutoevaluacion": false
+        },
+        {
+            "codigoFicha": "00015900",
+            "apellidosNombres": "EGUSQUIZA CORDOVA, MIGUEL ANGEL",
+            "unidadOrganica": "303-EIIN",
+            "codigoPuesto": "00037997",
+            "nombrePuesto": "Analista de Normalización e Innovación",
+            "estadoAutoevaluacion": false
+        },
+        {
+            "codigoFicha": "00013029",
+            "apellidosNombres": "NIETO RONCEROS, JOSE FELIX",
+            "unidadOrganica": "305-EPFPIn",
+            "codigoPuesto": "00000672",
+            "nombrePuesto": "Analista de Planeamiento Físico",
+            "estadoAutoevaluacion": false
+        },
+        {
+            "codigoFicha": "00013085",
+            "apellidosNombres": "IZQUIERDO AVELLANEDA, SONIA",
+            "unidadOrganica": "305-EPFPIn",
+            "codigoPuesto": "00038046",
+            "nombrePuesto": "Ingeniero de Programación de Inversiones",
+            "estadoAutoevaluacion": false
+        },
+        {
+            "codigoFicha": "00013774",
+            "apellidosNombres": "ALDAVE VALERIO, WILFREDO",
+            "unidadOrganica": "305-EPFPIn",
+            "codigoPuesto": "00037852",
+            "nombrePuesto": "Ingeniero de Planeamiento Físico",
+            "estadoAutoevaluacion": false
+        },
+        {
+            "codigoFicha": "00014319",
+            "apellidosNombres": "FLORES CAMADER, ANA CATALINA",
+            "unidadOrganica": "305-EPFPIn",
+            "codigoPuesto": "00037222",
+            "nombrePuesto": "Coordinador Administrativo",
+            "estadoAutoevaluacion": false
+        },
+        {
+            "codigoFicha": "00014533",
+            "apellidosNombres": "OLIVOS LARA, OMAR EDUARDO",
+            "unidadOrganica": "305-EPFPIn",
+            "codigoPuesto": "00038050",
+            "nombrePuesto": "Especialista de Planeamiento Fisico",
+            "estadoAutoevaluacion": false
+        },
+        {
+            "codigoFicha": "00014683",
+            "apellidosNombres": "TORRES SOTO, MIMSY VELDA",
+            "unidadOrganica": "305-EPFPIn",
+            "codigoPuesto": "00035244",
+            "nombrePuesto": "Contratado",
+            "estadoAutoevaluacion": false
+        },
+        {
+            "codigoFicha": "00014984",
+            "apellidosNombres": "GUERRERO SAN MARTIN, ERWIN RONALD",
+            "unidadOrganica": "305-EPFPIn",
+            "codigoPuesto": "00032119",
+            "nombrePuesto": "Contratado",
+            "estadoAutoevaluacion": false
+        }
+    ],
+    "mensaje": "OK"
+}

@@ -1,0 +1,155 @@
+  <app-title [titulo]="'Seguimiento de cumplimiento de PID'"></app-title>
+  <div class="max-w-[22rem] mx-auto p-4 bg-white rounded-lg shadow-md border border-gray-300 rounded-md mb-6">
+
+    <div class="flex items-center justify-center">
+        <div *ngIf="calendarData == undefined" style="height: 53px; margin-right: 0.5rem ">
+            <mat-form-field>
+              <mat-select placeholder="Periodo"></mat-select>
+            </mat-form-field>
+          </div> 
+          <div *ngIf="calendarData != undefined" style=" height: 53px; margin-right: 0.5rem ">
+            <mat-form-field>
+              <mat-select placeholder="Periodo" [(ngModel)]="Periodo">
+                <mat-option *ngFor="let item of calendarData.registros" [value]="item.vCodigo">
+                  {{item.vNombre}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div> 
+          <button style="width: 107.42px;" (click)="FilterData()"  class="items-center justify-center py-2 bg-blue-600 text-white rounded-md flex items-center hover:bg-blue-700 ">
+            <svg class="w-5 h-5 text-white"  xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+              <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="m21 21-3.5-3.5M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"/>
+            </svg>                
+            Buscar
+          </button>
+    </div>
+  </div>
+  <app-targetscounters
+    *ngIf="Activatetable"
+    [DataToCount]="DataList"
+    [ConfirmedEntryName]="'veredictoCumplimiento'"
+    [ConfirmText]="'Cumplimiento de PID aprobados'"
+    [NotConfirmedText]="'Cumplimiento de PID no aprobados'">
+  </app-targetscounters>
+
+  <div class="relative overflow-x-auto">
+    <table *ngIf="Activatetable" class="w-full text-sm text-left rtl:text-right text-gray-500 border solid">
+      <thead class="text-xs text-gray-700 uppercase bg-gray-5">
+        <tr>
+          <th scope="col" class="px-6 py-3 border" style="width: 8rem;">Foto</th>
+          <th scope="col" class="px-6 py-3 border" style="width: 5.9rem;">COD. FICHA</th>
+          <th scope="col" class="px-6 py-3 border" style="width: 35rem;">APELLIDOS Y NOMBRES</th>
+          <th scope="col" class="px-6 py-3 border" style="width: 8.5rem;">UNIDAD ORGÁNICA</th>
+          <th scope="col" class="px-6 py-3 border" style="width: 6.8rem;">COD. PUESTO</th>
+          <th scope="col" class="px-6 py-3 border text-wrap" style="width: 35rem;">PUESTO</th>
+          <th scope="col" class="px-6 py-3 border" style="width: 10rem;">ESTADO DE CUMPLIMIENTO DE PID</th>
+          <th scope="col" class="px-6 py-3 border" style="width: 10rem;">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of DataList" class="border hover:bg-gray-100">
+          <!-- Foto -->
+          <th class="px-6 py-4 text-black border">
+            <img class="w-20 h-20" [src]="item.foto" loading="lazy" 
+ crossorigin="anonymous" (error)="onImgError($event)" alt="Foto">
+          </th>
+          <!-- COD. Ficha -->
+          <th class="px-6 py-4 text-gray-900 whitespace-nowrap">
+            <div class="text-base font-semibold">{{removeLeadingZeros(item.codigoFicha)}}</div>
+          </th>
+          <!-- APELLIDOS Y NOMBRES -->
+          <td class="px-6 py-4 text-black border">{{item.apellidosNombres}}</td>
+          <!-- UNIDAD ORGÁNICA -->
+          <td class="px-6 py-4 text-black border">{{item.unidadOrganica}}</td>
+          <!-- COD. PUESTO -->
+          <td class="px-6 py-4 text-black border">{{item.codigoPuesto}}</td>
+          <!-- PUESTO -->
+          <td class="px-6 py-4 text-black border">{{item.nombrePuesto}}</td>
+          <!-- ESTADO DE CUMPLIMIENTO DE PID -->
+          <td class="px-6 py-4 text-black border">
+            <div *ngIf="item.estadoEvaluadoCumplimiento && item.estadoEvaluadorCumplimiento && item.veredictoCumplimiento" class="flex items-center">
+              <span class="badgegreen bg-green-500">CUMPLIMIENTO DE PID APROBADO</span>
+            </div>
+            <div *ngIf="item.estadoEvaluadoCumplimiento && item.estadoEvaluadorCumplimiento && !item.veredictoCumplimiento" class="flex items-center">
+              <span class="badgered bg-red-500">CUMPLIMIENTO DE PID RECHAZADO</span>
+            </div>
+            <div *ngIf="item.estadoEvaluadoCumplimiento && !item.estadoEvaluadorCumplimiento && !item.veredictoCumplimiento" class="flex items-center">
+              <span class="badgered bg-blue-500">CUMPLIMIENTO DE PID REGISTRADO</span>
+            </div>
+            <div *ngIf="!item.estadoEvaluadoCumplimiento && !item.estadoEvaluadorCumplimiento && !item.veredictoCumplimiento" class="flex items-center">
+              <span class="badgered bg-orange-500">CUMPLIMIENTO DE PID NO REGISTRADO</span>
+            </div>
+            <div *ngIf="!estadoCalendarioVigentePidCumplimiento && item.estadoExcepcionPidCumplimiento && !item.estadoFecLimiteExcepcionPidCumplimiento && !(item.estadoEvaluadoCumplimiento && item.estadoEvaluadorCumplimiento && item.veredictoCumplimiento)" class="flex pt-1 pb-1  items-center w-full">
+              <span 
+                  class="badgegreen w-full bg-gray-500" 
+                  [matTooltip]="'Fecha de límite de excepción: ' + this.FormatDate(item.fechaLimiteExcepcionPidRegistro)"
+                  matTooltipPosition="below">
+                  EXCEPCIÓN PENDIENTE
+              </span>
+            </div>
+            <div *ngIf="!estadoCalendarioVigentePidCumplimiento && item.estadoExcepcionPidCumplimiento && item.estadoFecLimiteExcepcionPidCumplimiento && !(item.estadoEvaluadoCumplimiento && item.estadoEvaluadorCumplimiento && item.veredictoCumplimiento)" class="flex pt-1 pb-1  items-center w-full">
+              <span 
+                  class="badgegreen w-full bg-gray-500" 
+                  [matTooltip]="'Fecha de límite de excepción: ' + this.FormatDate(item.fechaLimiteExcepcionPidRegistro)"
+                  matTooltipPosition="below">
+                  EXCEPCIÓN EXPIRADA
+              </span>
+            </div>
+          </td>
+          <!-- Acciones -->
+          <td class="px-6 py-4">
+            <div class="flex space-x-2">
+              <button type="button" *ngIf="(item.estadoEvaluadoCumplimiento && item.estadoEvaluadorCumplimiento) || (item.estadoEvaluadoCumplimiento && !item.estadoEvaluadorCumplimiento)" 
+                      [routerLink]="['/home/ver-cumplimiento-pid-evaluado','EVALUATED',item.codigoPuesto,this.Periodo,item.codigoFicha]"
+                      class="text-white bg-green-500 hover:bg-green-600 font-medium rounded-lg text-sm px-2.5 py-2.5  w-full">
+                Ver cumplimiento
+              </button>
+            
+              <button type="button" (click)="NotifyEvaluated(item.apellidosNombres,item.codigoFicha)" *ngIf="item.estadoEvaluadoCumplimiento && item.estadoEvaluadorCumplimiento && !item.veredictoCumplimiento"
+                      class="text-white font-medium rounded-lg text-sm px-2.5 py-2.5  w-full"
+                      [ngClass]="{
+                        'bg-blue-500 hover:bg-blue-600': 
+                          item.estadoCalendarioVigentePidCumplimiento
+                          || ( !item.estadoCalendarioVigentePidCumplimiento && item.estadoExcepcionPidCumplimiento && !item.estadoFecLimiteExcepcionPidCumplimiento ),
+                        
+                        'bg-gray-500 hover:bg-gray-500':
+                          !(
+                            item.estadoCalendarioVigentePidCumplimiento
+                            || ( !item.estadoCalendarioVigentePidCumplimiento && item.estadoExcepcionPidCumplimiento && !item.estadoFecLimiteExcepcionPidCumplimiento )
+                          )
+                      }"
+                      [disabled]="!(
+                        item.estadoCalendarioVigentePidCumplimiento
+                        || ( !item.estadoCalendarioVigentePidCumplimiento && item.estadoExcepcionPidCumplimiento && !item.estadoFecLimiteExcepcionPidCumplimiento )
+                      )"
+                      
+                      >
+                Notificar evaluado
+              </button>   
+            
+              <button type="button" (click)="NotifyEvaluated(item.apellidosNombres,item.codigoFicha)" *ngIf="!item.estadoEvaluadoCumplimiento && !item.estadoEvaluadorCumplimiento" 
+                      class="text-white font-medium rounded-lg text-sm px-2.5 py-2.5 w-full"
+                       [ngClass]="{
+                        'bg-blue-500 hover:bg-blue-600': 
+                          item.estadoCalendarioVigentePidCumplimiento
+                          || ( !item.estadoCalendarioVigentePidCumplimiento && item.estadoExcepcionPidCumplimiento && !item.estadoFecLimiteExcepcionPidCumplimiento ),
+                        
+                        'bg-gray-500 hover:bg-gray-500':
+                          !(
+                            item.estadoCalendarioVigentePidCumplimiento
+                            || ( !item.estadoCalendarioVigentePidCumplimiento && item.estadoExcepcionPidCumplimiento && !item.estadoFecLimiteExcepcionPidCumplimiento )
+                          )
+                      }"
+                      [disabled]="!(
+                        item.estadoCalendarioVigentePidCumplimiento
+                        || ( !item.estadoCalendarioVigentePidCumplimiento && item.estadoExcepcionPidCumplimiento && !item.estadoFecLimiteExcepcionPidCumplimiento )
+                      )"
+                      >
+                Notificar evaluado
+              </button>
+            </div>      
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

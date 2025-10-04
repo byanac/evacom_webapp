@@ -1,0 +1,62 @@
+{
+    "registros": {
+        "idPid": 3,
+        "evaluador": {
+            "codigoFicha": "00012336",
+            "apellidosNombres": "SEGURA PERALTA, AMERICA GLADYS",
+            "codigoPuesto": "00005197",
+            "nombrePuesto": "Analista Principal de Sistemas",
+            "correo": "gsegura@sedapal.com.pe"
+        },
+        "evaluado": {
+            "codigoFicha": "00012845",
+            "apellidosNombres": "SANTOS MARTINEZ, ROLANDO",
+            "codigoPuesto": "00016707",
+            "nombrePuesto": "Analista Principal de Sistemas",
+            "correo": "rsantos@sedapal.com.pe",
+            "equipo_codigo": "00004098",
+            "equipo_nombre": "Eq. Tecnolog. de la Inform. y Comunic.",
+            "gerencia_codigo": "00000032",
+            "gerencia_nombre": "Gerencia de Desarrollo e Investigación"
+        },
+        "codCalendario": "C003",
+        "tipoCalendario": "90",
+        "fecModificacion": "2024-10-30 11:33:34",
+        "fecModificacionr": "2024-10-30 11:38:02",
+        "estadoRegistroEvaluado": true,
+        "estadoRegistroEvaluador": false,
+        "veredictoRegistro": false,
+        "fecCumplimientoEvaluado": "2024-09-30 11:33:34",
+        "fecCumplimientoEvaluador": "2024-09-30 11:38:02",
+        "estadoCumplimientoEvaluado": true,
+        "estadoCumplimientoEvaluador": false,
+        "veredictoCumplimiento": false,
+        "comentarioRegistro": "",
+        "comentarioCumplimiento": "qweqweeq",
+        "detalles": [
+            {
+                "idPidDetalle": 1,
+                "orden": 1,
+                "competencia": {
+                    "codigo": "C001",
+                    "titulo": "VOCACIÓN DE SERVICIO",
+                    "estado": 1
+                },
+                "objetivoDesarrollo": "PRUEBA QA 30/10/2024",
+                "iniciativaAcciones": "PRUEBA 1",
+                "codigosIndicadores": [
+                    17
+                ],
+                "codigosEntregables": [
+                    13
+                ],
+                "fechaInicioIniciativa": "2024-12-02",
+                "fechaFinIniciativa": "2025-02-28",
+                "nombreArchivo": "test",
+                "rutaArchivo": "Rutatest"
+            }
+            
+        ]
+    },
+    "mensaje": "OK"
+}

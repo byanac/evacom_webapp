@@ -1,0 +1,21 @@
+<div drawer-backdrop="" class="bg-gray-900/50 fixed inset-0 z-30" *ngIf="(modalStateService.getShowModalsStatus() | async)">
+  <app-autorizatecalibrationmodal *ngIf="(modalStateService.getAutorizateCalibrationModalStatus() | async)"></app-autorizatecalibrationmodal>
+  <app-evalconsolidatedreportmodal *ngIf="(modalStateService.getEvalConsolidatedReportModalStatus() | async)"></app-evalconsolidatedreportmodal>
+  <app-registerexception *ngIf="(modalStateService.getExceptionModalStatus() | async)"></app-registerexception>
+  <p-dialog *ngIf="(modalStateService.getFactsDataModalStatus() | async)" header="Hechos resaltantes de {{DataFromsessionStorage.nombreCompleto}}"  [(visible)]="visible" (onHide)="closeOutstandingfactModal()"> 
+    <div *ngFor="let item of FactsData.registros">
+        <div class="grid">
+            <hr class="bg-black" style="margin: 0.5rem 0 0.5rem 0 !important;">
+            <span>Autor: <b>{{item.evaluador_nombre}}</b></span>
+            <span>Fecha: <b>{{DecodeDate(item.fecha)}}</b></span>
+            <hr class="bg-black" style="margin: 0.5rem 0 0.5rem 0 !important;">
+        </div>
+        <div>
+            <p><b>Competencia:</b> {{item.competencia_titulo}}</p>
+            <p><b>Comportamiento:</b> {{item.competencia_descripcion}}</p>
+            <p><b>Tipo de hecho:</b> {{GetTypeText(item.indicador)}}</p>
+            <p><b>Descripción:</b> {{item.descripcion}}</p>
+        </div>
+    </div>
+  </p-dialog>
+</div>

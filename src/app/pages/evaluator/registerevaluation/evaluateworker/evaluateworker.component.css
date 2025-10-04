@@ -1,0 +1,26 @@
+* {
+  color: black;
+}
+
+.border {
+  border: 1px solid black !important;
+}
+.border-solid {
+  border: solid 1px black !important;
+}
+
+.header-hr {
+  background-color: #c0d5ec !important;
+  border: 0.15rem solid #c0d5ec;
+  margin-bottom: .5rem !important;
+  margin-top: .5rem !important;
+}
+
+th {
+  font-size: 16px !important;
+}
+
+
+::ng-deep .mat-select-panel {
+  max-height: 30vh !important;
+}

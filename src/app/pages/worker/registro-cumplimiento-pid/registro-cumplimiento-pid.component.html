@@ -1,0 +1,509 @@
+<div *ngIf="DataToShow != undefined">
+<div class="p-6">
+  <!-- Header -->
+  <div class="text-center mb-6">
+    <h1 class="text-lg font-bold text-blue-900">
+      Registro de Cumplimiento Plan Individual de Desarrollo (PID)
+    </h1>
+  </div>
+
+  <p-messages
+    [(value)]="msgs"
+    [closable]="false"
+  ></p-messages>
+
+  <!-- Information Table -->
+  <table class="bg-white mb-2 w-full Datatable">
+    <tbody>
+      <tr>
+        <td class=" px-4 py-2 font-semibold" style="text-align: start !important;">Nombre del Trabajador:</td>
+        <td class=" px-4 py-2" style="text-align: start !important;" >{{DataToShow.registros.evaluado.apellidosNombres}}</td>
+        <td class=" px-4 py-2 font-semibold" style="text-align: start !important;">Equipo:</td>
+        <td class=" px-4 py-2" style="text-align: start !important;">{{DataToShow.registros.evaluado.equipo_nombre}}</td>
+      </tr>
+      <tr>
+        <td class=" px-4 py-2 font-semibold" style="text-align: start !important;">Puesto del Trabajador:</td>
+        <td class=" px-4 py-2" style="text-align: start !important;">{{DataToShow.registros.evaluado.nombrePuesto}}</td>
+        <td class=" px-4 py-2 font-semibold" style="text-align: start !important;">Gerencia:</td>
+        <td class=" px-4 py-2" style="text-align: start !important;">{{DataToShow.registros.evaluado.gerencia_nombre}}</td>
+      </tr>
+      <tr>
+        <td class=" px-4 py-2 font-semibold" style="text-align: start !important;">Ficha del Trabajador:</td>
+        <td class=" px-4 py-2" style="text-align: start !important;">{{DataToShow.registros.evaluado.codigoFicha}}</td>
+        <td class=" px-4 py-2 font-semibold" style="text-align: start !important;">Fecha:</td>
+        <td class=" px-4 py-2" style="text-align: start !important;">{{FormatDate(DataToShow.registros.fecModificacion)}}</td>
+      </tr>
+      <tr>
+        <td class=" px-4 py-2 font-semibold" style="text-align: start !important;">Nombre del Evaluador:</td>
+        <td class=" px-4 py-2" style="text-align: start !important;">{{DataToShow.registros.evaluador.apellidosNombres}}</td>
+      </tr>
+      <tr>
+        <td class=" px-4 py-2 font-semibold" style="text-align: start !important;">Puesto del Evaluador:</td>
+        <td class=" px-4 py-2" style="text-align: start !important;">{{DataToShow.registros.evaluador.nombrePuesto}}</td>
+      </tr>
+      <tr>
+        <td class=" px-4 py-2 font-semibold" style="text-align: start !important;">Ficha del Evaluador:</td>
+        <td class=" px-4 py-2" style="text-align: start !important;">{{DataToShow.registros.evaluador.codigoFicha}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <!-- Competencias Table -->
+  <table  class="w-full Datatable text-sm text-left text-gray-700 border border-gray-300">
+    <thead class="text-xs text-white bg-blue-900 uppercase">
+      <tr>
+        <th scope="col" class="p-2 border border-gray-300">
+          Competencia a Desarrollar
+        </th>
+        <th scope="col" class="p-2 border border-gray-300">
+          Objetivo de Desarrollo
+        </th>
+        <th scope="col" class="p-2 border border-gray-300">
+          Iniciativas y Acciones de Mejora
+        </th>
+        <th scope="col" class="min-w-16 p-2 border border-gray-300">Indicadores</th>
+        <th scope="col" class="p-2 border border-gray-300">Entregables</th>
+        <th scope="col" class="p-2 border border-gray-300">
+          Fecha de inicio de iniciativa
+        </th>
+        <th scope="col" class="p-2 border border-gray-300">
+          Fecha de fin de iniciativa
+        </th>
+        <th scope="col" class="p-2 border border-gray-300">
+          Adjuntar documento
+        </th>
+        <th scope="col" class="p-2 border border-gray-300">
+          Fecha de ejecución
+        </th>
+        <th scope="col" class="p-2 border border-gray-300">
+          % De cumplimiento
+        </th>
+        <th scope="col" class="p-2 border border-gray-300">
+          Comentarios</th>
+      </tr>
+    </thead>
+    <tbody *ngIf="Rechazado || EvaluadoVaARegistrar">
+      <tr class="bg-white border-b">
+        <td style="max-width: 100%;" class="p-2 border border-gray-300 font-semibold" rowspan="3">
+          {{DataToShow.registros.detalles[0].competencia.titulo}}
+        </td>
+        <td
+          class="p-2 border border-gray-300"
+          rowspan="3"
+        >
+        {{ObjetivoDesarrollo}}
+        </td>
+        <td 
+          class="p-2 border border-gray-300"
+          >
+        {{IniciativaYMejora1}}
+        </td>
+        <td 
+        class="multiselectcontainer text-left p-2 border border-gray-300 text-center"  
+        *ngIf="this.selectedDeliverableItem1 != ''"
+        >
+        {{this.GetIndicatorName(this.selectedIndicatorItem1)}}
+        </td>
+        <td 
+        class="multiselectcontainer text-left p-2 border border-gray-300 text-center"  
+        *ngIf="this.selectedDeliverableItem1 != ''"
+        >
+        {{this.GetDeliverableName(this.selectedDeliverableItem1)}}
+        </td>
+        <td class="p-2 border border-gray-300 text-center">
+          {{Item1StartDate}}
+        </td>
+        <td class="p-2 border border-gray-300 text-center">
+          {{Item1EndDate}}
+        </td>
+        <td [ngClass]="{'errorborder': Items1BorderRed}" (mouseenter)="Items1BorderRed = false">
+          <div  
+          (mouseenter)="AttachedDocument1 != '' ? showOptions(1) : null" 
+          (mouseleave)="AttachedDocument1 != '' ? hideOptions() : null" 
+          class="flex w-full items-center justify-center bg-grey-lighter relative">
+            <label *ngIf="PidDetail1" class="mb-0 w-64 flex flex-col items-center uppercase cursor-pointer">
+              <svg class="w-8 h-8" fill="#374151" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                <path d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z"/>
+              </svg>
+              <span class="text-base leading-normal attached-item-label">{{AttachedItem1Label}}</span>
+              <input type="file" class="hidden" [disabled]="!PidDetail1 || PendienteVeredicto || Aprobado" 
+                     (change)="onFileSelected($event, 1)" />
+            </label>
+          
+            <!-- Modal flotante solo si isVisible es verdadero y el estado es Rechazado -->
+            <div [ngStyle]="{'display': activeContainer1 ? 'block' : 'none'}" style="z-index: 10000 !important; width: 280px;" class="floating-options absolute">
+              <div class="w-full max-w-md mx-auto bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden">
+                <div class="bg-gradient-to-r from-blue-500 to-blue-600 p-2">
+                    <h2 class="text-white text-xl font-semibold mb-0">Gestión de Archivos</h2>
+                </div>
+                <div class="p-6 space-y-4">
+                    <a [href]="AttachedDocument1" target="_blank" class="w-full text-left px-4 py-2 rounded border border-gray-300 hover:bg-blue-50  flex items-center space-x-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                        </svg>
+                        <span>Visualizar archivo subido originalmente</span>
+                    </a>
+                    <div class="relative">
+                      <input id="file-upload" type="file" (change)="onFileSelected($event, 1)" class="file-input cursor-pointer opacity-0 absolute inset-0 z-50" />
+                      <label for="file-upload" class="w-full text-center justify-center px-4 py-2 rounded bg-blue-500 hover:bg-blue-600 text-white  flex items-center space-x-2 cursor-pointer">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
+                        </svg>
+                        <span>Subir archivo</span>
+                      </label>
+                    </div>
+                    
+                </div>
+            </div>
+            </div>     
+          </div>
+          <p class="mb-0" *ngIf="AttachedDocument1 === '' && MostrarUrlDeEnlaces">&nbsp;</p>
+        </td>
+        <td [ngClass]="{'errorborder': Items1BorderRed}" (mouseenter)="Items1BorderRed = false" class="p-2 border border-gray-300 text-center"><input appMinDateToday [disabled]="PendienteVeredicto || Aprobado" [(ngModel)]="Item1ComplianceAcomplishDate"  type="date" placeholder="dd/mm/aaaa" /></td>
+        <td [ngClass]="{'errorborder': Items1BorderRed}" (mouseenter)="Items1BorderRed = false" class="p-2 border border-gray-300"><input [disabled]="PendienteVeredicto || Aprobado" [(ngModel)]="Item1ComplianceAcomplishPercentage" placeholder="0%" type="number" appNumberRangeValidator  min="1" max="100"/></td>
+        <td [ngClass]="{'errorborder': Items1BorderRed}" (mouseenter)="Items1BorderRed = false" [attr.contenteditable]="!PendienteVeredicto && (!PidDetail1 || !Aprobado)" (blur)="onTextChangeComentarios($event.target.innerText,1)">{{Commentary1}}</td>
+      </tr>
+      <tr class="bg-white border-b">
+        <td class="p-2 border border-gray-300" [ngClass]="{ 'non-editable': PidDetail2 === false}">
+          <p class="mb-0" *ngIf="IniciativaYMejora2 != ''">{{IniciativaYMejora2}}</p>
+          <p *ngIf="IniciativaYMejora2 == ''">&nbsp;</p>
+        </td>
+        <td class="multiselectcontainer text-left p-2 border border-gray-300 text-center" [ngClass]="{ 'non-editable': PidDetail2 === false}">
+          <p class="mb-0" *ngIf="selectedIndicatorItem2">{{ GetIndicatorName(selectedIndicatorItem2) }}</p>
+          <p class="mb-0" *ngIf="!selectedIndicatorItem2">&nbsp;</p>
+        </td>
+        <td class="multiselectcontainer text-left p-2 border border-gray-300 text-center" [ngClass]="{ 'non-editable': PidDetail2 === false}">
+          <p class="mb-0" *ngIf="selectedDeliverableItem2">{{ GetDeliverableName(selectedDeliverableItem2) }}</p>
+          <p class="mb-0" *ngIf="!selectedDeliverableItem2">&nbsp;</p>
+        </td>
+        <td class="p-2 border border-gray-300 text-center"  [ngClass]="{ 'non-editable': PidDetail2 === false}">
+          <p class="mb-0" *ngIf="Item2StartDate">{{ Item2StartDate }}</p>
+          <p class="mb-0" *ngIf="!Item2StartDate">&nbsp;</p>
+        </td>
+        <td class="p-2 border border-gray-300 text-center"  [ngClass]="{ 'non-editable': PidDetail2 === false}">
+          <p class="mb-0" *ngIf="Item2EndDate">{{ Item2EndDate }}</p>
+          <p class="mb-0" *ngIf="!Item2EndDate">&nbsp;</p>
+        </td>
+        <td [ngClass]="{ 'non-editable': PidDetail2 === false, 'errorborder': Items2BorderRed}" (mouseenter)="Items2BorderRed = false">
+          <div 
+          (mouseenter)="AttachedDocument2 != '' ? showOptions(2) : null" 
+          (mouseleave)="AttachedDocument2 != '' ? hideOptions() : null" 
+          class="flex w-full items-center justify-center bg-grey-lighter relative">
+            <label *ngIf="PidDetail2" class="mb-0 w-64 flex flex-col items-center uppercase cursor-pointer">
+              <svg class="w-8 h-8" fill="#374151" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                <path d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z"/>
+              </svg>
+              <span class="text-base leading-normal attached-item-label">{{AttachedItem2Label}}</span>
+              <input type="file" class="hidden" [disabled]="!PidDetail2 || PendienteVeredicto || Aprobado" 
+                     (change)="onFileSelected($event, 2)" />
+            </label>
+          
+            <!-- Modal flotante solo si isVisible es verdadero y el estado es Rechazado -->
+            <div [ngStyle]="{'display': activeContainer2 ? 'block' : 'none'}" style="z-index: 10000 !important; width: 280px;" class="floating-options absolute">
+              <div class="w-full max-w-md mx-auto bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden">
+                <div class="bg-gradient-to-r from-blue-500 to-blue-600 p-2">
+                    <h2 class="text-white text-xl font-semibold mb-0">Gestión de Archivos</h2>
+                </div>
+                <div class="p-6 space-y-4">
+                    <a [href]="AttachedDocument2" target="_blank" class="w-full text-left px-4 py-2 rounded border border-gray-300 hover:bg-blue-50  flex items-center space-x-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                        </svg>
+                        <span>Visualizar archivo subido originalmente</span>
+                    </a>
+                    <div class="relative">
+                      <input id="file-upload" type="file" (change)="onFileSelected($event, 2)" class="file-input cursor-pointer opacity-0 absolute inset-0 z-50" />
+                      <label for="file-upload" class="w-full text-center justify-center px-4 py-2 rounded bg-blue-500 hover:bg-blue-600 text-white  flex items-center space-x-2 cursor-pointer">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
+                        </svg>
+                        <span>Subir archivo</span>
+                      </label>
+                    </div>
+                    
+                </div>
+            </div>
+          </div>
+        </div>
+          <p class="mb-0" *ngIf="AttachedDocument2 === '' && MostrarUrlDeEnlaces">&nbsp;</p>
+        </td>
+        <td class="p-2 border border-gray-300" (mouseenter)="Items2BorderRed = false" [ngClass]="{ 'non-editable': PidDetail2 === false, 'errorborder': Items2BorderRed}"><input [disabled]="!PidDetail2 || PendienteVeredicto || Aprobado" appMinDateToday [(ngModel)]="Item2ComplianceAcomplishDate"  *ngIf="(!PendienteVeredicto && Item2ComplianceAcomplishDate) || PidDetail2"  type="date" placeholder="dd/mm/aaaa" /></td>
+        <td class="p-2 border border-gray-300" (mouseenter)="Items2BorderRed = false" [ngClass]="{ 'non-editable': PidDetail2 === false, 'errorborder': Items2BorderRed}"><input [disabled]="!PidDetail2 || PendienteVeredicto || Aprobado" [(ngModel)]="Item2ComplianceAcomplishPercentage"  *ngIf="(!PendienteVeredicto && Item2ComplianceAcomplishDate) || PidDetail2" [placeholder]="PidDetail2? '0%' : ''"  type="number" appNumberRangeValidator  min="1" max="100" /></td>
+        <td 
+        (mouseenter)="Items2BorderRed = false"
+        [ngClass]="{ 'non-editable': !PidDetail2 && !PendienteVeredicto, 'errorborder': Items2BorderRed }" 
+        [attr.contenteditable]="PidDetail2 && !PendienteVeredicto" 
+        (blur)="onTextChangeComentarios($event.target.innerText, 2)">
+        {{Commentary2}}
+        </td>
+      </tr>
+      <tr class="bg-white border-b">
+        <td class="p-2 border border-gray-300" [ngClass]="{ 'non-editable': PidDetail3 === false}">
+          <p class="mb-0" *ngIf="IniciativaYMejora3 != ''">{{IniciativaYMejora3}}</p>
+          <p class="mb-0" *ngIf="IniciativaYMejora3 == ''">&nbsp;</p>
+        </td>
+        <td class="multiselectcontainer text-left p-2 border border-gray-300 text-center"  [ngClass]="{ 'non-editable': PidDetail3 === false}">
+          <p class="mb-0" *ngIf="selectedIndicatorItem3">{{ GetIndicatorName(selectedIndicatorItem3) }}</p>
+          <p class="mb-0" *ngIf="!selectedIndicatorItem3">&nbsp;</p>
+        </td>
+        <td class="multiselectcontainer text-left p-2 border border-gray-300 text-center"  [ngClass]="{ 'non-editable': PidDetail3 === false}">
+          <p class="mb-0" *ngIf="selectedDeliverableItem3">{{ GetDeliverableName(selectedDeliverableItem3) }}</p>
+          <p class="mb-0" *ngIf="!selectedDeliverableItem3">&nbsp;</p>
+        </td>
+        <td class="p-2 border border-gray-300 text-center"  [ngClass]="{ 'non-editable': PidDetail3 === false}">
+          <p class="mb-0" *ngIf="Item3StartDate">{{ Item3StartDate  }}</p>
+          <p class="mb-0" *ngIf="!Item3StartDate">&nbsp;</p>
+        </td>
+        <td class="p-2 border border-gray-300 text-center"  [ngClass]="{ 'non-editable': PidDetail3 === false}">
+          <p class="mb-0" *ngIf="Item3EndDate">{{ Item3EndDate}}</p>
+          <p class="mb-0" *ngIf="!Item3EndDate">&nbsp;</p>
+        </td>
+        <td  (mouseenter)="Items3BorderRed = false" [ngClass]="{ 'non-editable': PidDetail3 === false,'errorborder': Items3BorderRed}">
+          <div  
+          (mouseenter)="AttachedDocument3 != '' ? showOptions(3) : null" 
+          (mouseleave)="AttachedDocument3 != '' ? hideOptions() : null" 
+          class="flex w-full items-center justify-center bg-grey-lighter relative">
+            <label *ngIf="PidDetail3" class="mb-0 w-64 flex flex-col items-center uppercase cursor-pointer">
+              <svg class="w-8 h-8" fill="#374151" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                <path d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z"/>
+              </svg>
+              <span class="text-base leading-normal attached-item-label">{{AttachedItem3Label}}</span>
+              <input type="file" class="hidden" [disabled]="!PidDetail3 || PendienteVeredicto || Aprobado" 
+                     (change)="onFileSelected($event, 3)" />
+            </label>
+          
+            <!-- Modal flotante solo si isVisible es verdadero y el estado es Rechazado -->
+            <div [ngStyle]="{'display': activeContainer3 ? 'block' : 'none'}" style="z-index: 10000 !important; width: 280px;" class="floating-options absolute">
+              <div class="w-full max-w-md mx-auto bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden">
+                <div class="bg-gradient-to-r from-blue-500 to-blue-600 p-2">
+                    <h2 class="text-white text-xl font-semibold mb-0">Gestión de Archivos</h2>
+                </div>
+                <div class="p-6 space-y-4">
+                    <a [href]="AttachedDocument3" target="_blank" class="w-full text-left px-4 py-2 rounded border border-gray-300 hover:bg-blue-50  flex items-center space-x-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                        </svg>
+                        <span>Visualizar archivo subido originalmente</span>
+                    </a>
+                    <div class="relative">
+                      <input id="file-upload" type="file" (change)="onFileSelected($event, 3)" class="file-input cursor-pointer opacity-0 absolute inset-0 z-50" />
+                      <label for="file-upload" class="w-full text-center justify-center px-4 py-2 rounded bg-blue-500 hover:bg-blue-600 text-white  flex items-center space-x-2 cursor-pointer">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
+                        </svg>
+                        <span>Subir archivo</span>
+                      </label>
+                    </div>
+                    
+                </div>
+            </div>
+          </div>
+          </div>
+
+          
+          <a class="mb-0 decoration-transparent text-black" target="_blank" *ngIf="AttachedDocument3 != '' && MostrarUrlDeEnlaces" [href]="AttachedDocument3">
+            <label class="mb-0 flex flex-col items-center uppercase cursor-pointer">
+              <svg class="w-8 h-8" fill="#374151" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                  <path d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
+              </svg>
+              <span class="text-base leading-normal attached-item-label">{{NameAttachedDocument3}}</span>   
+            </label>
+          </a>
+        <p class="mb-0" *ngIf="AttachedDocument3 === '' && MostrarUrlDeEnlaces">&nbsp;</p>
+        </td>
+        <td class="p-2 border border-gray-300"  (mouseenter)="Items3BorderRed = false"  [ngClass]="{ 'non-editable': PidDetail3 === false, 'errorborder': Items3BorderRed}"><input [disabled]="!PidDetail3 || PendienteVeredicto || Aprobado"   appMinDateToday [(ngModel)]="Item3ComplianceAcomplishDate"  *ngIf="(!PendienteVeredicto && Item3ComplianceAcomplishDate) || PidDetail3" type="date" placeholder="dd/mm/aaaa" /></td>
+        <td class="p-2 border border-gray-300"  (mouseenter)="Items3BorderRed = false"  [ngClass]="{ 'non-editable': PidDetail3 === false, 'errorborder': Items3BorderRed}"><input [disabled]="!PidDetail3 || PendienteVeredicto || Aprobado" [(ngModel)]="Item3ComplianceAcomplishPercentage" [placeholder]="PidDetail3? '0%' : ''" type="number" appNumberRangeValidator  min="1" max="100" /></td>
+        <td  (mouseenter)="Items3BorderRed = false" [ngClass]="{ 'non-editable': PidDetail3 === false, 'errorborder': Items3BorderRed}"  [attr.contenteditable]="PidDetail3 && !PendienteVeredicto"  (blur)="onTextChangeComentarios($event.target.innerText,3)">{{Commentary3}}</td>
+      </tr>
+    </tbody>
+
+    <tbody *ngIf="PendienteVeredicto || Aprobado">
+      <tr class="bg-white border-b">
+        <td style="max-width: 100%;" class="p-2 border border-gray-300 font-semibold" rowspan="3">
+          {{DataToShow.registros.detalles[0].competencia.titulo}}
+        </td>
+        <td
+          class="p-2 border border-gray-300"
+          rowspan="3"
+        >
+        {{ObjetivoDesarrollo}}
+        </td>
+        <td 
+          class="p-2 border border-gray-300"
+          >
+        {{IniciativaYMejora1}}
+        </td>
+        <td 
+        class="multiselectcontainer text-left p-2 border border-gray-300 text-center"  
+        *ngIf="this.selectedDeliverableItem1 != ''"
+        >
+        {{this.GetIndicatorName(this.selectedIndicatorItem1)}}
+        </td>
+        <td 
+        class="multiselectcontainer text-left p-2 border border-gray-300 text-center"  
+        *ngIf="this.selectedDeliverableItem1 != ''"
+        >
+        {{this.GetDeliverableName(this.selectedDeliverableItem1)}}
+        </td>
+        <td class="p-2 border border-gray-300 text-center">
+          {{Item1StartDate}}
+        </td>
+        <td class="p-2 border border-gray-300 text-center">
+          {{Item1EndDate}}
+        </td>
+        <td class="p-2 border border-gray-300 text-center">
+          <a class="mb-0 decoration-transparent text-black" target="_blank" *ngIf="AttachedDocument1 != ''" [href]="AttachedDocument1">
+            <label class="mb-0 flex flex-col items-center uppercase cursor-pointer">
+              <svg class="w-8 h-8" fill="#374151" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                  <path d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
+              </svg>
+              <span class="text-base leading-normal attached-item-label">{{NameAttachedDocument1}}</span>   
+            </label>
+          </a>
+          <p class="mb-0" *ngIf="AttachedDocument1 === ''">&nbsp;</p>
+        </td>
+        <td class="p-2 border border-gray-300 text-center">
+          <p class="mb-0" *ngIf="Item1ComplianceAcomplishDate">{{this.FormatDate(Item1ComplianceAcomplishDate) }}</p>
+          <p class="mb-0" *ngIf="!Item1ComplianceAcomplishDate">&nbsp;</p>
+        </td>
+        <td class="p-2 border border-gray-300 text-center">
+          <p class="mb-0" *ngIf="Item1ComplianceAcomplishPercentage">{{ Item1ComplianceAcomplishPercentage }}</p>
+          <p class="mb-0" *ngIf="!Item1ComplianceAcomplishPercentage">&nbsp;</p>
+        </td>
+        <td class="p-2 border border-gray-300 text-center">
+          <p class="mb-0" *ngIf="Commentary1">{{ Commentary1 }}</p>
+          <p class="mb-0" *ngIf="!Commentary1">&nbsp;</p>
+        </td>
+      </tr>
+      <tr *ngIf="IniciativaYMejora2 != ''" class="bg-white border-b">
+        <td class="p-2 border border-gray-300">
+          <p class="mb-0" *ngIf="IniciativaYMejora2 != ''">{{IniciativaYMejora2}}</p>
+          <p *ngIf="IniciativaYMejora2 == ''">&nbsp;</p>
+        </td>
+        <td class="multiselectcontainer text-left p-2 border border-gray-300 text-center">
+          <p class="mb-0" *ngIf="selectedIndicatorItem2">{{ GetIndicatorName(selectedIndicatorItem2) }}</p>
+          <p class="mb-0" *ngIf="!selectedIndicatorItem2">&nbsp;</p>
+        </td>
+        <td class="multiselectcontainer text-left p-2 border border-gray-300 text-center">
+          <p class="mb-0" *ngIf="selectedDeliverableItem2">{{ GetDeliverableName(selectedDeliverableItem2) }}</p>
+          <p class="mb-0" *ngIf="!selectedDeliverableItem2">&nbsp;</p>
+        </td>
+        <td class="p-2 border border-gray-300 text-center">
+          <p class="mb-0" *ngIf="Item2StartDate">{{ Item2StartDate }}</p>
+          <p class="mb-0" *ngIf="!Item2StartDate">&nbsp;</p>
+        </td>
+        <td class="p-2 border border-gray-300 text-center">
+          <p class="mb-0" *ngIf="Item2EndDate">{{ Item2EndDate }}</p>
+          <p class="mb-0" *ngIf="!Item2EndDate">&nbsp;</p>
+        </td>
+        <td class="p-2 border border-gray-300 text-center">
+          <a class="mb-0 decoration-transparent text-black" target="_blank" *ngIf="AttachedDocument2 != ''" [href]="AttachedDocument2">
+            <label class="mb-0 flex flex-col items-center uppercase cursor-pointer">
+              <svg class="w-8 h-8" fill="#374151" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                  <path d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
+              </svg>
+              <span class="text-base leading-normal attached-item-label">{{NameAttachedDocument2}}</span>   
+            </label>
+          </a>
+          <p class="mb-0" *ngIf="AttachedDocument2 === ''">&nbsp;</p>
+        </td>
+        <td class="p-2 border border-gray-300 text-center">
+          <p class="mb-0" *ngIf="Item2ComplianceAcomplishDate">{{this.FormatDate(Item2ComplianceAcomplishDate) }}</p>
+          <p class="mb-0" *ngIf="!Item2ComplianceAcomplishDate">&nbsp;</p>
+        </td>
+        <td class="p-2 border border-gray-300 text-center">
+          <p class="mb-0" *ngIf="Item2ComplianceAcomplishPercentage">{{ Item2ComplianceAcomplishPercentage }}</p>
+          <p class="mb-0" *ngIf="!Item2ComplianceAcomplishPercentage">&nbsp;</p>
+        </td>
+        <td class="p-2 border border-gray-300 text-center">
+          <p class="mb-0" *ngIf="Commentary2">{{ Commentary2 }}</p>
+          <p class="mb-0" *ngIf="!Commentary2">&nbsp;</p>
+        </td>
+      </tr>
+      <tr  *ngIf="IniciativaYMejora3 != ''" class="bg-white border-b">
+        <td class="p-2 border border-gray-300">
+          <p class="mb-0" *ngIf="IniciativaYMejora3 != ''">{{IniciativaYMejora3}}</p>
+          <p class="mb-0" *ngIf="IniciativaYMejora3 == ''">&nbsp;</p>
+        </td>
+        <td class="multiselectcontainer text-left p-2 border border-gray-300 text-center">
+          <p class="mb-0" *ngIf="selectedIndicatorItem3">{{ GetIndicatorName(selectedIndicatorItem3) }}</p>
+          <p class="mb-0" *ngIf="!selectedIndicatorItem3">&nbsp;</p>
+        </td>
+        <td class="multiselectcontainer text-left p-2 border border-gray-300 text-center">
+          <p class="mb-0" *ngIf="selectedDeliverableItem3">{{ GetDeliverableName(selectedDeliverableItem3) }}</p>
+          <p class="mb-0" *ngIf="!selectedDeliverableItem3">&nbsp;</p>
+        </td>
+        <td class="p-2 border border-gray-300 text-center">
+          <p class="mb-0" *ngIf="Item3StartDate">{{ Item3StartDate }}</p>
+          <p class="mb-0" *ngIf="!Item3StartDate">&nbsp;</p>
+        </td>
+        <td class="p-2 border border-gray-300 text-center">
+          <p class="mb-0" *ngIf="Item3EndDate">{{ Item3EndDate }}</p>
+          <p class="mb-0" *ngIf="!Item3EndDate">&nbsp;</p>
+        </td>
+        <td class="p-2 border border-gray-300 text-center">
+          <a class="mb-0 decoration-transparent text-black" target="_blank" *ngIf="AttachedDocument3 != ''" [href]="AttachedDocument3">
+            <label class="mb-0 flex flex-col items-center uppercase cursor-pointer">
+              <svg class="w-8 h-8" fill="#374151" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                  <path d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
+              </svg>
+              <span class="text-base leading-normal attached-item-label">{{NameAttachedDocument3}}</span>   
+            </label>
+          </a>
+          <p class="mb-0" *ngIf="AttachedDocument3 === ''">&nbsp;</p>
+        </td>
+        <td class="p-2 border border-gray-300 text-center">
+          <p class="mb-0" *ngIf="Item3ComplianceAcomplishDate">{{this.FormatDate(Item3ComplianceAcomplishDate) }}</p>
+          <p class="mb-0" *ngIf="!Item3ComplianceAcomplishDate">&nbsp;</p>
+        </td>
+        <td class="p-2 border border-gray-300 text-center">
+          <p class="mb-0" *ngIf="Item3ComplianceAcomplishPercentage">{{ Item3ComplianceAcomplishPercentage }}</p>
+          <p class="mb-0" *ngIf="!Item3ComplianceAcomplishPercentage">&nbsp;</p>
+        </td>
+        <td class="p-2 border border-gray-300 text-center">
+          <p class="mb-0" *ngIf="Commentary3">{{ Commentary3 }}</p>
+          <p class="mb-0" *ngIf="!Commentary3">&nbsp;</p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="p-6" *ngIf="EvaluatorcomentarioCumplimiento != ''">
+  <div>
+    <p class="mb-2"><b>COMENTARIO DEL EVALUADOR:</b></p>
+  </div>
+  <mat-form-field appearance="outline" class="w-full">
+    <textarea
+      matInput
+      class="w-full rounded-md"
+      disabled
+      [(ngModel)]="EvaluatorcomentarioCumplimiento"
+      maxlength="500"
+      aria-label="Comentario"
+      rows="5">
+    </textarea>
+    <mat-hint align="end">{{ EvaluatorcomentarioCumplimiento?.length || 0 }}/500</mat-hint>
+  </mat-form-field>  
+</div>
+<footer class="p-6" *ngIf="DataToShow != undefined" >
+  <button
+  *ngIf="EvaluadoVaARegistrar"
+  class="inline-flex text-white bg-primary items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-primary/90 h-10 px-4 py-2 w-full"
+  type="submit"
+  (click)="RegisterPID(false)"
+>
+  Registrar cumplimiento de plan individual de desarrollo
+</button>
+<button
+*ngIf="Rechazado && EvaluadoVaAActualizar  && !Aprobado"
+class="inline-flex text-white bg-primary items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-primary/90 h-10 px-4 py-2 w-full"
+type="submit"
+(click)="RegisterPID(true)"
+>
+  Actualizar cumplimiento de plan individual de desarrollo
+</button>
+</footer>
+
+</div>

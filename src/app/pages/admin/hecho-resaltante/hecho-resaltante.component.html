@@ -1,0 +1,87 @@
+
+<app-title titulo="Registro de hecho resaltante del personal cargo de {{DataFromsessionStorage.nombreCompleto}}"></app-title>
+<div class="max-w-[22rem] mx-auto p-4 bg-white rounded-lg shadow-md border border-gray-300 rounded-md mb-6">
+    <div class="flex items-center">
+        <div *ngIf="calendarData == undefined" class="mx-auto" style="margin-right: 0.5rem !important; width: 188px !important; height: 53px;">
+            <mat-form-field>
+            <mat-select placeholder="Periodo"></mat-select>
+            </mat-form-field>
+        </div> 
+        <div *ngIf="calendarData != undefined" class="mx-auto" style="margin-right: 0.5rem !important; width: 188px !important; height: 53px;">
+            <mat-form-field>
+            <mat-select placeholder="Periodo" [(ngModel)]="Periodo">
+                <mat-option *ngFor="let item of calendarData.registros" [value]="item.vCodigo">
+                {{item.vNombre}}
+                </mat-option>
+            </mat-select>
+            </mat-form-field>
+        </div> 
+        <button type="button" (click)="FilterData(this.Periodo)" class="text-white flex bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2.5 me-2">
+            <svg class="w-5 h-5 text-white"  xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="m21 21-3.5-3.5M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"/>
+            </svg>                
+            Buscar
+        </button>  
+    </div>
+</div>
+<table *ngIf="Activatetable" class="w-full mt-2 text-sm text-left rtl:text-right text-gray-500">
+  <thead class="text-xs text-gray-700 uppercase bg-gray-5">
+    <tr>
+        <th scope="col" class="px-6 py-3  border" style="width: 8rem !important;">
+            Foto
+        </th>
+        <th scope="col" class="px-6 py-3  border" style="width: 5.9rem !important;">
+            COD. FICHA
+        </th>
+        <th scope="col" class="px-6 py-3  border" style="width: 35rem !important;">
+            APELLIDOS Y NOMBRES
+        </th>
+        <th scope="col" class="px-6 py-3  border" style="width: 8.5rem !important;">
+            UNIDAD ORGÁNICA
+        </th>
+        <th scope="col" class="px-6 py-3  border" style="width: 6.8rem !important;">
+            COD. PUESTO
+        </th>
+        <th scope="col" class="px-6 py-3  border text-wrap" style="width: 35rem !important;">
+            PUESTO
+        </th>
+        <th scope="col" class="px-6 py-3  border" style="width: 6rem !important;">
+            Acciones
+        </th>
+    </tr>
+</thead>
+<tbody>
+    <tr *ngFor="let item of DataList" class="border hover:bg-gray-100">      
+        <th class="px-6 py-4 text-black  border ">
+           <img class="w-20 h-20" 
+                       
+                    [src]="item.foto" loading="lazy" 
+ 
+                    crossorigin="anonymous" (error)="onImgError($event)"
+                    alt="Foto">
+
+         </th>           
+        <th class="px-6 py-4 text-gray-900 whitespace-nowrap  ">
+            <div class="text-base font-semibold">{{removeLeadingZeros(item.codigoFicha)}}</div>
+         </th>
+        <td class="px-6 py-4 text-black  border">
+            {{item.apellidosNombres}}
+        </td>
+        <td class="px-6 py-4 text-black  border ">
+            {{item.unidadOrganica}}
+        </td>
+        <td class="px-6 py-4 text-black  border ">
+            {{item.codigoPuesto}}
+        </td>
+        <td class="px-6 py-4 text-black  border">
+            {{item.nombrePuesto}}
+        </td>
+        <td class="px-6 py-4">
+           <div class="flex items-center">
+                <button type="button" (click)="OpenModal(item.apellidosNombres,item.codigoFicha,item.codigoPuesto)" class="px-2 focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm py-2.5">Registrar hecho resaltante</button>
+            </div>                    
+        </td>
+    </tr>
+</tbody>
+</table>
+<app-addoutstandingfactmodal *ngIf="ShowModal" [WorkerName]="workerName" [WorkerFolder]="workerFolder" [Calendar]="Periodo" [WorkerPosition]="workerPosition" [Calendario]="Periodo"></app-addoutstandingfactmodal>

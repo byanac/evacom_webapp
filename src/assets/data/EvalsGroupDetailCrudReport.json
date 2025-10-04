@@ -1,0 +1,51 @@
+{
+    "registros": [
+        {
+            "idGrupoEvaluacionDetalle": 24,
+            "grupoEvaluacion": {
+                "codigo": "GP1",
+                "descripcion": "DESCRIP PRUEBA GRUPO EVALUACION TEST"
+            },
+            "competencia": {
+                "codigo": "P001",
+                "descripcion": "DESCRIPCION PRUEBA COMPETENCIA 2"
+            },
+            "nivel": {
+                "codigo": "N3",
+                "nombre": "Nivel 3"
+            },
+            "estado": 1,
+            "admin": {
+                "codigoFicha": "00012336",
+                "apellidosNombres": "SEGURA PERALTA, AMERICA GLADYS",
+                "codigoPuesto": "00005197",
+                "nombrePuesto": "Analista Principal de Sistemas"
+            },
+            "fecModificacion": "2024-10-30 11:33:34"
+        },
+        {
+            "idGrupoEvaluacionDetalle": 1,
+            "grupoEvaluacion": {
+                "codigo": "GE1",
+                "descripcion": "Gerentes"
+            },
+            "competencia": {
+                "codigo": "C007",
+                "descripcion": "Capacidad para identificar escenarios futuros, interpretar tendencias y determinar impacto del entorno en la organización; con la finalidad de definir estrategias a largo plazo alineadas con las perspectivas organizacionales, realizar los ajustes estratégicos necesarios, minimizar las debilidades y potenciar las fortalezas."
+            },
+            "nivel": {
+                "codigo": "N4",
+                "nombre": "Nivel 4"
+            },
+            "estado": 0,
+            "admin": {
+                "codigoFicha": "00012336",
+                "apellidosNombres": "SEGURA PERALTA, AMERICA GLADYS",
+                "codigoPuesto": "00005197",
+                "nombrePuesto": "Analista Principal de Sistemas"
+            },
+            "fecModificacion": "2024-10-30 11:33:34"
+        }
+    ],
+    "mensaje": "OK"
+}

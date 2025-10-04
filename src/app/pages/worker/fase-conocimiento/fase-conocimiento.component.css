@@ -1,0 +1,16 @@
+@media (max-width: 1525px) {
+    .confirmbutton{
+        padding-top: 0px !important;
+    }
+}
+
+@media print {
+    app-nav {
+      display: none;
+    }
+
+    
+    .optionsfooter{
+      display: none;
+    }
+  }

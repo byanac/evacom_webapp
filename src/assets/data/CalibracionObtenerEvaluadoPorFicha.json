@@ -1,0 +1,11 @@
+{
+    "registros": {
+        "codigoFicha": "00014501",
+        "apellidosNombres": "HUAMAN CORDOVA, LUIS ANGEL",
+        "foto": "https://webapp16.sedapal.com.pe/imgsedatel/ficha/14501.jpg",
+        "estadoEvaluacion": true,
+        "habilitaCalibracion": true,
+        "observacion": "Ficha no cuenta con una evaluación completada"
+    },
+    "mensaje": "No tiene evaluación completada para calibrar"
+}

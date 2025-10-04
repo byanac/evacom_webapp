@@ -1,0 +1,66 @@
+{
+    "registros": [
+        {
+            "codigo": "COC0001",
+            "descripcion": "Atiende las necesidades del cliente con respuestas pre-establecidas, y contribuye en la satisfacción del cliente.",
+            "estado": 1,
+            "competencia": {
+                "codigo": "C001",
+                "titulo": "VOCACIÓN DE SERVICIO"
+            },
+            "nivel": {
+                "codigo": "N1",
+                "nombre": "Nivel 1"
+            },
+            "admin": {
+                "codigoFicha": "00012336",
+                "apellidosNombres": "SEGURA PERALTA, AMERICA GLADYS",
+                "codigoPuesto": "00005197",
+                "nombrePuesto": "Analista Principal de Sistemas"
+            },
+            "fecModificacion": "2024-10-30 11:33:34"
+        },
+        {
+            "codigo": "COC0281",
+            "descripcion": "Es un referente respecto al cumplimiento de políticas y normas requeridas en la organización.",
+            "estado": 1,
+            "competencia": {
+                "codigo": "C012",
+                "titulo": "ALINEAMIENTO A LAS NORMAS"
+            },
+            "nivel": {
+                "codigo": "N5",
+                "nombre": "Nivel 5"
+            },
+            "admin": {
+                "codigoFicha": "00012336",
+                "apellidosNombres": "SEGURA PERALTA, AMERICA GLADYS",
+                "codigoPuesto": "00005197",
+                "nombrePuesto": "Analista Principal de Sistemas"
+            },
+            "fecModificacion": "2024-10-30 11:33:34"
+        },
+        {
+            "codigo": "COMP001",
+            "descripcion": "Prueba de comportamiento 002",
+            "estado": 0,
+            "competencia": {
+                "codigo": "P001",
+                "titulo": "PRUEBA COMPETENCIA 2"
+            },
+            "nivel": {
+                "codigo": "P2",
+                "nombre": "PB2 Nivel 5"
+            },
+            "admin": {
+                "codigoFicha": "00012336",
+                "apellidosNombres": "SEGURA PERALTA, AMERICA GLADYS",
+                "codigoPuesto": "00005197",
+                "nombrePuesto": "Analista Principal de Sistemas"
+            },
+            "fecModificacion": "2024-10-30 11:33:34"
+        }
+    ],
+    "mensaje": "OK"
+}
+ 

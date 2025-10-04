@@ -1,0 +1,60 @@
+{
+    "registros": [
+        {
+            "codigo": "C001",
+            "titulo": "VOCACIÓN DE SERVICIO",
+            "descripcion": "Entiende, administra y responde a las expectativas y necesidades de los clientes internos, externos y grupos de interés de la empresa. Busca ofrecer un servicio excepcional, siendo empático y proactivo a las necesidades del cliente. Está atento a responder oportunamente y con efectividad, generando la creación de valor. Está orientado a fortalecer una cultura de calidad de servicio en la empresa.",
+            "estado": 1,
+            "grupo": {
+                "codigo": "GC001",
+                "descripcion": ""
+            },
+            "nivel": null
+        },
+        {
+            "codigo": "C002",
+            "titulo": "INNOVACIÓN",
+            "descripcion": "Actúa como un agente de cambio y mantiene un enfoque positivo con el objetivo de generar valor. Se adapta a las circunstancias de manera efectiva y ajusta las prioridades y planes para nuevos eventos, tanto en el ambiente como en la organización. Identifica oportunidades para mejorar y muestra interés activo en las iniciativas e ideas nuevas. Cuestiona siempre los procedimientos y procesos actuales, buscando la mejora continua. ",
+            "estado": 1,
+            "grupo": {
+                "codigo": "GC001",
+                "descripcion": ""
+            },
+            "nivel": null
+        },
+        {
+            "codigo": "C003",
+            "titulo": "COMPROMISO",
+            "descripcion": "Sentir como propios los objetivos de la organización, superando obstáculos que interfieran con el logro de los mismos. Promover una gestión sostenible y responsable de las normas sociales, ambientales, éticas y organizacionales en la realización de las actividades internas y externas. Hacerse cargo de las consecuencias de las decisiones tomadas con el fin de sostener el compromiso con las normas éticas y sociales aceptadas en las actividades relacionadas con el sector. ",
+            "estado": 1,
+            "grupo": {
+                "codigo": "GC001",
+                "descripcion": ""
+            },
+            "nivel": null
+        },
+        {
+            "codigo": "C004",
+            "titulo": "INTEGRIDAD",
+            "descripcion": "Es la capacidad de actuar basados en principios éticos, siendo consecuente con lo que se dice o se considera importante. Incluye comunicar las intenciones, ideas y sentimientos abierta y directamente y respetar la diversidad de creencias y opiniones. Implica estar dispuesto a actuar con honestidad incluso en negociaciones difíciles con agentes externos. ",
+            "estado": 1,
+            "grupo": {
+                "codigo": "GC001",
+                "descripcion": ""
+            },
+            "nivel": null
+        },
+        {
+            "codigo": "C006",
+            "titulo": "ORIENTACIÓN A RESULTADOS",
+            "descripcion": "Es la capacidad de encaminar todos los actos al cumplimiento de lo esperado, actuando con velocidad y sentido de urgencia ante decisiones importantes necesarias para superar los obstáculos, respondiendo a las necesidades del cliente interno o externo, y grupos de interés para mejorar el desempeño de la empresa tomando en cuenta los aspectos económicos, sociales y ambientales.",
+            "estado": 1,
+            "grupo": {
+                "codigo": "GC001",
+                "descripcion": ""
+            },
+            "nivel": null
+        }
+    ],
+    "mensaje": "OK"
+}

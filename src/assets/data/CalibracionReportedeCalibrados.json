@@ -1,0 +1,369 @@
+{
+    "registros": [
+        {
+            "evaluador": {
+                "codigoFicha": "00012336",
+                "apellidosNombres": "SEGURA PERALTA, AMERICA GLADYS",
+                "codigoPuesto": "00005197",
+                "nombrePuesto": "Analista Principal de Sistemas"
+            },
+            "evaluado": {
+                "codigoFicha": "00015924",
+                "apellidosNombres": "ENCISO BENAVIDES, CHRISTIAN HAMILTON",
+                "unidadOrganica": "458-EOMASBA",
+                "codigoPuesto": "00001769",
+                "nombrePuesto": "Técnico de Opera. y Mantto. Electromecá.",
+                "foto": "https://webapp16.sedapal.com.pe/imgsedatel/ficha/15924.jpg",
+                "gerencia_codigo": "00003798"
+            },
+            "admin": {
+                "apellidosNombres": "DE LOS SANTOS LEON, VICTOR HUGO"
+            },
+            "estadoCalibracion": false,
+            "fechaRegistro": 1726549200000,
+            "fechaPlazo": 1734066000000,
+            "codCalendario": "C003",
+            "idCalibracion": 2,
+            "idEvaluacion": 124
+        },
+        {
+            "evaluador": {
+                "codigoFicha": "00012336",
+                "apellidosNombres": "SEGURA PERALTA, AMERICA GLADYS",
+                "codigoPuesto": "00005197",
+                "nombrePuesto": "Analista Principal de Sistemas"
+            },
+            "evaluado": {
+                "codigoFicha": "00015544",
+                "apellidosNombres": "CASAHUAMAN ESCOBEDO, JUAN",
+                "unidadOrganica": "458-EOMASBA",
+                "codigoPuesto": "00001768",
+                "nombrePuesto": "Técnico de Opera. y Mantto. Electromecá.",
+                "foto": "https://webapp16.sedapal.com.pe/imgsedatel/ficha/15544.jpg",
+                "gerencia_codigo": "00003798"
+            },
+            "admin": {
+                "apellidosNombres": "DE LOS SANTOS LEON, VICTOR HUGO"
+            },
+            "estadoCalibracion": false,
+            "fechaRegistro": 1726462800000,
+            "fechaPlazo": 1734652800000,
+            "codCalendario": "C003",
+            "idCalibracion": 108,
+            "idEvaluacion": 135
+        },
+        {
+            "evaluador": {
+                "codigoFicha": "00012336",
+                "apellidosNombres": "SEGURA PERALTA, AMERICA GLADYS",
+                "codigoPuesto": "00005197",
+                "nombrePuesto": "Analista Principal de Sistemas"
+            },
+            "evaluado": {
+                "codigoFicha": "00024878",
+                "apellidosNombres": "JANAMPA ALCA, CARLOS",
+                "unidadOrganica": "458-EOMASBA",
+                "codigoPuesto": "00029094",
+                "nombrePuesto": "Oper.Espec.de Oper.y Mantto.Electro.",
+                "foto": "https://webapp16.sedapal.com.pe/imgsedatel/ficha/24878.jpg",
+                "gerencia_codigo": "00003798"
+            },
+            "admin": {
+                "apellidosNombres": "DE LOS SANTOS LEON, VICTOR HUGO"
+            },
+            "estadoCalibracion": true,
+            "fechaRegistro": 1726462800000,
+            "fechaPlazo": 1734066000000,
+            "codCalendario": "C003",
+            "idCalibracion": 109,
+            "idEvaluacion": 136
+        },
+        {
+            "evaluador": {
+                "codigoFicha": "00012336",
+                "apellidosNombres": "SEGURA PERALTA, AMERICA GLADYS",
+                "codigoPuesto": "00005197",
+                "nombrePuesto": "Analista Principal de Sistemas"
+            },
+            "evaluado": {
+                "codigoFicha": "00012845",
+                "apellidosNombres": "SANTOS MARTINEZ, ROLANDO",
+                "unidadOrganica": "302-ETIC",
+                "codigoPuesto": "00016707",
+                "nombrePuesto": "Analista Principal de Sistemas",
+                "foto": "https://webapp16.sedapal.com.pe/imgsedatel/ficha/12845.jpg",
+                "gerencia_codigo": "00000032"
+            },
+            "admin": {
+                "apellidosNombres": "DE LOS SANTOS LEON, VICTOR HUGO"
+            },
+            "estadoCalibracion": true,
+            "fechaRegistro": 1730178000000,
+            "fechaPlazo": 1734066000000,
+            "codCalendario": "C003",
+            "idCalibracion": 118,
+            "idEvaluacion": 152
+        },
+        {
+            "evaluador": {
+                "codigoFicha": "00012336",
+                "apellidosNombres": "SEGURA PERALTA, AMERICA GLADYS",
+                "codigoPuesto": "00005197",
+                "nombrePuesto": "Analista Principal de Sistemas"
+            },
+            "evaluado": {
+                "codigoFicha": "00012845",
+                "apellidosNombres": "SANTOS MARTINEZ, ROLANDO",
+                "unidadOrganica": "302-ETIC",
+                "codigoPuesto": "00016707",
+                "nombrePuesto": "Analista Principal de Sistemas",
+                "foto": "https://webapp16.sedapal.com.pe/imgsedatel/ficha/12845.jpg",
+                "gerencia_codigo": "00000032"
+            },
+            "admin": {
+                "apellidosNombres": "DE LOS SANTOS LEON, VICTOR HUGO"
+            },
+            "estadoCalibracion": true,
+            "fechaRegistro": 1730350800000,
+            "fechaPlazo": 1734066000000,
+            "codCalendario": "C003",
+            "idCalibracion": 119,
+            "idEvaluacion": 153
+        },
+        {
+            "evaluador": {
+                "codigoFicha": "00012336",
+                "apellidosNombres": "SEGURA PERALTA, AMERICA GLADYS",
+                "codigoPuesto": "00005197",
+                "nombrePuesto": "Analista Principal de Sistemas"
+            },
+            "evaluado": {
+                "codigoFicha": "00012845",
+                "apellidosNombres": "SANTOS MARTINEZ, ROLANDO",
+                "unidadOrganica": "302-ETIC",
+                "codigoPuesto": "00016707",
+                "nombrePuesto": "Analista Principal de Sistemas",
+                "foto": "https://webapp16.sedapal.com.pe/imgsedatel/ficha/12845.jpg",
+                "gerencia_codigo": "00000032"
+            },
+            "admin": {
+                "apellidosNombres": "DE LOS SANTOS LEON, VICTOR HUGO"
+            },
+            "estadoCalibracion": true,
+            "fechaRegistro": 1730350800000,
+            "fechaPlazo": 1734066000000,
+            "codCalendario": "C003",
+            "idCalibracion": 120,
+            "idEvaluacion": 154
+        },
+        {
+            "evaluador": {
+                "codigoFicha": "00012336",
+                "apellidosNombres": "SEGURA PERALTA, AMERICA GLADYS",
+                "codigoPuesto": "00005197",
+                "nombrePuesto": "Analista Principal de Sistemas"
+            },
+            "evaluado": {
+                "codigoFicha": "00012845",
+                "apellidosNombres": "SANTOS MARTINEZ, ROLANDO",
+                "unidadOrganica": "302-ETIC",
+                "codigoPuesto": "00016707",
+                "nombrePuesto": "Analista Principal de Sistemas",
+                "foto": "https://webapp16.sedapal.com.pe/imgsedatel/ficha/12845.jpg",
+                "gerencia_codigo": "00000032"
+            },
+            "admin": {
+                "apellidosNombres": "DE LOS SANTOS LEON, VICTOR HUGO"
+            },
+            "estadoCalibracion": true,
+            "fechaRegistro": 1730350800000,
+            "fechaPlazo": 1734066000000,
+            "codCalendario": "C003",
+            "idCalibracion": 121,
+            "idEvaluacion": 155
+        },
+        {
+            "evaluador": {
+                "codigoFicha": "00012336",
+                "apellidosNombres": "SEGURA PERALTA, AMERICA GLADYS",
+                "codigoPuesto": "00005197",
+                "nombrePuesto": "Analista Principal de Sistemas"
+            },
+            "evaluado": {
+                "codigoFicha": "00024547",
+                "apellidosNombres": "HERRERA GARCIA, ANDY OMAR",
+                "unidadOrganica": "458-EOMASBA",
+                "codigoPuesto": "00017394",
+                "nombrePuesto": "Oper.Espec.de Maqui.Pesada y Operaciones",
+                "foto": "https://webapp16.sedapal.com.pe/imgsedatel/ficha/24547.jpg",
+                "gerencia_codigo": "00003798"
+            },
+            "admin": {
+                "apellidosNombres": "DE LOS SANTOS LEON, VICTOR HUGO"
+            },
+            "estadoCalibracion": true,
+            "fechaRegistro": 1726462800000,
+            "fechaPlazo": 1734066000000,
+            "codCalendario": "C003",
+            "idCalibracion": 110,
+            "idEvaluacion": 139
+        },
+        {
+            "evaluador": {
+                "codigoFicha": "00012336",
+                "apellidosNombres": "SEGURA PERALTA, AMERICA GLADYS",
+                "codigoPuesto": "00005197",
+                "nombrePuesto": "Analista Principal de Sistemas"
+            },
+            "evaluado": {
+                "codigoFicha": "00024539",
+                "apellidosNombres": "LA ROSA NEYRA, JOSE LUIS",
+                "unidadOrganica": "458-EOMASBA",
+                "codigoPuesto": "00020422",
+                "nombrePuesto": "Oper.Espec.de Maqui.Pesada y Operaciones",
+                "foto": "https://webapp16.sedapal.com.pe/imgsedatel/ficha/24539.jpg",
+                "gerencia_codigo": "00003798"
+            },
+            "admin": {
+                "apellidosNombres": "DE LOS SANTOS LEON, VICTOR HUGO"
+            },
+            "estadoCalibracion": true,
+            "fechaRegistro": 1726549200000,
+            "fechaPlazo": 1734066000000,
+            "codCalendario": "C003",
+            "idCalibracion": 111,
+            "idEvaluacion": 140
+        },
+        {
+            "evaluador": {
+                "codigoFicha": "00012336",
+                "apellidosNombres": "SEGURA PERALTA, AMERICA GLADYS",
+                "codigoPuesto": "00005197",
+                "nombrePuesto": "Analista Principal de Sistemas"
+            },
+            "evaluado": {
+                "codigoFicha": "00012845",
+                "apellidosNombres": "SANTOS MARTINEZ, ROLANDO",
+                "unidadOrganica": "302-ETIC",
+                "codigoPuesto": "00016707",
+                "nombrePuesto": "Analista Principal de Sistemas",
+                "foto": "https://webapp16.sedapal.com.pe/imgsedatel/ficha/12845.jpg",
+                "gerencia_codigo": "00000032"
+            },
+            "admin": {
+                "apellidosNombres": "DE LOS SANTOS LEON, VICTOR HUGO"
+            },
+            "estadoCalibracion": true,
+            "fechaRegistro": 1730178000000,
+            "fechaPlazo": 1734066000000,
+            "codCalendario": "C003",
+            "idCalibracion": 116,
+            "idEvaluacion": 150
+        },
+        {
+            "evaluador": {
+                "codigoFicha": "00012336",
+                "apellidosNombres": "SEGURA PERALTA, AMERICA GLADYS",
+                "codigoPuesto": "00005197",
+                "nombrePuesto": "Analista Principal de Sistemas"
+            },
+            "evaluado": {
+                "codigoFicha": "00024808",
+                "apellidosNombres": "TICACALA CUTIPA, MARCO ANTONIO",
+                "unidadOrganica": "458-EOMASBA",
+                "codigoPuesto": "00010918",
+                "nombrePuesto": "Oper.Espec.de Oper.y Matto.Electrom.",
+                "foto": "https://webapp16.sedapal.com.pe/imgsedatel/ficha/24808.jpg",
+                "gerencia_codigo": "00003798"
+            },
+            "admin": {
+                "apellidosNombres": "DE LOS SANTOS LEON, VICTOR HUGO"
+            },
+            "estadoCalibracion": true,
+            "fechaRegistro": 1725512400000,
+            "fechaPlazo": 1734066000000,
+            "codCalendario": "C003",
+            "idCalibracion": 105,
+            "idEvaluacion": 131
+        },
+        {
+            "evaluador": {
+                "codigoFicha": "00012336",
+                "apellidosNombres": "SEGURA PERALTA, AMERICA GLADYS",
+                "codigoPuesto": "00005197",
+                "nombrePuesto": "Analista Principal de Sistemas"
+            },
+            "evaluado": {
+                "codigoFicha": "00012845",
+                "apellidosNombres": "SANTOS MARTINEZ, ROLANDO",
+                "unidadOrganica": "302-ETIC",
+                "codigoPuesto": "00016707",
+                "nombrePuesto": "Analista Principal de Sistemas",
+                "foto": "https://webapp16.sedapal.com.pe/imgsedatel/ficha/12845.jpg",
+                "gerencia_codigo": "00000032"
+            },
+            "admin": {
+                "apellidosNombres": "DE LOS SANTOS LEON, VICTOR HUGO"
+            },
+            "estadoCalibracion": true,
+            "fechaRegistro": 1730091600000,
+            "fechaPlazo": 1734066000000,
+            "codCalendario": "C003",
+            "idCalibracion": 112,
+            "idEvaluacion": 146
+        },
+        {
+            "evaluador": {
+                "codigoFicha": "00012336",
+                "apellidosNombres": "SEGURA PERALTA, AMERICA GLADYS",
+                "codigoPuesto": "00005197",
+                "nombrePuesto": "Analista Principal de Sistemas"
+            },
+            "evaluado": {
+                "codigoFicha": "00012845",
+                "apellidosNombres": "SANTOS MARTINEZ, ROLANDO",
+                "unidadOrganica": "302-ETIC",
+                "codigoPuesto": "00016707",
+                "nombrePuesto": "Analista Principal de Sistemas",
+                "foto": "https://webapp16.sedapal.com.pe/imgsedatel/ficha/12845.jpg",
+                "gerencia_codigo": "00000032"
+            },
+            "admin": {
+                "apellidosNombres": "DE LOS SANTOS LEON, VICTOR HUGO"
+            },
+            "estadoCalibracion": true,
+            "fechaRegistro": 1730178000000,
+            "fechaPlazo": 1734066000000,
+            "codCalendario": "C003",
+            "idCalibracion": 114,
+            "idEvaluacion": 148
+        },
+        {
+            "evaluador": {
+                "codigoFicha": "00012336",
+                "apellidosNombres": "SEGURA PERALTA, AMERICA GLADYS",
+                "codigoPuesto": "00005197",
+                "nombrePuesto": "Analista Principal de Sistemas"
+            },
+            "evaluado": {
+                "codigoFicha": "00012845",
+                "apellidosNombres": "SANTOS MARTINEZ, ROLANDO",
+                "unidadOrganica": "302-ETIC",
+                "codigoPuesto": "00016707",
+                "nombrePuesto": "Analista Principal de Sistemas",
+                "foto": "https://webapp16.sedapal.com.pe/imgsedatel/ficha/12845.jpg",
+                "gerencia_codigo": "00000032"
+            },
+            "admin": {
+                "apellidosNombres": "DE LOS SANTOS LEON, VICTOR HUGO"
+            },
+            "estadoCalibracion": true,
+            "fechaRegistro": 1730178000000,
+            "fechaPlazo": 1734066000000,
+            "codCalendario": "C003",
+            "idCalibracion": 117,
+            "idEvaluacion": 151
+        }
+    ],
+    "mensaje": "OK"
+}
