@@ -1,4 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
+import { Location } from '@angular/common';
 import { IEvaluationGroupFilter } from 'src/app/interfaces/IEvaluationGroupFilter';
 import { ISchedule } from 'src/app/interfaces/ISchedule';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -55,7 +56,8 @@ export class RegistroEvaluadoEvaluadorCargaAutomaticavalComponent {
     private evalAsignationService: EvalasignationService,
     private adminService: AdminService,
     private loginService: LoginService,
-    private utilsService: UtilsService
+    private utilsService: UtilsService,
+    private location: Location
   ) { }
 
   ngAfterViewInit(): void {
@@ -93,7 +95,7 @@ export class RegistroEvaluadoEvaluadorCargaAutomaticavalComponent {
       nombreEvaluador: [{ value: '', disabled: true }],
       correoEvaluador: [{ value: '', disabled: true }],
       puestoEvaluador: [{ value: '', disabled: true }],
-      codPuestoEvaluador: [{ value: '', disabled: true }] //PROY-00013
+      codPuestoEvaluador: [{ value: '', disabled: true }] 
     });
   }
 
@@ -135,16 +137,17 @@ export class RegistroEvaluadoEvaluadorCargaAutomaticavalComponent {
 
           const jefe = miembros.find(miembro => miembro.jefe === true);
           if (jefe) {
-            // Aquí setea el valor en el formulario
             this.form.get('fichaEvaluador').patchValue(jefe.ficha);
             this.form.get('nombreEvaluador').patchValue(jefe.apellidos+' '+jefe.nombre);
             this.form.get('puestoEvaluador').patchValue(jefe.desCargo);
             this.form.get('correoEvaluador').patchValue(jefe.correo);
+            this.form.get('codPuestoEvaluador').patchValue(jefe.codCargo); 
           }else{
             this.form.get('nombreEvaluador').patchValue('');
-            this.form.get('correoEvaluador').patchValue('');
             this.form.get('puestoEvaluador').patchValue('');
-            this.form.get('codPuestoEvaluador').patchValue('');
+            this.form.get('correoEvaluador').patchValue('');
+            this.form.get('codPuestoEvaluador').patchValue(''); 
+            Swal.fire('No se encontró un jefe asignado en esta unidad organizativa', '', 'warning');
           }
 
           this.utilsService.closeLoading();
@@ -217,7 +220,7 @@ export class RegistroEvaluadoEvaluadorCargaAutomaticavalComponent {
 
     Swal.fire({
       title: "Aviso",
-      text: `¿Estás seguro de que realizar la carga automática de los evaluados?`,
+      text: `¿Estás seguro de realizar la carga automática de los evaluados?`,
       type: 'warning',
       showCancelButton: true,
       confirmButtonText: "Cargar",
@@ -230,11 +233,11 @@ export class RegistroEvaluadoEvaluadorCargaAutomaticavalComponent {
           this.AdminData.ficha,
           this.form.get('codPuestoEvaluador').value,
           miembrosFormateados
-
         ).subscribe({
           next: (response) => {
             this.utilsService.closeLoading();
             Swal.fire("Asignación exitosa", "", "success");
+             this.location.back(); 
           },
           error: (error) => {
             this.utilsService.closeLoading();

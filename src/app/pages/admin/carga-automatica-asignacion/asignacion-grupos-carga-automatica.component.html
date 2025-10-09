@@ -54,11 +54,11 @@
       <mat-table [dataSource]="dataSourceMembers">
         <ng-container matColumnDef="select">
           <mat-header-cell *matHeaderCellDef>
-            <mat-checkbox (change)="masterToggle($event)" [checked]="isAllSelected()" [indeterminate]="isPartialSelected()">
+            <mat-checkbox color="primary"  (change)="masterToggle($event)" [checked]="isAllSelected()" [indeterminate]="isPartialSelected()">
             </mat-checkbox>
           </mat-header-cell>
           <mat-cell *matCellDef="let row">
-            <mat-checkbox (click)="$event.stopPropagation()" (change)="toggleSelection(row)"  [checked]="selection.isSelected(row)">
+            <mat-checkbox color="primary"  (click)="$event.stopPropagation()" (change)="toggleSelection(row)"  [checked]="selection.isSelected(row)">
             </mat-checkbox>
           </mat-cell>
         </ng-container>

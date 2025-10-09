@@ -1,4 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
+import { Location } from '@angular/common';
 import { IEvaluationGroupFilter } from 'src/app/interfaces/IEvaluationGroupFilter';
 import { ISchedule } from 'src/app/interfaces/ISchedule';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -56,7 +57,8 @@ export class AsignacionGruposCargaAutomaticavalComponent {
     private AsignationEvalGroupsService: EvalgroupsCRUDService,
     private adminService: AdminService,
     private loginService: LoginService,
-    private utilsService: UtilsService
+    private utilsService: UtilsService,
+    private location: Location
   ) { }
 
   ngAfterViewInit(): void {
@@ -241,36 +243,23 @@ export class AsignacionGruposCargaAutomaticavalComponent {
     let miembrosFormateados = [];
 
     if (this.selection && this.selection.selected.length > 0) {
-      miembrosFormateados = this.selection.selected.map(m => ({
-        codigoFicha: m.trabajador.codigoFicha,
-        apellidosNombres: m.trabajador.apellidosNombres,
-        codigoPuesto: m.trabajador.codigoPuesto,
-        nombrePuesto: m.trabajador.nombrePuesto
-      }));
-    } else {
-      Swal.fire('Error', 'Debe seleccionar al menos un evaluado.', 'warning');
-      return;
-    }
-
-
-    if (this.dataSourceMembers && this.dataSourceMembers.data) {
-      miembrosFormateados = this.dataSourceMembers.data.map(m => ({
-        codigoFicha: m.trabajador.codigoFicha,
-        apellidosNombres: m.trabajador.apellidosNombres,
-        codigoPuesto: m.trabajador.codigoPuesto,
-        nombrePuesto: m.trabajador.nombrePuesto
-      }));
-    } else {
-      console.error("dataSourceMembers o su data está vacío o sin inicializar.");
-    }
-
+    miembrosFormateados = this.selection.selected.map(m => ({
+      codigoFicha: m.trabajador.codigoFicha,
+      apellidosNombres: m.trabajador.apellidosNombres,
+      codigoPuesto: m.trabajador.codigoPuesto,
+      nombrePuesto: m.trabajador.nombrePuesto
+    }));
+  } else {
+    Swal.fire('Error', 'Debe seleccionar al menos un evaluado.', 'warning');
+    return;
+  }
     const newAsignacion: any = this.form.getRawValue()
     debugger
     console.log("Grupo ", newAsignacion.idGrupoEvaluacionAsignacion);
     console.log('cargaAutomaticaAsignacion');
     Swal.fire({
       title: "Aviso",
-      text: `¿Estás seguro de que realizar la carga automática de los evaluados?`,
+      text: `¿Estás seguro de realizar la carga automática de los evaluados?`,
       type: 'warning',
       showCancelButton: true,
       confirmButtonText: "Cargar",
@@ -281,6 +270,7 @@ export class AsignacionGruposCargaAutomaticavalComponent {
         next: (response) => {
           this.utilsService.closeLoading();
           Swal.fire("Asignación exitosa", "", "success");
+          this.location.back(); 
         },
         error: (error) => {
           this.utilsService.closeLoading();
