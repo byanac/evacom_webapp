@@ -545,9 +545,12 @@ export class RegistroCatalogoCompetenciasComponent implements OnInit, AfterViewI
               console.error("Error al activar el grupo de competencia:", error);
               Swal.fire(
               "Error",
-              "Ocurrió un error al desactivar el grupo de competencia. Por favor, inténtalo de nuevo.",
+              "No se pudo actualizar Grupo de Competencias, valide que no tenga Competencias asociadas.",
               "error"
-              );
+              ).then(() => {
+                this.LoadCompetencyGroupsData(); //JA
+              });
+              
             } 
       }
     })   
@@ -606,9 +609,11 @@ export class RegistroCatalogoCompetenciasComponent implements OnInit, AfterViewI
               // Mostrar mensaje de error
               Swal.fire(
                 "Error",
-                "Ocurrió un error al editar la competencia. Por favor, inténtalo de nuevo.",
+                "Ocurrió un error al editar la competencia. Valide que no se haya usado en conocimiento o evaluación.",
                 "error"
-              );
+              ).then(() => {
+                 this.LoadCompetencyData(); //JA
+              });
             }
         }
       })
@@ -649,9 +654,11 @@ export class RegistroCatalogoCompetenciasComponent implements OnInit, AfterViewI
               console.error("Error al desactivar la competencia:", error);
               Swal.fire(
                 "Error",
-                "Ocurrió un error al desactivar la competencia. Por favor, inténtalo de nuevo.",
+                "No se pudo actualizar Competencia, valide que no tenga Comportamientos asociados.",
                 "error"
-              );
+              ).then(() => {
+                this.LoadCompetencyData(); //JA
+              });
             }
       }
     })   
@@ -833,12 +840,14 @@ export class RegistroCatalogoCompetenciasComponent implements OnInit, AfterViewI
                 });
               }
             } catch (error) {
-              console.error("Error al eliminar el nivel:", error);
+              console.error("Error al eliminar el nivel:", error); 
               Swal.fire(
                 "Error",
-                "Ocurrió un error al eliminar el nivel. Por favor, inténtalo de nuevo.",
+                "No se pudo actualizar Nivel, valide que no tenga Grupos de evaluación asignado.",
                 "error"
-              );
+              ).then(()=>{
+                this.LoadLevelsData(); //JA
+              });
             }
       }
     })   
@@ -903,9 +912,11 @@ export class RegistroCatalogoCompetenciasComponent implements OnInit, AfterViewI
               console.error("Error al guardar el comportamiento:", error);
               Swal.fire(
                 "Error",
-                "Ocurrió un error al guardar el comportamiento. Por favor, inténtalo de nuevo.",
+                "Ocurrió un error al editar comportamiento. Valide que no se haya usado en conocimiento o evaluación.",
                 "error"
-              );
+              ).then(()=>{
+                this.LoadBehaviorsData();                  
+              });
             }
         }
       })
