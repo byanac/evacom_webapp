@@ -150,7 +150,7 @@ ngOnDestroy(): void {
             //console.log(data.registros)
             this.DataList = data.registros
             this.startuptable = true;
-            this.utilsService.closeLoading();;
+            this.utilsService.closeLoading();
           }
         } catch (error) {
           Swal.fire("ERROR",error.message,"error")

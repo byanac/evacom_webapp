@@ -340,7 +340,7 @@ export class SlidedrawerComponent implements OnInit {
           debugger
           const isEvaluator = this.loginService.isUserEvaluator();
           //await new Promise(resolve => setTimeout(resolve, 1500));
-    
+          
           if ((isEvaluated && isEvaluated.estadoEvaluado) || (isEvaluator && isEvaluator.estadoEvaluador)) {
     
             const calls = [this.calendarService.getDataScheduleApi()]; 

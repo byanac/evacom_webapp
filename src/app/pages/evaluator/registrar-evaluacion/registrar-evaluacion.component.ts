@@ -63,7 +63,7 @@ ngOnInit(): void {
     if (FilterResult.length > 0) {
       this.CalendarCode = FilterResult[0].vCodigo;
       } else {
-        console.warn("⚠️ No se encontró ningún registro con tipo:", this.CalendarType);
+        console.warn("No se encontró ningún registro con tipo:", this.CalendarType);
         this.utilsService.closeLoading();
         return;
       }
