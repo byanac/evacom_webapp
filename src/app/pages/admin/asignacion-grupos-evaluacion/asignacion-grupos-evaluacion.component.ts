@@ -351,14 +351,16 @@ export class AsignacionGruposEvaluacionComponent implements OnInit, AfterViewIni
           const yaExisteAsignacion = this.gruposevaluacion
               .filter(item => item.idGrupoEvaluacionAsignacion !== newAsignacion.idGrupoEvaluacionAsignacion)
               .some(item =>
-                item.grupoEvaluacion && item.grupoEvaluacion.codigo &&
-                item.grupoEvaluacion.codigo.toString().toLowerCase() === newAsignacion.idGrupoEvaluacion.toString().toLowerCase() &&
+                //item.grupoEvaluacion && item.grupoEvaluacion.codigo &&
+                //item.grupoEvaluacion.codigo.toString().toLowerCase() === newAsignacion.idGrupoEvaluacion.toString().toLowerCase() &&
                 item.trabajador && item.trabajador.codigoPuesto &&
                 item.trabajador.codigoPuesto.toString().toLowerCase() === newAsignacion.posicionTrabajo.toString().toLowerCase()
           );
 
           if (yaExisteAsignacion) {
-            return Swal.fire('Asignación duplicada', 'Ya existe una asignación con el mismo grupo de evaluación y código de puesto.', 'warning');
+            //return Swal.fire('Asignación duplicada', 'Ya existe una asignación con el mismo grupo de evaluación y código de puesto.', 'warning');
+            await Swal.fire('Asignación duplicada', 'Ya existe una asignación con el mismo código de puesto.', 'warning');
+            return;
           }
       
           Swal.fire({
