@@ -2,3 +2,19 @@
   text-align: center;
   justify-content: center; 
 }
+.cancelbtn {
+    display: flex;
+    align-items: center;
+    /* Rojo principal: #f44336 */
+    background-color: #f44336; 
+    padding: 0.5rem;
+    color: white;
+    border-radius: 5px;
+    padding-right: 0.9rem;
+}
+
+.cancelbtn:hover {
+    /* Rojo oscuro para el hover: #d32f2f */
+    background-color: #d32f2f;
+    cursor: pointer
+}

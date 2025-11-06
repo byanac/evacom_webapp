@@ -31,6 +31,7 @@ import { EvalgroupsService } from   'src/app/services/evalgroups/evalgroups.serv
   styleUrls: ['./asignacion-grupos-evaluacion.component.css']
 })
 export class AsignacionGruposEvaluacionComponent implements OnInit, AfterViewInit {
+  editingAsignacion : boolean = false;
   @ViewChild('UploadExcelAssignmentDialog') UploadExcelAssignmentDialog: TemplateRef<any>;
   @ViewChild('paginatorEvalGrupos') paginatorEvalGrupos: MatPaginator;
   CalendarID: string = this.route.snapshot.paramMap.get('CalendarID');
@@ -194,6 +195,15 @@ export class AsignacionGruposEvaluacionComponent implements OnInit, AfterViewIni
       return Swal.fire('Error al cargar los datos del calendario', 'Por favor, inténtalo de nuevo más tarde.', 'error');
     }
   }
+
+    async cancelEditAsignacion(): Promise<any>{
+      this.editingAsignacion= false;
+       this.form.reset();
+        this.editingItem = null;
+    
+    
+  }
+
 
   initForm() {
     debugger
@@ -409,6 +419,7 @@ export class AsignacionGruposEvaluacionComponent implements OnInit, AfterViewIni
       }
 
     }
+    this.editingAsignacion=false;
   }
 
 
@@ -430,6 +441,7 @@ export class AsignacionGruposEvaluacionComponent implements OnInit, AfterViewIni
   /*FIN PROY-00013 RFC*/
 
   handleEdit(asignacion: any) {
+    this.editingAsignacion=true;
     this.editingItem = asignacion;
     //console.log(asignacion)
     this.form.patchValue(asignacion);
@@ -544,11 +556,14 @@ export class AsignacionGruposEvaluacionComponent implements OnInit, AfterViewIni
           error: (error) => {
             Swal.fire({
               title:  "Ocurrió un error :(",
-              text: error.message,
+              text: 'No se pudo activar valide que no tenga asignacion vigente',
               type: 'error',
               showCancelButton: false,
               confirmButtonText: 'OK',
-            });
+            }).then(() => {
+                 this.LoadAsignationGroupsData();   
+              }
+            );
           }
         });
       }

@@ -20,9 +20,15 @@
         
        
       </div>      
+      <div class="flex gap-4">
       <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
         {{editingItem ? 'Editar' : 'Añadir'}} Grupo de Evaluación
       </button>
+       <button *ngIf="editingGrupo"  (click)="cancelGrupoEval()" mat-icon-button color="warn" class="cancelbtn">
+              <mat-icon>cancel</mat-icon>
+              <span>Cancelar</span>
+        </button>
+        </div>
     </form>
   </div>
   <div class="bg-white shadow-md rounded px-8 pt-6 pb-8">

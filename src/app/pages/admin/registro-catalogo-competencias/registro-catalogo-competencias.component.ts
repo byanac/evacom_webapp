@@ -556,6 +556,11 @@ export class RegistroCatalogoCompetenciasComponent implements OnInit, AfterViewI
     })   
   }
 
+  async cancelEditCompetency(): Promise<any>{
+    this.resetForm();
+    this.editingCompetency = false;
+  }
+
   handleCompetencyEdit(competencia: any) {
     this.editingCompetency = true;
     this.competenciaForm.patchValue(competencia);
@@ -859,6 +864,20 @@ export class RegistroCatalogoCompetenciasComponent implements OnInit, AfterViewI
     //console.log(comportamiento)
     this.comportamientoForm.get('codigo').disable();
   }
+
+  async cancelEditBehavior(): Promise<any>{
+    this.resetForm();
+    this.editingBehaviors = false;
+  }
+   async cancelEditCompetencyGroups(): Promise<any>{
+    this.resetForm();
+    this.editingCompetencyGroups = false;
+  }
+    async cancelEditLevel(): Promise<any>{
+    this.resetForm();
+    this.editingLevel = false;
+  }
+
 
   async onEditBehavior(): Promise<any>{
 

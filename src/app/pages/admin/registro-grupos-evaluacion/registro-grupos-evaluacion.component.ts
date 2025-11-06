@@ -21,6 +21,8 @@ interface GrupoEvaluacion {
   styleUrls: ['./registro-grupos-evaluacion.component.css']
 })
 export class RegistroGruposEvaluacionComponent implements OnInit {
+  editingGrupo: boolean = false;
+
   form: FormGroup;
   AdminData: any = this.loginService.GetUserSession();
   gruposEvaluacion: IEvaluationsGroupReport[] = []
@@ -193,10 +195,12 @@ export class RegistroGruposEvaluacionComponent implements OnInit {
       }
 
     }
+    this.editingGrupo=false;
   }
   
 
   handleEdit(registro: any) {
+    this.editingGrupo=true;
     this.editingItem = registro;
     ////console.log(registro)
     this.form.get('codigo').disable();
@@ -245,7 +249,7 @@ export class RegistroGruposEvaluacionComponent implements OnInit {
           error: (error) => {
             Swal.fire({
               title:  "Ocurrió un error :(",
-              text: error.message,
+              text:  "No se puede inactivar el grupo valide si ya tiene asignaciones",
               type: 'error',
               showCancelButton: false,
               confirmButtonText: 'OK',
@@ -302,5 +306,12 @@ export class RegistroGruposEvaluacionComponent implements OnInit {
         });
       }
     })
+  }
+
+  async cancelGrupoEval(): Promise<any>{
+   // this.resetForm();
+    this.initForm();
+    this.LoadEvalGroupsData();
+    this.editingGrupo = false;
   }
 }

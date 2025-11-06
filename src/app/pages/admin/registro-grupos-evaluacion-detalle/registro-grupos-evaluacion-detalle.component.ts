@@ -21,6 +21,7 @@ import { IEvaluationsGroupDetailReport } from 'src/app/interfaces/IEvaluationsGr
 })
 
 export class RegistroGruposEvaluacionDetalleComponent implements OnInit {
+  editingDetalle: boolean = false;
   form: FormGroup;
   AdminData: any = this.loginService.GetUserSession();
   gruposCompetencias: ICompetencyGroup[] = [];
@@ -277,11 +278,20 @@ export class RegistroGruposEvaluacionDetalleComponent implements OnInit {
         }
       }
     }
+    this.editingDetalle=false;
+  }
+
+    async cancelGrupoEvalDetalle(): Promise<any>{
+   // this.resetForm();
+    this.initForm();
+    this.LoadEvalGroupsData();
+     this.editingItem = null;
+    this.editingDetalle = false;
   }
 
   handleEdit(grupoEvaluacion: any) {
     this.editingItem = grupoEvaluacion;
-
+    this.editingDetalle=true;
     this.form.get('idGrupoEvaluacion').setValue(grupoEvaluacion.grupoEvaluacion.codigo);
     this.form.get('idGrupoCompetencia').setValue(grupoEvaluacion.competencia.codigo);
     this.form.get('idNivelCompetencia').setValue(grupoEvaluacion.nivel.codigo);
