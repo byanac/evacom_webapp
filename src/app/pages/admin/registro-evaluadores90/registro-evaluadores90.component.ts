@@ -218,10 +218,13 @@ export class RegistroEvaluadores90Component implements OnInit {
                     error: (error) => {
                       Swal.fire({
                         title:  "Ocurrió un error :(",
-                        text: error.message,
+                        text: 'No se pudo actualizar que la asignación no exista',
                         type: 'error',
                         showCancelButton: false,
                         confirmButtonText: 'OK',
+                      }).then(() => {
+                         this.form.markAsTouched();;
+                        this.form.reset();
                       });
                     }
                   });           
@@ -250,6 +253,9 @@ export class RegistroEvaluadores90Component implements OnInit {
             return  Swal.fire('Campo Código de Ficha del Evaluado Vacío', 'Por favor, complete el campo de código de ficha del evaluado correctamente antes de continuar.','warning')
           }
 
+          if (this.form.get('fichaEvaluador').value ===this.form.get('fichaEvaluado').value) {
+            return  Swal.fire('Error', 'Evaluador y Evaluado no puede ser el mismo.','warning')
+          }
     
           Swal.fire({
             title:  "Aviso",
@@ -301,10 +307,12 @@ export class RegistroEvaluadores90Component implements OnInit {
                   error: (error) => {
                     Swal.fire({
                       title:  "Ocurrió un error :(",
-                      text: error.message,
+                     text: 'No se puede insertar valide que la asignación no exista',
                       type: 'error',
                       showCancelButton: false,
                       confirmButtonText: 'OK',
+                    }).then(() => {
+                       this.form.reset();
                     });
                   }
                 });           
