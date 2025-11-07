@@ -86,7 +86,7 @@ export class RegistroEvaluadores90Component implements OnInit {
   async LoadEvalAsignationData(): Promise<any> {
     try{
       this.utilsService.showLoading();
-      debugger
+      
       const asignationEvalygroups = await this.evalAsignationService.GetEvalAsignationReport(this.CalendarID).toPromise();
       const filteredAsignationEvalgroups = asignationEvalygroups.registros.sort((a: any, b: any) => b.estado - a.estado); 
       this.evaluadores = filteredAsignationEvalgroups
@@ -117,7 +117,7 @@ export class RegistroEvaluadores90Component implements OnInit {
 
   async LoadCalendarInfo(): Promise<any>{
     try{
-      debugger
+      
       this.utilsService.showLoading();
       const data = await this.parametrizationService.GetParametrizationProgress(this.CalendarID).toPromise();
       //console.log(data.registros)
@@ -164,7 +164,9 @@ export class RegistroEvaluadores90Component implements OnInit {
             {
               return  Swal.fire('Campo Código de Ficha del Evaluado Vacío', 'Por favor, complete el campo de código de ficha del evaluado correctamente antes de continuar.','warning')
             }
-  
+          if (String(this.form.get('fichaEvaluador').value).padStart(8,'0') ===String(this.form.get('fichaEvaluado').value).padStart(8,'0')) {
+            return  Swal.fire('Error', 'Evaluador y Evaluado no puede ser el mismo.','warning')
+          }
             Swal.fire({
               title:  "Aviso",
               text: `¿Estás seguro de que deseas actualizar el registro del evaluador y evaluado?`,
@@ -364,11 +366,18 @@ export class RegistroEvaluadores90Component implements OnInit {
         this.utilsService.showLoading();
         const data = await this.adminService.GetWorkerInfoForRegisterAdminModal(currentValue).toPromise();
         if (data.registros && Object.keys(data.registros).length !== 0) {
-          this.form.get('nombreEvaluado').patchValue(data.registros.apellidosNombres);
-          this.form.get('correoEvaluado').patchValue(data.registros.correo);
-          this.form.get('puestoEvaluado').patchValue(data.registros.nombrePuesto);
-          this.form.get('codPuestoEvaluado').patchValue(data.registros.codigoPuesto);
-          this.utilsService.closeLoading();
+          if (data.registros.jefe===true){
+            this.utilsService.closeLoading();
+              Swal.fire('Error ', 'En 90° los evaluados no deben ser jefes.', 'warning');
+          } else {
+            this.form.get('nombreEvaluado').patchValue(data.registros.apellidosNombres);
+            this.form.get('correoEvaluado').patchValue(data.registros.correo);
+            this.form.get('puestoEvaluado').patchValue(data.registros.nombrePuesto);
+            this.form.get('codPuestoEvaluado').patchValue(data.registros.codigoPuesto);
+            this.utilsService.closeLoading();
+          }
+         
+          
         }else{
           Swal.fire('Ficha no encontrada', 'No se encontró información para la ficha ingresada.', 'warning');
           this.form.get('nombreEvaluado').patchValue('');

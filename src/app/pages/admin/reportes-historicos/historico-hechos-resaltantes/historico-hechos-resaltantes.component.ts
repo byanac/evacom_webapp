@@ -21,7 +21,9 @@ private gerencyJsonSubscription: Subscription = new Subscription();
 private teamJsonSubscription: Subscription = new Subscription();
 private FichaSubscription: Subscription = new Subscription();
 private PuestoSubscription: Subscription = new Subscription();
-private PeriodoSubscription: Subscription = new Subscription();  calendarData: ISchedule;
+private PeriodoSubscription: Subscription = new Subscription();  
+private EstadoSubscription: Subscription = new Subscription();  
+calendarData: ISchedule;
   startuptable: boolean = false;
   DataList:IEvaluatorsEvaluationsProgress
   Periodo: string = "";
@@ -77,6 +79,9 @@ private PeriodoSubscription: Subscription = new Subscription();  calendarData: I
     this.PeriodoSubscription = await this.FilePositionPeriodService.$PeriodValue.subscribe((value: string) => {
       this.Periodo = value
     })
+     this.EstadoSubscription = await this.FilePositionPeriodService.$StatusValue.subscribe((value: string) => {
+      this.Estado = value
+    })
 
     this.utilsService.closeLoading();
   }
@@ -87,6 +92,7 @@ private PeriodoSubscription: Subscription = new Subscription();  calendarData: I
     this.FichaSubscription.unsubscribe();
     this.PuestoSubscription.unsubscribe();
     this.PeriodoSubscription.unsubscribe();
+    this.EstadoSubscription.unsubscribe();
   }
 
   async FilterData(): Promise<any>{
@@ -105,7 +111,8 @@ private PeriodoSubscription: Subscription = new Subscription();  calendarData: I
          gerencias: this.GerenciasToSend,
          equipo: this.TeamsToSend,
        };
-
+console.log("estdo es: ");  
+  console.log(this.Estado);
        ////console.log(BodyKnowledgeFilter)
        try {
          //console.log(BodyKnowledgeFilter)
@@ -113,7 +120,25 @@ private PeriodoSubscription: Subscription = new Subscription();  calendarData: I
          if(data.registros.length === 0){
            Swal.fire("NOTIFICACIÓN","No se encontraron registros.","info")
          }else{
-           this.DataList = data.registros  
+          
+
+           if (this.Estado==='true') {
+            const registrosOK = data.registros.filter(
+                            (item: any) => item.registraHechos === true
+            );
+             this.DataList = registrosOK;
+           } else {
+                if (this.Estado==='false') {
+                   const registrosOK = data.registros.filter(
+                            (item: any) => item.registraHechos === false
+                  );
+                 this.DataList = registrosOK;
+                }else {
+                  this.DataList = data.registros  
+                }
+           }
+           //this.DataList = data.registros  
+           //this.DataList = registrosOK;
            ////console.log(data.registros)
            this.utilsService.closeLoading();;
            this.startuptable = true;

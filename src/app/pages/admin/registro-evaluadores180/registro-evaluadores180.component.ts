@@ -206,7 +206,18 @@ export class RegistroEvaluadores180Component implements OnInit {
  
   }
 
-  
+  cancelEdit(){
+     
+      this.LoadEvalAsignationData();
+                    this.evaluators = [
+                      { fileCode: '', type: 'Evaluado', name:'', email: '', denominacion: '',isEvaluator: false },
+                      { fileCode: '', type: 'Jefe Evaluador', name:'', email: '', denominacion: '',  isEvaluator: true, evaluatortypenumber: 1 },
+                    ];
+                    this.evaluators[0].isEditing = false;
+                    this.LoadCalendarCalcRulesInfo();
+                    this.evaluatorsArrayForValidation = [];
+                    this.editingItem=false;
+  }
   handleSubmit() {
     if (this.evaluators.some((item, index) =>this.evaluators.findIndex(e => e.fileCode === item.fileCode) !== index && item.fileCode !== "")) 
       {
@@ -269,12 +280,13 @@ export class RegistroEvaluadores180Component implements OnInit {
                       { fileCode: '', type: 'Jefe Evaluador', name:'', email: '', denominacion: '',  isEvaluator: true, evaluatortypenumber: 1 },
                     ];
                     this.LoadCalendarCalcRulesInfo();
+                      this.evaluators[0].isEditing = false;
                   })
                 },
                 error: (error) => {
                   Swal.fire({
                     title:  "Ocurrió un error :(",
-                    text: error.message,
+                     text: 'No se pudo registrar asignación, valide que no tenga asignaciones activas',
                     type: 'error',
                     showCancelButton: false,
                     confirmButtonText: 'OK',
@@ -356,7 +368,8 @@ export class RegistroEvaluadores180Component implements OnInit {
                       { fileCode: '', type: 'Evaluado', name:'', email: '', denominacion: '',isEvaluator: false },
                       { fileCode: '', type: 'Jefe Evaluador', name:'', email: '', denominacion: '',  isEvaluator: true, evaluatortypenumber: 1 },
                     ];
-                    this.evaluators[0].isEditing = true;
+                    this.evaluators[0].isEditing = false;
+                    
                     this.LoadCalendarCalcRulesInfo();
                     this.evaluatorsArrayForValidation = [];
                   })
@@ -364,7 +377,7 @@ export class RegistroEvaluadores180Component implements OnInit {
                 error: (error) => {
                   Swal.fire({
                     title:  "Ocurrió un error :(",
-                    text: error.message,
+                    text: 'No se pudo editar asignación, valide que no tenga asignaciones activas',
                     type: 'error',
                     showCancelButton: false,
                     confirmButtonText: 'OK',
@@ -411,11 +424,7 @@ export class RegistroEvaluadores180Component implements OnInit {
   async onSearchWorker(index: string): Promise<any> {
     if(this.evaluators[index].fileCode === ''){
       //console.log('NO SE INGRESÓ VALOR');
-      return Swal.fire(
-        'No se ingresó un valor',
-        'No se ingresó un valor, por favor, ingrese un valor para realizar la busqueda.',
-        'warning'
-      );
+      return ;
     }
 
     if (this.evaluators.some((item, index) =>this.evaluators.findIndex(e => e.fileCode === item.fileCode) !== index && item.fileCode !== "")) 
@@ -451,6 +460,43 @@ export class RegistroEvaluadores180Component implements OnInit {
       }
   }
 
+  async onSearchWorkerNoMessage(index: string): Promise<any> {
+    if(this.evaluators[index].fileCode === ''){
+      //console.log('NO SE INGRESÓ VALOR');
+      return ;
+    }
+
+    if (this.evaluators.some((item, index) =>this.evaluators.findIndex(e => e.fileCode === item.fileCode) !== index && item.fileCode !== "")) 
+    {
+      //console.log('CÓDIGO REPETIDO');
+      this.evaluators[index].fileCode = ''
+      return Swal.fire(
+        'Trabajador se encuentra ya en el listado',
+        'El trabajador ya se encuentra en el listado, por favor busque otro',
+        'warning'
+      );
+    }
+    
+      try {
+        const data = await this.adminService.GetWorkerInfoForRegisterAdminModal(this.evaluators[index].fileCode).toPromise();
+        if (data.registros && Object.keys(data.registros).length !== 0) {
+          this.evaluators[index].name = data.registros.apellidosNombres;
+          this.evaluators[index].email = data.registros.correo;
+          this.evaluators[index].denominacion = data.registros.nombrePuesto;
+          this.evaluators[index].posicionCode = data.registros.codigoPuesto
+        }else{
+          this.findedEvaluator = false;
+          this.evaluators[index].name = ''
+          this.evaluators[index].email = ''
+          this.evaluators[index].denominacion = ''
+          this.evaluators[index].posicionCode = ''
+          return Swal.fire('Puesto no encontrado', 'No se encontró información para el puesto ingresado.', 'warning');
+        }
+      } catch (error) {
+        console.error("Error al obtener la información del trabajador:", error);
+      }
+  }
+
   hasEmptyFields(): boolean {
     return this.evaluators.some(item =>
       Object.values(item).some(value => value === "")
@@ -464,12 +510,16 @@ export class RegistroEvaluadores180Component implements OnInit {
     this.evaluators[0].fileCode = registro.evaluado.codigoFicha;
     await this.onSearchWorker('0');
   
+    const evaluatorsActivos = registro.evaluators.filter(
+      (item: any) => item.estado === 1
+    );
+    
     let i = 1;
-    for (const item of registro.evaluators) {
+    for (const item of evaluatorsActivos) {
       //console.log(item.evaluador.codigoFicha);
       this.evaluators[i].fileCode = item.evaluador.codigoFicha;
       this.evaluators[i].idEvaluacionAsignacion = item.idEvaluacionAsignacion;
-      await this.onSearchWorker(i.toString());
+      await this.onSearchWorkerNoMessage(i.toString());
       i++;
     }
 
@@ -554,6 +604,13 @@ export class RegistroEvaluadores180Component implements OnInit {
           this.utilsService.showLoading();
           let BodyToSend: any = []
    
+          const evaluatorsActivos = registro.evaluators.filter(
+              (item: any) => item.estado === 1
+            );
+            if (evaluatorsActivos.length != 3) {
+               return Swal.fire('Error al reactivar', 'Si tiene más de 4 evaluadores inactivos, por favor adicione nuevos .', 'error');
+              
+            }
           for (let i = 0; i < registro.evaluators.length; i++) {
             const BodyToPush = {
               idEvaluacionAsignacion: registro.evaluators[i].idEvaluacionAsignacion,
