@@ -180,12 +180,14 @@ export class RegistroCatalogoCompetenciasComponent implements OnInit, AfterViewI
   }
 
   openUploadExcelCompetencyDialog(): void {
+    this.competenciasExcel = undefined;
     this.dialog.open(this.dialogContent, {
       width: '1600px'
     });
   }
 
-  openUploadExcelComportamientoDialog(): void {
+  openUploadExcelComportamientoDialog(): void {    
+    this.comportamientoExcel = undefined; 
     this.dialog.open(this.UploadExcelBehaviorsDialog, {
       width: '1600px'
     });
