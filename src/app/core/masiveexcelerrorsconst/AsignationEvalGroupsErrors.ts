@@ -12,5 +12,6 @@ export const AsignationEvalGroupsErrors: { [key: number]: string } = {
     '11': "El Calendario no existe en la base de datos",
     '12': "El Puesto de trabajador no existe en la base de datos",
     '13': "El Grupo de evaluación no existe en la base de datos",
-    '14': "Registro ya existe en la base de datos"
+    '14': "Registro ya existe en la base de datos",
+    '15': "Registro ya tiene un grupo de evaluación asignado"
 };

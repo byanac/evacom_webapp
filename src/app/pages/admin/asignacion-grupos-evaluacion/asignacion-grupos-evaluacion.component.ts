@@ -241,6 +241,7 @@ export class AsignacionGruposEvaluacionComponent implements OnInit, AfterViewIni
   }
 
   openUploadExcelAssignmentDialog(): void {
+    this.gruposevaluacionEXCEL = null;
     this.dialog.open(this.UploadExcelAssignmentDialog, {
       width: '1600px'
     });
@@ -659,6 +660,7 @@ export class AsignacionGruposEvaluacionComponent implements OnInit, AfterViewIni
         const validation = await this.AEGService
           .PostSendAsignationEvalsGroupsExcelForValidation(file)
           .toPromise();
+          debugger
         this.gruposevaluacionEXCEL = validation;
         //console.log(this.gruposevaluacionEXCEL);
       } finally {

@@ -3,12 +3,14 @@
 //const starturlHTTPS:string = 'https://20.115.71.94/api'
 
 //PRUEBAS SEDAPAL
-const starturlDev:string = 'http://104.45.195.181:8080/SED_AEPC_BACKEND'
-const starturlHTTPS:string = 'https://104.45.195.181/api'
+//const starturlDev:string = 'http://104.45.195.181:8080/SED_AEPC_BACKEND'
+//const starturlHTTPS:string = 'https://104.45.195.181/api'
 
 //PRUEBAS DEV
 //const starturlDev:string = 'http://20.115.71.94:8083'
 //const starturlHTTPS:string = 'http://20.115.71.94/api'
+//const starturlDev:string = 'http://localhost:8083'
+//const starturlHTTPS:string = 'http://localhost/api'
 
 /*
 location /api/ {
@@ -29,11 +31,12 @@ location /api/ {
 ////const starturlSedapal:string = 'https://srvtc1.sedapal.com.pe/SED_AEPC_BACKEND'
 
 //PRUEBAS SEDAPAL
-const starturlSedapalSINHTTPS:string = 'http://10.100.176.227:8080/SED_AEPC_BACKEND'
-const starturlSedapal:string = 'https://srvtc1.sedapal.com.pe/SED_AEPC_BACKEND'
+//const starturlSedapalSINHTTPS:string = 'http://10.100.176.227:8080/SED_AEPC_BACKEND'
+//const starturlSedapal:string = 'https://srvtc1.sedapal.com.pe/SED_AEPC_BACKEND'
 
 //PRUEBS DEV
-//const starturlSedapal:string = 'http://20.115.71.94:8083';
+const starturlSedapal:string = 'http://20.115.71.94:8083';
+//const starturlSedapal:string = 'http://localhost:8083';
 
 /*
 location /api/ {

@@ -747,6 +747,7 @@ export class RegistroEvaluadores180Component implements OnInit {
   }
   
   openUploadExcelEvaluators90Dialog(): void {
+    this.EvalAsignacionExcel = null;
     this.dialog.open(this.UploadExcelEvaluators90Dialog, {
       width: '1900px'
     });
