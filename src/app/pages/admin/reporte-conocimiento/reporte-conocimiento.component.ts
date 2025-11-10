@@ -142,10 +142,11 @@ ngOnDestroy(): void {
          // ////console.log(BodyKnowledgeFilter)
           const data = await this.knowledgeService.getKnowledgeReport(BodyKnowledgeFilter).toPromise();
           if(data.registros.length === 0){
-            Swal.fire("NOTIFICACIÓN","No se encontraron registros.","info")
+           
              this.DataList = { registros: [], mensaje: '' };
              this.startuptable = false;
              this.utilsService.closeLoading();
+              Swal.fire("NOTIFICACIÓN","No se encontraron registros.","info");
           }else{
             //console.log(data.registros)
             this.DataList = data.registros

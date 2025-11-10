@@ -193,6 +193,7 @@ export class GerencyteamsmultiselectComponent implements OnInit, OnDestroy {
         this.DeactivateAndCleanTeamsCheckbox();
         break;
       default:
+        this.DeactivateAndCleanTeamsCheckbox();
         this.Teamcheckboxesdisabled = false;
         this.Teamallcheckbox = true;
         this.TeamArrayToSend = [];
