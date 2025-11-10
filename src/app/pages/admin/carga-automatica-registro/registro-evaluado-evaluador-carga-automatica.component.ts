@@ -46,6 +46,8 @@ export class RegistroEvaluadoEvaluadorCargaAutomaticavalComponent {
   selection = new SelectionModel<any>(true, []);
   dataSourceMembers = new MatTableDataSource<any>(this.membersSelect);
 
+  asignaciones: any[] = [];
+
   private _onDestroy = new Subject<void>();
 
   constructor(public fb: FormBuilder,
@@ -71,6 +73,7 @@ export class RegistroEvaluadoEvaluadorCargaAutomaticavalComponent {
     this.calendarData = data;
     await this.LoadEvalGroupsData();
     await this.loadUnidadOrganizativa(); //PROY-00013 RFC
+    
 
     // inicializa la lista filtrada con todos los datos cargados
     this.filteredUnidadOrganizativa.next(this.unidadOrganizativaSelect.slice());
@@ -124,6 +127,9 @@ export class RegistroEvaluadoEvaluadorCargaAutomaticavalComponent {
     console.log('Codigo Seleccionado', codigo);
     try {
       this.utilsService.showLoading();
+      const dataAsignaciones = sessionStorage.getItem('asignaciones');
+      this.asignaciones = dataAsignaciones ? JSON.parse(dataAsignaciones) : [];
+      const self = this;
       const evalUO = this.adminService.getMembersByTeam(codigo).subscribe({
         next: (data) => {
           debugger
@@ -131,11 +137,20 @@ export class RegistroEvaluadoEvaluadorCargaAutomaticavalComponent {
           const miembros = data.registros[0].miembros;
 
           // Filtramos los que NO son jefes
-          this.dataSourceMembers.data = miembros.filter(miembro => miembro.jefe === false);
-          this.selection.select(...this.dataSourceMembers.data);
-          console.log('DataSource Miembros', this.dataSourceMembers.data);
+          //self.dataSourceMembers.data = miembros.filter(miembro => miembro.jefe === false);
+          //self.selection.select(...this.dataSourceMembers.data);
+          //console.log('DataSource Miembros', this.dataSourceMembers.data);
 
-          const jefe = miembros.find(miembro => miembro.jefe === true);
+          const miembrosFiltrados = miembros.filter(m => m.jefe ||
+            !(self.asignaciones || []).some(a => a.evaluado.codigoFicha === m.ficha)
+          );
+
+          this.dataSourceMembers.data = miembrosFiltrados.filter(m => !m.jefe);
+          this.selection.select(...this.dataSourceMembers.data);
+
+          //const jefe = miembros.find(miembro => miembro.jefe === true);
+          const jefe = miembrosFiltrados.find(miembro => miembro.jefe === true);
+          console.log('Jefe Encontrado:', jefe);
           if (jefe) {
             this.form.get('fichaEvaluador').patchValue(jefe.ficha);
             this.form.get('nombreEvaluador').patchValue(jefe.apellidos+' '+jefe.nombre);

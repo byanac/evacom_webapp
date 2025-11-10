@@ -91,6 +91,8 @@ export class RegistroEvaluadores90Component implements OnInit {
       const filteredAsignationEvalgroups = asignationEvalygroups.registros.sort((a: any, b: any) => b.estado - a.estado); 
       this.evaluadores = filteredAsignationEvalgroups
       this.dataSourceEvalAsignation.data = this.evaluadores;
+      sessionStorage.setItem('asignaciones',JSON.stringify(this.dataSourceEvalAsignation.data));
+  );
       //console.log(this.evaluadores)
       this.utilsService.closeLoading();
     }catch (error) {
