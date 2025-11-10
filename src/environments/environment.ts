@@ -97,6 +97,7 @@ export const environment = {
     GetEvaluatedPIDTable: `${starturlSedapal}/api/pid/get`,
     GetEvaluatedByFichaForCalibration: `${starturlSedapal}/api/calibracion/ficha`,
     GetCalibrationEvaluatedReport: `${starturlSedapal}/api/calibracion/lista`,
+    PostCalibrationEvaluatedReport: `${starturlSedapal}/api/calibracion/reporte`,
     PostSaveCalibration: `${starturlSedapal}/api/calibracion/save`,
     PostSaveEvaluatorPID: `${starturlSedapal}/api/pid`,
     GetSendEvaluatorNotification: `${starturlSedapal}/api/calibracion/correo`,

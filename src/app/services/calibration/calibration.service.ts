@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { ICalibrationFindEvaluatedByFicha } from 'src/app/interfaces/ICalibrationFindEvaluatedByFicha';
 import { ICalibrationGetEvaluatedReport } from 'src/app/interfaces/ICalibrationGetEvaluatedReport';
 import { ICalibrationSendEvaluatedForAutorization } from 'src/app/interfaces/ICalibrationSendEvaluatedForAutorization';
+import { IEvaluationGroupFilter } from 'src/app/interfaces/IEvaluationGroupFilter';
 
 
 @Injectable({
@@ -29,6 +30,13 @@ export class CalibrationService {
       return this.http.get<ICalibrationGetEvaluatedReport>(`${environment.GetCalibrationEvaluatedReport}/${codCalendario}`);    
     }
   }   
+  PostCalibrationReport(PostBody: IEvaluationGroupFilter): Observable<any> {
+    if (isDevMode()) {
+      return this.http.get<any>(environment.PostCalibrationEvaluatedReport);
+    } else {
+      return this.http.post<any>(`${environment.PostCalibrationEvaluatedReport}`,PostBody);
+    }
+  }
 
   GetEvaluatedCalibration90(IdEvaluation: string): Observable <any> {
     if (isDevMode()) {

@@ -92,7 +92,7 @@ export class RegistroEvaluadores90Component implements OnInit {
       this.evaluadores = filteredAsignationEvalgroups
       this.dataSourceEvalAsignation.data = this.evaluadores;
       sessionStorage.setItem('asignaciones',JSON.stringify(this.dataSourceEvalAsignation.data));
-  );
+  
       //console.log(this.evaluadores)
       this.utilsService.closeLoading();
     }catch (error) {
