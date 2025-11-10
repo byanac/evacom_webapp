@@ -139,7 +139,7 @@
                     <div class="text-center">
                       <mat-form-field appearance="outline" class="w-full">
                         <mat-label>Unidad orgánica</mat-label>
-                        <mat-select [disabled]="TeamSelectOptions.length != 0" [(ngModel)]="OrganicUnitSelection" (selectionChange)="GetTeamByOrganicUnit($event)" >
+                        <mat-select [disabled]="TeamSelectOptions.length != 0" [(ngModel)]="OrganicUnitSelection" (selectionChange)="onUnidadOrganica($event)" >
                           <mat-option *ngFor="let ou of OrganicUnitOptions" [value]="ou?.codigo">
                             {{ ou?.nombre }}
                           </mat-option>                                              

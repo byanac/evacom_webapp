@@ -111,7 +111,8 @@ export class RegisterexceptionComponent implements OnInit {
 
   async GetTeamByOrganicUnit(): Promise<any> {
     const BodyToSendToTeam = [this.OrganicUnitSelection];
-    //console.log(BodyToSendToTeam);
+    console.log("gerencia: ");
+    console.log(BodyToSendToTeam);
   
     try {
       this.utilsService.showLoading();
@@ -168,6 +169,9 @@ export class RegisterexceptionComponent implements OnInit {
       }
     } catch (error) {
       if(error.error.registros === "") {
+        this.ExceptionType='';
+        this.selectedOption='';
+        this.FileValue='';
         return Swal.fire("ERROR", "La ficha ingresada no existe", "error");
       }
     }      
@@ -180,7 +184,65 @@ export class RegisterexceptionComponent implements OnInit {
   
 
   async onExceptionTeamChange(event: any): Promise<void> {
-    //console.log(event.value);
+    console.log("equipo: ");
+    console.log(event.value);
+    this.TeamSelection = event.value;
+    this.utilsService.showLoading();
+  
+    try {
+      const data = await this.exceptionService.GetWorkerForExceptionFindByTeam(
+        this.ExceptionType,
+        this.TeamSelection,
+        this.PeriodCode
+      ).toPromise();
+  
+      if (data) {
+        this.DataList = [];
+        this.TeamsErrors = [];
+        for (let item of data.registros) {
+          try {
+            const evaluatedValidation: any = await this.utilSergice.GetEvaluatorStatusForPhase(
+              this.ExceptionType,
+              'ficha',
+              item.evaluado.codigoFicha,
+              this.PeriodCode
+            ).toPromise();
+  
+            if (item.habilitaExcepcion) {
+              this.DataList.push(item.evaluado);
+            }
+          } catch (error) {
+            if (error.status === 502) {
+              let BodyToPushError = {
+                evaluado_nombre: item.evaluado.apellidosNombres,
+                error: error.error.mensaje,
+              }
+              this.TeamsErrors.push(BodyToPushError);
+            } else {
+              Swal.fire(
+                'Error',
+                'Ocurrió un error inesperado.',
+                'error'
+              );
+            }
+          }
+        }
+      }
+    } catch (error) {
+      console.error('Error al obtener los datos del equipo:', error);
+      Swal.fire(
+        'Error',
+        'No se pudo cargar los datos del equipo. Por favor, intente nuevamente.',
+        'error'
+      );
+    } finally {
+      this.utilsService.closeLoading();
+    }
+  }
+
+  async onUnidadOrganica(event: any): Promise<void> {
+    console.log("UO : ");
+    console.log(event.value);
     this.TeamSelection = event.value;
     this.utilsService.showLoading();
   
