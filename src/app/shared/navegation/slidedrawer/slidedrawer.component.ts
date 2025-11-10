@@ -115,7 +115,7 @@ export class SlidedrawerComponent implements OnInit {
   async getFilteredCalendarDates(): Promise<any> {
     try {
       if (this.CurrentCalendars) {
-        debugger
+        
         const registro: any = this.CurrentCalendars.registros.find((item: { vCodigo: string }) => item.vCodigo === this.loginService.isUserEvaluated().codCalendario);
         if (!registro) {
           //console.log('No se encontró un registro con el vCodigo especificado.');
@@ -332,12 +332,12 @@ export class SlidedrawerComponent implements OnInit {
 
     async ngOnInit(): Promise<void | boolean> {
       this.utilService.showLoading();
-      debugger
+      
       try {
         if(this.loginService.GetUserSession()){
           const isAdmin = this.loginService.IsUserAdmin();
           const isEvaluated = this.loginService.isUserEvaluated();
-          debugger
+          
           const isEvaluator = this.loginService.isUserEvaluator();
           //await new Promise(resolve => setTimeout(resolve, 1500));
           
@@ -366,12 +366,12 @@ export class SlidedrawerComponent implements OnInit {
                 return Swal.fire("Aviso", "Se han detectado 2 calendarios del tipo 180° vigentes. Por favor, contacte con el administrador.", "warning").then(() => this.router.navigate(['/login']));
               }
             }
-            debugger
+            
             if (isEvaluated.estadoEvaluado) {
               //console.log('INGRESÓ UN EVALUADO')
               this.FactsData = results[1]; 
               this.filteredCalendar = await this.getFilteredCalendarDates();
-              debugger
+              
               const EvaluatedExceptionFlags = await this.loginService.GetEvaluatedExceptionFlags().toPromise();
               this.EvaluatedExceptionFlags =  EvaluatedExceptionFlags.registros
               this.LoadedEvaluatedExceptionFlags = true;

@@ -62,7 +62,7 @@ export class LoginComponent implements OnInit {
         this.loginService.loginApi(username.trim(), password.trim()).subscribe({
           next: (userData) => {
             console.log('subscripte loginApi');
-            debugger
+            
             if (isDevMode()) {
               sessionStorage.setItem('token',this.Evaluado90);
               sessionStorage.setItem('userdata', JSON.stringify(decodeToken(this.Evaluado90)));
