@@ -31,12 +31,20 @@ location /api/ {
 ////const starturlSedapal:string = 'https://srvtc1.sedapal.com.pe/SED_AEPC_BACKEND'
 
 //PRUEBAS SEDAPAL
+
 //const starturlSedapalSINHTTPS:string = 'http://10.100.176.227:8080/SED_AEPC_BACKEND'
 //const starturlSedapal:string = 'https://srvtc1.sedapal.com.pe/SED_AEPC_BACKEND'
 
 //PRUEBS DEV
-const starturlSedapal:string = 'http://20.115.71.94:8083';
+//const starturlSedapal:string = 'http://20.115.71.94:8083';
 //const starturlSedapal:string = 'http://localhost:8083';
+
+const starturlSedapalSINHTTPS:string = 'http://10.100.176.227:8080/SED_AEPC_BACKEND'
+//const starturlSedapal:string = 'https://srvtc1.sedapal.com.pe/SED_AEPC_BACKEND'
+
+//PRUEBS DEV
+const starturlSedapal:string = 'http://localhost:8083';
+
 
 /*
 location /api/ {
@@ -89,6 +97,7 @@ export const environment = {
     GetEvaluatedPIDTable: `${starturlSedapal}/api/pid/get`,
     GetEvaluatedByFichaForCalibration: `${starturlSedapal}/api/calibracion/ficha`,
     GetCalibrationEvaluatedReport: `${starturlSedapal}/api/calibracion/lista`,
+    PostCalibrationEvaluatedReport: `${starturlSedapal}/api/calibracion/reporte`,
     PostSaveCalibration: `${starturlSedapal}/api/calibracion/save`,
     PostSaveEvaluatorPID: `${starturlSedapal}/api/pid`,
     GetSendEvaluatorNotification: `${starturlSedapal}/api/calibracion/correo`,

@@ -2,7 +2,9 @@
   <div class="fixed inset-0 bg-gray-900/50 transition-opacity"></div>
     <div class="fixed inset-0 z-10 overflow-y-auto">
       <div class="flex min-h-full items-center justify-center p-4 text-center sm:items-center sm:p-0">
-        <div class="relative transform overflow-hidden rounded-lg  text-left shadow-xl transition-all w-full">
+        
+          <div class="relative transform overflow-hidden rounded-lg text-left shadow-xl transition-all w-full 
+             sm:max-w-3xl lg:max-w-6xl xl:max-w-7xl 2xl:max-w-screen-2xl">
             <div class="bg-white shadow-md rounded-lg overflow-hidden">
               <div
                 class="bg-primary p-6 text-primary-foreground flex justify-between items-center bg-blue-600 text-white"
@@ -31,19 +33,14 @@
                   </svg>
                 </button>
               </div>
-              <div class="overflow-x-auto">
-                <section class="flex gap-6">
-                  <table border="1" style="width:100%" *ngIf="response1">
-                    <thead>
-                      <tr class="bg-primary text-white text-center">
-                        <th>Evaluación original</th>
-                        <th>Calibración</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>
-                          <div *ngIf="response1">
+              <div class="overflow-y-auto max-h-[85vh] overflow-x-auto">
+                
+                <section class="flex gap-6 min-w-[1400px] p-4">
+                  <div class="w-1/2 min-w-[650px]" *ngIf="response1">
+                              <div class="bg-primary text-white text-center p-3">
+                                  <h2 class="text-lg font-bold">Evaluación original</h2>
+                              </div>
+                              <div *ngIf="response1">
                             <div class="text-center mt-6">
                             <h1 class="text-lg" style="text-transform: uppercase;">VISUALIZACIÓN DE RESULTADOS DE EVALUACIÓN DE DESEMPEÑO POR COMPETENCIAS {{response1?.registros?.tipo}}°</h1>
                             </div>
@@ -125,20 +122,33 @@
                                 </table>
                               </div>
                             
-                              <div class="m-4">
-                                <table class="w-full text-sm text-left rtl:text-right text-gray-500">
-                                  <tbody>
-                                    <tr class="bg-white border border-black border-solid">
-                                      <td class="w-1/2 bg-blue-900 text-white">Competencia con mayor FORTALEZA: Indicar hechos y datos que lo evidencien.</td>
-                                      <td class="w-1/2 font-medium text-gray-900"><b>{{obtenerNombreCompetenciasFiltrada1(response1?.registros?.competenciaFortaleza)}}</b><br>{{response1?.registros?.fortaleza}}</td>
-                                    </tr>
-                                    <tr class="bg-white border border-black border-solid">
-                                      <td class="w-1/2 bg-blue-900 text-white">Competencia con mayor OPORTUNIDAD DE MEJORA: Indicar hechos y datos que lo evidencien.</td>
-                                      <td class="w-1/2 font-medium text-gray-900"><b>{{obtenerNombreCompetenciasFiltrada1(response1?.registros?.competenciaOportunidad)}}</b><br>{{response1?.registros?.oportunidad}}</td>
-                                    </tr>
-                                  </tbody>
-                                </table>
-                              </div>
+                            <div class="m-4">
+  <table class="w-full text-sm text-left text-gray-500 border border-black border-solid table-fixed">
+    <tbody>
+      <tr class="border border-black border-solid align-top">
+        <td class="w-[35%] bg-blue-900 text-white font-medium p-2 align-top">
+          Competencia con mayor <b>FORTALEZA</b>:<br>
+          <span class="text-xs">Indicar hechos y datos que lo evidencien.</span>
+        </td>
+        <td class="w-[65%] p-2 align-top text-gray-900">
+          <b>{{obtenerNombreCompetenciasFiltrada1(response1?.registros?.competenciaFortaleza)}}</b><br>
+          <div class="whitespace-pre-wrap">{{response1?.registros?.fortaleza}}</div>
+        </td>
+      </tr>
+      <tr class="border border-black border-solid align-top">
+        <td class="w-[35%] bg-blue-900 text-white font-medium p-2 align-top">
+          Competencia con mayor <b>OPORTUNIDAD DE MEJORA</b>:<br>
+          <span class="text-xs">Indicar hechos y datos que lo evidencien.</span>
+        </td>
+        <td class="w-[65%] p-2 align-top text-gray-900">
+          <b>{{obtenerNombreCompetenciasFiltrada1(response1?.registros?.competenciaOportunidad)}}</b><br>
+          <div class="whitespace-pre-wrap">{{response1?.registros?.oportunidad}}</div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
                               
                             <div class="m-4">
                             <table class="w-full text-sm text-left rtl:text-right text-gray-500 ">
@@ -166,9 +176,14 @@
                             </table>
                             </div>
                           </div>
-                        </td>
-                        <td>
-                          <div *ngIf="response2">
+                             
+                              
+                          </div>
+                <div class="w-1/2 min-w-[650px]" *ngIf="response2">
+                            <div class="bg-primary text-white text-center p-3">
+                                <h2 class="text-lg font-bold">Calibración</h2>
+                            </div>
+                              <div *ngIf="response2">
                             <div class="text-center mt-6">
                             <h1 class="text-lg" style="text-transform: uppercase;">VISUALIZACIÓN DE RESULTADOS DE EVALUACIÓN DE DESEMPEÑO POR COMPETENCIAS {{response2?.registros?.tipo}}°</h1>
                             </div>
@@ -251,19 +266,32 @@
                               </div>
                             
                               <div class="m-4">
-                                <table class="w-full text-sm text-left rtl:text-right text-gray-500">
-                                  <tbody>
-                                    <tr class="bg-white border border-black border-solid">
-                                      <td class="w-1/2 bg-blue-900 text-white">Competencia con mayor FORTALEZA: Indicar hechos y datos que lo evidencien.</td>
-                                      <td class="w-1/2 font-medium text-gray-900"><b>{{obtenerNombreCompetenciasFiltrada2(response1?.registros?.competenciaFortaleza)}}</b><br>{{response1?.registros?.fortaleza}}</td>
-                                    </tr>
-                                    <tr class="bg-white border border-black border-solid">
-                                      <td class="w-1/2 bg-blue-900 text-white">Competencia con mayor OPORTUNIDAD DE MEJORA: Indicar hechos y datos que lo evidencien.</td>
-                                      <td class="w-1/2 font-medium text-gray-900"><b>{{obtenerNombreCompetenciasFiltrada2(response1?.registros?.competenciaOportunidad)}}</b><br>{{response1?.registros?.oportunidad}}</td>
-                                    </tr>
-                                  </tbody>
-                                </table>
-                              </div>
+  <table class="w-full text-sm text-left text-gray-500 border border-black border-solid table-fixed">
+    <tbody>
+      <tr class="border border-black border-solid align-top">
+        <td class="w-[35%] bg-blue-900 text-white font-medium p-2 align-top">
+          Competencia con mayor <b>FORTALEZA</b>:<br>
+          <span class="text-xs">Indicar hechos y datos que lo evidencien.</span>
+        </td>
+        <td class="w-[65%] p-2 align-top text-gray-900">
+          <b>{{obtenerNombreCompetenciasFiltrada2(response2?.registros?.competenciaFortaleza)}}</b><br>
+          <div class="whitespace-pre-wrap">{{response2?.registros?.fortaleza}}</div>
+        </td>
+      </tr>
+      <tr class="border border-black border-solid align-top">
+        <td class="w-[35%] bg-blue-900 text-white font-medium p-2 align-top">
+          Competencia con mayor <b>OPORTUNIDAD DE MEJORA</b>:<br>
+          <span class="text-xs">Indicar hechos y datos que lo evidencien.</span>
+        </td>
+        <td class="w-[65%] p-2 align-top text-gray-900">
+          <b>{{obtenerNombreCompetenciasFiltrada2(response2?.registros?.competenciaOportunidad)}}</b><br>
+          <div class="whitespace-pre-wrap">{{response2?.registros?.oportunidad}}</div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
                               
                             <div class="m-4">
                             <table class="w-full text-sm text-left rtl:text-right text-gray-500 ">
@@ -291,11 +319,11 @@
                             </table>
                             </div>
                           </div>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>    
+                             
+                        </div>
+                     
                 </section>
+                
               </div> 
             </div>
         </div>

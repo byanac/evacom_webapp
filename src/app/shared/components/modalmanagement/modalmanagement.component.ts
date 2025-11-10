@@ -26,7 +26,7 @@ export class ModalmanagementComponent implements OnInit {
     private Factsservice: AddoutstandingfactmodalService ) {}
 
   async ngOnInit(): Promise<any> {
-    debugger
+    
     const isEvaluated = this.loginService.isUserEvaluated();
     // Cargar datos si el usuario tiene rol asignado
     if ((isEvaluated && isEvaluated.estadoEvaluado)) {
