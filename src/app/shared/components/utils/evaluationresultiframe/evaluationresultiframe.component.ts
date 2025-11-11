@@ -56,7 +56,7 @@ export class EvaluationResultiframeComponent implements OnInit {
   return(respuesta.toFixed(2))
 }
   ObtenerLabeldeEstado(resultado) {
-  let result = (resultado / 5) * 100;
+  let result = ((resultado -1) *25);
   let message: string;
 
   switch (true) {
@@ -73,7 +73,7 @@ export class EvaluationResultiframeComponent implements OnInit {
           message = "ALTAMENTE EFECTIVO";
           break;
   }
-  return message;
+  return  message;
 }
 
 obtenerNombreCompetenciasFiltrada(value: string): string {

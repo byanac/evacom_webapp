@@ -23,14 +23,16 @@ export class ResultsComponent implements OnInit {
   }
 
   calcularPromedioPonderado(resultado) {
-    let result = (resultado / 5) * 100;
+    //let result = (resultado / 5) * 100;
+    let result = ((resultado -1) *25);
     let message: string;
     message = result.toFixed(2) + "%";
     return message;
   }
 
 ObtenerLabeldeEstado(resultado: number) {
-  let result = (resultado / 5) * 100;
+  //let result = (resultado / 5) * 100;
+  let result = ((resultado -1) *25);
   let message: string;
 
   switch (true) {
@@ -62,7 +64,8 @@ if(this.Data.registros.competenciaFortaleza === "" || this.Data.registros.compet
 }
 
 calcularPromedioFinal(resultado: number) {
-  let result = (resultado / 5) * 100
+  //let result = (resultado / 5) * 100
+ let result = ((resultado -1) *25);
   return(result.toFixed(2))
 }
 
