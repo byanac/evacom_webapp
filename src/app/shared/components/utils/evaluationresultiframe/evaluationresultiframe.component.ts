@@ -38,13 +38,23 @@ export class EvaluationResultiframeComponent implements OnInit {
     window.print();
   }
 
-  calcularPromedioPonderado(resultado) {
+  calcularPromedioPonderado_antes(resultado) {
     let result = (resultado / 5) * 100;
     let message: string;
     message = result.toFixed(2) + "%";
     return message;
   }
-
+  calcularPromedioPonderado(resultado) {
+    let respuesta = ((resultado -1) *25);
+    let message: string;
+    message = respuesta.toFixed(2) + "%";
+    return message;
+  }
+  calcularPromedioFinal(resultado: number) {
+  let respuesta = ((resultado -1) *25);
+  
+  return(respuesta.toFixed(2))
+}
   ObtenerLabeldeEstado(resultado) {
   let result = (resultado / 5) * 100;
   let message: string;
@@ -77,7 +87,7 @@ if(this.Data.registros.competenciaFortaleza === "" || this.Data.registros.compet
   }
 }
 
-calcularPromedioFinal(resultado: number) {
+calcularPromedioFinal_antes(resultado: number) {
   let result = (resultado / 5) * 100
   return(result.toFixed(2))
 }
