@@ -160,7 +160,9 @@
                       <li *ngFor="let item of item.SubMenuItems; index as i">
                         <a *ngIf="loginService.GetUserSession().permisos[i].evaluador" (click)="closeMenu();" [routerLink]="[item.route]" [id]="item.route + '_id'" class="flex  text-left custom-margin-left items-center w-full p-2 text-black transition decoration-transparent duration-75 rounded-lg pl-11 group hover:bg-gray-300">
                           <span *ngIf="item.svg" [innerHTML]="getSanitizedSvg(item.svg)"></span>
-                          <span class="ms-3 text-left">{{item.name}}</span>
+                          <span class="ms-3 text-left"> {{item.name}}</span>
+                         
+                          
                         </a>
                       </li>
                   </ul>

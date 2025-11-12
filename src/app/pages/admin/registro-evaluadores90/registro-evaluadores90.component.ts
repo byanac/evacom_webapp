@@ -222,7 +222,7 @@ export class RegistroEvaluadores90Component implements OnInit {
                     error: (error) => {
                       Swal.fire({
                         title:  "Ocurrió un error :(",
-                        text: 'No se pudo actualizar que la asignación no exista',
+                        text: 'No se pudo actualizar, valide que la asignación no exista y no tenga evaluación terminada',
                         type: 'error',
                         showCancelButton: false,
                         confirmButtonText: 'OK',

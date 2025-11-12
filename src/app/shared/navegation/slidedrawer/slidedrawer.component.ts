@@ -339,6 +339,9 @@ export class SlidedrawerComponent implements OnInit {
           const isEvaluated = this.loginService.isUserEvaluated();
           
           const isEvaluator = this.loginService.isUserEvaluator();
+
+       
+
           //await new Promise(resolve => setTimeout(resolve, 1500));
           
           if ((isEvaluated && isEvaluated.estadoEvaluado) || (isEvaluator && isEvaluator.estadoEvaluador)) {
@@ -392,7 +395,12 @@ export class SlidedrawerComponent implements OnInit {
             //console.log('Datos del nav se han cargado con éxito.')
           }
           this.utilService.closeLoading();
+
+           if ((!isAdmin) && (!isEvaluated.estadoEvaluado) && (!isEvaluator.estadoEvaluador)) {
+            Swal.fire('Aviso','No cuenta con evaluaciones asignadas.','warning');
+            }
         }
+        
       } catch (error) {
         Swal.fire('ERROR','Hubo un error al procesar los permisos del usuario.','error').then(() => this.router.navigateByUrl('/login'))
       }
