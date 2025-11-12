@@ -68,6 +68,16 @@ export class EvaluateworkerComponent implements OnInit {
   
 
   async SaveButton(): Promise<any>{
+
+    if (!this.TableData.registros.competenciaFortaleza || !this.TableData.registros.competenciaOportunidad) {
+        return Swal.fire(
+          'Faltan Competencias',
+          'Debes seleccionar una competencia de Fortaleza y una de Oportunidad antes de continuar.',
+          'warning'
+        );
+      }
+
+
     if(this.TableData.registros.competenciaOportunidad === this.TableData.registros.competenciaFortaleza){
       return Swal.fire(
         'Competencias Duplicadas',

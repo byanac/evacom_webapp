@@ -1,9 +1,10 @@
 <div *ngIf="Data != undefined">
-<div class="text-center mt-6">
-    <h1 class="text-lg" style="text-transform: uppercase;">AUTOEVALUACIÓN POR COMPETENCIAS - {{Data.registros.calendario_nombre}}</h1>
-</div>
+  <div class="text-center mt-6">
+    <h1 class="text-lg" style="text-transform: uppercase;">AUTOEVALUACIÓN POR COMPETENCIAS -
+      {{Data.registros.calendario_nombre}}</h1>
+  </div>
 
-<section class="m-4">
+  <section class="m-4">
     <hr>
     <div>
       <p class="font-bold mb-0">Datos del evaluado:</p>
@@ -11,12 +12,18 @@
     <div>
       <table>
         <tr>
-          <td class="flex font-bold justify-between"><p style="margin-bottom: 0px !important;">Ficha:</p> <p style="margin-bottom: 0px !important;">{{removeLeadingZeros(Data.registros.ficha)}}</p></td>
+          <td class="flex font-bold justify-between">
+            <p style="margin-bottom: 0px !important;">Ficha:</p>
+            <p style="margin-bottom: 0px !important;">{{removeLeadingZeros(Data.registros.ficha)}}</p>
+          </td>
           <td class="font-bold pl-4">Nombre: {{Data.registros.nombre}}</td>
         </tr>
         <tr>
-          <td class="flex font-bold justify-between"><p style="margin-bottom: 0px !important;">Unidad Orgánica: {{Data.registros.unidadOrganica}}</p></td>
-          <td class="font-bold pl-4" style="margin-bottom: 0px !important;">Cargo:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{Data.registros.cargo}}</td>
+          <td class="flex font-bold justify-between">
+            <p style="margin-bottom: 0px !important;">Unidad Orgánica: {{Data.registros.unidadOrganica}}</p>
+          </td>
+          <td class="font-bold pl-4" style="margin-bottom: 0px !important;">Cargo:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            {{Data.registros.cargo}}</td>
         </tr>
       </table>
     </div>
@@ -41,143 +48,119 @@
 
   <section class="m-4">
     <div>
-        <p class="font-bold mb-0 text-black">INSTRUCCIONES</p>
-        <p class="text-black">Marque la escala de valoración correspondiente, en cada uno de los 5 comportamientos que conforman cada competencia. de acuerdo a las evidencias que Ud. ha podido identificar durante las labores y responsabilidades durante el periodo de autoevaluación.</p>
+      <p class="font-bold mb-0 text-black">INSTRUCCIONES</p>
+      <p class="text-black">Marque la escala de valoración correspondiente, en cada uno de los 5 comportamientos que
+        conforman cada competencia. de acuerdo a las evidencias que Ud. ha podido identificar durante las labores y
+        responsabilidades durante el periodo de autoevaluación.</p>
     </div>
   </section>
 
-<div *ngFor="let item of Data.registros.competenciasResultado; index as i" class="relative overflow-x-auto mt-4 mr-4 ml-4">
+  <div *ngFor="let item of Data.registros.competenciasResultado; index as i"
+    class="relative overflow-x-auto mt-4 mr-4 ml-4">
     <table class="w-full text-sm text-left rtl:text-right text-gray-500 ">
-        <thead class="text-xs text-gray-700 bg-blue-200">
-            <tr class="border border-black border-solid text-black">
-                <th scope="col" class="px-6 py-3">
-                    {{item.titulo + ":"}}
-                    <div class="normal-case text-justify">
-                        {{item.descripcion}}
-                    </div>
-                </th>
-                <th class="text-center border-solid border-1" style="width: 6rem;">
-                    <p class="mb-0">NO CUBRE LA EXPECTATIVA <br> (0%)</p>
-                </th>
-                <th class="text-center border-solid border-1" style="width: 6rem;">
-                    <p class="mb-0">NECESITA MEJORAR <br> (25%)</p>
-                </th>
-                <th class="text-center border-solid border-1" style="width: 6rem;">
-                    <p class="mb-0">PARCIALMENTE EFECTIVO <br> (50%)</p>
-                </th>
-                <th class="text-center border-solid border-1" style="width: 6rem;">
-                    <p class="mb-0">EFECTIVO <br> (75%)</p>
-                </th>
-                <th class="text-center border-solid border-1" style="width: 6rem;">
-                    <p class="mb-0">ALTAMENTE EFECTIVO <br> (100%)</p>
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let question of item.comportamientosResultado; index as j" class="bg-white border border-black border-solid text-black">
-                <th scope="row" class="flex m-6 font-medium text-gray-900">
-                    <div class="mr-5">{{j + 1}}</div>
-                    <div>{{question.descripcion}}</div>
-                </th>
-                <td class="text-center border-solid border-1">
-                    <input
-                        type="radio"
-                        name="flexRadioDefault{{question.codigo}}"
-                        id="radioDefault{{question.codigo}}1"
-                        [value]="1"
-                        [(ngModel)]="question.resultado"
-                    />
-                </td>
-                <td class="text-center border-solid border-1">
-                    <input
-                        type="radio"
-                        name="flexRadioDefault{{question.codigo}}"
-                        id="radioDefault{{question.codigo}}2"
-                        [value]="2"
-                        [(ngModel)]="question.resultado"
-                    />
-                </td>
-                <td class="text-center border-solid border-1">
-                    <input
-                        type="radio"
-                        name="flexRadioDefault{{question.codigo}}"
-                        id="radioDefault{{question.codigo}}3"
-                        [value]="3"
-                        [(ngModel)]="question.resultado"
-                    />
-                </td>
-                <td class="text-center border-solid border-1">
-                    <input
-                        type="radio"
-                        name="flexRadioDefault{{question.codigo}}"
-                        id="radioDefault{{question.codigo}}4"
-                        [value]="4"
-                        [(ngModel)]="question.resultado"
-                    />
-                </td>
-                <td class="text-center border-solid border-1">
-                    <input
-                        type="radio"
-                        name="flexRadioDefault{{question.codigo}}"
-                        id="radioDefault{{question.codigo}}5"
-                        [value]="5"
-                        [(ngModel)]="question.resultado"
-                    />
-                </td>
-            </tr>
-        </tbody>
+      <thead class="text-xs text-gray-700 bg-blue-200">
+        <tr class="border border-black border-solid text-black">
+          <th scope="col" class="px-6 py-3">
+            {{item.titulo + ":"}}
+            <div class="normal-case text-justify">
+              {{item.descripcion}}
+            </div>
+          </th>
+          <th class="text-center border-solid border-1" style="width: 6rem;">
+            <p class="mb-0">NO CUBRE LA EXPECTATIVA <br> (0%)</p>
+          </th>
+          <th class="text-center border-solid border-1" style="width: 6rem;">
+            <p class="mb-0">NECESITA MEJORAR <br> (25%)</p>
+          </th>
+          <th class="text-center border-solid border-1" style="width: 6rem;">
+            <p class="mb-0">PARCIALMENTE EFECTIVO <br> (50%)</p>
+          </th>
+          <th class="text-center border-solid border-1" style="width: 6rem;">
+            <p class="mb-0">EFECTIVO <br> (75%)</p>
+          </th>
+          <th class="text-center border-solid border-1" style="width: 6rem;">
+            <p class="mb-0">ALTAMENTE EFECTIVO <br> (100%)</p>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let question of item.comportamientosResultado; index as j"
+          class="bg-white border border-black border-solid text-black">
+          <th scope="row" class="flex m-6 font-medium text-gray-900">
+            <div class="mr-5">{{j + 1}}</div>
+            <div>{{question.descripcion}}</div>
+          </th>
+          <td class="text-center border-solid border-1">
+            <input type="radio" name="radioGroup_{{i}}_{{j}}" id="radioDefault{{i}}_{{j}}_1" [value]="1"
+              [(ngModel)]="question.resultado" />
+          </td>
+          <td class="text-center border-solid border-1">
+            <input type="radio" name="radioGroup_{{i}}_{{j}}" id="radioDefault{{i}}_{{j}}_2" [value]="2"
+              [(ngModel)]="question.resultado" />
+          </td>
+          <td class="text-center border-solid border-1">
+            <input type="radio" name="radioGroup_{{i}}_{{j}}" id="radioDefault{{i}}_{{j}}_3" [value]="3"
+              [(ngModel)]="question.resultado" />
+          </td>
+          <td class="text-center border-solid border-1">
+            <input type="radio" name="radioGroup_{{i}}_{{j}}" id="radioDefault{{i}}_{{j}}_4" [value]="4"
+              [(ngModel)]="question.resultado" />
+          </td>
+          <td class="text-center border-solid border-1">
+            <input type="radio" name="radioGroup_{{i}}_{{j}}" id="radioDefault{{i}}_{{j}}_5" [value]="5"
+              [(ngModel)]="question.resultado" />
+          </td>
+        </tr>
+
+      </tbody>
     </table>
-</div>
-<div class="m-4 flex flex-col md:flex-row justify-around">
+  </div>
+  <div class="m-4 flex flex-col md:flex-row justify-around">
     <div class="grid justify-start mb-2" style="width: 31rem;">
-        <label for="Fortaleza"><b>Competencia con mayor FORTALEZA: Indicar hechos y datos que envidencien la competencia seleccionada.</b></label>
-        <mat-form-field>
-          <mat-select [(ngModel)]="Data.registros.competenciaFortaleza">
-            <mat-option value="">Seleccionar Fortaleza</mat-option>
-            <mat-option *ngFor="let item of Data.registros.competenciasResultado" [value]="item.codigo">{{item.titulo}}</mat-option>
-          </mat-select>
-        </mat-form-field>
-        <mat-form-field appearance="outline">
-          <textarea 
-            matInput
-            [disabled]="Data.registros.competenciaFortaleza === '' || Data.registros.estado === 1" 
-            [(ngModel)]="Data.registros.fortaleza" 
-            [value]="Data.registros.fortaleza"
-            maxlength="500"
-            rows="5">
+      <label for="Fortaleza"><b>Competencia con mayor FORTALEZA: Indicar hechos y datos que envidencien la competencia
+          seleccionada.</b></label>
+      <mat-form-field>
+        <mat-select [(ngModel)]="Data.registros.competenciaFortaleza">
+          <mat-option value="">Seleccionar Fortaleza</mat-option>
+          <mat-option *ngFor="let item of Data.registros.competenciasResultado"
+            [value]="item.codigo">{{item.titulo}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <textarea matInput [disabled]="Data.registros.competenciaFortaleza === '' || Data.registros.estado === 1"
+          [(ngModel)]="Data.registros.fortaleza" [value]="Data.registros.fortaleza" maxlength="500" rows="5">
           </textarea>
-        </mat-form-field>            
-        <p class="text-end">{{500 - Data.registros.fortaleza.length}} caracteres restantes</p>
+      </mat-form-field>
+      <p class="text-end">{{500 - Data.registros.fortaleza.length}} caracteres restantes</p>
     </div>
     <div class="grid justify-start mb-2" style="width: 31rem;">
-        <label for="Oportunidad"><b>Competencia con mayor OPORTUNIDAD DE MEJORA: Indicar hechos y datos que evidencien la competencia seleccionada.</b></label>
-        <mat-form-field >
-          <mat-select [(ngModel)]="Data.registros.competenciaOportunidad">
-            <mat-option value="">Seleccionar Oportunidad de Mejora</mat-option>
-            <mat-option *ngFor="let item of Data.registros.competenciasResultado" [value]="item.codigo">{{item.titulo}}</mat-option>
-          </mat-select>
-        </mat-form-field>
-        <mat-form-field appearance="outline">
-          <textarea 
-            matInput
-            [disabled]="Data.registros.competenciaOportunidad === '' || Data.registros.estado === 1" 
-            [(ngModel)]="Data.registros.oportunidad" 
-            [value]="Data.registros.oportunidad"
-            maxlength="500"
-            rows="5">
+      <label for="Oportunidad"><b>Competencia con mayor OPORTUNIDAD DE MEJORA: Indicar hechos y datos que evidencien la
+          competencia seleccionada.</b></label>
+      <mat-form-field>
+        <mat-select [(ngModel)]="Data.registros.competenciaOportunidad">
+          <mat-option value="">Seleccionar Oportunidad de Mejora</mat-option>
+          <mat-option *ngFor="let item of Data.registros.competenciasResultado"
+            [value]="item.codigo">{{item.titulo}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <textarea matInput [disabled]="Data.registros.competenciaOportunidad === '' || Data.registros.estado === 1"
+          [(ngModel)]="Data.registros.oportunidad" [value]="Data.registros.oportunidad" maxlength="500" rows="5">
           </textarea>
-        </mat-form-field>     
-        <p class="text-end">{{500 - Data.registros.oportunidad.length}} caracteres restantes</p>
+      </mat-form-field>
+      <p class="text-end">{{500 - Data.registros.oportunidad.length}} caracteres restantes</p>
     </div>
-</div>
-<div class="flex float-end text-end pb-6" >
+  </div>
+  <div class="flex float-end text-end pb-6">
     <div>
-        <button *ngIf="Data.registros.estado === 0" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full mr-6" (click)="SaveButton()">
-            Guardar
-        </button>
-        <button *ngIf="Data.registros.estado === 1" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full mr-6" (click)="ReloadPage()">
-            Ver Resultados
-        </button>
+      <button *ngIf="Data.registros.estado === 0"
+        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full mr-6" (click)="SaveButton()">
+        Guardar
+      </button>
+      <button *ngIf="Data.registros.estado === 1"
+        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full mr-6" (click)="ReloadPage()">
+        Ver Resultados
+      </button>
     </div>
   </div>
 </div>

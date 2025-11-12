@@ -141,12 +141,11 @@ export class RegistroGruposEvaluacionDetalleComponent implements OnInit {
 
       const yaExiste = this.gruposEvaluacionDetail.some(grupoEvalDetalle =>
         grupoEvalDetalle.grupoEvaluacion.codigo === newGrupoEvaluacionDetalle.idGrupoEvaluacion &&
-        grupoEvalDetalle.competencia.codigo === newGrupoEvaluacionDetalle.idGrupoCompetencia &&
-        grupoEvalDetalle.nivel.codigo === newGrupoEvaluacionDetalle.idNivelCompetencia         
+        grupoEvalDetalle.competencia.codigo === newGrupoEvaluacionDetalle.idGrupoCompetencia   
       );
 
       if (yaExiste) {
-        Swal.fire('Registro duplicado', 'Ya existe un registro con el mismo grupo de evaluación, competencia y nivel.', 'warning');
+        Swal.fire('Registro duplicado', 'Ya existe un registro con el mismo grupo de evaluación, competencia.', 'warning');
         return;
       }
 

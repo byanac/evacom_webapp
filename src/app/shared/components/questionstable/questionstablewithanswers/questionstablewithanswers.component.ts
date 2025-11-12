@@ -33,6 +33,17 @@ export class QuestionstablewithanswersComponent implements OnInit {
   }
 
   SaveButton(): any{
+    debugger
+
+    if (!this.Data.registros.competenciaFortaleza || !this.Data.registros.competenciaOportunidad) {
+    return Swal.fire(
+      'Faltan Competencias',
+      'Debes seleccionar una competencia de Fortaleza y una de Oportunidad antes de continuar.',
+      'warning'
+    );
+  }
+
+
     if(this.Data.registros.competenciaOportunidad === this.Data.registros.competenciaFortaleza){
       return Swal.fire(
         'Competencias Duplicadas',
@@ -51,8 +62,8 @@ export class QuestionstablewithanswersComponent implements OnInit {
     }).then((result) => {
       if (result.value) {
         this.utilsService.showLoading();
-        //////console.log(this.Data)
-        //////console.log(JSON.stringify(this.Data.registros))
+        console.log(this.Data)
+        console.log(JSON.stringify(this.Data.registros))
               
         if(this.Data.registros.competenciaFortaleza === ""){
           this.Data.registros.fortaleza = '';
@@ -61,7 +72,7 @@ export class QuestionstablewithanswersComponent implements OnInit {
         if(this.Data.registros.competenciaOportunidad === ""){
           this.Data.registros.oportunidad = '';
         }
-        
+        console.log('antes de registrar la autoevaluacion');
         this.AutoevaluationService.PostAutoEvalProgression(this.Data.registros.calendario,this.DataFromsessionStorage.ficha, this.DataFromsessionStorage.codPuesto, this.Data.registros)
         .subscribe({
           next: (data) => {
