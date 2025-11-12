@@ -90,20 +90,28 @@ export class AutorizatecalibrationmodalComponent implements OnInit, OnDestroy {
       }
       const data = await this.calibrationService.GetEvaluatedByFolder(newValueWithZeros, this.PeriodCode).toPromise();
       //console.log(newValueWithZeros)
-      if (data.registros.estadoEvaluacion && !this.FilteredFiles.includes(newValueWithZeros)) {
-        if(data){
-          if(data.registros.habilitaCalibracion){
-            this.FileValue = ""
-            this.DataList.push(data.registros);
-            this.FilteredFiles.push(data.registros.codigoFicha)
-            this.utilsService.closeLoading();
-          }else{
-            Swal.fire("INFO",`${data.registros.observacion}.`,'info')
-          }
-        }
-      }else{
-        return Swal.fire("INFO", "La ficha ingresada ya se encuentra dentro del listado de \"Disponibles\".", "info");
+      if (data.mensaje==="OK"){
+            if (data.registros.estadoEvaluacion && !this.FilteredFiles.includes(newValueWithZeros)) {
+                    if(data){
+                      if(data.registros.habilitaCalibracion){
+                        this.FileValue = ""
+                        this.DataList.push(data.registros);
+                        this.FilteredFiles.push(data.registros.codigoFicha)
+                        this.utilsService.closeLoading();
+                      }else{
+                        Swal.fire("INFO",`${data.registros.observacion}.`,'info')
+                      }
+                    }
+                  }
       }
+      if (data.mensaje==="Ficha no existe") {
+          return Swal.fire("INFO", "Ficha no existe en relación de evaluados para el calendario seleccionado.", "warning");
+      }
+      if (data.mensaje==="No tiene evaluación completada para calibrar") {
+          return Swal.fire("INFO", "Ficha no tiene evaluación completada para el calendario seleccionado.", "warning");
+      }
+      
+      
     } catch (error) {
       console.error('Error:', error);
       if (error.status === 502 && !error.error.registros.estadoevaluacion) {

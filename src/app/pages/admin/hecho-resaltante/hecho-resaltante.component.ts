@@ -58,7 +58,11 @@ export class HechoResaltanteComponent implements OnInit {
         Swal.fire("NOTIFICACIÓN","No se encontraron registros.","info")
       }else{
         this.Activatetable = true;     
-        this.DataList = response.registros
+        //this.DataList = response.registros
+        this.DataList = response.registros.filter(registro => {
+            // El filtro retorna TRUE solo si tipoEvaluador es 1
+            return registro.tipoEvaluador === 1;
+        });
         this.utilsService.closeLoading();;
       }
     }

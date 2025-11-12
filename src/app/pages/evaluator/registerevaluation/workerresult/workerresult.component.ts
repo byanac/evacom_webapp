@@ -33,15 +33,21 @@ export class WorkerresultComponent implements OnInit {
     window.print();
   }
 
-  calcularPromedioPonderado(resultado): string {
+  calcularPromedioPonderado_antes(resultado): string {
     let result = (resultado / 5) * 100;
     let message: string;
     message = result.toFixed(2) + "%";
     return message;
   }
-
+calcularPromedioPonderado(resultado) {
+    let respuesta = ((resultado -1) *25);
+    let message: string;
+    message = respuesta.toFixed(2) + "%";
+    return message;
+  }
 ObtenerLabeldeEstado(resultado: number): string {
-  let result = (resultado / 5) * 100;
+  //let result = (resultado / 5) * 100;
+   let result = ((resultado -1) *25);
   let message: string;
 
   switch (true) {
@@ -74,7 +80,8 @@ obtenerNombreCompetenciasFiltrada(value: string): string {
 
 
 calcularPromedioFinal(resultado: number): string {
-  let result = (resultado / 5) * 100
+ // let result = (resultado / 5) * 100
+   let result = ((resultado -1) *25);
   return(result.toFixed(2))
 }
 

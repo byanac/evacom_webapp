@@ -361,7 +361,7 @@ export class SlidedrawerComponent implements OnInit {
             if(!this.loginService.IsUserAdmin()){
               if(ActivesCalendars90 > 1){
                 this.utilService.closeLoading();
-                return Swal.fire("Aviso", "Se han detectado 2 calendarios del tipo 90° vigentes. Por favor, contacte con el administrador.", "warning").then(() => this.router.navigate(['/login']));
+              //  return Swal.fire("Aviso", "Se han detectado 2 calendarios del tipo 90° vigentes. Por favor, contacte con el administrador.", "warning").then(() => this.router.navigate(['/login']));
               }
         
               if(ActivesCalendars180 > 1){

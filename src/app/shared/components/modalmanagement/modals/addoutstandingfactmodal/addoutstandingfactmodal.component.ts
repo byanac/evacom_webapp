@@ -42,10 +42,44 @@ export class AddoutstandingfactmodalComponent implements OnInit {
     this.utilsService.showLoading();
     let DataFromsessionStorage = JSON.parse(sessionStorage.getItem('userdata'))
     this.LoggedUserFolder = DataFromsessionStorage.ficha
-
-    const response: IAutoEvaluationResult = await ((this.peopletobeevaluatedService.GetWorkerData(this.WorkerFolder,this.WorkerPosition,this.SesionData.ficha,this.SesionData.codPuesto,this.Calendar)).toPromise());
-    this.FormSelectsData = response.registros
-    this.utilsService.closeLoading();;
+    
+    try{
+      const response: IAutoEvaluationResult = await ((this.peopletobeevaluatedService.GetWorkerData(this.WorkerFolder,this.WorkerPosition,this.SesionData.ficha,this.SesionData.codPuesto,this.Calendar)).toPromise());
+          this.FormSelectsData = response.registros
+          this.utilsService.closeLoading();;
+    }catch(error){
+        this.CloseModal();
+Swal.fire(
+          'AVISO',
+           'Por favor valide que tenga grupo de evaluación asignado',
+          'error'
+        );
+  //  this.utilsService.closeLoading();;
+    }
+  
+ /*this.peopletobeevaluatedService
+    .GetWorkerData(this.WorkerFolder, this.WorkerPosition, this.SesionData.ficha, this.SesionData.codPuesto, this.Calendar)
+    .subscribe({
+        // Callback para datos exitosos (código 200)
+        next: (response: IAutoEvaluationResult) => {
+            this.FormSelectsData = response.registros;
+            this.utilsService.closeLoading();
+        },
+        // Callback para errores 
+        error: (error) => {
+          console.log("error2");
+            this.CloseModal();
+            Swal.fire(
+                'AVISO',
+                'Por favor valide que tenga grupo de evaluación asignado',
+                'error'
+            );
+        },
+        complete: () => {
+             // Opcional: código de limpieza
+        }
+    });*/
+   
   }
 
   handleChange(evt: any): void{
