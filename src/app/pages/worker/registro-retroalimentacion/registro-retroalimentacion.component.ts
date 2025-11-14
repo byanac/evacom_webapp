@@ -52,6 +52,7 @@ export class RegistroRetroalimentacionComponent implements OnInit {
   constructor(private loginservice: LoginService, private router: Router, private calendarService: CalendarService, private feedbackService: FeedbackService, private utilService: UtilsService, private loginService: LoginService, private autoevaluationService: AutoevaluationService){}
 
   async ngOnInit(): Promise<void | SweetAlertResult> {
+    
     this.utilService.showLoading();
     
     this.calendarService.GetCalendarName(this.CodCalendario).then(result => {
@@ -85,21 +86,29 @@ export class RegistroRetroalimentacionComponent implements OnInit {
 
       let EvaluationIDResponse = await this.feedbackService.GetFeedbackEvaluationID(ficha,codPuesto,this.CodCalendario).toPromise();
       this.EvaluationID = EvaluationIDResponse.registros
+        if (this.EvaluationID>0){
+               this.FeedbackStatus = await this.feedbackService.GetFeedbackStatus(this.EvaluationID).toPromise();
+             //////console.log('FeedbackStatus: ', this.FeedbackStatus)
 
-      this.FeedbackStatus = await this.feedbackService.GetFeedbackStatus(this.EvaluationID).toPromise();
-      //////console.log('FeedbackStatus: ', this.FeedbackStatus)
-
-      if(this.FeedbackStatus.registros.estadoEvaluador){
-        this.Show90 = true;
-        this.processAutoEvaluationAndEvaluationData();
-        this.handleFeedbackStatus();
-   
-      }else{
-        this.Show90 = true;
-        this.processAutoEvaluationAndEvaluationData();
-        this.handleFeedbackStatus();
-        this.handleUnfinishedFeedbackForChiefEvaluator();
-      }
+                  if(this.FeedbackStatus.registros.estadoEvaluador){
+                    this.Show90 = true;
+                    this.processAutoEvaluationAndEvaluationData();
+                    this.handleFeedbackStatus();
+              
+                  }else{
+                    this.Show90 = true;
+                    this.processAutoEvaluationAndEvaluationData();
+                    this.handleFeedbackStatus();
+                    this.handleUnfinishedFeedbackForChiefEvaluator();
+                  }
+        }else {
+          Swal.fire("Alerta", "No tiene evaluación registrada", "warning").then(() => {
+              this.utilService.closeLoading();
+               this.router.navigateByUrl('/home');
+          });
+         
+        }
+     
   }
 
   async MainLoadEvaluated180(): Promise<void | SweetAlertResult>{
