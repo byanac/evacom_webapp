@@ -198,7 +198,7 @@
               <ng-container *ngFor="let item of EvaluatedMenuItems; index as i">
                 <li *ngIf="loginService.isUserEvaluated()?.estadoEvaluado && LoadedEvaluatedExceptionFlags">
                   <a (click)="configurationService.ToggleMenu();"
-                     *ngIf="(loginService.isUserEvaluated()?.estadoEvaluado && this.VerifyEvaluatedRangedDates(item.startCalendarName, item.endCalendarName,loginService.GetUserSession().fecha)) || FindEvaluatedFlagValue(item.exceptionFlagName)"
+                     *ngIf="(loginService.isUserEvaluated()?.estadoEvaluado && this.VerifyEvaluatedRangedDates(item.startCalendarName, item.endCalendarName,loginService.GetUserSession().fecha)) || FindEvaluatedFlagValue(item.exceptionFlagName) || item.name=='Fase de Conocimiento' || item.name=='Fase de Autoevaluación'"
                      [routerLink]="[item.route]" 
                      [id]="item.route + '_id'" 
                      class="flex items-center p-2 text-left decoration-transparent text-black rounded-lg hover:bg-gray-300 group">

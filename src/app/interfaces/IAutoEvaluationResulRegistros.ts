@@ -19,4 +19,5 @@ export interface IAutoEvaluationResultRegistros {
     cargo: string;
     competenciaFortaleza: string;
     competenciaOportunidad: string;
+    habilita:string; 
 }
