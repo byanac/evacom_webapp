@@ -196,9 +196,10 @@ ngOnDestroy(): void {
   }
 
   get iframeSrc(): SafeResourceUrl {
-    const url = `/#/Iframe/${this.EvaluatedFile}/${this.EvaluatedPosition}`;
-    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
-  }
+  const base = window.location.origin + '/competencias';
+  const url = `${base}/#/Iframe/${this.EvaluatedFile}/${this.EvaluatedPosition}`;
+  return this.sanitizer.bypassSecurityTrustResourceUrl(url);
+}
 
   closeIframe(): void{
     this.ShowResultIframe = false;

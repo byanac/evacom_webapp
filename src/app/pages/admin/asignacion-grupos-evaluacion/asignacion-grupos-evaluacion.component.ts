@@ -175,7 +175,8 @@ export class AsignacionGruposEvaluacionComponent implements OnInit, AfterViewIni
       this.utilsService.showLoading();
       const evalgroup = await this.AsignationEvalGroupsService.GetEvalGroupsReportCRUD().toPromise();
       const filteredEvalGroup = evalgroup.registros.sort((a: any, b: any) => b.estado - a.estado);
-      this.gruposEvaluacionSelect = filteredEvalGroup;
+      const filteredEvalGroup2 = evalgroup.registros.filter((data: { estado: number; }) => data.estado === 1);
+      this.gruposEvaluacionSelect = filteredEvalGroup2;
       this.utilsService.closeLoading();
     } catch (error) {
       return Swal.fire('Error al cargar los datos de grupo de evaluación','Por favor, inténtalo de nuevo más tarde.',"error");
