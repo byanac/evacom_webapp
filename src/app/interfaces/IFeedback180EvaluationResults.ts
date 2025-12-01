@@ -47,5 +47,6 @@ export interface IFeedback180EvaluationResults {
     promedioJefe: number;
     promedioSubalternos: number;
     promedioFinal: number;
+    promedioEvaluacion: number;
     promedioAutoevaluacion: number;
 }

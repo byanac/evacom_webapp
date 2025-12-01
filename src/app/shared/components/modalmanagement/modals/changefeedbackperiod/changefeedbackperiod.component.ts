@@ -69,12 +69,22 @@ export class ChangefeedbackperiodComponent implements OnInit {
     })
     
     let TodayDate = new Date();
+    let TodayDateNormalized = new Date(
+      TodayDate.getFullYear(),
+      TodayDate.getMonth(),
+      TodayDate.getDate()
+    );
+    let startDateNormalized = new Date(
+      this.rangeDates[0].getFullYear(),
+      this.rangeDates[0].getMonth(),
+      this.rangeDates[0].getDate()
+    );
     ////console.log(TodayDate)
 
     if (this.rangeDates[0] > this.rangeDates[1]) {
       return Swal.fire('Aviso', 'La fecha de fin no puede ser menor a la fecha de inicio.', 'warning');
-    } else if (this.rangeDates[0] < TodayDate) { // Cambiado
-      return Swal.fire('Aviso', 'La fecha de inicio no puede ser menor a la fecha de hoy.', 'warning');
+    } else if (startDateNormalized < TodayDateNormalized) { // Cambiado
+      return Swal.fire('Aviso', '2La fecha de inicio no puede ser menor a la fecha de hoy.', 'warning');
     } else if (this.rangeDates[1] < this.rangeDates[0]) {
       return Swal.fire('Aviso', 'La fecha de fin no puede ser menor a la fecha de inicio.', 'warning'); // Corrigido el mensaje
     } 
