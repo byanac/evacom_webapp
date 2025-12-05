@@ -624,6 +624,7 @@ export class AsignacionGruposEvaluacionComponent implements OnInit, AfterViewIni
 
   async onFileSelectedCompetency(event: Event): Promise<any> {
     const input = event.target as HTMLInputElement;
+    const codigoCalendario=this.CalendarData.calendario.vCodigo;
     //console.log(input.files)
     //console.log(input.files.length > 0)
     if (input.files && input.files.length > 0) {
@@ -659,7 +660,7 @@ export class AsignacionGruposEvaluacionComponent implements OnInit, AfterViewIni
         this.gruposevaluacionEXCEL=null;
         debugger
         const validation = await this.AEGService
-          .PostSendAsignationEvalsGroupsExcelForValidation(file)
+          .PostSendAsignationEvalsGroupsExcelForValidation(file,codigoCalendario)
           .toPromise();
           debugger
         this.gruposevaluacionEXCEL = validation;

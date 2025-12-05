@@ -43,12 +43,13 @@ export class AsignationevalgroupsService {
   /*FIN PROY-00013*/
 
 
-  PostSendAsignationEvalsGroupsExcelForValidation(file: File): Observable<any> {
+  PostSendAsignationEvalsGroupsExcelForValidation(file: File,codigoCalendario:string): Observable<any> {
     if(isDevMode()){
       return this.http.get(environment.PostSendAsignationGroupsExcelForValidation);
     }else{
       const formData: FormData = new FormData();
       formData.append('file', file, file.name);
+      formData.append('codCalendario',codigoCalendario);
       return this.http.post(`${environment.PostSendAsignationGroupsExcelForValidation}`, formData);
     }
   }

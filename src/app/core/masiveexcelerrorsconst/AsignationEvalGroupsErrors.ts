@@ -13,5 +13,6 @@ export const AsignationEvalGroupsErrors: { [key: number]: string } = {
     '12': "El Puesto de trabajador no existe en la base de datos",
     '13': "El Grupo de evaluación no existe en la base de datos",
     '14': "Registro ya existe en la base de datos",
-    '15': "Registro ya tiene un grupo de evaluación asignado"
+    '15': "Registro ya tiene un grupo de evaluación asignado",
+    '16': "El Código Calendario no coincide con el calendario a configurar"
 };
