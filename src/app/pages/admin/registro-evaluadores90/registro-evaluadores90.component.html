@@ -77,6 +77,11 @@
         <mat-cell *matCellDef="let registros"> {{ registros?.evaluador?.nombrePuesto }} </mat-cell>
       </ng-container>
 
+      <ng-container matColumnDef="uoevaluador">
+        <mat-header-cell *matHeaderCellDef> Unidad Orgánica Evaluador</mat-header-cell>
+        <mat-cell *matCellDef="let registros"> {{ registros?.evaluador?.equipo_codigo }} </mat-cell>
+      </ng-container>
+
       <ng-container matColumnDef="fichaEvaluador">
         <mat-header-cell *matHeaderCellDef> Ficha del Evaluador </mat-header-cell>
         <mat-cell *matCellDef="let registros"> {{ registros?.evaluador?.codigoFicha }} </mat-cell>
@@ -101,6 +106,12 @@
         <mat-header-cell *matHeaderCellDef> Denominación del puesto del Evaluado </mat-header-cell>
         <mat-cell *matCellDef="let registros"> {{ registros?.evaluado?.nombrePuesto }} </mat-cell>
       </ng-container>
+
+      <ng-container matColumnDef="uoevaluado">
+        <mat-header-cell *matHeaderCellDef>Unidad Orgánica Evaluado</mat-header-cell>
+        <mat-cell *matCellDef="let registros"> {{ registros?.evaluado?.equipo_codigo }} </mat-cell>
+      </ng-container>
+
       <ng-container matColumnDef="fichaEvaluado">
         <mat-header-cell *matHeaderCellDef> Ficha del Evaluado </mat-header-cell>
         <mat-cell *matCellDef="let registros"> {{ registros?.evaluado?.codigoFicha }} </mat-cell>

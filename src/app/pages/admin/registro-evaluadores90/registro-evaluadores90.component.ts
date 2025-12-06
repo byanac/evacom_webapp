@@ -35,11 +35,12 @@ export class RegistroEvaluadores90Component implements OnInit {
   EvalAsignacionExcel: IRegisterEvaluatorsAndEvaluatedValidateMasive = null;
 
   displayedColumns: string[] = [
+    'uoevaluador',
     'fichaEvaluador',
     'nombreEvaluador',
     'rolEvaluador',
     'denoPuestoEvaluador',
-
+     'uoevaluado',
     'fichaEvaluado',
     'nombreEvaluado',
     'rolEvaluado',
@@ -52,12 +53,12 @@ export class RegistroEvaluadores90Component implements OnInit {
   
   displayedColumnsDialog: string[] = [
     'codigoCalendario',
-
+    'uoevaluador',
     'fichaEvaluador',
     'nombreEvaluador',
     'rolEvaluador',
     'denoPuestoEvaluador',
-   
+    'uoevaluado',
     'fichaEvaluado',
     'nombreEvaluado',
     'rolEvaluado',
@@ -565,7 +566,6 @@ export class RegistroEvaluadores90Component implements OnInit {
           .PostSendEvalAsignationExcelForValidation(file)
           .toPromise();
         this.EvalAsignacionExcel = validation;
-        //console.log(this.EvalAsignacionExcel);
       } finally {
         this.utilsService.closeLoading();
         input.value = ''; 

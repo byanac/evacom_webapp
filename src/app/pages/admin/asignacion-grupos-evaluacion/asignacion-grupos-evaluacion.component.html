@@ -161,6 +161,10 @@
           <mat-header-cell *matHeaderCellDef>Denominación del Puesto</mat-header-cell>
           <mat-cell *matCellDef="let grupoeval">{{ grupoeval?.trabajador?.nombrePuesto }}</mat-cell>
         </ng-container>
+        <ng-container matColumnDef="unidadOrganica">
+          <mat-header-cell *matHeaderCellDef>Unidad Orgánica</mat-header-cell>
+          <mat-cell *matCellDef="let grupoeval">{{ grupoeval?.trabajador?.unidadOrganica }}</mat-cell>
+        </ng-container>
         <ng-container matColumnDef="ficha">
           <mat-header-cell *matHeaderCellDef>Código de Ficha</mat-header-cell>
           <mat-cell *matCellDef="let grupoeval">{{ grupoeval?.trabajador?.codigoFicha }}</mat-cell>

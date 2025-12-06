@@ -53,8 +53,8 @@ export class AsignacionGruposEvaluacionComponent implements OnInit, AfterViewIni
 
   lastPositionValue: string | null = null;
   dataSourceEvalGroups = new MatTableDataSource<any>(this.gruposevaluacion);
-  displayedColumns: string[] = ['grupoevaluacionCod','grupoevaluacionNom','ficha','nombresyapellidos','puesto','posicion','ultimamodific','adminmodific','estado','acciones'];
-  displayedColumnsExcelModal: string[] = ['codcalendario','grupoevaluacion','codigoficha','nombresapellidos','codpuesto','denominaciónpuesto','observacion'];
+  displayedColumns: string[] = ['grupoevaluacionCod','grupoevaluacionNom','ficha','nombresyapellidos','puesto','posicion','unidadOrganica','ultimamodific','adminmodific','estado','acciones'];
+  displayedColumnsExcelModal: string[] = ['codcalendario','grupoevaluacion','codigoficha','nombresapellidos','codpuesto','denominaciónpuesto','unidadOrganica','observacion'];
 
   private _onDestroy = new Subject<void>();
 
@@ -110,7 +110,7 @@ export class AsignacionGruposEvaluacionComponent implements OnInit, AfterViewIni
       debugger
       this.utilsService.showLoading();
       const evalUO = await this.adminService.getMembersByTeam(codigoEquipo).toPromise();
-      const filteredMemberGroup = evalUO.registros[0].miembros.sort((a: any, b: any) => b.ficha - a.ficha);
+      const filteredMemberGroup = evalUO.registros[0].miembros.sort((a: any, b: any) => a.ficha - b.ficha);
       this.trabajadorSelect = filteredMemberGroup;
       console.log('Datos cargados en trabajadorSelect:', this.trabajadorSelect);
       this.utilsService.closeLoading();
@@ -161,9 +161,9 @@ export class AsignacionGruposEvaluacionComponent implements OnInit, AfterViewIni
       this.utilsService.showLoading();
       const asignationEvalygroups = await this.AEGService.GetAsignationEvalsGroupsReport(this.CalendarID).toPromise();
       const filteredAsignationEvalgroups = asignationEvalygroups.registros.sort((a: any, b: any) => b.estado - a.estado); 
+      debugger
       this.gruposevaluacion = filteredAsignationEvalgroups
       this.dataSourceEvalGroups.data = this.gruposevaluacion;
-      //console.log(this.gruposevaluacion)
       this.utilsService.closeLoading();
     }catch (error){
       return Swal.fire('Error al cargar los datos de cgrupos de competencia','Por favor, inténtalo de nuevo más tarde.',"error");
