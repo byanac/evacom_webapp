@@ -13,6 +13,11 @@ export class EvalgroupsService {
   getEvaluationGroup(): Observable<any> {
     return this.http.get<IEvaluationGroup>(environment.EvalGroupAPI);
   }
+    
+  getEvaluationGroupByPuesto(codigoCalendario: string, codigoPuesto: string): Observable<any> {
+    const url = `${environment.EvalGroupAPI}${codigoCalendario}/${codigoPuesto}`;
+    return this.http.get<IEvaluationGroup>(url);
+  }
 
   getEvaluationsGroups(): Observable<any> {
     return this.http.get<IEvaluationGroup>(environment.EvalsGroupsAPI);

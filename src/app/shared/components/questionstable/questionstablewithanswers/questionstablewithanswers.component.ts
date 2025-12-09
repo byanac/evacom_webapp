@@ -4,6 +4,7 @@ import { ILoginData } from 'src/app/interfaces/ILoginData';
 import { LoginService } from 'src/app/services/auth/login.service';
 import { AutoevaluationService } from 'src/app/services/autoevaluation/autoevaluation.service';
 import { UtilsService } from 'src/app/services/utils/utils.service';
+import { EvalgroupsService } from 'src/app/services/evalgroups/evalgroups.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -17,15 +18,22 @@ export class QuestionstablewithanswersComponent implements OnInit {
   CalendarCode:string = "";
   FortalezaNameValue: string = "";
   OportunidadNameValue: string = "";
+  GrupoEvaluacion: string = "";
 
   constructor(
-    private AutoevaluationService: AutoevaluationService, 
+    private AutoevaluationService: AutoevaluationService,
+    private evalgroupsService:EvalgroupsService,
     private utilsService: UtilsService
   ){}
 
   ngOnInit(): void {
     this.DataFromsessionStorage = JSON.parse(sessionStorage.getItem('userdata')!);
-    this.CalendarCode = sessionStorage.getItem("vCodigo")
+    this.CalendarCode = sessionStorage.getItem("vCodigo");  
+    debugger
+    this.evalgroupsService.getEvaluationGroupByPuesto(this.Data.registros.calendario,this.DataFromsessionStorage.codPuesto)
+        .subscribe(resp => {
+          this.GrupoEvaluacion = resp.registros;
+        });
   }
 
   ReloadPage(): void{
@@ -33,8 +41,6 @@ export class QuestionstablewithanswersComponent implements OnInit {
   }
 
   SaveButton(): any{
-    debugger
-
     if (!this.Data.registros.competenciaFortaleza || !this.Data.registros.competenciaOportunidad) {
     return Swal.fire(
       'Faltan Competencias',
