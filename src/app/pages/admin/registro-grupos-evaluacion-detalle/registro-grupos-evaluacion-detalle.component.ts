@@ -12,7 +12,7 @@ import { ICompetencyGroup } from 'src/app/interfaces/Calendar/ICompetencyGroup';
 import { ICompetency } from 'src/app/interfaces/Calendar/ICompetency';
 import { ILevel } from 'src/app/interfaces/Calendar/ILevel';
 import { IEvaluationsGroupDetailReport } from 'src/app/interfaces/IEvaluationsGroupDetailReport';
-
+import { MatSort } from '@angular/material/sort';
 
 @Component({
   selector: 'app-registro-grupos-evaluacion-detalle',
@@ -35,6 +35,7 @@ export class RegistroGruposEvaluacionDetalleComponent implements OnInit {
   editingItem: ICompetencyGroup | null = null;
   displayedColumns: string[] = ['grupoeval', 'codigocompetencia','grupocompetencia', 'nivel','ultimamodific','adminmodific', 'estado', 'acciones'];
 
+  @ViewChild('tablaDetalle', { read: MatSort }) sortDetalle!: MatSort;
   constructor(public fb: FormBuilder, private utilsService: UtilsService, private AsignationEvalGroupsService: EvalgroupsCRUDService, private behaviorsCatalogService: BehaviorsCatalogService, private loginService: LoginService) {}
 
   async ngOnInit(): Promise<any> {
@@ -47,6 +48,10 @@ export class RegistroGruposEvaluacionDetalleComponent implements OnInit {
   
   ngAfterViewInit(): void {
     this.dataSourceGroupEvaluacionDetalle.paginator = this.paginatorEvalGroupsDetalle;
+     if (this.sortDetalle) {
+            this.dataSourceGroupEvaluacionDetalle.sort = this.sortDetalle;
+            this.configureSortingDataAccessor();
+        }
   }
 
   initForm(): void {
@@ -129,9 +134,42 @@ export class RegistroGruposEvaluacionDetalleComponent implements OnInit {
       this.gruposEvaluacionDetail = filteredEvalGroupDetail;
       this.dataSourceGroupEvaluacionDetalle.data = this.gruposEvaluacionDetail;
       ////console.log(this.gruposEvaluacionDetail)
+      this.dataSourceGroupEvaluacionDetalle.filterPredicate = (data: any, filter: string) => {
+        const dataStr = (
+                (data.grupoEvaluacion.codigo || '') +          // 1. Código (ID)
+                (data.competencia.codigo || '') +          // 2. Título
+                (data.competencia.titulo || '')  +    // 3. Descripción
+                (data.nivel.nombre || '')      // 3. Descripción
+            ).toLowerCase(); // Todo a minúsculas
+            // Devuelve true si la columna 'codigo' CONTIENE el texto del filtro
+            return dataStr.indexOf(filter) !== -1;
+        };
       this.utilsService.closeLoading();
     } catch (error) {
       return Swal.fire('Error al cargar los datos de detalle de grupos de evaluacióm','Por favor, inténtalo de nuevo más tarde.',"error");
+    } 
+  }
+  configureSortingDataAccessor() {
+     this.dataSourceGroupEvaluacionDetalle.sortingDataAccessor = (item: any, property: string) => {
+         switch (property) {
+             // Reescrito de forma limpia y concisa
+             case 'grupoeval': return item.grupoEvaluacion.codigo;
+             case 'codigocompetencia': return item.competencia.codigo;
+             case 'grupocompetencia': return item.competencia.titulo;
+             case 'nivel': return item.nivel.nombre;
+             default:
+                 const value = item[property];
+                 return (typeof value === 'string') ? value.toLowerCase() : value;
+         }
+     };
+}
+  applyFilterCompetencias(event: Event) {
+  const filterValue = (event.target as HTMLInputElement).value;
+  // Convierte a minúsculas y elimina espacios en blanco al principio/final
+  this.dataSourceGroupEvaluacionDetalle.filter = filterValue.trim().toLowerCase(); 
+  // Opcional: Si usas paginación, puedes añadir esto para ir a la primera página
+  if (this.dataSourceGroupEvaluacionDetalle.paginator) {
+    this.dataSourceGroupEvaluacionDetalle.paginator.firstPage();
     } 
   }
   

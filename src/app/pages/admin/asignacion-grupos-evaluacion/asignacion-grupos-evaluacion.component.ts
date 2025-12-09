@@ -23,7 +23,7 @@ import { FormControl } from '@angular/forms';
 import { ReplaySubject, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { EvalgroupsService } from   'src/app/services/evalgroups/evalgroups.service'; 
-
+import { MatSort } from '@angular/material/sort';
 
 @Component({
   selector: 'app-asignacion-grupos-evaluacion',
@@ -55,6 +55,7 @@ export class AsignacionGruposEvaluacionComponent implements OnInit, AfterViewIni
   dataSourceEvalGroups = new MatTableDataSource<any>(this.gruposevaluacion);
   displayedColumns: string[] = ['grupoevaluacionCod','grupoevaluacionNom','ficha','nombresyapellidos','puesto','posicion','unidadOrganica','ultimamodific','adminmodific','estado','acciones'];
   displayedColumnsExcelModal: string[] = ['codcalendario','grupoevaluacion','codigoficha','nombresapellidos','codpuesto','denominaciónpuesto','unidadOrganica','observacion'];
+  @ViewChild('tablaAsignacion', { read: MatSort }) sortAsignacion!: MatSort;
 
   private _onDestroy = new Subject<void>();
 
@@ -90,6 +91,10 @@ export class AsignacionGruposEvaluacionComponent implements OnInit, AfterViewIni
       .subscribe(() => this.filterUo());
     
 
+       if (this.sortAsignacion) {
+            this.dataSourceEvalGroups.sort = this.sortAsignacion;
+            this.configureSortingDataAccessor();
+        }
   }
 
   /*INI PROY-00013 RFC*/
@@ -110,8 +115,9 @@ export class AsignacionGruposEvaluacionComponent implements OnInit, AfterViewIni
       debugger
       this.utilsService.showLoading();
       const evalUO = await this.adminService.getMembersByTeam(codigoEquipo).toPromise();
-      const filteredMemberGroup = evalUO.registros[0].miembros.sort((a: any, b: any) => a.ficha - b.ficha);
-      this.trabajadorSelect = filteredMemberGroup;
+      const filteredMemberGroup = evalUO.registros[0].miembros.sort((a: any, b: any) => b.ficha - a.ficha);
+      this.trabajadorSelect = evalUO.registros[0].miembros;
+      this.trabajadorSelect.reverse();
       console.log('Datos cargados en trabajadorSelect:', this.trabajadorSelect);
       this.utilsService.closeLoading();
     } catch (error) {
@@ -164,12 +170,53 @@ export class AsignacionGruposEvaluacionComponent implements OnInit, AfterViewIni
       debugger
       this.gruposevaluacion = filteredAsignationEvalgroups
       this.dataSourceEvalGroups.data = this.gruposevaluacion;
+       this.dataSourceEvalGroups.filterPredicate = (data: any, filter: string) => {
+
+        const dataStr = (
+                (data.grupoEvaluacion.codigo || '') +          // 1. Código (ID)
+                (data.grupoEvaluacion.descripcion || '') +          // 2. Título
+                (data.trabajador.codigoPuesto || '')  +    // 3. Descripción
+                (data.trabajador.nombrePuesto || '')  +    // 3. Descripción
+                (data.trabajador.codigoFicha || '')   +   // 3. Descripción
+                (data.trabajador.apellidosNombres  || '')      // 3. Descripción
+                
+                
+               
+            ).toLowerCase(); // Todo a minúsculas
+            return dataStr.indexOf(filter) !== -1;
+        };
+
+      //console.log(this.gruposevaluacion)
       this.utilsService.closeLoading();
     }catch (error){
       return Swal.fire('Error al cargar los datos de cgrupos de competencia','Por favor, inténtalo de nuevo más tarde.',"error");
     }
   }
 
+    applyFilter(event: Event) {
+  const filterValue = (event.target as HTMLInputElement).value;
+  this.dataSourceEvalGroups.filter = filterValue.trim().toLowerCase(); 
+  if (this.dataSourceEvalGroups.paginator) {
+    this.dataSourceEvalGroups.paginator.firstPage();
+  }
+}
+
+configureSortingDataAccessor() {
+     this.dataSourceEvalGroups.sortingDataAccessor = (item: any, property: string) => {
+         switch (property) {
+             // Reescrito de forma limpia y concisa
+             case 'grupoevaluacionCod': return item.grupoEvaluacion.codigo;
+             case 'grupoevaluacionNom': return item.grupoEvaluacion.descripcion;
+             case 'posicion': return item.trabajador.nombrePuesto;
+             case 'nombresyapellidos': return item.trabajador.apellidosNombres;
+             
+                 
+             default:
+                 const value = item[property];
+                 return (typeof value === 'string') ? value.toLowerCase() : value;
+         }
+     };
+}
   async LoadEvalGroupsData(): Promise<any> {
     try {
       this.utilsService.showLoading();

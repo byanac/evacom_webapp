@@ -15,10 +15,11 @@ import Swal from 'sweetalert2';
   styleUrls: ['./ver-evaluaciones-finalizadas.component.css']
 })
 export class VerEvaluacionesFinalizadasComponent implements OnInit {
-  CalendarCode: string = this.route.snapshot.paramMap.get('CalendarCode');
-  CalendarType: string = this.route.snapshot.paramMap.get('CalendarType');
-  EvaluatorFileCode: string = this.route.snapshot.paramMap.get('EvaluatorFileCode');
-  EvaluatorPositionCode: string = this.route.snapshot.paramMap.get('EvaluatorPositionCode');
+ 
+  CalendarCode: string = "";
+  CalendarType: string = "";
+  EvaluatorFileCode: string = "";
+  EvaluatorPositionCode: string = "";
   DataFromsessionStorage:ILoginData = this.loginService.GetUserSession();
   TableData: IAutoEvaluationResult[] = []
   TypeAndPeriodName: string = "";
@@ -33,6 +34,13 @@ export class VerEvaluacionesFinalizadasComponent implements OnInit {
   {}
 
   async ngOnInit(): Promise<void> {
+    console.log("ingresó");
+     // === INICIO DE LECTURA SEGURA DE PARÁMETROS ===
+    this.CalendarCode = this.route.snapshot.paramMap.get('CalendarCode') || '';
+    this.CalendarType = this.route.snapshot.paramMap.get('CalendarType') || '';
+    this.EvaluatorFileCode = this.route.snapshot.paramMap.get('EvaluatorFileCode') || '';
+    this.EvaluatorPositionCode = this.route.snapshot.paramMap.get('EvaluatorPositionCode') || '';
+    // === FIN DE LECTURA SEGURA DE PARÁMETROS ===
     this.utilsService.showLoading();
   
     try {
@@ -41,6 +49,15 @@ export class VerEvaluacionesFinalizadasComponent implements OnInit {
       const filteredSchedule = scheduleData.registros.filter((item: { tipo: string }) => item.tipo === this.CalendarType);
   
       this.TableData = EvaluatorFinishedEvaluations.registros;
+      if (!this.TableData || this.TableData.length === 0) {
+        this.utilsService.closeLoading();
+        // Muestra el mensaje Swal y cierra la ventana
+        Swal.fire('Error','No se encontraron evaluaciones finalizadas .','error').then(
+        () => {
+           window.close();
+        return; 
+        });
+    }
       //console.log(this.TableData)
 
         if (filteredSchedule.length > 0) {

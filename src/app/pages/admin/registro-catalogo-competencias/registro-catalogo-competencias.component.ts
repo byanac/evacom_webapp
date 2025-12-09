@@ -19,7 +19,8 @@ import { IRegisterCompetency } from 'src/app/interfaces/IRegisterCompetency';
 import { IRegisterLevels } from 'src/app/interfaces/IRegisterLevels';
 import { IRegisterBehaviors } from 'src/app/interfaces/IRegisterBehaviors';
 import Swal from 'sweetalert2';
-
+import { MatSort } from '@angular/material/sort';
+import { StepperSelectionEvent } from '@angular/cdk/stepper';
 @Component({
   selector: 'app-registro-catalogo-competencias',
   templateUrl: './registro-catalogo-competencias.component.html',
@@ -44,6 +45,8 @@ export class RegistroCatalogoCompetenciasComponent implements OnInit, AfterViewI
   @ViewChild('paginatorCompetencias') paginatorCompetencias: MatPaginator;
   @ViewChild('paginatorNiveles') paginatorNiveles: MatPaginator;
   @ViewChild('paginatorComportamientos') paginatorComportamientos: MatPaginator;
+  @ViewChild('tablaCompetencias', { read: MatSort }) sortCompetencias!: MatSort;
+  @ViewChild('tablaComportamientos', { read: MatSort }) sortComportamientos!: MatSort;
 
   displayedColumns: string[] = ['codigo', 'descripcion','ultimamodific','adminmodific','estado', 'acciones'];
   displayedColumns2: string[] = ['codigo', 'titulo', 'codigoGrupo', 'grupocompetencia','ultimamodific','adminmodific','estado','acciones'];
@@ -119,6 +122,34 @@ export class RegistroCatalogoCompetenciasComponent implements OnInit, AfterViewI
     this.dataSourceNiveles.paginator = this.paginatorNiveles;
     this.dataSourceComportamientos.paginator = this.paginatorComportamientos;
   }
+  handleStepChange(event: StepperSelectionEvent) {
+    const COMPETENCIAS_STEP_INDEX = 1; // Ajusta este índice
+  const COMPORTAMIENTOS_STEP_INDEX = 3;
+    if (event.selectedIndex === COMPETENCIAS_STEP_INDEX) {
+        if (this.sortCompetencias) {
+            this.dataSourceCompetencias.sort = this.sortCompetencias;
+            this.configureSortingDataAccessor();
+        }
+    }
+    if (event.selectedIndex === COMPORTAMIENTOS_STEP_INDEX) {
+        if (this.sortComportamientos) {
+            this.dataSourceComportamientos.sort = this.sortComportamientos;
+            this.configureSortingDataAccessorComportamiento();
+        }
+    }
+}
+// registro-catalogo-competencias.component.ts
+configureSortingDataAccessor() {
+     this.dataSourceCompetencias.sortingDataAccessor = (item, property) => {
+         switch (property) {
+             // ... [Casos para propiedades anidadas: codigoGrupo, grupocompetencia] ...
+             default:
+                 // Esta cláusula maneja 'titulo', 'codigo', 'estado', etc.
+                 // Convierte a minúsculas si es string para un ordenamiento insensible a mayúsculas
+                 return typeof item[property] === 'string' ? item[property].toLowerCase() : item[property];
+         }
+     };
+}
 
   async LoadCompetencyGroupsData(): Promise<any> {
     try {
@@ -135,7 +166,7 @@ export class RegistroCatalogoCompetenciasComponent implements OnInit, AfterViewI
     }
   }
 
-  async LoadCompetencyData(): Promise<any> {
+  async LoadCompetencyData0(): Promise<any> {
     try {
       this.utilsService.showLoading();
       const competency = await this.behaviorsCatalogService.GetCompetenciesReport().toPromise();
@@ -149,7 +180,45 @@ export class RegistroCatalogoCompetenciasComponent implements OnInit, AfterViewI
       return Swal.fire('Error al cargar los datos de Competencias', 'Por favor, inténtalo de nuevo más tarde.', 'error');
     }
   }
+// registro-catalogo-competencias.component.ts
 
+async LoadCompetencyData(): Promise<any> {
+    try {
+        this.utilsService.showLoading();
+        
+        const competency = await this.behaviorsCatalogService.GetCompetenciesReport().toPromise();
+        
+        // 1. Asignación y Ordenación de Datos
+        const filteredCompetency = competency.registros.sort((a: any, b: any) => b.estado - a.estado);
+        this.competencias = filteredCompetency;
+        this.dataSourceCompetencias.data = this.competencias;
+        this.CompetenciasActivos = this.competencias.filter(competencia => competencia.estado === 1);
+
+        // 2. ⭐ DEFINICIÓN DEL FILTRO PREDICADO PERSONALIZADO ⭐
+        // Esto asegura que el filtro solo busque en la propiedad 'codigo'
+        this.dataSourceCompetencias.filterPredicate = (data: any, filter: string) => {
+
+        const dataStr = (
+                (data.codigo || '') +          // 1. Código (ID)
+                (data.titulo || '') +          // 2. Título
+                (data.grupo.codigo || '')  +    // 3. Descripción
+                (data.grupo.descripcion || '')      // 3. Descripción
+               
+            ).toLowerCase(); // Todo a minúsculas
+
+            // Convierte el valor de la columna 'codigo' a minúsculas
+            const dataStr2 = data.codigo ? data.codigo.toLowerCase() : '';
+            
+            // Devuelve true si la columna 'codigo' CONTIENE el texto del filtro
+            return dataStr.indexOf(filter) !== -1;
+        };
+        
+        this.utilsService.closeLoading();
+    } catch (error) {
+        console.error('Error al cargar las competencias:', error);
+        return Swal.fire('Error al cargar los datos de Competencias', 'Por favor, inténtalo de nuevo más tarde.', 'error');
+    }
+}
   async LoadLevelsData(): Promise<any> {
     try {
       this.utilsService.showLoading();
@@ -172,12 +241,44 @@ export class RegistroCatalogoCompetenciasComponent implements OnInit, AfterViewI
       const filteredBehaviors = behaviors.registros.sort((a: any, b: any) => b.estado - a.estado);
       this.comportamientos = filteredBehaviors;
       this.dataSourceComportamientos.data = this.comportamientos;
+       this.dataSourceComportamientos.filterPredicate = (data: any, filter: string) => {
+
+        const dataStr = (
+                (data.codigo || '') +          // 1. Código (ID)
+                (data.competencia.codigo || '') +          // 2. Título
+                (data.competencia.titulo || '')  +    // 3. Descripción
+                (data.nivel.nombre || '')      // 3. Descripción
+               
+            ).toLowerCase(); // Todo a minúsculas
+
+            // Convierte el valor de la columna 'codigo' a minúsculas
+            const dataStr2 = data.codigo ? data.codigo.toLowerCase() : '';
+            
+            // Devuelve true si la columna 'codigo' CONTIENE el texto del filtro
+            return dataStr.indexOf(filter) !== -1;
+        };
       this.utilsService.closeLoading();
     } catch (error) {
       console.error('Error al cargar los comportamientos:', error);
       return Swal.fire('Error al cargar los datos de Comportamientos', 'Por favor, inténtalo de nuevo más tarde.', 'error');
     }
   }
+// registro-catalogo-competencias.component.ts
+
+configureSortingDataAccessorComportamiento() {
+     this.dataSourceComportamientos.sortingDataAccessor = (item: any, property: string) => {
+         switch (property) {
+             // Reescrito de forma limpia y concisa
+             case 'codigoCompetencia': return item.competencia.codigo;
+             case 'competencia': return item.competencia.titulo;
+             case 'nivel': return item.nivel.nombre;
+                 
+             default:
+                 const value = item[property];
+                 return (typeof value === 'string') ? value.toLowerCase() : value;
+         }
+     };
+}
 
   openUploadExcelCompetencyDialog(): void {
     this.competenciasExcel = undefined;
@@ -1240,4 +1341,24 @@ export class RegistroCatalogoCompetenciasComponent implements OnInit, AfterViewI
     })  
   }
 
+  applyFilterCompetencias(event: Event) {
+  const filterValue = (event.target as HTMLInputElement).value;
+  // Convierte a minúsculas y elimina espacios en blanco al principio/final
+  this.dataSourceCompetencias.filter = filterValue.trim().toLowerCase(); 
+  
+  // Opcional: Si usas paginación, puedes añadir esto para ir a la primera página
+  if (this.dataSourceCompetencias.paginator) {
+    this.dataSourceCompetencias.paginator.firstPage();
+  }
+}
+  applyFilterComportamientos(event: Event) {
+  const filterValue = (event.target as HTMLInputElement).value;
+  // Convierte a minúsculas y elimina espacios en blanco al principio/final
+  this.dataSourceComportamientos.filter = filterValue.trim().toLowerCase(); 
+  
+  // Opcional: Si usas paginación, puedes añadir esto para ir a la primera página
+  if (this.dataSourceComportamientos.paginator) {
+    this.dataSourceComportamientos.paginator.firstPage();
+  }
+}
 }

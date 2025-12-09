@@ -52,29 +52,34 @@
   </div>
   <div class="bg-white shadow-md rounded px-8 pt-6 pb-8">
     <h2 class="text-xl font-semibold mb-4">Detalle de grupos de evaluación - Registrados</h2>
-    <mat-table [dataSource]="dataSourceGroupEvaluacionDetalle">
+     <mat-form-field appearance="outline" class="w-full pt-16">
+    <mat-label>Buscar en Detalle de Grupo de evaluación</mat-label>
+    <input matInput (keyup)="applyFilterCompetencias($event)" placeholder="Escribe ID, Codigo de Competencia, Competencia, Nivel ...">
+    <mat-icon matSuffix>search</mat-icon>
+</mat-form-field>
+    <mat-table matSort #tablaDetalle [dataSource]="dataSourceGroupEvaluacionDetalle">
 
       <!-- ID Column -->
       <ng-container matColumnDef="grupoeval">
-        <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
         <mat-cell *matCellDef="let grupo"> {{ grupo?.grupoEvaluacion?.codigo }} </mat-cell>
       </ng-container>
     
       <!-- Codigo de Competencia Column -->
       <ng-container matColumnDef="codigocompetencia">
-        <mat-header-cell *matHeaderCellDef> Codigo de Competencia </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Codigo de Competencia </mat-header-cell>
         <mat-cell *matCellDef="let grupo"> {{grupo?.competencia?.codigo}} </mat-cell>
       </ng-container>
 
       <!-- Titulo de Competencia Column -->
       <ng-container matColumnDef="grupocompetencia">
-        <mat-header-cell *matHeaderCellDef> Competencia </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Competencia </mat-header-cell>
         <mat-cell *matCellDef="let grupo"> {{grupo?.competencia?.titulo}} </mat-cell>
       </ng-container>
     
       <!-- Competencia Column -->
       <ng-container matColumnDef="nivel">
-        <mat-header-cell *matHeaderCellDef class="center-text"> Nivel </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header class="center-text"> Nivel </mat-header-cell>
         <mat-cell *matCellDef="let grupo" class="center-text">
           {{ grupo?.nivel?.nombre }}
         </mat-cell>

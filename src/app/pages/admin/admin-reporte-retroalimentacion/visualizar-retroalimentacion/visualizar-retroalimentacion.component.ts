@@ -57,7 +57,7 @@ export class VisualizarRetroalimentacionComponent implements OnInit {
   PeriodName: string = ""
   CalendarTypeNumber: string = ""
 
-
+ public chartOptions2: any;
 
   constructor(private route: ActivatedRoute, private loginservice: LoginService, private calendarService: CalendarService,private EvaluatorService: PeopletobeevaluatedService, private router: Router, private feedbackService: FeedbackService, private utilService: UtilsService, private loginService: LoginService, private autoevaluationService: AutoevaluationService){}
 
@@ -85,6 +85,39 @@ export class VisualizarRetroalimentacionComponent implements OnInit {
             this.router.navigateByUrl('/home');
         });
     }
+     //JA
+        const componentContext = this; 
+        this.chartOptions2 = {
+            responsive: true,
+            scales: {
+                yAxes: [{
+                    ticks: { beginAtZero: true, max: 100 }
+                }]
+            },
+            legend: {
+                position: 'bottom',
+                display: true,
+                labels: {
+                    // Usamos una función clásica para garantizar que 'componentContext' funcione
+                    generateLabels: function(chart: any) {
+                        const colorsConfig = componentContext.chartColorsEvaluators2[0]; 
+                        if (chart.data.labels.length && chart.data.datasets.length) {
+                            return chart.data.labels.map((label: string, i: number) => {
+                                return {
+                                    text: label,
+                                    fillStyle: colorsConfig.backgroundColor[i], 
+                                    strokeStyle: colorsConfig.borderColor[i],
+                                    lineWidth: 1,
+                                    hidden: false,
+                                    index: i
+                                };
+                            });
+                        }
+                        return [];
+                    }
+                }
+            }
+        };
 }
 
 
@@ -166,7 +199,7 @@ export class VisualizarRetroalimentacionComponent implements OnInit {
         AutoEvaluationData.competencia.forEach((item: any) => {
               this.chartLabels.push(item.titulo);
               this.chartLabels3.push(item.titulo);
-              this.chartData[0].data.push(item.promedioAuto);
+              this.chartData[0].data.push(item.promedio);
               this.chartData[1].data.push(75);
               this.chartData3[0].data.push(item.promedioAuto);
               this.chartData3[1].data.push(item.promedio);
@@ -198,7 +231,7 @@ export class VisualizarRetroalimentacionComponent implements OnInit {
       AutoEvaluationData.competencia.forEach((item: any) => {
             this.chartLabels.push(item.titulo);
             this.chartLabels3.push(item.titulo);
-            this.chartData[0].data.push(item.promedioAuto);
+            this.chartData[0].data.push(item.promedio);
             this.chartData[1].data.push(75);
             this.chartData3180[0].data.push(item.promedioAuto);
             this.chartData3180[1].data.push(item.promedio);
@@ -367,6 +400,40 @@ export class VisualizarRetroalimentacionComponent implements OnInit {
     }
   ];
 
+public chartColorsEvaluators2: Array<any> = [
+    { 
+      // CONFIGURACIÓN DE LAS BARRAS (Ahora con 3 colores)
+      backgroundColor: [
+        'rgba(255, 140, 0, 0.5)',    // Color 1: Naranja (para Autoevaluación)
+        'rgba(75, 192, 192, 0.5)',   // Color 2: Verde azulado (para Jefe directo)
+        'rgba(153, 102, 255, 0.5)'   // Color 3: Morado (para Subalternos)
+      ],
+      borderColor: [
+        'rgba(255, 140, 0, 0.8)',
+        'rgba(75, 192, 192, 0.8)',
+        'rgba(153, 102, 255, 0.8)'
+      ],
+      borderWidth: 4, 
+      hoverBackgroundColor: [
+        'rgba(255, 120, 0, 0.7)',
+        'rgba(75, 192, 192, 0.7)',
+        'rgba(153, 102, 255, 0.7)'
+      ],
+      hoverBorderColor: [
+        'rgba(255, 140, 0, 0.8)',
+        'rgba(75, 192, 192, 1)',
+        'rgba(153, 102, 255, 1)'
+      ]
+    },
+    { 
+      // CONFIGURACIÓN DE LA LÍNEA (Se mantiene igual)
+      borderColor: 'rgba(0, 0, 255, 0.7)',
+      pointBackgroundColor: 'rgba(0, 0, 255, 0.7)',
+      pointBorderColor: '#fff',
+      pointHoverBackgroundColor: '#fff',
+      pointHoverBorderColor: 'rgba(0, 0, 255, 0.7)'
+    }
+];
   public chartOptions3: any = {
     responsive: true,
     scales: {
@@ -450,4 +517,7 @@ export class VisualizarRetroalimentacionComponent implements OnInit {
 
   public chartLegend3: boolean = true;
   public chartType3: string = 'bar';
+   PrintButton(){
+    window.print();
+  }
 }

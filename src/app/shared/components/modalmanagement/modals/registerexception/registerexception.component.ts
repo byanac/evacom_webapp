@@ -256,6 +256,13 @@ export class RegisterexceptionComponent implements OnInit {
       if (data) {
         this.DataList = [];
         this.TeamsErrors = [];
+        if (data.registros.length==0){
+           Swal.fire(
+                'Error',
+                'No existe evaluaciones asignadas en esta Unidad Orgánica.',
+                'error'
+              );
+        } else {
         for (let item of data.registros) {
           try {
             const evaluatedValidation: any = await this.utilSergice.GetEvaluatorStatusForPhase(
@@ -284,6 +291,8 @@ export class RegisterexceptionComponent implements OnInit {
             }
           }
         }
+         this.utilsService.closeLoading();
+      }
       }
     } catch (error) {
       console.error('Error al obtener los datos del equipo:', error);
@@ -293,7 +302,7 @@ export class RegisterexceptionComponent implements OnInit {
         'error'
       );
     } finally {
-      this.utilsService.closeLoading();
+     
     }
   }
 

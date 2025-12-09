@@ -15,7 +15,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { LoginService } from 'src/app/services/auth/login.service';
 import { IEvaluatorandEvaluatedsReport } from 'src/app/interfaces/IEvaluatorandEvaluatedsReport';
 import { IRegisterEvaluatorsAndEvaluatedValidateMasive } from 'src/app/interfaces/IRegisterEvaluatorsAndEvaluatedValidateMasive';
-
+import { MatSort } from '@angular/material/sort';
 @Component({
   selector: 'app-registro-evaluadores180',
   templateUrl: './registro-evaluadores180.component.html',
@@ -43,6 +43,7 @@ export class RegistroEvaluadores180Component implements OnInit {
   evaluatorsArrayForValidation: any[] = [];
   EvalAsignacionExcel: IRegisterEvaluatorsAndEvaluatedValidateMasive = null;
   @ViewChild(MatPaginator) paginator!: MatPaginator; // Vincular el paginador
+  @ViewChild('tablaRegistro', { read: MatSort }) sortAsignacion!: MatSort;
   dataSource = new MatTableDataSource<any>(); // Convertir dataSource a MatTableDataSource
 
    evaluations: IEvaluatorandEvaluatedsReport[] = [];
@@ -91,6 +92,10 @@ export class RegistroEvaluadores180Component implements OnInit {
     await this.LoadCalendarInfo();
     await this.LoadCalendarCalcRulesInfo();
     await this.LoadEvalAsignationData();
+    if (this.sortAsignacion) {
+            this.dataSource.sort = this.sortAsignacion;
+            this.configureSortingDataAccessor();
+        }
   }
 
   async LoadCalendarInfo(): Promise<any>{
@@ -117,6 +122,14 @@ export class RegistroEvaluadores180Component implements OnInit {
       this.evaluations = this.evaluadores
       //console.log(this.evaluadores)
       this.processData();
+      this.dataSource.filterPredicate = (data: any, filter: string) => {
+        const dataStr = (
+                (data.evaluado.equipo_codigo || '') +          // 1. Código (ID)
+                (data.evaluado.codigoFicha || '') +          // 2. Título
+                (data.evaluado.apellidosNombres || '')          // 3. Descripción
+            ).toLowerCase(); // Todo a minúsculas
+            return dataStr.indexOf(filter) !== -1;
+        };
       this.utilsService.closeLoading();
     } catch (error) {
       console.error('Error al cargar los datos de asignación del calendario:', error);
@@ -125,6 +138,19 @@ export class RegistroEvaluadores180Component implements OnInit {
       })
     } 
   }
+  configureSortingDataAccessor() {
+     this.dataSource.sortingDataAccessor = (item: any, property: string) => {
+         switch (property) {
+             // Reescrito de forma limpia y concisa
+             case 'nombreCortoUO': return item.evaluado.equipo_codigo;
+             case 'fichaEvaluado': return item.evaluado.codigoFicha;
+             case 'nombreEvaluado': return item.evaluado.apellidosNombres;
+             default:
+                 const value = item[property];
+                 return (typeof value === 'string') ? value.toLowerCase() : value;
+         }
+     };
+}
 
   async LoadCalendarCalcRulesInfo(): Promise<any>{
     try {
@@ -196,6 +222,13 @@ export class RegistroEvaluadores180Component implements OnInit {
     // Asignar al dataSource
     this.dataSource.data = Object.values(grouped);
     this.dataSource.paginator = this.paginator; // Vincular el paginador
+  }
+     applyFilter(event: Event) {
+      const filterValue = (event.target as HTMLInputElement).value;
+      this.dataSource.filter = filterValue.trim().toLowerCase(); 
+      if (this.dataSource.paginator) {
+        this.dataSource.paginator.firstPage();
+      }
   }
 
   getEvaluatorRole(tipoEvaluador: number): string {

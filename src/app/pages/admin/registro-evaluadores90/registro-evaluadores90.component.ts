@@ -14,7 +14,7 @@ import { LoginService } from 'src/app/services/auth/login.service';
 import { IEvaluatorandEvaluatedsReport } from 'src/app/interfaces/IEvaluatorandEvaluatedsReport';
 import { IRegisterEvaluatorsAndEvaluated } from 'src/app/interfaces/IRegisterEvaluatorsAndEvaluated';
 import { IRegisterEvaluatorsAndEvaluatedValidateMasive } from 'src/app/interfaces/IRegisterEvaluatorsAndEvaluatedValidateMasive';
-
+import { MatSort } from '@angular/material/sort';
 @Component({
   selector: 'app-registro-evaluadores90',
   templateUrl: './registro-evaluadores90.component.html',
@@ -34,6 +34,7 @@ export class RegistroEvaluadores90Component implements OnInit {
 
   EvalAsignacionExcel: IRegisterEvaluatorsAndEvaluatedValidateMasive = null;
 
+  @ViewChild('tablaRegistro', { read: MatSort }) sortAsignacion!: MatSort;
   displayedColumns: string[] = [
     'uoevaluador',
     'fichaEvaluador',
@@ -77,12 +78,31 @@ export class RegistroEvaluadores90Component implements OnInit {
     await this.initForm();
     await this.LoadCalendarInfo();
     await this.LoadEvalAsignationData();
+    if (this.sortAsignacion) {
+            this.dataSourceEvalAsignation.sort = this.sortAsignacion;
+            this.configureSortingDataAccessor();
+        }
   }
 
   ngAfterViewInit(): void {
     this.dataSourceEvalAsignation.paginator = this.paginatorEvalGroups;
   }
 
+  configureSortingDataAccessor() {
+     this.dataSourceEvalAsignation.sortingDataAccessor = (item: any, property: string) => {
+         switch (property) {
+             // Reescrito de forma limpia y concisa
+             case 'fichaEvaluador': return item.evaluador.codigoFicha;
+             case 'uoEvaluador': return item.evaluador.equipo_codigo;
+             case 'nombreEvaluador': return item.evaluador.apellidosNombres;
+             case 'fichaEvaluado': return item.evaluado.codigoFicha;
+             case 'nombreEvaluado': return item.evaluado.apellidosNombres;
+             default:
+                 const value = item[property];
+                 return (typeof value === 'string') ? value.toLowerCase() : value;
+         }
+     };
+}
 
   async LoadEvalAsignationData(): Promise<any> {
     try{
@@ -92,6 +112,16 @@ export class RegistroEvaluadores90Component implements OnInit {
       const filteredAsignationEvalgroups = asignationEvalygroups.registros.sort((a: any, b: any) => b.estado - a.estado); 
       this.evaluadores = filteredAsignationEvalgroups
       this.dataSourceEvalAsignation.data = this.evaluadores;
+       this.dataSourceEvalAsignation.filterPredicate = (data: any, filter: string) => {
+        const dataStr = (
+                (data.evaluador.codigoFicha || '') +          // 1. Código (ID)
+                (data.evaluador.equipo_codigo || '') +          // 2. Título
+                (data.evaluador.apellidosNombres || '')  +    // 3. Descripción
+                (data.evaluado.codigoFicha || '')  +    // 3. Descripción
+                (data.evaluado.apellidosNombres || '')        // 3. Descripción
+            ).toLowerCase(); // Todo a minúsculas
+            return dataStr.indexOf(filter) !== -1;
+        };
       sessionStorage.setItem('asignaciones',JSON.stringify(this.dataSourceEvalAsignation.data));
   
       //console.log(this.evaluadores)
@@ -99,6 +129,13 @@ export class RegistroEvaluadores90Component implements OnInit {
     }catch (error) {
       console.error('Error al cargar los datos de las asignaciones:', error);
       return Swal.fire('Error al cargar los datos de las asignaciones', 'Por favor, inténtalo de nuevo más tarde.', 'error');
+    }
+  }
+      applyFilter(event: Event) {
+  const filterValue = (event.target as HTMLInputElement).value;
+  this.dataSourceEvalAsignation.filter = filterValue.trim().toLowerCase(); 
+  if (this.dataSourceEvalAsignation.paginator) {
+    this.dataSourceEvalAsignation.paginator.firstPage();
     }
   }
 

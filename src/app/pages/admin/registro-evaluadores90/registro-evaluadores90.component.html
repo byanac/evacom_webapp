@@ -70,7 +70,14 @@
   
     <div class="bg-white shadow-md rounded px-8 pt-6 pb-8">
       <h2 class="text-xl font-semibold mb-4">Registro de evaluadores y evaluados 90° - Registros</h2>
-      <mat-table [dataSource]="dataSourceEvalAsignation" >
+       <mat-form-field appearance="outline" class="w-full pt-4">
+    <mat-label>Buscar registro</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Escribe Ficha del evaluador, UO de Evaluador, Apellidos y nombre del evaluador, 
+    Ficha del evaluado, Apellidos y nombre del evaluado...">
+    <mat-icon matSuffix>search</mat-icon>
+</mat-form-field>  
+    <hr>
+      <mat-table matSort #tablaRegistro [dataSource]="dataSourceEvalAsignation" >
 
       <ng-container matColumnDef="posicionEvaluador">
         <mat-header-cell *matHeaderCellDef> Denominación del puesto del Evaluador </mat-header-cell>
@@ -78,12 +85,12 @@
       </ng-container>
 
       <ng-container matColumnDef="uoevaluador">
-        <mat-header-cell *matHeaderCellDef> Unidad Orgánica Evaluador</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Unidad Orgánica Evaluador</mat-header-cell>
         <mat-cell *matCellDef="let registros"> {{ registros?.evaluador?.equipo_codigo }} </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="fichaEvaluador">
-        <mat-header-cell *matHeaderCellDef> Ficha del Evaluador </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Ficha del Evaluador </mat-header-cell>
         <mat-cell *matCellDef="let registros"> {{ registros?.evaluador?.codigoFicha }} </mat-cell>
       </ng-container>
 
@@ -98,7 +105,7 @@
       </ng-container>
 
       <ng-container matColumnDef="nombreEvaluador">
-        <mat-header-cell *matHeaderCellDef> Nombres y Apellidos del Evaluador </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Nombres y Apellidos del Evaluador </mat-header-cell>
         <mat-cell *matCellDef="let registros"> {{ registros?.evaluador?.apellidosNombres }} </mat-cell>
       </ng-container>
 
@@ -113,7 +120,7 @@
       </ng-container>
 
       <ng-container matColumnDef="fichaEvaluado">
-        <mat-header-cell *matHeaderCellDef> Ficha del Evaluado </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Ficha del Evaluado </mat-header-cell>
         <mat-cell *matCellDef="let registros"> {{ registros?.evaluado?.codigoFicha }} </mat-cell>
       </ng-container>
 
@@ -123,7 +130,7 @@
       </ng-container>
 
       <ng-container matColumnDef="nombreEvaluado">
-        <mat-header-cell *matHeaderCellDef> Nombres y Apellidos del Evaluado </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Nombres y Apellidos del Evaluado </mat-header-cell>
         <mat-cell *matCellDef="let registros"> {{ registros?.evaluado?.apellidosNombres }} </mat-cell>
       </ng-container>
 

@@ -130,6 +130,7 @@ import { SincronizacionUnidadOrganizativaComponent } from './pages/admin/sincron
 import { AsignacionGruposCargaAutomaticavalComponent } from './pages/admin/carga-automatica-asignacion/asignacion-grupos-carga-automatica.component';
 import {RegistroEvaluadoEvaluadorCargaAutomaticavalComponent} from './pages/admin/carga-automatica-registro/registro-evaluado-evaluador-carga-automatica.component';
 
+import { MatSortModule } from '@angular/material/sort';
 // Formato personalizado para el mat-datepicker
 export const MY_DATE_FORMATS = {
   parse: {
@@ -273,7 +274,8 @@ export const MY_DATE_FORMATS = {
     MatSlideToggleModule,
     StepsModule,
     MatPaginatorModule,
-    MatListModule
+    MatListModule,
+    MatSortModule
   ],  
   providers: [
     {

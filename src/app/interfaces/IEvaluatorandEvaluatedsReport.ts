@@ -4,6 +4,7 @@ export interface Evaluador {
     codigoPuesto: string;
     nombrePuesto: string;
     tipoEvaluador: number;
+    equipo_codigo: string;
   }
   
   export interface Evaluado {

@@ -211,7 +211,7 @@
               <ng-container *ngFor="let item of EvaluatedPIDMenuItems; index as i">
                 <li *ngIf="loginService.isUserEvaluated()?.estadoEvaluado && LoadedEvaluatedExceptionFlags">
                   <a (click)="configurationService.ToggleMenu();"
-                     *ngIf="(showEvaluatedPIDOptions && this.VerifyEvaluatedRangedDates(item.startCalendarName, item.endCalendarName)) || FindEvaluatedFlagValue(item.exceptionFlagName)" 
+                     *ngIf="(showEvaluatedPIDOptions && this.VerifyEvaluatedRangedDatesPID(item.startCalendarName, item.endCalendarName) ) || FindEvaluatedFlagValue(item.exceptionFlagName)" 
                      [routerLink]="[item.route]" 
                      [id]="item.route + '_id'" 
                      class="flex items-center p-2 text-left decoration-transparent text-black rounded-lg hover:bg-gray-300 group">

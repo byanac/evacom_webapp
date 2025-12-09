@@ -208,7 +208,61 @@ export class SlidedrawerComponent implements OnInit {
     }
   }
 
-  VerifyEvaluatedRangedDates(campoInicio: string, campoFin: string,fecha:string): boolean {
+  VerifyEvaluatedRangedDates(campoInicio: string, campoFin: string, fecha?: string): boolean {
+    if (!this.filteredCalendar) {
+      return false;
+    }
+    try {
+      const fechaInicio = new Date(`${this.filteredCalendar[campoInicio]}T00:00:00`);
+      const fechaFinRaw = new Date(`${this.filteredCalendar[campoFin]}T00:00:00`);
+      const fechaFin = new Date(fechaFinRaw);
+      fechaFin.setDate(fechaFinRaw.getDate() + 1); // Suma un día (ej: 2025-12-05 00:00:00)
+      let fechaActual: Date;
+      if (fecha) {
+        const [dia, mes, anio] = fecha.split('/').map(Number);
+        fechaActual = new Date(anio, mes - 1, dia, 0, 0, 0, 0); // Mes es 0-indexado
+      } else {
+        const hoy = new Date();
+        fechaActual = new Date(hoy.getFullYear(), hoy.getMonth(), hoy.getDate(), 0, 0, 0, 0);
+      }
+      if (isNaN(fechaInicio.getTime()) || isNaN(fechaFin.getTime()) || isNaN(fechaActual.getTime())) {
+        console.warn(`Fechas no válidas. Inicio: ${campoInicio}, Fin: ${campoFin}, Actual: ${fecha}`);
+        return false;
+      }
+      return fechaActual >= fechaInicio && fechaActual < fechaFin;
+    } catch (error) {
+      console.error('Error al verificar las fechas:', error);
+      return false;
+    }
+}
+VerifyEvaluatedRangedDatesPID(campoInicio: string, campoFin: string, fecha?: string): boolean {
+    if (!this.filteredCalendar) {
+      return false;
+    }
+    try {
+      const fechaInicio = new Date(`${this.filteredCalendar[campoInicio]}T00:00:00`);
+      const fechaFinRaw = new Date(`${this.filteredCalendar[campoFin]}T00:00:00`);
+      const fechaFin = new Date(fechaFinRaw);
+      fechaFin.setDate(fechaFinRaw.getDate() + 1); // Suma un día (ej: 2025-12-05 00:00:00)
+      let fechaActual: Date;
+      if (fecha) {
+        const [dia, mes, anio] = fecha.split('/').map(Number);
+        fechaActual = new Date(anio, mes - 1, dia, 0, 0, 0, 0); // Mes es 0-indexado
+      } else {
+        const hoy = new Date();
+        fechaActual = new Date(hoy.getFullYear(), hoy.getMonth(), hoy.getDate(), 0, 0, 0, 0);
+      }
+      if (isNaN(fechaInicio.getTime()) || isNaN(fechaFin.getTime()) || isNaN(fechaActual.getTime())) {
+        console.warn(`Fechas no válidas. Inicio: ${campoInicio}, Fin: ${campoFin}, Actual: ${fecha}`);
+        return false;
+      }
+      return fechaActual >= fechaInicio && fechaActual < fechaFin;
+    } catch (error) {
+      console.error('Error al verificar las fechas:', error);
+      return false;
+    }
+}
+  VerifyEvaluatedRangedDates0(campoInicio: string, campoFin: string,fecha:string): boolean {
     if (!this.filteredCalendar) {
       return false;
     }

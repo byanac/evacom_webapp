@@ -254,7 +254,7 @@ export class RegisterEvaluatedFeedbackComponent implements OnInit {
       AutoEvaluationData.competencia.forEach((item: any) => {
             this.chartLabels.push(item.titulo);
             this.chartLabels3.push(item.titulo);
-            this.chartData[0].data.push(item.promedioAuto);
+            this.chartData[0].data.push(item.promedio);
             this.chartData[1].data.push(75);
             this.chartData3180[0].data.push(item.promedioAuto);
             this.chartData3180[1].data.push(item.promedio);
@@ -460,7 +460,7 @@ export class RegisterEvaluatedFeedbackComponent implements OnInit {
     }
   ];
 
-  // En tu archivo .component.ts
+  
 public chartColorsEvaluators2: Array<any> = [
     { 
       // CONFIGURACIÓN DE LAS BARRAS (Ahora con 3 colores)

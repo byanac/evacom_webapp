@@ -47,7 +47,7 @@ export class DetallesEvaluadorComponent implements OnInit {
     this.utilsService.closeLoading();;
   }
 
-  sendEmail(nombre: string){
+  sendEmail(fichaEvaluado: string){
       Swal.fire({
         title:  "Aviso",
         text: `¿Estás seguro de que deseas enviar un recordatorio al evaluador ${this.EvaluatorName}?`,
@@ -58,7 +58,7 @@ export class DetallesEvaluadorComponent implements OnInit {
       }).then((result) => {
         if (result.value) {
           this.utilsService.showLoading();
-          this.EmailService.sendEvaluatorEmail(this.CalendarCode, this.EvaluatorPosition, this.EvaluatorFile)
+          this.EmailService.sendEvaluatorEmailEvaluadorEvaluado(this.CalendarCode, this.EvaluatorPosition, this.EvaluatorFile, fichaEvaluado)
           .subscribe({
             next: (data) => {
               ////console.log(data);

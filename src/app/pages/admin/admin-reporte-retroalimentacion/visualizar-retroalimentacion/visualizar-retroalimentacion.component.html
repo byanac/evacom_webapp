@@ -1,6 +1,6 @@
 <div *ngIf="DataToShow != undefined && EvaluationID != undefined && FeedbackStatus != undefined">
   <div class="mt-2 container">
-    <section class="title-container" style="page-break-after: always;">
+    <section class="title-container" >
       <div class="text-center font-bold">
         <p>
           REPORTE DE RESULTADOS Y RETROALIMENTACIÓN DE LA EVALUACIÓN DEL DESEMPEÑO
@@ -89,7 +89,7 @@
       </table>
   
       <div class="ResultCompetencyContainerInfo180" *ngIf="DataToShow != undefined">
-        <section class="m-0 mt-4 w-96">
+        <section class="m-0 mt-4 " style="width: 540px;">
           <table class="w-full h-full">
             <thead>
             <tr>
@@ -100,13 +100,13 @@
           <tbody>
             <tr *ngFor="let competencia of DataToShow.competencia.slice(0, 3)">
               <td class="w-60">{{competencia?.titulo}}</td>
-              <td>{{competencia?.promedioAuto}}% - {{this.ObtenerLabeldeEstado(competencia?.promedioAuto)}}</td>
+              <td>{{competencia?.promedio}}% - {{this.ObtenerLabeldeEstado(competencia?.promedio)}}</td>
             </tr>
           </tbody>
           </table>
         </section>
   
-        <section class="m-0 mt-4 w-96">
+        <section class="m-0 mt-4 " style="width: 540px;">
           <table class="w-full h-full"><thead>
             <tr>
               <th>Competencias</th>
@@ -135,8 +135,8 @@
           baseChart
           [datasets]="chartDataEvaluators"
           [labels]="chartLabelsEvaluators"
-          [options]="chartOptions"
-          [colors]="chartColorsEvaluators"
+          [options]="chartOptions2"
+          [colors]="chartColorsEvaluators2"
           [legend]="chartLegend"
           [chartType]="chartType"
         >
@@ -144,7 +144,7 @@
         </tbody>
       </table>
       <div [ngClass]="{'ResultCompetencyContainerInfo90': Show90, 'ResultCompetencyContainerInfo180': Show180}" *ngIf="DataToShow != undefined">
-        <section class="m-0 mt-4 w-96">
+        <section class="m-0 mt-4 w-140">
           <table class="w-full h-full"><thead>
             <tr>
               <th>Evaluador</th>
@@ -184,8 +184,8 @@
       </div>
     </section>
   </div>
-  <div class="mt-2 container">
-    <section class="title-container" style="page-break-after: always;">
+  <div class="mt-2 container page-break-new">
+    <section class="title-container" >
       <div class="text-center font-bold">
         <p>
           REPORTE DE RESULTADOS Y RETROALIMENTACIÓN DE LA EVALUACIÓN DEL DESEMPEÑO
@@ -302,8 +302,8 @@
     </section>
   </div>    
   
-  <div class="mt-2 container">
-    <section class="title-container" style="page-break-after: always;">
+  <div class="mt-2 container page-break-new">
+    <section class="title-container" >
       <div class="text-center font-bold">
         <p>
           REPORTE DE RESULTADOS Y RETROALIMENTACIÓN DE LA EVALUACIÓN DEL DESEMPEÑO
@@ -472,3 +472,10 @@
     </table>
     </table>
   </section>
+   <div class="flex justify-center items-center pb-6 footer">
+    <div>
+      <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full mr-6" (click)="PrintButton()">
+        Imprimir
+      </button>
+    </div>
+  </div>

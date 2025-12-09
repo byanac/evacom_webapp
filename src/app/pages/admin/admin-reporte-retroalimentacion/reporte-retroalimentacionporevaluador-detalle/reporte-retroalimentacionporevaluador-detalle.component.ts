@@ -111,6 +111,32 @@ export class ReporteRetroalimentacionporevaluadorDetalleComponent implements OnI
     });     
 }
 
+ sendRetroEvaluatorNotificationEval(nombres: string,  fichaEvaluado: string){
+    Swal.fire({
+      title:  "Aviso",
+      text: `¿Estás seguro de que deseas enviar un recordatorio por correo al evaluador ${this.EvaluatorName} con respecto a su evaluado ${nombres}?`,
+      type: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Enviar',
+      cancelButtonText: "Cancelar"
+    }).then((result) => {
+      if (result.value) {
+        this.utilsService.showLoading();
+        this.feedbackService.SendEvaluatorForDoFeedbackEval(this.EvaluatorFile, fichaEvaluado, this.CalendarCode)
+        .subscribe({
+          next: (data) => {
+            ////console.log(data);
+            Swal.fire("Recordatorio enviado de manera exitosa al evaluador.", "","success"
+            );
+          },
+          error: (error) => {
+            console.error("Error:", error.message);
+            Swal.fire("Error al enviar el recordatorio.",'',"error");
+          }
+        });
+        }
+    });     
+}
   onImgError(event){
     event.target.src = 'assets/img/ProfilePicturePlaceHolder.jpg'
   }

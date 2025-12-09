@@ -90,4 +90,16 @@ canvas {
   .resultstable td {
     white-space: nowrap;
   }
+     @media print {
+    app-nav {
+      display: none;
+    }
   
+    .footer{
+      display: none;
+    }
+    .page-break-new {
+        page-break-before: always;
+        margin-top: 10px; 
+    }
+  }

@@ -7,7 +7,8 @@ import { UtilsService } from 'src/app/services/utils/utils.service';
 import Swal from 'sweetalert2';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
-
+import { EvaluatorsService } from 'src/app/services/evaluators/evaluators.service';
+import { IAutoEvaluationResult } from 'src/app/interfaces/IAutoEvaluationResult';
 
 @Component({
   selector: 'app-registrar-evaluacion',
@@ -21,14 +22,15 @@ export class RegistrarEvaluacionComponent implements OnInit, OnDestroy {
   ShowTable: boolean = false;
   SesionData = this.loginService.GetUserSession();
   private routeSub: Subscription;
-
+ TableData: IAutoEvaluationResult[] = []
   constructor(
     private peopletobeevaluatedService: PeopletobeevaluatedService,
     private calendarService: CalendarService,
     private utilsService: UtilsService,
     private router: Router,
     private loginService: LoginService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+     private evaluatorsService: EvaluatorsService,
   ) {}
 
 ngOnInit(): void {
@@ -109,8 +111,19 @@ ngOnInit(): void {
     window.open(`#/home/descarga-masiva/${this.SesionData.codPuesto}/${this.SesionData.ficha}/${this.CalendarType}`,'_blank');
   }
 
-  ViewEndedEvaluations():void{
+ async  ViewEndedEvaluations() {
+    const EvaluatorFinishedEvaluations = await this.evaluatorsService.GetFinishedEvaluatorsEvaluations(this.SesionData.codPuesto,this.CalendarCode).toPromise();
+    this.TableData = EvaluatorFinishedEvaluations.registros;
+          if (!this.TableData || this.TableData.length === 0) {
+            this.utilsService.closeLoading();
+            // Muestra el mensaje Swal y cierra la ventana
+            Swal.fire('Error','No se encontraron evaluaciones finalizadas .','error').then(
+            () => {
+               window.close();
+            return; 
+            });
+  } else {
     window.open(`#/home/evaluaciones-finalizadas/${this.SesionData.ficha}/${this.SesionData.codPuesto}/${this.CalendarCode}/${this.CalendarType}`,'_blank');
   }
 
-}
+}}

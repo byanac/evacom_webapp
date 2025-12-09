@@ -41,7 +41,7 @@
                     <div class="flex items-center">
                         <div class="w-full">
                             <button type="button" *ngIf="item.estadoEvaluacion" [routerLink]="['/home/resultados-trabajador',item.codigoFicha,item.codigoPuesto,this.EvaluatorFile,this.EvaluatorPosition,this.CalendarCode]" class="text-white bg-green-500 hover:bg-green-600 font-medium rounded-lg text-sm px-2.5 py-2.5 w-full">Ver resultados</button>
-                            <button type="button" *ngIf="!item.estadoEvaluacion" (click)="sendEmail(item.apellidosNombres)" class="w-full text-white bg-blue-500 hover:bg-blue-600 font-medium rounded-lg text-sm px-2.5 py-2.5">Notificar</button>
+                            <button type="button" *ngIf="!item.estadoEvaluacion" (click)="sendEmail(item.codigoFicha)" class="w-full text-white bg-blue-500 hover:bg-blue-600 font-medium rounded-lg text-sm px-2.5 py-2.5">Notificar</button>
                         </div>
                     </div>                    
                 </td>

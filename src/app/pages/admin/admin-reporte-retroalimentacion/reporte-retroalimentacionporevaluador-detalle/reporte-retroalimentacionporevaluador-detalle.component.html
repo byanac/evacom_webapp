@@ -51,7 +51,7 @@
                         </button>
                         <!-- Notificar Evaluador -->
                         <button *ngIf="!item.estadoEvaluador"
-                                (click)="sendEvaluatorNotification(item.apellidosNombres,item.idEvaluacion)"
+                                (click)="sendRetroEvaluatorNotificationEval(item.apellidosNombres,item.codigoFicha)"
                                 class="text-white bg-blue-500 hover:bg-blue-600 font-medium rounded-lg text-sm px-2.5 py-2.5 w-full">
                             Notificar evaluador
                         </button>

@@ -66,6 +66,9 @@ export class FeedbackService {
     return this.http.get<any>(`${environment.SendEvaluatorForDoFeedback}/${idEvaluacion}`); 
   }
   
+  SendEvaluatorForDoFeedbackEval(fichaEvaluador: string,fichaEvaluado: string, codigoCalendario: string): Observable <any> {
+    return this.http.get<any>(`${environment.SendEvaluatorForDoFeedback}/${fichaEvaluador}/${fichaEvaluado}/${codigoCalendario}`); 
+  }
   GetFeedbackStatus(IDRetroalimentacion: number): Observable<any>{
     if (isDevMode()) {
       return this.http.get<any>(`${environment.GetFeedbackStatus}`); 

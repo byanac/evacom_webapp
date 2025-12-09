@@ -20,6 +20,8 @@ export class SendemailService {
   sendEvaluatorEmail(codCalendar: string, codPuesto: string, codFicha:string){
     return this.http.get(`${environment.EmailEvaluacionAPI}/${codCalendar}/${codPuesto}/${codFicha}`);
   }
-
+ sendEvaluatorEmailEvaluadorEvaluado(codCalendar: string, codPuesto: string, codFicha:string, codfichaEvaluado:string){
+    return this.http.get(`${environment.EmailEvaluacionAPI}/${codCalendar}/${codPuesto}/${codFicha}/${codfichaEvaluado}`);
+  }
   
 }

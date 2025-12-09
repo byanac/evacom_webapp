@@ -4,7 +4,7 @@
   </header>
 
   <main class="flex-grow p-4">
-    <mat-horizontal-stepper [linear]="true" #stepper class="bg-white p-6 rounded-lg shadow-lg">
+    <mat-horizontal-stepper [linear]="true" #stepper class="bg-white p-6 rounded-lg shadow-lg" (selectionChange)="handleStepChange($event)">
 
     <!-- Paso 1: Grupos de Competencias -->
     <mat-step label="Grupos de Competencias" [stepControl]="grupoCompetenciaForm">
@@ -239,15 +239,21 @@
               <button type="button" (click)="SendCompetenciesData()" *ngIf="competenciasExcel != undefined && competenciasExcel?.datos?.listadoIncorrectos.length === 0" class="inline-flex w-full justify-center rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-blue-500 sm:mt-0 sm:w-auto" >Confirmar</button>  
             </mat-dialog-actions>
           </ng-template>
-          
-          <mat-table [dataSource]="dataSourceCompetencias" class="mt-4 w-full">
+          <hr>
+          <mat-form-field appearance="outline" class="w-full pt-16">
+    <mat-label>Buscar Competencia</mat-label>
+    <input matInput (keyup)="applyFilterCompetencias($event)" placeholder="Escribe Código, Título, 
+    Cod. Grupo de Competencia O Grupo de competencia...">
+    <mat-icon matSuffix>search</mat-icon>
+</mat-form-field>
+          <mat-table matSort #tablaCompetencias [dataSource]="dataSourceCompetencias" class="mt-4 w-full">
             <!-- Columnas de la tabla -->
             <ng-container matColumnDef="codigo">
-              <mat-header-cell *matHeaderCellDef>Código</mat-header-cell>
+              <mat-header-cell *matHeaderCellDef mat-sort-header>Código</mat-header-cell>
               <mat-cell *matCellDef="let competencia">{{ competencia.codigo }}</mat-cell>
             </ng-container>
             <ng-container matColumnDef="titulo">
-              <mat-header-cell *matHeaderCellDef>Título</mat-header-cell>
+              <mat-header-cell *matHeaderCellDef mat-sort-header>Título</mat-header-cell>
               <mat-cell *matCellDef="let competencia">{{ competencia.titulo }}</mat-cell>
             </ng-container>
             <ng-container matColumnDef="codigoGrupo">
@@ -428,23 +434,27 @@
             <span>Subir excel</span>
           </button>
         </div>
-     
-        <mat-table [dataSource]="dataSourceComportamientos" class="mt-4 w-full">
+     <mat-form-field appearance="outline" class="w-full pt-16">
+    <mat-label>Buscar Comportamiento</mat-label>
+    <input matInput (keyup)="applyFilterComportamientos($event)" placeholder="Escribe Código, Cod Competencia, Competencia, Nivel...">
+    <mat-icon matSuffix>search</mat-icon>
+</mat-form-field>
+        <mat-table matSort #tablaComportamientos [dataSource]="dataSourceComportamientos" class="mt-4 w-full">
           <!-- Columnas de la tabla -->
           <ng-container matColumnDef="codigo">
-            <mat-header-cell *matHeaderCellDef>Código</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Código</mat-header-cell>
             <mat-cell *matCellDef="let comportamiento">{{ comportamiento?.codigo }}</mat-cell>
           </ng-container>
           <ng-container matColumnDef="codigoCompetencia">
-            <mat-header-cell *matHeaderCellDef>Cod. Competencia</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Cod. Competencia</mat-header-cell>
             <mat-cell *matCellDef="let comportamiento">{{ comportamiento?.competencia?.codigo }}</mat-cell>
           </ng-container>
           <ng-container matColumnDef="competencia">
-            <mat-header-cell *matHeaderCellDef>Competencia</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Competencia</mat-header-cell>
             <mat-cell *matCellDef="let comportamiento">{{ comportamiento?.competencia?.titulo }}</mat-cell>
           </ng-container>
           <ng-container matColumnDef="nivel">
-            <mat-header-cell *matHeaderCellDef>Nivel</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Nivel</mat-header-cell>
             <mat-cell *matCellDef="let comportamiento">{{ comportamiento?.nivel?.nombre  }}</mat-cell>
           </ng-container>
 
