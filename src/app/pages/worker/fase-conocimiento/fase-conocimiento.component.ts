@@ -22,6 +22,8 @@ export class FaseConocimientoComponent {
   styleString: string = ''
   UserData: ILoginData
   PeriodName: string = ""
+  grupoEval: string =""
+  grupoEvalDes: string =""
 
   constructor(private knowledgeService: KnowledgeService, private utilsService: UtilsService, private GetEvaluationProgressionService: AutoevaluationService){}
 
@@ -35,6 +37,8 @@ export class FaseConocimientoComponent {
     const periodname: IAutoEvaluationResult = await ((this.GetEvaluationProgressionService.GetAutoEvalProgression(this.DataFromsessionStorage.ficha, this.DataFromsessionStorage.codPuesto)).toPromise());
     this.PeriodName = periodname.registros.calendario_nombre
     this.TableData = [response];
+    this.grupoEval= this.TableData[0].registros.grupoEvaluacion;
+    this.grupoEvalDes= this.TableData[0].registros.grupoEvaluacionDes;
     this.ConfirmedButtonOn = this.TableData[0].registros.conformidadOtorgada;
     this.utilsService.closeLoading();
   }
