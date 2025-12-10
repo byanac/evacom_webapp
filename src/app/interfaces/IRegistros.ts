@@ -1,6 +1,7 @@
 import { ICompetencia } from "./ICompetencia";
 
 export interface IRegistros {
+  grupoEvaluacionDes: string;
   calendario: {
     vCodigo: string;
     vNombre: string;
