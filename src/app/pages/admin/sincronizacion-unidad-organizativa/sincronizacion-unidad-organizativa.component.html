@@ -5,6 +5,12 @@
     <button class="DownloadMasive" (click)="onSincronizar()">{{nameButton}}</button>
   </div>
   <div class="bg-white shadow-md rounded px-8 pt-6 pb-8">
+    <mat-form-field appearance="outline" class="w-full pt-4">
+    <mat-label>Buscar registro</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Escribe Código, Nombre corto, Nombre de Unidad Organizativa ...">
+    <mat-icon matSuffix>search</mat-icon>
+</mat-form-field>  
+    <hr>
     <mat-table matSort #tablaDetalle [dataSource]="dataSourceSincronizacion">
       <ng-container matColumnDef="codigo">
         <mat-header-cell *matHeaderCellDef mat-sort-header> Código </mat-header-cell>

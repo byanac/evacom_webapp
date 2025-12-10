@@ -45,6 +45,13 @@ export class SincronizacionUnidadOrganizativaComponent implements OnInit {
     this.LoadData();
   }
 
+      applyFilter(event: Event) {
+  const filterValue = (event.target as HTMLInputElement).value;
+  this.dataSourceSincronizacion.filter = filterValue.trim().toLowerCase(); 
+  if (this.dataSourceSincronizacion.paginator) {
+    this.dataSourceSincronizacion.paginator.firstPage();
+  }
+}
 
   async LoadData(skipLoading: boolean = false): Promise<any> {
     try {
@@ -64,6 +71,14 @@ export class SincronizacionUnidadOrganizativaComponent implements OnInit {
 
 
       if (!skipLoading) {
+         this.dataSourceSincronizacion.filterPredicate = (data: any, filter: string) => {
+        const dataStr = (
+                (data.codigo || '') +          // 1. Código (ID)
+                (data.nombreCorto || '') +          // 2. Título
+                (data.nombre || '')       // 3. Descripción
+            ).toLowerCase(); // Todo a minúsculas
+            return dataStr.indexOf(filter) !== -1;
+        };
         this.utilsService.closeLoading();
       }
     } catch (error) {
@@ -91,7 +106,7 @@ export class SincronizacionUnidadOrganizativaComponent implements OnInit {
         case 'codigo': return item.codigo;
         case 'nombreCorto': return item.nombreCorto;
         case 'nombre': return item.nombre;
-        case 'fecha': return item.fechae;
+        case 'fecha': return item.fecha;
         default:
           const value = item[property];
           return (typeof value === 'string') ? value.toLowerCase() : value;
