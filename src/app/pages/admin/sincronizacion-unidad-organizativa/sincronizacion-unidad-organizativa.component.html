@@ -4,50 +4,33 @@
   <div class="contenedor">
     <button class="DownloadMasive" (click)="onSincronizar()">{{nameButton}}</button>
   </div>
-  <div class="relative overflow-x-auto h-screen">
-    <table class="w-full text-sm text-left rtl:text-right text-gray-500 block overflow-x-auto">
-      <thead class="text-xs text-gray-700 uppercase bg-gray-5">
-        <tr>
-          <th scope="col" class="px-6 py-3 border" style="width: 20%">
-            Código
-          </th>
-          <th scope="col" class="px-6 py-3 border" style="width: 20%">
-            Nombre Corto
-          </th>
-          <th scope="col" class="px-6 py-3 border" style="width: 45%">
-            Nombre Unidad Organizativa
-          </th>
-          <th scope="col" class="px-6 py-3 border" style="width: 20%">
-            Fecha de Actualización
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- <tr *ngFor="let item of unidadOrganizativaSelect" > -->
-        <tr *ngFor="let item of paginatedUnidadOrganizativa">
-          <td class="px-6 py-4 text-black border">{{item.codigo}}</td>
-          <td class="px-6 py-4 text-black border">{{item.nombreCorto}}</td>
-          <td class="px-6 py-4 text-black border">{{item.nombre}}</td>
-          <td class="px-6 py-4 text-black border">{{ item.fecha | date:'dd/MM/yyyy' }}</td>
-        </tr>
-      </tbody>
-    </table>
-    <div class="flex justify-center mt-4">
-      <button (click)="changePage(currentPage - 1)" [disabled]="currentPage === 1"
-        class="mx-1 px-3 py-1 border rounded bg-gray-200 hover:bg-gray-300">
-        Anterior
-      </button>
+  <div class="bg-white shadow-md rounded px-8 pt-6 pb-8">
+    <mat-table matSort #tablaDetalle [dataSource]="dataSourceSincronizacion">
+      <ng-container matColumnDef="codigo">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Código </mat-header-cell>
+        <mat-cell *matCellDef="let item"> {{ item?.codigo }} </mat-cell>
+      </ng-container>
 
-      <span class="mx-2 text-sm">
-        Página {{ currentPage }} de {{ totalPages }}
-      </span>
+      <ng-container matColumnDef="nombreCorto">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Nombre Corto </mat-header-cell>
+        <mat-cell *matCellDef="let item"> {{ item?.nombreCorto }} </mat-cell>
+      </ng-container>
 
-      <button (click)="changePage(currentPage + 1)" [disabled]="currentPage === totalPages"
-        class="mx-1 px-3 py-1 border rounded bg-gray-200 hover:bg-gray-300">
-        Siguiente
-      </button>
-    </div>
+      <ng-container matColumnDef="nombre">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Nombre Unidad Organizativa </mat-header-cell>
+        <mat-cell *matCellDef="let item"> {{ item?.nombre }} </mat-cell>
+      </ng-container>
 
+      <ng-container matColumnDef="fecha">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Fecha de Actualización </mat-header-cell>
+        <mat-cell *matCellDef="let item"> {{ item?.fecha | date:'dd/MM/yyyy' }} </mat-cell>
+      </ng-container>
+      <!-- Header Row -->
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <!-- Data Rows -->
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+    <mat-paginator #paginatorSincronizacion [pageSizeOptions]="[10, 15, 20, 25 ,30]" showFirstLastButtons></mat-paginator>
   </div>
 </div>
 <!-- FIN PROY-00013 RFC -->

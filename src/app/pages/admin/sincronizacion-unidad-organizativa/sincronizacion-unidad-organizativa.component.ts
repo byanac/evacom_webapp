@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { UtilsService } from 'src/app/services/utils/utils.service';
 import { EvalgroupsCRUDService } from 'src/app/services/evalgroupsCRUD/evalgroups-crud.service';
@@ -6,6 +6,9 @@ import { IUnidadOrganizativa } from 'src/app/interfaces/IUnidadOrganizativa';
 import Swal from 'sweetalert2';
 import { GerencyService } from 'src/app/services/gerency/gerency.service';
 import { TeamService } from 'src/app/services/team/team.service';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
 
 /* INI PROY-00013 RFC */
 @Component({
@@ -23,6 +26,11 @@ export class SincronizacionUnidadOrganizativaComponent implements OnInit {
   TypeToCreate: boolean = false;
   SelectedItemID: number;
   unidadOrganizativaSelect: IUnidadOrganizativa[] = [];  //PROY-00013 RFC
+  dataSourceSincronizacion = new MatTableDataSource<any>([]);
+  @ViewChild('paginatorSincronizacion') paginatorSincronizacion: MatPaginator;
+  @ViewChild('tablaDetalle', { read: MatSort }) sortDetalle!: MatSort;
+
+  displayedColumns: string[] = ['codigo', 'nombreCorto', 'nombre', 'fecha'];
 
   constructor(private router: Router,
     private AsignationEvalGroupsService: EvalgroupsCRUDService,
@@ -43,9 +51,18 @@ export class SincronizacionUnidadOrganizativaComponent implements OnInit {
       if (!skipLoading) {
         this.utilsService.showLoading();
       }
-      const evalUO = await this.AsignationEvalGroupsService.GetUnidadOrganizativa().toPromise();
-      const filteredUOGroup = evalUO.registros.sort((a: any, b: any) => b.codigo - a.codigo);
-      this.unidadOrganizativaSelect = filteredUOGroup;
+      debugger;
+      const evalUO = await this.AsignationEvalGroupsService
+        .GetUnidadOrganizativa()
+        .toPromise();
+
+      const filteredUOGroup = evalUO.registros
+        .sort((a: any, b: any) => b.codigo - a.codigo);
+
+      this.dataSourceSincronizacion.data = filteredUOGroup;
+
+
+
       if (!skipLoading) {
         this.utilsService.closeLoading();
       }
@@ -57,6 +74,31 @@ export class SincronizacionUnidadOrganizativaComponent implements OnInit {
       );
     }
   }
+
+  ngAfterViewInit(): void {
+    this.dataSourceSincronizacion.paginator = this.paginatorSincronizacion;
+    if (this.sortDetalle) {
+      this.dataSourceSincronizacion.sort = this.sortDetalle;
+      this.configureSortingDataAccessor();
+    }
+  }
+
+
+  configureSortingDataAccessor() {
+    this.dataSourceSincronizacion.sortingDataAccessor = (item: any, property: string) => {
+      switch (property) {
+        // Reescrito de forma limpia y concisa
+        case 'codigo': return item.codigo;
+        case 'nombreCorto': return item.nombreCorto;
+        case 'nombre': return item.nombre;
+        case 'fecha': return item.fechae;
+        default:
+          const value = item[property];
+          return (typeof value === 'string') ? value.toLowerCase() : value;
+      }
+    };
+  }
+
 
   onSincronizar() {
     debugger
