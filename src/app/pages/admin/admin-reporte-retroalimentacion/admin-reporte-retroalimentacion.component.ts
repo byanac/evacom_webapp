@@ -15,7 +15,10 @@ import { FilepositionperiodfilterService } from 'src/app/services/filepositionpe
 import { UtilsService } from 'src/app/services/utils/utils.service';
 import { FeedbackService } from 'src/app/services/feedback/feedback.service';
 import { AdminFeedbackEvaluatorsProgressionReport } from 'src/app/interfaces/AdminFeedbackEvaluatorsProgressionReport ';
+import { Registro, IPIDEvaluatorReport } from 'src/app/interfaces/IPIDEvaluatorReport';
+import { IReporteGlobal } from  'src/app/interfaces/IReporteGlobal';
 
+import { ReporteDataService } from 'src/app/services/ReporteDataServiceService/reporte-data-service.service';
 @Component({
   selector: 'app-admin-reporte-retroalimentacion',
   templateUrl: './admin-reporte-retroalimentacion.component.html',
@@ -27,6 +30,7 @@ private teamJsonSubscription: Subscription = new Subscription();
 private FichaSubscription: Subscription = new Subscription();
 private PuestoSubscription: Subscription = new Subscription();
 private PeriodoSubscription: Subscription = new Subscription();  
+TableData: IPIDEvaluatorReport[];
 
   codFicha!: string;
   codPuesto!: string;
@@ -53,14 +57,17 @@ private PeriodoSubscription: Subscription = new Subscription();
   ShowChangeFeedbackPeriodModal: boolean = false;
   ChiefOptionOn:boolean = false;
   EvaluatedOptionOn:boolean = false;
-  DataList:AdminFeedbackEvaluatorsProgressionReport 
-
+  //DataList:AdminFeedbackEvaluatorsProgressionReport 
+  DataList: AdminFeedbackEvaluatorsProgressionReport[] = [];
   constructor(
     private feedbackService: FeedbackService,
     private utilsService: UtilsService,  
     private teamService: TeamService,
     private gerencyteamService: GerencyteamsmultiselectService, 
     private filepositionperiodService: FilepositionperiodfilterService, 
+    private loginservice: LoginService,
+    private reporteDataService: ReporteDataService,
+    private router: Router,
   ) {}
 
   async ngOnInit(): Promise<void>{
@@ -110,6 +117,7 @@ private PeriodoSubscription: Subscription = new Subscription();
     };
     const data = await this.feedbackService.PostGetEvaluatorsFeedbackProgression(BodyKnowledgeFilter).toPromise();
     if(data.registros.length === 0){
+      this.DataList = [];
       return Swal.fire("NOTIFICACIÓN","No se encontraron registros.","info")
     }else{
       ////console.log(data.registros)
@@ -152,4 +160,44 @@ private PeriodoSubscription: Subscription = new Subscription();
   }
 
 
+    private getDetallePromise(puesto: string, calendario: string): Promise<IPIDEvaluatorReport> {
+        return this.feedbackService.GetFeedbackReportfromSelectedEvaluator(puesto, calendario).toPromise();
+    }
+    async global()
+    {
+     if (this.DataList.length > 0) {        
+         this.TableData = []; 
+        const TipoCalendario: string = this.loginservice.GetEvaluatorCalendarType(this.Periodo);
+        const retorno: IReporteGlobal = {
+                 calendarioCodigo: '',
+                 calendarioTipo: '',
+                 registros: []
+             };
+         retorno.calendarioCodigo =this.Periodo;
+         retorno.calendarioTipo=TipoCalendario;
+         const evaluadoresConRetro = this.DataList.filter(
+             (item: AdminFeedbackEvaluatorsProgressionReport) => item.evaluados_terminados > 0
+         );
+         for (const item of evaluadoresConRetro){            
+            const resp = await this.feedbackService.GetFeedbackReportfromSelectedEvaluator(item.codigoPuesto, this.Periodo).toPromise();
+            for (const evaluado of resp.registros) {
+                if (evaluado.estadoEvaluador || evaluado.estadoEvaluado) {
+                   retorno.registros.push({
+                        evaluadorFicha: item.codigoFicha,
+                        evaluadorPuesto: item.codigoPuesto,
+                        evaluadoFicha: evaluado.codigoFicha,
+                        evaluadoPuesto: evaluado.codigoPuesto                        
+                      });
+                }
+            }
+         }
+        this.reporteDataService.setReporteGlobal(retorno);
+           console.log(retorno);
+           const urlTree = this.router.createUrlTree(['/home/reporte-retroalimentacion-global']);
+           const relativeUrl = this.router.serializeUrl(urlTree);
+           const absoluteUrl = window.location.origin + '/#' + relativeUrl;
+          // window.open(absoluteUrl, '_blank');
+           this.router.navigate(['/home/reporte-retroalimentacion-global']);
+    }
+  }
 }

@@ -54,3 +54,114 @@ th,td{
     font-weight: bolder;
     width: 100%;
   }
+
+
+.custom-dialog-width ::ng-deep .p-dialog .p-dialog-content {
+    min-width: 600px; /* Asegura un ancho legible */
+    padding: 1rem;
+}
+
+.fact-card {
+    margin-bottom: 25px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    
+}
+
+.fact-card ::ng-deep .ui-card-body,
+.fact-card ::ng-deep .p-card-body {
+    padding: 0 !important; /* Fuerza la eliminación del padding */
+}
+
+.fact-card ::ng-deep .ui-card-content,
+.fact-card ::ng-deep .p-card-content {
+    padding: 0 !important;
+}
+
+.fact-header {
+    background-color: #f7f7f7; 
+    padding: 10px 15px; 
+    border-top-left-radius: 6px; 
+    border-top-right-radius: 6px;
+    border-bottom: 1px solid #ddd; 
+    
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+}
+
+.fact-author {
+    font-weight: bold;
+}
+
+.fact-date {
+    color: #6c757d; /* Color gris para información secundaria */
+    font-size: 0.9em;
+}
+
+
+
+.label-bold {
+    font-weight: bold;    
+    margin-right: 0.5rem;
+  
+}
+
+.value-italic {
+    font-style: italic;
+}
+
+/* Estilo para la caja de la descripción */
+.fact-description-box {
+    border-left: 4px solid var(--primary-color, #1e88e5); 
+    background-color: #f8f9fa; 
+    padding: 0.75rem 1rem;
+    margin-top: 1rem;
+    border-radius: 2px;
+    
+    /* 💥 CLAVE 4: Añade margen lateral para que se alinee con los 15px del fact-details */
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.description-title {
+    display: block; /* Asegura que el título ocupe su propia línea antes del texto */
+    margin-bottom: 0.25rem;
+}
+
+.description-text {
+    text-align: justify; /* Justifica el texto para una lectura más formal */
+    margin: 0; /* Elimina márgenes extra de la etiqueta <p> */
+}
+.fact-details {
+    padding: 15px; 
+    
+    padding-left: 20px;
+}
+.fact-details p {
+
+    margin: 8px 0; 
+    padding: 0; 
+    
+}
+.fact-tag {
+    display: inline-block;
+    padding: 0.25em 0.4em;
+    font-size: 75%;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 0.25rem;
+    
+    margin-left: 0.5rem; 
+}
+.fact-positive {
+    color: #fff; /* Texto blanco */
+    background-color: #4CAF50; /* Fondo verde */
+}
+
+.fact-negative {
+    color: #fff; /* Texto blanco */
+    background-color: #f44336; /* Fondo rojo */
+}

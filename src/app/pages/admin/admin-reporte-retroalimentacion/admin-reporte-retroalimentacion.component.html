@@ -25,7 +25,10 @@
       </div>
     </div>
 <div *ngIf="ChiefView" class="contenedor h-12">
+   <span>
   <button class="DownloadMasive" (click)="ShowModal()">Modificar fecha de apertura y cierre</button>
+  <button  [disabled]="!DataList.length"   class="DownloadMasive ml-4" (click)="global()">Reporte global </button>
+  </span> 
 </div> 
 <div *ngIf="ChiefView" class="relative overflow-x-auto">
   <table class="w-full text-sm text-left rtl:text-right text-gray-500 border solid">

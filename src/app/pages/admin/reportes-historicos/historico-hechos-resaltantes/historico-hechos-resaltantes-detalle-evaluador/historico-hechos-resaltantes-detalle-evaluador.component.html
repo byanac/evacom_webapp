@@ -4,6 +4,9 @@
 <app-targetscounters *ngIf="TableData != undefined" [DataToCount]="TableData" [ConfirmedEntryName]="'registraHechos'" [ConfirmText]="'Con hechos registrados'" [NotConfirmedText]="'Sin hechos registrados'"></app-targetscounters>
 
 <div class="relative overflow-x-auto">
+  <div id="TitleContainer" class="grid  titlecontainer" style="min-height: 3rem;" >
+      <h1 class="text-lg mb-1 ml-5">Lista de evaluados</h1>
+    </div>
   <table class="w-full text-sm text-left rtl:text-right text-gray-500 border solid">
     <thead class="text-xs text-gray-700 uppercase bg-gray-5">
       <tr>
@@ -67,20 +70,49 @@
 
 
 <div *ngIf="FactsData != undefined ">
-  <p-dialog header="Hechos resaltantes de {{EvaluatedName}}" [(visible)]="visible"> 
-      <div *ngFor="let item of FactsData.registros">
-          <div class="grid">
-              <hr class="bg-black" style="margin: 0.5rem 0 0.5rem 0 !important;">
-              <span>Autor: <b>{{item?.evaluador_nombre}}</b></span>
-              <span>Fecha: <b>{{DecodeDate(item?.fecha)}}</b></span>
-              <hr class="bg-black" style="margin: 0.5rem 0 0.5rem 0 !important;">
-          </div>
-          <div>
-              <p><b>Competencia:</b> {{item?.competencia_titulo}}</p>
-              <p><b>Comportamiento:</b> {{item?.competencia_descripcion}}</p>
-              <p><b>Tipo de hecho:</b> {{GetTypeText(item?.indicador)}}</p>
-              <p><b>Descripción:</b> {{item?.descripcion}}</p>
-          </div>
-      </div>
-  </p-dialog>
+
+    <p-dialog header=" Hechos Resaltantes de {{EvaluatedName}}" [(visible)]="visible" [modal]="true" class="custom-dialog-width"> 
+        <div class="fact-list">
+            <div *ngFor="let item of FactsData.registros">
+                
+                <p-card class="fact-card ">
+                    
+                    <div class="fact-header">
+                        <span class="fact-author">👤 Autor: <b>{{item?.evaluador_nombre}}</b></span>
+                        <span class="fact-date">🗓️ Fecha: {{DecodeDate(item?.fecha)}}</span>
+                    </div>
+
+                    <div class="fact-details ">
+                        
+                        <p>
+                            <span class="label-bold"><b>Competencia:</b></span> 
+                            <span class="value-italic">{{item?.competencia_titulo}}</span>
+                        </p>
+                        
+                        <p>
+                            <span class="label-bold"><b>Comportamiento:</b></span> 
+                            {{item?.competencia_descripcion}}
+                        </p>
+                        
+                        <p>
+                            <span class="label-bold"><b>Tipo de hecho:</b></span> 
+                            <span class="fact-tag" 
+                                  [ngClass]="{'fact-positive': item?.indicador === 'P', 'fact-negative': item?.indicador !== 'P'}">
+                                {{GetTypeText(item?.indicador)}}
+                            </span>
+                        </p>
+                    </div>
+                    
+                    <div class="fact-description-box">
+                        <span class="label-bold description-title"><b>Descripción:</b></span>
+                        <p class="description-text">{{item?.descripcion}}</p>
+                    </div>
+                    
+                </p-card>
+                <hr>
+            </div>
+        </div>
+    </p-dialog>
 </div>
+
+

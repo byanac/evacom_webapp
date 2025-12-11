@@ -48,6 +48,7 @@ import { ResultadoTrabajadorHistoricoComponent } from "src/app/pages/admin/repor
 import { SincronizacionUnidadOrganizativaComponent } from "src/app/pages/admin/sincronizacion-unidad-organizativa/sincronizacion-unidad-organizativa.component";
 import {AsignacionGruposCargaAutomaticavalComponent} from "src/app/pages/admin/carga-automatica-asignacion/asignacion-grupos-carga-automatica.component"
 import {RegistroEvaluadoEvaluadorCargaAutomaticavalComponent} from "src/app/pages/admin/carga-automatica-registro/registro-evaluado-evaluador-carga-automatica.component" 
+import { VisualizarGlobalComponent } from "src/app/pages/admin/visualizar-retroalimentacion-global/visualizar-global.component";
 
 export const AdminRoutes = [
     {
@@ -286,6 +287,11 @@ export const AdminRoutes = [
     ,{
       path: 'sincronizacion-unidad-organizativa',
       component: SincronizacionUnidadOrganizativaComponent,
+      canActivate: [SessionGuard, AdminGuard]
+    }
+    ,{
+      path: 'reporte-retroalimentacion-global',
+      component: VisualizarGlobalComponent,
       canActivate: [SessionGuard, AdminGuard]
     }
     /*FIN PROY-00013 RFC*/

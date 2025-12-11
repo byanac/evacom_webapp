@@ -131,6 +131,8 @@ import { AsignacionGruposCargaAutomaticavalComponent } from './pages/admin/carga
 import {RegistroEvaluadoEvaluadorCargaAutomaticavalComponent} from './pages/admin/carga-automatica-registro/registro-evaluado-evaluador-carga-automatica.component';
 
 import { MatSortModule } from '@angular/material/sort';
+import { CardModule } from 'primeng/card';
+import { VisualizarGlobalComponent } from './pages/admin/visualizar-retroalimentacion-global/visualizar-global.component';
 // Formato personalizado para el mat-datepicker
 export const MY_DATE_FORMATS = {
   parse: {
@@ -238,7 +240,8 @@ export const MY_DATE_FORMATS = {
     VerPidCumplimientoComponent,
     PIDComponent,
     CUMPLIMIENTOComponent,
-    ResultadoTrabajadorHistoricoComponent
+    ResultadoTrabajadorHistoricoComponent,
+    VisualizarGlobalComponent
   ],
   imports: [
     FormsModule,
@@ -275,7 +278,8 @@ export const MY_DATE_FORMATS = {
     StepsModule,
     MatPaginatorModule,
     MatListModule,
-    MatSortModule
+    MatSortModule,
+    CardModule
   ],  
   providers: [
     {
