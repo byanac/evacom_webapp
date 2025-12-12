@@ -47,7 +47,7 @@ export class VisualizarRetroalimentacionComponent implements OnInit {
 
   AutoEvaluationResponse: IAutoEvaluationResult
   AutoEvaluationResult:number = 0;
-
+  EvaluationResult:number = 0;
   EvaluatorResponse90: any;
   EvaluatorEvaluationResult: number = 0
 
@@ -192,7 +192,7 @@ export class VisualizarRetroalimentacionComponent implements OnInit {
   private processAutoEvaluationAndEvaluationData(): void {
       const AutoEvaluationData = this.DataToShow;
       this.AutoEvaluationResult = AutoEvaluationData.promedioAutoevaluacion
-
+this.EvaluationResult = AutoEvaluationData.promedioEvaluacion
       if (AutoEvaluationData.competencia) {
         this.chartLabelsEvaluators.push('Autoevaluación')
         this.chartLabelsEvaluators.push('Jefe directo')
