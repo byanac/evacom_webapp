@@ -9,6 +9,7 @@ import { PeopletobeevaluatedService } from 'src/app/services/peopletobeevaluated
 import { TeamService } from 'src/app/services/team/team.service';
 import { UtilsService } from 'src/app/services/utils/utils.service';
 import Swal from 'sweetalert2';
+import {SearchStateService} from 'src/app/services/search-state.service';
 
 @Component({
   selector: 'app-reporte-avanceevaluacion',
@@ -80,7 +81,8 @@ constructor(
   private FilePositionPeriodService: FilepositionperiodfilterService,
   private utilsService: UtilsService,
   private evaluatorsService: EvaluatorsService,
-  private peopletobeEvaluated: PeopletobeevaluatedService
+  private peopletobeEvaluated: PeopletobeevaluatedService,
+  private searchState: SearchStateService
 ){}
 
   async ngOnInit(): Promise<void> {
@@ -110,6 +112,19 @@ constructor(
     this.PeriodoSubscription = await this.FilePositionPeriodService.$PeriodValue.subscribe((value: string) => {
       this.Periodo = value
     })
+    debugger
+    const saved = this.searchState.getState();
+
+  if(saved.periodo){
+    this.Ficha = saved.ficha;
+    this.Puesto = saved.puesto;
+    this.Periodo = saved.periodo;
+    this.GerenciasToSend = saved.gerencias;
+    this.TeamsToSend = saved.equipos;
+
+    // Para volver a mostrar la tabla automáticamente
+    this.FilterData();
+  }
 
     this.utilsService.closeLoading();;
   }
@@ -147,7 +162,17 @@ constructor(
   }
 
   async FilterData(){
+    debugger
     this.gerencyteamService.CloseAllSelects();
+    this.searchState.setState({
+    ficha: this.Ficha,
+    puesto: this.Puesto,
+    periodo: this.Periodo,
+    gerencias: this.GerenciasToSend,
+    equipos: this.TeamsToSend
+  });
+
+
     switch(true) {
       case this.Periodo === '':
         Swal.fire('El campo periodo está vacío', 'Debe seleccionar el campo de periodo para continuar.','error');

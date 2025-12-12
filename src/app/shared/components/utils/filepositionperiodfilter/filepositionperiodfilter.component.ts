@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { Subscription, of } from 'rxjs';
 import { catchError, finalize } from 'rxjs/operators';
 import { CalendarService } from 'src/app/services/calendar/calendar.service';
@@ -11,7 +11,7 @@ import { UtilsService } from 'src/app/services/utils/utils.service';
   templateUrl: './filepositionperiodfilter.component.html',
   styleUrls: ['./filepositionperiodfilter.component.css']
 })
-export class FilepositionperiodfilterComponent implements OnInit, OnDestroy {
+export class FilepositionperiodfilterComponent implements OnInit, OnDestroy,OnChanges  {
   private subscriptions: Subscription = new Subscription();
 
   @Input() ShowStatusModal: boolean = false;
@@ -20,6 +20,10 @@ export class FilepositionperiodfilterComponent implements OnInit, OnDestroy {
   @Input() TrueText: string = '';
   @Input() NotCalendarVigencies: boolean = false;
   @Input() StatusOptionWidth: string = '';
+
+  @Input() initialFicha: string = '';
+  @Input() initialPuesto: string = '';
+  @Input() initialPeriodo: string = '';
 
   Ficha: string = '';
   Puesto: string = '';
@@ -42,6 +46,30 @@ export class FilepositionperiodfilterComponent implements OnInit, OnDestroy {
   async ngOnInit(): Promise<void> {
     try {
       //console.log('Cargando datos de calendario...');
+      debugger
+      // Restaurar valores si vienen del padre
+        if (this.initialFicha) {
+          this.Ficha = this.initialFicha;
+          this.componentService.$FileValue.emit(this.padLeftWithZeros(this.initialFicha));
+        }
+
+        if (this.initialPuesto) {
+          this.Puesto = this.initialPuesto;
+          this.componentService.$PositionValue.emit(this.initialPuesto);
+        }
+
+        if (this.initialPeriodo) {
+          this.Periodo = this.initialPeriodo;
+          this.componentService.$PeriodValue.emit(this.initialPeriodo);
+        }
+
+        if (this.initialPeriodo) {
+          this.Periodo = this.initialPeriodo;
+          this.componentService.$PeriodValue.emit(this.initialPeriodo);
+        }
+
+
+
       if (!this.NotCalendarVigencies) {
         //console.log('cargando calendarios vigentes')
         this.calendarData = await this.calendarService.getDataScheduleApi().toPromise();
@@ -89,6 +117,20 @@ export class FilepositionperiodfilterComponent implements OnInit, OnDestroy {
   
     this.SendCalendarCode();
   }
+
+ ngOnChanges(changes: SimpleChanges) {
+  debugger
+  if (changes['initialFicha']) this.Ficha = this.initialFicha;
+  if (changes['initialPuesto']) this.Puesto = this.initialPuesto;
+  if (changes['initialPeriodo']) this.Periodo = this.initialPeriodo;
+
+  // Y envías los valores a tu servicio si lo necesitas
+  this.componentService.$FileValue.emit(this.Ficha);
+  this.componentService.$PositionValue.emit(this.Puesto);
+  this.componentService.$PeriodValue.emit(this.Periodo);
+}
+
+
 
   ngOnDestroy(): void {
     this.subscriptions.unsubscribe();

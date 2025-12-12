@@ -42,7 +42,7 @@ export class FaseConocimientoComponent {
     this.ConfirmedButtonOn = this.TableData[0].registros.conformidadOtorgada;
     this.utilsService.closeLoading();
   }
-
+ 
   PrintButton(){
     window.print();
   }
