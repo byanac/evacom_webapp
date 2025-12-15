@@ -5,7 +5,7 @@
       <mat-label>Cod.Ficha</mat-label>
       <input 
         matInput 
-        (keyup)="OnTypingFicha($event.target.value)" 
+        (blur)="OnTypingFicha($event.target.value)" 
         maxlength="8" 
         type="text" 
         [(ngModel)]="Ficha" 
