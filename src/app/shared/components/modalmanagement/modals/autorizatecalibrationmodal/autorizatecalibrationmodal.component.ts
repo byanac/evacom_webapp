@@ -82,7 +82,6 @@ export class AutorizatecalibrationmodalComponent implements OnInit, OnDestroy {
   async GetData(): Promise<any>{
     this.utilsService.showLoading();
     try {
-      debugger
       let newValueWithZeros = this.padLeftWithZeros(this.FileValue);
       if (this.PeriodCode==""){
         this.utilsService.closeLoading

@@ -34,7 +34,6 @@ export class EvalasignationService {
 
   /*INI PROY-00013*/
   PostPutCargaAutomaticaEvalAsignationReport(codCalendario:string,codFichaAdmin:string,codPuestoEvaluador:string,miembros: any) {
-    debugger
     return this.http.post<any>(`${environment.PostPutCargaAutomaticaEvalAsignationReport}/${codCalendario}/${codFichaAdmin}/${codPuestoEvaluador}`, miembros);
   }
 

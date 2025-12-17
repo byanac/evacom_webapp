@@ -306,7 +306,6 @@ configureSortingDataAccessorComportamiento() {
   }
   
   async onSubmit(formName: string): Promise<any> {
-    debugger
     switch (formName) {
       case 'grupoCompetencia':
 
@@ -318,7 +317,6 @@ configureSortingDataAccessorComportamiento() {
               return Swal.fire('Campo Descripción Vacío', 'Por favor, complete el campo de descripción antes de continuar.', 'warning');
             }
             
-            debugger
             const foundedSameItemID = this.gruposCompetencias.some(ComGroup => ComGroup.codigo.toUpperCase() === this.grupoCompetenciaForm.get('codigo').value.toUpperCase());
             if (foundedSameItemID) {
               return Swal.fire('ID Duplicado', 'Ya existe el ID del grupo de competencia.', 'warning');
@@ -442,7 +440,6 @@ configureSortingDataAccessorComportamiento() {
         if (this.nivelForm.get('nombre').value === '' || this.nivelForm.get('nombre').value === null) {
           return Swal.fire('Campo Nombre Vacío', 'Por favor, complete el campo de nombre antes de continuar.', 'warning');
         }
-        debugger
         const foundedSameItemIDNivel = this.niveles.some(Niv => Niv.codigo.toUpperCase() === this.nivelForm.get('codigo').value.toUpperCase());
         if (foundedSameItemIDNivel) {
           return Swal.fire('ID Duplicado', 'Ya existe el ID de nivel.', 'warning');
@@ -1256,7 +1253,6 @@ configureSortingDataAccessorComportamiento() {
   }
 
   async onFileSelectedBehaviors(event: Event): Promise<any> {
-    debugger
     const input = event.target as HTMLInputElement;
     if (input.files && input.files.length > 0) {
       this.utilsService.showLoading();

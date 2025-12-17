@@ -112,7 +112,6 @@ constructor(
     this.PeriodoSubscription = await this.FilePositionPeriodService.$PeriodValue.subscribe((value: string) => {
       this.Periodo = value
     })
-    debugger
     const saved = this.searchState.getState();
 
   if(saved.periodo){
@@ -163,7 +162,6 @@ constructor(
   }
 
   async FilterData(){
-    debugger
     this.gerencyteamService.CloseAllSelects();
     this.searchState.setState({
     ficha: this.Ficha,

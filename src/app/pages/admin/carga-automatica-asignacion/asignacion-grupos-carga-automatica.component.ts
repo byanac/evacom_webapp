@@ -86,7 +86,6 @@ export class AsignacionGruposCargaAutomaticavalComponent {
   }
 
   initForm() {
-    debugger
     this.form = this.fb.group({
       idGrupoEvaluacion: ['', Validators.required],
       idGrupoEvaluacionAsignacion: [{ value: '', disabled: true }],
@@ -115,7 +114,6 @@ export class AsignacionGruposCargaAutomaticavalComponent {
   }
 
   /* async onGetEvaluadorByUO(codigo: string) {
-    debugger
     this.utilsService.showLoading();
     console.log('Codigo Seleccionado', codigo);
     try {
@@ -126,11 +124,9 @@ export class AsignacionGruposCargaAutomaticavalComponent {
           //this.dataSourceMembers.data = data.registros[0].miembros.filter(miembro => miembro.jefe === false);
           data.registros[0].miembros = data.registros[0].miembros.filter(miembro => miembro.jefe === false);
           //console.log('DataSource Miembros',this.dataSourceMembers.data);
-          debugger
           this.AEGService.validarDataCargaAutomaticaEvalsGroups(data.registros[0].miembros, this.form.get('idGrupoEvaluacion').value,
             this.CalendarID, this.AdminData.ficha).subscribe({
               next: (data) => {
-                debugger
                 //this.dataSourceMembers.data = data.registros[0].miembros.filter(miembro => miembro.jefe === false);
                 this.dataSourceMembers.data = data.datos.listadoCorrectos;
                 this.selection.select(...this.dataSourceMembers.data);
@@ -157,13 +153,11 @@ export class AsignacionGruposCargaAutomaticavalComponent {
   } */
 
   async onGetEvaluadorByUO(codigo: string) {
-  debugger;
   console.log('Codigo Seleccionado', codigo);
   try {
     this.utilsService.showLoading();
     this.adminService.getMembersByTeam(codigo).subscribe({
       next: (data) => {
-        debugger;
         const miembros = data.registros[0].miembros;
 
         // Filtrar los que NO son jefes y mapear al formato de la tabla
@@ -239,7 +233,6 @@ export class AsignacionGruposCargaAutomaticavalComponent {
   }
 
   cargaAutomaticaAsignacion() {
-    debugger
     let miembrosFormateados = [];
 
     if (this.selection && this.selection.selected.length > 0) {
@@ -254,7 +247,6 @@ export class AsignacionGruposCargaAutomaticavalComponent {
     return;
   }
     const newAsignacion: any = this.form.getRawValue()
-    debugger
     console.log("Grupo ", newAsignacion.idGrupoEvaluacionAsignacion);
     console.log('cargaAutomaticaAsignacion');
     Swal.fire({

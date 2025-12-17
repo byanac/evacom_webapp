@@ -33,7 +33,6 @@ export class RegisteradministratormodalComponent implements OnInit {
   async SearchWorker(): Promise<void>{
     if(this.adminForm.get('adminCode').value !== ''){
       this.utilService.showLoading();
-      debugger
       const userAdmin=JSON.parse(sessionStorage.getItem('userdata')).ficha;
       const data:any = await this.adminService.GetWorkerInfoForRegisterAdminModal(this.adminForm.get('adminCode').value).toPromise()
       if(data.registros.codigoFicha){

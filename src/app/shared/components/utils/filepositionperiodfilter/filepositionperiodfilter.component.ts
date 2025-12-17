@@ -46,7 +46,6 @@ export class FilepositionperiodfilterComponent implements OnInit, OnDestroy,OnCh
   async ngOnInit(): Promise<void> {
     try {
       //console.log('Cargando datos de calendario...');
-      debugger
       // Restaurar valores si vienen del padre
         if (this.initialFicha) {
           this.Ficha = this.initialFicha;
@@ -119,7 +118,6 @@ export class FilepositionperiodfilterComponent implements OnInit, OnDestroy,OnCh
   }
 
  ngOnChanges(changes: SimpleChanges) {
-  debugger
   if (changes['initialFicha']) this.Ficha = this.initialFicha;
   if (changes['initialPuesto']) this.Puesto = this.initialPuesto;
   if (changes['initialPeriodo']) this.Periodo = this.initialPeriodo;

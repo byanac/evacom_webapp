@@ -75,7 +75,6 @@ export class AsignacionGruposEvaluacionComponent implements OnInit, AfterViewIni
   }
 
   async ngOnInit(): Promise<any> {
-    debugger
     this.initForm();
     await this.LoadCalendarData();
     await this.LoadAsignationGroupsData();
@@ -112,7 +111,6 @@ export class AsignacionGruposEvaluacionComponent implements OnInit, AfterViewIni
 
   async loadMemberByTeam(codigoEquipo:string): Promise<any> {
     try {
-      debugger
       this.utilsService.showLoading();
       const evalUO = await this.adminService.getMembersByTeam(codigoEquipo).toPromise();
       const filteredMemberGroup = evalUO.registros[0].miembros.sort((a: any, b: any) => b.ficha - a.ficha);
@@ -167,7 +165,6 @@ export class AsignacionGruposEvaluacionComponent implements OnInit, AfterViewIni
       this.utilsService.showLoading();
       const asignationEvalygroups = await this.AEGService.GetAsignationEvalsGroupsReport(this.CalendarID).toPromise();
       const filteredAsignationEvalgroups = asignationEvalygroups.registros.sort((a: any, b: any) => b.estado - a.estado); 
-      debugger
       this.gruposevaluacion = filteredAsignationEvalgroups
       this.dataSourceEvalGroups.data = this.gruposevaluacion;
        this.dataSourceEvalGroups.filterPredicate = (data: any, filter: string) => {
@@ -232,7 +229,6 @@ configureSortingDataAccessor() {
  
   async LoadCalendarData(): Promise<any> {
     try {
-      debugger
       this.utilsService.showLoading();
       const calendarDataFromApi = await this.parametrizationService.GetParametrizationProgress(this.CalendarID).toPromise();
       this.CalendarData = calendarDataFromApi.registros;
@@ -254,7 +250,6 @@ configureSortingDataAccessor() {
 
 
   initForm() {
-    debugger
     this.form = this.fb.group({
       idGrupoEvaluacion: ['', Validators.required],
       posicionTrabajo: [{ value: '', disabled: true }, Validators.required],
@@ -278,7 +273,6 @@ configureSortingDataAccessor() {
     /* FIN PROY-00013 RFC */
 
     this.form.get('codigo').valueChanges.subscribe((codigo: string) => {
-      debugger
       this.form.get('ficha').reset();
       if (codigo) {
         this.loadMemberByTeam(codigo);
@@ -298,7 +292,6 @@ configureSortingDataAccessor() {
 
   async handleSubmit(): Promise<any> {
     if (this.form.valid) {
-      debugger
       const newAsignacion: any = this.form.getRawValue()
 
       if (this.editingItem) {
@@ -348,7 +341,6 @@ configureSortingDataAccessor() {
                   confirmButtonText: 'OK',
                 }).then(() => {
                   this.LoadAsignationGroupsData();
-                  debugger;
                   this.actualizarDirectorioFicha(BodyToSend.trabajador.ficha);
                   this.form.markAsTouched();;
                   this.form.reset();
@@ -405,8 +397,6 @@ configureSortingDataAccessor() {
               codigoFicha: this.AdminData.ficha
             }
           }
-
-          debugger
           const yaExisteAsignacion = this.gruposevaluacion
               .filter(item => item.idGrupoEvaluacionAsignacion !== newAsignacion.idGrupoEvaluacionAsignacion)
               .some(item =>
@@ -441,7 +431,6 @@ configureSortingDataAccessor() {
                       showCancelButton: false,
                       confirmButtonText: 'OK',
                     }).then(() => {
-                      debugger
                       this.LoadAsignationGroupsData();  
                       this.actualizarDirectorioFicha(BodyToSend.trabajador.ficha); 
                       this.editingItem = false;
@@ -476,10 +465,8 @@ configureSortingDataAccessor() {
   //this.actualizarDirectorioFicha(BodyToSend.trabajador.ficha);
   actualizarDirectorioFicha(ficha:string){
     console.log('actualizarDirectorioFicha - Ficha', ficha);
-    debugger
     this.AEGService.UpdateDirectorioFicha(ficha).subscribe({
               next: (data) => {
-                debugger
                console.log('Directorio actualizado para la ficha', ficha);
               },
               error: (error) => {
@@ -624,7 +611,6 @@ configureSortingDataAccessor() {
 
     if ((currentValue !== this.lastPositionValue) && this.form.get('posicionTrabajo').value !== '') {
       this.lastPositionValue = currentValue;
-      debugger
       try {
         this.utilsService.showLoading();
         const data = await this.AEGService.GetWorkerDataFromPositionCode(currentValue).toPromise();
@@ -705,11 +691,9 @@ configureSortingDataAccessor() {
   
       try {
         this.gruposevaluacionEXCEL=null;
-        debugger
         const validation = await this.AEGService
           .PostSendAsignationEvalsGroupsExcelForValidation(file,codigoCalendario)
           .toPromise();
-          debugger
         this.gruposevaluacionEXCEL = validation;
         //console.log(this.gruposevaluacionEXCEL);
       } finally {

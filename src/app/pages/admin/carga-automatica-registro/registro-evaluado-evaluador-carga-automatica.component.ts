@@ -90,7 +90,6 @@ export class RegistroEvaluadoEvaluadorCargaAutomaticavalComponent {
   }
 
   initForm() {
-    debugger
     this.form = this.fb.group({
       idGrupoEvaluacion: ['', Validators.required],
       idGrupoEvaluacionAsignacion: [{ value: '', disabled: true }],
@@ -123,7 +122,6 @@ export class RegistroEvaluadoEvaluadorCargaAutomaticavalComponent {
   }
 
   async onGetEvaluadorByUO(codigo: string) {
-    debugger
     console.log('Codigo Seleccionado', codigo);
     try {
       this.utilsService.showLoading();
@@ -132,7 +130,6 @@ export class RegistroEvaluadoEvaluadorCargaAutomaticavalComponent {
       const self = this;
       const evalUO = this.adminService.getMembersByTeam(codigo).subscribe({
         next: (data) => {
-          debugger
           console.log(data.registros[0].miembros);
           const miembros = data.registros[0].miembros;
 
@@ -202,7 +199,6 @@ export class RegistroEvaluadoEvaluadorCargaAutomaticavalComponent {
   }
 
   cargaAutomaticaAsignacion() {
-    debugger
     if (!this.selection || this.selection.selected.length === 0) {
       Swal.fire('Error', 'Debe seleccionar al menos un evaluado.', 'warning');
       return;
@@ -268,7 +264,6 @@ export class RegistroEvaluadoEvaluadorCargaAutomaticavalComponent {
 
   async onSearchEvaluator(): Promise<void> {
     const currentValue = this.form.get('fichaEvaluador').value;
-    debugger
     if ((currentValue !== this.lastEvaluatorPositionValue) && this.form.get('fichaEvaluador').value !== '') {
       this.lastEvaluatorPositionValue = currentValue;
 

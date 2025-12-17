@@ -28,8 +28,7 @@ export class QuestionstablewithanswersComponent implements OnInit {
 
   ngOnInit(): void {
     this.DataFromsessionStorage = JSON.parse(sessionStorage.getItem('userdata')!);
-    this.CalendarCode = sessionStorage.getItem("vCodigo");  
-    debugger
+    this.CalendarCode = sessionStorage.getItem("vCodigo");
     this.evalgroupsService.getEvaluationGroupByPuesto(this.Data.registros.calendario,this.DataFromsessionStorage.codPuesto)
         .subscribe(resp => {
           this.GrupoEvaluacion = resp.registros;

@@ -58,7 +58,6 @@ export class SincronizacionUnidadOrganizativaComponent implements OnInit {
       if (!skipLoading) {
         this.utilsService.showLoading();
       }
-      debugger;
       const evalUO = await this.AsignationEvalGroupsService
         .GetUnidadOrganizativa()
         .toPromise();
@@ -116,7 +115,6 @@ export class SincronizacionUnidadOrganizativaComponent implements OnInit {
 
 
   onSincronizar() {
-    debugger
     Swal.fire({
       title: "Aviso",
       text: `Está acción actualizará la información de Unidades Organizativas ¿Desea continuar?`,

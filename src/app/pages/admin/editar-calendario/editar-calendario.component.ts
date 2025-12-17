@@ -44,7 +44,6 @@ export class EditarCalendarioComponent implements OnInit {
   async ngOnInit(): Promise<any> {
     this.initForm();
     this.utilsService.showLoading();
-    debugger
     const data = await this.calendarService.GetCalendarPeriodicities().toPromise();
     this.CalendarPeriodicites = data.registros;
   
@@ -185,7 +184,6 @@ export class EditarCalendarioComponent implements OnInit {
           };
           this.calendarService.PutUpdateCalendar(BodyToPost).subscribe({
             next: (data) => {
-              debugger
               /*INI PROY-00013 RFC*/
               this.gerencyService.UpdateGerencyAPI().subscribe({
                 next: (dataGerencia) => {

@@ -28,7 +28,6 @@ export class FaseEvaluacionComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     this.utilsService.showLoading();
     this.DataFromsessionStorage = JSON.parse(sessionStorage.getItem('userdata')!);
-    debugger
     const Knowledge: IResponse = await ((await this.knowledgeService.getKnowledgeQuestions()).toPromise());
     let ConformidadOtorgada: boolean = Knowledge.registros.conformidadOtorgada
 
