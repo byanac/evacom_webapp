@@ -1,3 +1,17 @@
-<p>
-  visualizar-global works!
-</p>
+<div *ngFor="let item of reporteGlobal.registros" class="page-break-new">
+    <app-item-global 
+    [EvaluadoCodigoFicha]="item.evaluadoFicha"
+    [EvaluadoCodigoPuesto]="item.evaluadoPuesto"
+    [EvaluadorCodigoFicha]="item.evaluadorFicha"
+    [EvaluadorCodigoPuesto]="item.evaluadorPuesto"
+    [CodCalendario]="reporteGlobal.calendarioCodigo"
+    [TipoCalendario]="reporteGlobal.calendarioTipo"
+    ></app-item-global>
+</div>
+  <div class="flex justify-center items-center pb-6 footer">
+    <div>
+      <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full mr-6" (click)="PrintButton()">
+        Imprimir
+      </button>
+    </div>
+  </div>

@@ -18,17 +18,16 @@ export class VisualizarGlobalComponent implements OnInit {
   constructor(private reporteDataService: ReporteDataService) { }
 
   ngOnInit() {
-    this.subscription = this.reporteDataService.currentReporte.subscribe(data => {
-      
-      // La primera vez recibirá el objeto vacío (inicialización), 
-      // y la segunda vez recibirá la data real.
-      if (data && data.registros.length > 0) {
-        this.reporteGlobal = data;
-        this.registrosTabla = data.registros;
-        console.log('Reporte Global recibido. Total de registros:', this.registrosTabla.length);
-        console.log(data);
+    const dataRaw = sessionStorage.getItem('reporte_global');
+    if (dataRaw) {
+    const reporte: IReporteGlobal = JSON.parse(dataRaw);
+    this.reporteGlobal = reporte;
+   
       }
-    });
+
   }
 
+   PrintButton(){
+    window.print();
+  }
 }

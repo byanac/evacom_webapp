@@ -1,0 +1,105 @@
+p{
+    margin: 0px;
+}
+
+table td p{
+    margin-bottom: 0px !important;
+}
+
+hr{
+    background-color: #c0d5ec !important;
+    border: 0.15rem solid #c0d5ec;
+    margin-bottom: 0.5rem !important;
+}
+
+th{
+  font-size: 16px !important;
+}
+
+section{
+    margin: 0.5em;
+    overflow-x: auto;
+}
+
+.container{
+    border: solid #bed6f8 2px;
+}
+
+.title-container{
+    border: solid #bed6f8 2px;
+    margin: 0.5em 0.5em 0px 0.5em;
+    padding: 0.5em;
+}
+
+.personalinfo-container{
+    border: solid #bed6f8 2px;
+    margin: 0px 0.5em 0.5em 0.5em;
+    padding: 0.5em;
+}
+
+.personalinfo-container table{
+    width: 100% !important;
+    border: solid 0px black;
+}
+
+table{
+    width: 100%;
+    border: solid #bed6f8 2px;
+}
+
+.globalresult table{
+    width: 100% !important;
+    border: solid #bed6f8 2px;
+}
+
+canvas{
+    width: 100% !important;
+}
+
+.tableheader{
+    background: linear-gradient(to bottom, #e3f0ff, #a0cbff)
+}
+
+.border {
+    border: 1px solid black !important;
+}
+
+.border-solid {
+    border: solid 1px black !important;
+}
+
+.ResultCompetencyContainerInfo180{
+    display: flex;
+    justify-content: space-between;
+}
+
+.ResultCompetencyContainerInfo90{
+    display: flex;
+    justify-content: center;
+}
+
+canvas {
+    padding: 20px;
+    border-radius: 10px;
+  }
+  
+  .resultstable th, .resultstable td {
+    padding: 10px;      
+  }
+  
+  .resultstable td {
+    white-space: nowrap;
+  }
+     @media print {
+    app-nav {
+      display: none;
+    }
+
+    .footer{
+      display: none;
+    }
+    .page-break-new {
+        page-break-before: always;
+        margin-top: 10px; 
+    }
+  }

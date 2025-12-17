@@ -133,6 +133,7 @@ import {RegistroEvaluadoEvaluadorCargaAutomaticavalComponent} from './pages/admi
 import { MatSortModule } from '@angular/material/sort';
 import { CardModule } from 'primeng/card';
 import { VisualizarGlobalComponent } from './pages/admin/visualizar-retroalimentacion-global/visualizar-global.component';
+import { ItemGlobalComponent } from './pages/admin/visualizar-retroalimentacion-global/item-global/item-global.component';
 // Formato personalizado para el mat-datepicker
 export const MY_DATE_FORMATS = {
   parse: {
@@ -241,7 +242,8 @@ export const MY_DATE_FORMATS = {
     PIDComponent,
     CUMPLIMIENTOComponent,
     ResultadoTrabajadorHistoricoComponent,
-    VisualizarGlobalComponent
+    VisualizarGlobalComponent,
+    ItemGlobalComponent
   ],
   imports: [
     FormsModule,

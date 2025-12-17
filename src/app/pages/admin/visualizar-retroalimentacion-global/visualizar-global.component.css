@@ -1,0 +1,18 @@
+@media print {
+  .page-break-new {
+    /* Forzar que sea bloque y ocupe todo el ancho */
+    display: block !important;
+    float: none !important;
+    position: relative !important;
+    /* Propiedades de salto de página */
+    page-break-before: always !important; /* Compatibilidad antigua */
+    break-before: page !important;        /* Estándar moderno */
+    /* Evitar que se corte el contenido dentro de una página */
+    page-break-inside: avoid !important;
+  }
+  /* OPCIONAL: Si el padre tiene display: flex, el salto fallará. 
+     Asegúrate de que el contenedor de la lista no sea flex al imprimir */
+  .contenedor-padre-de-la-lista {
+    display: block !important;
+  }
+}
