@@ -54,7 +54,7 @@ export class AsignacionGruposEvaluacionComponent implements OnInit, AfterViewIni
   lastPositionValue: string | null = null;
   dataSourceEvalGroups = new MatTableDataSource<any>(this.gruposevaluacion);
   displayedColumns: string[] = ['grupoevaluacionCod','grupoevaluacionNom','ficha','nombresyapellidos','puesto','posicion','unidadOrganica','ultimamodific','adminmodific','estado','acciones'];
-  displayedColumnsExcelModal: string[] = ['codcalendario','grupoevaluacion','codigoficha','nombresapellidos','codpuesto','denominaciónpuesto','unidadOrganica','observacion'];
+  displayedColumnsExcelModal: string[] = ['codcalendario','grupoevaluacion','codigoficha','nombresapellidos','codpuesto','denominaciónpuesto','observacion'];
   @ViewChild('tablaAsignacion', { read: MatSort }) sortAsignacion!: MatSort;
 
   private _onDestroy = new Subject<void>();

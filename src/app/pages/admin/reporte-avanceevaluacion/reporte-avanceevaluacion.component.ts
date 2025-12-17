@@ -72,7 +72,7 @@ private PeriodoSubscription: Subscription = new Subscription();  ModalSubscripti
 
   Estado: string = ''
 
-  DataList:IEvaluatorsEvaluationsProgress
+  DataList:IEvaluatorsEvaluationsProgress[] = [];
 
 constructor(
   private teamService: TeamService,
@@ -155,6 +155,7 @@ constructor(
 
   RefreshFilters():void {
     this.utilsService.ResetAllFilterValues();
+    this.DataList = [];
   }
 
   onImgError(event){
