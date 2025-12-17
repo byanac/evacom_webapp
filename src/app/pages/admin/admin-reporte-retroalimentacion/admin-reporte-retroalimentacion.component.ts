@@ -196,8 +196,9 @@ TableData: IPIDEvaluatorReport[];
            const urlTree = this.router.createUrlTree(['/home/reporte-retroalimentacion-global']);
            const relativeUrl = this.router.serializeUrl(urlTree);
            const absoluteUrl = window.location.origin + '/#' + relativeUrl;
-          // window.open(absoluteUrl, '_blank');
-           this.router.navigate(['/home/reporte-retroalimentacion-global']);
+           sessionStorage.setItem('reporte_global', JSON.stringify(retorno));
+           window.open(absoluteUrl, '_blank');
+          // this.router.navigate(['/home/reporte-retroalimentacion-global']);
     }
   }
 }
