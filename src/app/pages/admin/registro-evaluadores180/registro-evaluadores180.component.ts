@@ -640,7 +640,10 @@ export class RegistroEvaluadores180Component implements OnInit {
           const evaluatorsActivos = registro.evaluators.filter(
               (item: any) => item.estado === 1
             );
-            if (evaluatorsActivos.length != 3) {
+          const evaluatorsInactivos = registro.evaluators.filter(
+              (item: any) => item.estado === 0
+            );  
+            if (evaluatorsInactivos.length != 4) {
                return Swal.fire('Error al reactivar', 'Si tiene más de 4 evaluadores inactivos, por favor adicione nuevos .', 'error');
               
             }

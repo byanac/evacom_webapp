@@ -65,7 +65,7 @@
                     <div class="text-center">
                       <mat-form-field appearance="outline" class="w-full" style="min-width: 324px;">
                         <mat-label>Tipo de excepción</mat-label>
-                        <mat-select  [(ngModel)]="ExceptionType" [disabled]="ExceptionType !== ''">
+                        <mat-select  [(ngModel)]="ExceptionType" >
                           <mat-option value="conocimiento">Conocimiento</mat-option>
                           <mat-option value="autoeval">Autoevaluación</mat-option>
                           <mat-option value="eval">Evaluación</mat-option>
@@ -128,6 +128,9 @@
                     
                     </button>
                   </div>       
+                   <div class="flex justify-end w-full pt-6">
+                      <p-button label="Regresar" (click)="regresar()"></p-button>
+                    </div>
                   </section>
 
                   <section *ngIf="selectedOption === 'equipo' && OrganicUnitOptions.length != 0">
@@ -145,6 +148,9 @@
                           </mat-option>                                              
                         </mat-select>
                       </mat-form-field>                      
+                    </div>
+                    <div class="flex justify-end w-full">
+                      <p-button label="Regresar" (click)="regresar()"></p-button>
                     </div>
                   </section>
 

@@ -5,6 +5,7 @@ import { ISchedule } from 'src/app/interfaces/ISchedule';
 import { LoginService } from 'src/app/services/auth/login.service';
 import { CalendarService } from 'src/app/services/calendar/calendar.service';
 import { EvaluatorsService } from 'src/app/services/evaluators/evaluators.service';
+import { EvalgroupsCRUDService } from 'src/app/services/evalgroupsCRUD/evalgroups-crud.service';
 
 @Component({
   selector: 'app-workerresult',
@@ -18,15 +19,21 @@ export class WorkerresultComponent implements OnInit {
   AutoEvaluationResult: number;
   TypeAndPeriodName: string = "";
   DataFromsessionStorage:ILoginData = this.loginService.GetUserSession();
+  grupoEvaluacionNombre: string = '';
 
-  constructor(private calendarService: CalendarService, private evaluatorsService: EvaluatorsService,private loginService: LoginService){}
+  constructor(private calendarService: CalendarService, private evaluatorsService: EvaluatorsService,
+    private loginService: LoginService,
+    private AsignationEvalGroupsService: EvalgroupsCRUDService){}
 
   async ngOnInit(): Promise<void>{
     this.AutoEvaluationResult = this.TableData.registros.resultado;
     this.calendarService.getDataScheduleApi().subscribe(data => {
       let typeandperiodname: ISchedule = data.registros.filter((item: { tipo: string; }) => item.tipo === this.TableData.registros.tipo);
       this.TypeAndPeriodName = typeandperiodname[0].vNombre
-    })
+    });
+    const evalgroup = await this.AsignationEvalGroupsService.GetEvalGroupsReportCRUD().toPromise();
+    const registroEncontrado = evalgroup.registros.find(reg => reg.codigo === this.TableData.registros.grupoEvaluacion);
+    this.grupoEvaluacionNombre = registroEncontrado.descripcion || 'Descripción no encontrada';
   }
 
   PrintButton(){

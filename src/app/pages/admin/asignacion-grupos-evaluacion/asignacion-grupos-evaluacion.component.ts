@@ -116,7 +116,7 @@ export class AsignacionGruposEvaluacionComponent implements OnInit, AfterViewIni
       const filteredMemberGroup = evalUO.registros[0].miembros.sort((a: any, b: any) => b.ficha - a.ficha);
       this.trabajadorSelect = evalUO.registros[0].miembros;
       this.trabajadorSelect.reverse();
-      console.log('Datos cargados en trabajadorSelect:', this.trabajadorSelect);
+    //  console.log('Datos cargados en trabajadorSelect:', this.trabajadorSelect);
       this.utilsService.closeLoading();
     } catch (error) {
       return Swal.fire('Error al cargar los datos de trabajadores','Por favor, inténtalo de nuevo más tarde.',"error");
@@ -125,7 +125,7 @@ export class AsignacionGruposEvaluacionComponent implements OnInit, AfterViewIni
 
   onTrabajadorSeleccionado(trabajador: MembersResponse) {
     if (trabajador) {
-      console.log('Trabajador seleccionado:', trabajador);
+      //console.log('Trabajador seleccionado:', trabajador);
       this.form.patchValue({
         ficha: trabajador.ficha,
         posicionTrabajo: trabajador.codCargo,
@@ -163,7 +163,7 @@ export class AsignacionGruposEvaluacionComponent implements OnInit, AfterViewIni
   async LoadAsignationGroupsData(): Promise<any> {
     try{
       this.utilsService.showLoading();
-      const asignationEvalygroups = await this.AEGService.GetAsignationEvalsGroupsReport(this.CalendarID).toPromise();
+      const asignationEvalygroups = await this.AEGService.GetAsignationEvalsGroupsReport(this.CalendarID.trim()).toPromise();
       const filteredAsignationEvalgroups = asignationEvalygroups.registros.sort((a: any, b: any) => b.estado - a.estado); 
       this.gruposevaluacion = filteredAsignationEvalgroups
       this.dataSourceEvalGroups.data = this.gruposevaluacion;

@@ -76,6 +76,10 @@ export class RegisterexceptionComponent implements OnInit {
     
   }
 
+ regresar() {
+      this.selectedOption='';
+      this.DataList=[];
+    }
 
   ngOnDestroy(): void {
     if (this.subscription) {
@@ -285,13 +289,20 @@ export class RegisterexceptionComponent implements OnInit {
             } else {
               Swal.fire(
                 'Error',
-                'Ocurrió un error inesperado.',
+                'No existe evaluaciones asignadas en esta Unidad Orgánica.',
                 'error'
               );
             }
           }
         }
          this.utilsService.closeLoading();
+        if (this.DataList.length===0){
+          Swal.fire(
+                'Error',
+                'De las '+ data.registros.length + ' evaluacione(s) registrada(s) en esta Unidad Orgánica, a ninguna se le puede registrar excepción en esta fase',         
+                'error'
+              );
+        }
       }
       }
     } catch (error) {

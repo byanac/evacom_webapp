@@ -3,6 +3,7 @@ import { IAutoEvaluationResult } from 'src/app/interfaces/IAutoEvaluationResult'
 import { ActivatedRoute } from '@angular/router';
 import { AutoevaluationService } from 'src/app/services/autoevaluation/autoevaluation.service';
 import { UtilsService } from 'src/app/services/utils/utils.service';
+import { EvalgroupsCRUDService } from 'src/app/services/evalgroupsCRUD/evalgroups-crud.service';
 
 
 @Component({
@@ -17,11 +18,13 @@ export class EvaluationResultiframeComponent implements OnInit {
   Result: number;
   EvaluatedFile: string = this.route.snapshot.paramMap.get('EvaluatedFile');
   EvaluatedPosition: string = this.route.snapshot.paramMap.get('EvaluatedPosition');
+  grupoEvaluacionNombre: string = '';
 
   constructor(
     private GetEvaluationProgressionService: AutoevaluationService,  
     private utilsService: UtilsService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private AsignationEvalGroupsService: EvalgroupsCRUDService,
   ){}
 
   async ngOnInit(): Promise<void> {
@@ -31,7 +34,10 @@ export class EvaluationResultiframeComponent implements OnInit {
     const response: IAutoEvaluationResult = await ((this.GetEvaluationProgressionService.GetAutoEvalProgression(this.EvaluatedFile, this.EvaluatedPosition)).toPromise());
     this.Result = response.registros.resultado
     this.Data = response;
-    this.utilsService.closeLoading();;
+    const evalgroup = await this.AsignationEvalGroupsService.GetEvalGroupsReportCRUD().toPromise();
+    const registroEncontrado = evalgroup.registros.find(reg => reg.codigo === this.Data.registros.grupoEvaluacion);
+    this.grupoEvaluacionNombre = registroEncontrado.descripcion || 'Descripción no encontrada';
+    this.utilsService.closeLoading();
   }
 
   PrintButton(){

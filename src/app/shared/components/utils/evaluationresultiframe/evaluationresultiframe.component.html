@@ -11,12 +11,22 @@
   <div>
     <table>
       <tr>
-        <td class="flex font-bold justify-between"><p>Ficha:</p> <p>{{removeLeadingZeros(Data.registros.ficha)}}</p></td>
-        <td class="font-bold pl-4">Nombre: {{Data.registros.nombre}}</td>
+        <td class="flex font-bold justify-between"><p>Ficha:</p></td>
+        <td> {{removeLeadingZeros(Data.registros.ficha)}}</td>
+        <td class="font-bold pl-4">Nombre: </td>
+        <td> {{Data.registros.nombre}}</td>
       </tr>
       <tr>
-        <td class="flex font-bold justify-between"><p>Unidad Orgánica: {{Data.registros.unidadOrganica}}</p></td>
-        <td class="font-bold pl-4">Cargo:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{Data.registros.cargo}}</td>
+        <td class="flex font-bold justify-between"><p>Unidad Orgánica: </p></td>
+        <td>{{Data.registros.unidadOrganica}}</td>
+        <td class="font-bold pl-4">Cargo:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td>
+        <td>{{Data.registros.cargo}}</td>
+      </tr>
+      <tr>
+        <td  class="flex font-bold justify-between"><p>Grupo de Evaluación: </p></td>
+        <td><p>&nbsp;</p></td>
+        <td class="font-bold pl-4">{{Data.registros.grupoEvaluacion}} </td>
+        <td > <b>{{grupoEvaluacionNombre}}</b></td>
       </tr>
     </table>
   </div>

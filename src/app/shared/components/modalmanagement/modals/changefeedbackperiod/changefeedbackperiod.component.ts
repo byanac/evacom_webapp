@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output, Renderer2 } from '@angular/core';
 import { range } from 'rxjs';
+import { LoginService } from 'src/app/services/auth/login.service';
 import { CalendarService } from 'src/app/services/calendar/calendar.service';
 import { FeedbackService } from 'src/app/services/feedback/feedback.service';
 import { UtilsService } from 'src/app/services/utils/utils.service';
@@ -29,8 +30,11 @@ export class ChangefeedbackperiodComponent implements OnInit {
   RetroFechaFin:string = ""
   NuevaFechaInicio:string = "....."
   NuevaFechaFin:string = "....."
+  AdminData: any = this.loginService.GetUserSession()
 
-  constructor( private renderer: Renderer2, private utilService: UtilsService, private calendarService: CalendarService, private feedbackService : FeedbackService ) { }
+  constructor( private renderer: Renderer2, private utilService: UtilsService, private calendarService: CalendarService, 
+    private feedbackService : FeedbackService ,
+    private loginService: LoginService) { }
 
   async ngOnInit(): Promise<any> {
     this.utilService.showLoading();
@@ -84,12 +88,13 @@ export class ChangefeedbackperiodComponent implements OnInit {
     if (this.rangeDates[0] > this.rangeDates[1]) {
       return Swal.fire('Aviso', 'La fecha de fin no puede ser menor a la fecha de inicio.', 'warning');
     } else if (startDateNormalized < TodayDateNormalized) { // Cambiado
-      return Swal.fire('Aviso', '2La fecha de inicio no puede ser menor a la fecha de hoy.', 'warning');
+      return Swal.fire('Aviso', 'La fecha de inicio no puede ser menor a la fecha de hoy.', 'warning');
     } else if (this.rangeDates[1] < this.rangeDates[0]) {
       return Swal.fire('Aviso', 'La fecha de fin no puede ser menor a la fecha de inicio.', 'warning'); // Corrigido el mensaje
     } 
     
     
+   let admin = this.AdminData.ficha;
   
         Swal.fire({
           title:  "Aviso",
@@ -103,6 +108,7 @@ export class ChangefeedbackperiodComponent implements OnInit {
             this.utilService.showLoading();
             let PostBody: any = {
               vCodigo: this.CalendarCode,
+              codFichaAdmin: admin,
               dPeriodoIni: FormatedDatesYYYYMMDD[0],
               dPeriodoFin: FormatedDatesYYYYMMDD[1],
             }

@@ -23,6 +23,9 @@ export class EvalconsolidatedreportmodalComponent implements OnInit {
   }
 
   DownloadExcel(): any{
+    if (this.CodCalendar===''){
+       Swal.fire("Por favor, seleccione periodo a generar reporte.",'',"error");
+    } else {
     this.utilService.showLoading();
     ////console.log(this.CodCalendar)
     ////console.log(this.CalendarData.registros.filter(item => item.vCodigo === this.CodCalendar))
@@ -42,6 +45,7 @@ export class EvalconsolidatedreportmodalComponent implements OnInit {
       console.error('Error downloading the file', error);
       Swal.close();
     });
+  }
   }
 
   CloseModal(): void{
