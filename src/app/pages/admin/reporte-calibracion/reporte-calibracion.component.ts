@@ -35,6 +35,11 @@ export class ReporteCalibracionComponent implements OnInit {
     this.utilsService.showLoading();
     const data = await this.calendarService.getDataScheduleApi().toPromise()
     this.calendarData = data;
+    const periodoReporte = sessionStorage.getItem('periodoReporteCalibracion');
+    if (periodoReporte){
+      this.Periodo=periodoReporte;
+      this.FilterData();
+    }
     this.utilsService.closeLoading();
   }
 
@@ -51,6 +56,7 @@ export class ReporteCalibracionComponent implements OnInit {
         this.Activatetable = true;     
         this.DataList = data
         ////console.log(this.DataList)
+        sessionStorage.setItem('periodoReporteCalibracion', this.Periodo);
         this.utilsService.closeLoading();;
       }
     }

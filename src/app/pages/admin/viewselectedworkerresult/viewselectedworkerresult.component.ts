@@ -7,6 +7,7 @@ import { EvaluatorsService } from 'src/app/services/evaluators/evaluators.servic
 import Swal from 'sweetalert2';
 import { CalendarService } from 'src/app/services/calendar/calendar.service';
 import { CalibrationService } from 'src/app/services/calibration/calibration.service';
+import { EvalgroupsCRUDService } from 'src/app/services/evalgroupsCRUD/evalgroups-crud.service';
 
 @Component({
   selector: 'app-viewselectedworkerresult',
@@ -17,7 +18,7 @@ export class ViewselectedworkerresultComponent implements OnInit {
   CodEvaluatorFile: string = this.route.snapshot.paramMap.get('CodEvaluatorFile');
   CodCalendar: string = this.route.snapshot.paramMap.get('CodCalendar');
   IdEvaluation: string = this.route.snapshot.paramMap.get('IdEvaluation')
-  
+  grupoEvaluacionNombre: string = '';
   TableData: any
   AutoEvaluationResult: number;
   DataFromsessionStorage:ILoginData;
@@ -29,6 +30,7 @@ export class ViewselectedworkerresultComponent implements OnInit {
     private calendarService: CalendarService,
     private calibrationService: CalibrationService,
     private router: Router,
+     private AsignationEvalGroupsService: EvalgroupsCRUDService
   ){}
 
   async ngOnInit(): Promise<any> {
@@ -67,6 +69,9 @@ export class ViewselectedworkerresultComponent implements OnInit {
       
       this.AutoEvaluationResult = response.registros.resultado;
       this.TableData = response;
+        const evalgroup = await this.AsignationEvalGroupsService.GetEvalGroupsReportCRUD().toPromise();
+    const registroEncontrado = evalgroup.registros.find(reg => reg.codigo === this.TableData.registros.grupoEvaluacion);
+    this.grupoEvaluacionNombre = registroEncontrado.descripcion || 'Descripción no encontrada';
       this.utilsService.closeLoading();
     } catch (error) {
       //console.log('Error durante la carga de datos:', error);

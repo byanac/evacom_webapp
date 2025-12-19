@@ -2,7 +2,7 @@ import { MenuItem } from "src/app/interfaces/MenuItem";
 
 export const EvaluatorOptions: MenuItem[] = [
     {
-      name: 'Fase de Retroalimentación',
+      name: 'Fase de Retro-evaluador',
       onlycanseeChiefEvaluator: true,
       onlycanseeEvaluator: true,
       startCalendarName: 'dRetroIni',

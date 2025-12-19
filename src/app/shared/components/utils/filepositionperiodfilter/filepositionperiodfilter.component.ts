@@ -57,15 +57,7 @@ export class FilepositionperiodfilterComponent implements OnInit, OnDestroy,OnCh
           this.componentService.$PositionValue.emit(this.initialPuesto);
         }
 
-        if (this.initialPeriodo) {
-          this.Periodo = this.initialPeriodo;
-          this.componentService.$PeriodValue.emit(this.initialPeriodo);
-        }
 
-        if (this.initialPeriodo) {
-          this.Periodo = this.initialPeriodo;
-          this.componentService.$PeriodValue.emit(this.initialPeriodo);
-        }
 
 
 
@@ -80,6 +72,14 @@ export class FilepositionperiodfilterComponent implements OnInit, OnDestroy,OnCh
   
       if (this.calendarData && this.calendarData.registros.length) {
         this.Periodo = this.calendarData.registros[this.calendarData.registros.length - 1].vCodigo;
+      }
+        if (this.initialPeriodo) {
+          this.Periodo = this.initialPeriodo;
+          this.componentService.$PeriodValue.emit(this.initialPeriodo);
+        }
+        if (this.initialPeriodo) {
+          this.Periodo = this.initialPeriodo;
+          this.componentService.$PeriodValue.emit(this.initialPeriodo);
       }
   
       //console.log('Datos de calendario cargados:', this.calendarData);

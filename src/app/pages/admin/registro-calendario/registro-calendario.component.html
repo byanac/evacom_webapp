@@ -137,7 +137,8 @@
   </main>
 
   <div class="bg-white p-6 rounded-lg shadow ">
-    <h2 class="text-lg font-semibold mb-4">Resumen del Calendario</h2>
+    <h2 class="text-lg font-semibold mb-4">Resumen del Calendario<br>
+    {{ calendarioForm.get('calnombre')?.value }}</h2>
     <ul class="space-y-2">
       <li *ngFor="let fase of fases" class="flex items-center text-sm" (click)="fase === 'planDesarrollo' ? changeViewPlanDesarrolloDetail() : ''">
         <span  *ngIf="fase !== 'planDesarrollo'" class="capitalize mr-2">{{  endsWithOn(formatFaseName(fase)) }}:</span>

@@ -51,7 +51,7 @@ private PeriodoSubscription: Subscription = new Subscription();  codFicha!: stri
   Redirecttoevaluatorview: boolean = false;
   ShowViewEvaluatedPIDButton: boolean = false;
   ShowViewEvaluatedCompliancePIDButton: boolean = false;
-  DataList:IAdminPidEvaluatorsProgressionReport
+  DataList:IAdminPidEvaluatorsProgressionReport[] = [];
 
   constructor(
     private router: Router,
@@ -90,6 +90,39 @@ private PeriodoSubscription: Subscription = new Subscription();  codFicha!: stri
     this.PeriodoSubscription = await this.filepositionperiodService.$PeriodValue.subscribe((value: string) => {
       this.Periodo = value
     })
+    const fuePorRegresar = sessionStorage.getItem('retornaDetallePID');
+    if (fuePorRegresar === 'true') {
+    let withSessions=false;
+      const fichaReporteRetro = sessionStorage.getItem('fichaReporteRetro');
+      if ((fichaReporteRetro)  && (fichaReporteRetro.length>0)){
+        this.Ficha=fichaReporteRetro;          
+        withSessions=true;
+      }
+      const puestoReporteRetro = sessionStorage.getItem('puestoReporteRetro');
+      if ((puestoReporteRetro)  && (puestoReporteRetro.length>0)){
+        this.Puesto=puestoReporteRetro;          
+        withSessions=true;
+      }
+      const calendarioReporteRetro = sessionStorage.getItem('calendarioReporteRetro');
+      if ((calendarioReporteRetro)  && (calendarioReporteRetro.length>0)){
+        this.Periodo=calendarioReporteRetro;          
+        withSessions=true;
+      }
+      const gerenciasReporteRetro = sessionStorage.getItem('gerenciasReporteRetro');
+      if ((gerenciasReporteRetro)  && (gerenciasReporteRetro.length>0)){
+        this.GerenciasToSend=JSON.parse(gerenciasReporteRetro);          
+        withSessions=true;
+      }
+      const equipoReporteRetro = sessionStorage.getItem('equipoReporteRetro');
+      if ((equipoReporteRetro)  && (equipoReporteRetro.length>0)){
+        this.TeamsToSend=JSON.parse(equipoReporteRetro);          
+        withSessions=true;
+      }
+       sessionStorage.removeItem('retornaDetallePID');
+      if (withSessions) {
+        this.FilterData();
+      }
+    } 
 
     this.utilsService.closeLoading();;
   }
@@ -171,7 +204,12 @@ private PeriodoSubscription: Subscription = new Subscription();  codFicha!: stri
           }else{
             this.Redirecttoevaluatorview = true;
             this.ShowViewEvaluatedPIDButton = true;
-            this.DataList = data
+            this.DataList = data;
+             sessionStorage.setItem('fichaReporteRetro', this.Ficha);
+      sessionStorage.setItem('puestoReporteRetro', this.Puesto);
+      sessionStorage.setItem('calendarioReporteRetro', this.Periodo);
+      sessionStorage.setItem('gerenciasReporteRetro', JSON.stringify(this.GerenciasToSend));
+      sessionStorage.setItem('equipoReporteRetro', JSON.stringify(this.TeamsToSend));
             ////console.log(this.DataList)
             if(this.Redirecttoevaluatorview){
               this.ChiefView = true;
@@ -191,6 +229,12 @@ private PeriodoSubscription: Subscription = new Subscription();  codFicha!: stri
   RefreshFilters():void {
     this.utilsService.ResetAllFilterValues();
     this.Estado = "";
+     sessionStorage.removeItem('fichaReporteRetro');
+      sessionStorage.removeItem('puestoReporteRetro');
+      sessionStorage.removeItem('calendarioReporteRetro');
+      sessionStorage.removeItem('gerenciasReporteRetro');
+      sessionStorage.removeItem('equipoReporteRetro');
+      this.DataList=[];
   }
 
 }

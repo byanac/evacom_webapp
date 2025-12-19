@@ -151,4 +151,8 @@ export class DetalleevaluadorComponent implements OnInit {
   onImgError(event){
     event.target.src = 'assets/img/ProfilePicturePlaceHolder.jpg'
   }
+  regresar() {
+  sessionStorage.setItem('retornaDetallePID', 'true');
+  history.back();
+}
 }
