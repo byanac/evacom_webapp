@@ -18,5 +18,5 @@ export const RegisterEvaluatorAndEvaluatedErrors: { [key: number]: string } = {
     '17': "El código de tipo de evaluador no está permitido para este periodo de calendario",
     '18': "Registro ya existe en la base de datos",
     '19': "Registro ya existe en la base de datos pero como otro tipo de evaluador",
-    '20': "Registro tiene un registro de evaluación ya registrado"
+    '20': "Evaluador ya tiene un registro de evaluación guardado"
 };
