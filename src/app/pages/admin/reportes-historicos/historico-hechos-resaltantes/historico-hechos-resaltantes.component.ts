@@ -10,6 +10,7 @@ import { GerencyteamsmultiselectService } from 'src/app/services/gerencyteamsmul
 import { ITeam } from 'src/app/interfaces/ITeam';
 import { FilepositionperiodfilterService } from 'src/app/services/filepositionperiodfilter/filepositionperiodfilter.service';
 import { AddoutstandingfactmodalService } from 'src/app/services/addoutstandingfactmodal/addoutstandingfactmodal.service';
+import {SearchStateService} from 'src/app/services/search-state.service';
 
 @Component({
   selector: 'app-historico-hechos-resaltantes',
@@ -49,7 +50,8 @@ calendarData: ISchedule;
     private teamService: TeamService,
     private gerencyteamService: GerencyteamsmultiselectService, 
     private FilePositionPeriodService: FilepositionperiodfilterService,
-    private Factsservice: AddoutstandingfactmodalService
+    private Factsservice: AddoutstandingfactmodalService,
+     private searchState: SearchStateService
   ) { }
 
   async ngOnInit(): Promise<any> {
@@ -83,6 +85,19 @@ calendarData: ISchedule;
       this.Estado = value
     })
 
+     const saved = this.searchState.getState();
+
+     if(saved.periodo){
+    this.Ficha = saved.ficha;
+    this.Puesto = saved.puesto;
+    this.Periodo = saved.periodo;
+    this.GerenciasToSend = saved.gerencias;
+    this.TeamsToSend = saved.equipos;
+
+    // Para volver a mostrar la tabla automáticamente
+    this.FilterData();
+  }
+
     this.utilsService.closeLoading();
   }
 
@@ -97,6 +112,15 @@ calendarData: ISchedule;
 
   async FilterData(): Promise<any>{
   this.gerencyteamService.CloseAllSelects();
+
+   this.searchState.setState({
+    ficha: this.Ficha,
+    puesto: this.Puesto,
+    periodo: this.Periodo,
+    gerencias: this.GerenciasToSend,
+    equipos: this.TeamsToSend
+  });
+  
   //console.log(this.Periodo)
    switch(true) {
      case this.Periodo === '':

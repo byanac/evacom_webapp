@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute,Router } from '@angular/router';
 import { ILoginData } from 'src/app/interfaces/ILoginData';
 import { AddoutstandingfactmodalService } from 'src/app/services/addoutstandingfactmodal/addoutstandingfactmodal.service';
 import { CalendarService } from 'src/app/services/calendar/calendar.service';
@@ -32,7 +32,8 @@ export class HistoricoHechosResaltantesDetalleEvaluadorComponent implements OnIn
     private calendarService: CalendarService,
     private utilsService: UtilsService,
     private peopletobeevaluatedService: PeopletobeevaluatedService,
-    private Factsservice: AddoutstandingfactmodalService
+    private Factsservice: AddoutstandingfactmodalService, 
+    private router: Router
   ){ }
 
   async ngOnInit():Promise<void> {
@@ -54,6 +55,10 @@ export class HistoricoHechosResaltantesDetalleEvaluadorComponent implements OnIn
     this.utilsService.closeLoading();;
   }
 
+  onReturn(){
+    console.log('Retornar REPORTE HISTÓRICO DE HECHOS RESALTANTES');
+    this.router.navigate(['/home/historico-hechos-resaltantes']);
+  }
 
   async showDialog(data: any): Promise<any> {
     this.utilsService.showLoading();
