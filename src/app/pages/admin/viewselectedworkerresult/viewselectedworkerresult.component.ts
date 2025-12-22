@@ -131,4 +131,8 @@ removeLeadingZeros(value: string | number): string {
   const input = value.toString();
   return input.replace(/^0+/, '');
 }
+ regresar() {
+      sessionStorage.setItem('retornaCalibracion', 'true');
+      history.back();
+    }
 }

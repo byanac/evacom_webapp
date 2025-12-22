@@ -35,10 +35,14 @@ export class ReporteCalibracionComponent implements OnInit {
     this.utilsService.showLoading();
     const data = await this.calendarService.getDataScheduleApi().toPromise()
     this.calendarData = data;
+     const fuePorRegresar = sessionStorage.getItem('retornaCalibracion');
+      if (fuePorRegresar === 'true') {
     const periodoReporte = sessionStorage.getItem('periodoReporteCalibracion');
     if (periodoReporte){
       this.Periodo=periodoReporte;
+             sessionStorage.removeItem('retornaCalibracion');
       this.FilterData();
+          }
     }
     this.utilsService.closeLoading();
   }
