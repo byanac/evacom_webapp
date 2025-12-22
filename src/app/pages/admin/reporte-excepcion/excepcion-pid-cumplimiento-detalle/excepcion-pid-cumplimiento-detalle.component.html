@@ -155,3 +155,10 @@
 </div> 
 
 <app-changeexceptionlimitdates *ngIf="ShowChangeExceptionLimitDateModal" (close)="closeModal($event)" [PeriodCode]="this.CalendarCode" [EntryData]="this.EntryData"></app-changeexceptionlimitdates>
+<div style=" float: right;padding-top: 20px;">
+      <button type="button" 
+        class="bg-green-500 hover:bg-green-500 text-white font-bold py-2 px-4 rounded-full mr-6" 
+        (click)="regresar()">
+        Regresar
+    </button>
+    </div>

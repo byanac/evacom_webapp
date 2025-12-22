@@ -96,6 +96,8 @@ TableData: IPIDEvaluatorReport[];
     this.PeriodoSubscription = await this.filepositionperiodService.$PeriodValue.subscribe((value: string) => {
       this.Periodo = value
     })
+    const fuePorRegresar = sessionStorage.getItem('retornaRetro');
+    if (fuePorRegresar === 'true') {
     let withSessions=false;
       const fichaReporteRetro = sessionStorage.getItem('fichaReporteRetro');
       if ((fichaReporteRetro)  && (fichaReporteRetro.length>0)){
@@ -122,8 +124,10 @@ TableData: IPIDEvaluatorReport[];
         this.TeamsToSend=JSON.parse(equipoReporteRetro);          
         withSessions=true;
       }
+        sessionStorage.removeItem('retornaRetro');
       if (withSessions) {
         this.FilterData();
+      }
       }
 
     this.ChiefOptionOn = true;

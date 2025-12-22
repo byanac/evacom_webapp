@@ -49,6 +49,24 @@ export class ReporteExcepcionComponent implements OnInit {
     const data = await this.calendarService.getDataScheduleApi().toPromise()
     this.calendarData = data;
     this.utilsService.closeLoading();
+      const fuePorRegresar = sessionStorage.getItem('retornaExcepcion'); 
+     let withSessions=false;
+     if (fuePorRegresar === 'true') {
+       const periodoExcepcion = sessionStorage.getItem('periodoExcepcion');
+        if ((periodoExcepcion)  && (periodoExcepcion.length>0)){
+        this.Periodo=periodoExcepcion;          
+        withSessions=true;
+      }
+      const tipoExcepcion = sessionStorage.getItem('tipoExcepcion');
+        if ((tipoExcepcion)  && (tipoExcepcion.length>0)){
+        this.ViewTypeSelected=tipoExcepcion;          
+        withSessions=true;
+      }
+      sessionStorage.removeItem('retornaExcepcion');
+      if (withSessions){
+        this.FilterData();
+      }
+     }
   }
 
   async FilterData(){
@@ -77,6 +95,8 @@ export class ReporteExcepcionComponent implements OnInit {
         this.DataList = data
         this.OnSearchViewType = this.ViewTypeSelected;
         this.showtable = true;
+         sessionStorage.setItem('periodoExcepcion', this.Periodo);
+         sessionStorage.setItem('tipoExcepcion', this.ViewTypeSelected);
         this.utilsService.closeLoading();;
       }
     }
@@ -257,5 +277,9 @@ removeLeadingZeros(value: string | number): string {
     this.ShowChangeExceptionLimitDateModal = event;
   }
 
+     regresar() {
+      sessionStorage.setItem('retornaExcepcion', 'true');
+      history.back();
+    }
 }
 

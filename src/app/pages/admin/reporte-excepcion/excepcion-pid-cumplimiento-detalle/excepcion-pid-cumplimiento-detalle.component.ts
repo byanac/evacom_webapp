@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { IPIDEvaluatorReport } from 'src/app/interfaces/IPIDEvaluatorReport';
 import { ISchedule } from 'src/app/interfaces/ISchedule';
 import { LoginService } from 'src/app/services/auth/login.service';
@@ -43,7 +43,8 @@ export class ExcepcionPidCumplimientoDetalleComponent implements OnInit {
     private calendarService: CalendarService,
     private loginService: LoginService,
     private PIDservice: PidService,
-    private exceptionReportsService: ExceptionReportsService
+    private exceptionReportsService: ExceptionReportsService,
+    private router: Router
   ){ }
 
   async ngOnInit(): Promise<void> {
@@ -248,4 +249,8 @@ export class ExcepcionPidCumplimientoDetalleComponent implements OnInit {
       this.ShowChangeExceptionLimitDateModal = event;
       this.FilterData();
     }
+      regresar() {
+      sessionStorage.setItem('retornaExcepcion', 'true');
+    return this.router.navigateByUrl('/home/reporte-excepcion');
+    }  
 }

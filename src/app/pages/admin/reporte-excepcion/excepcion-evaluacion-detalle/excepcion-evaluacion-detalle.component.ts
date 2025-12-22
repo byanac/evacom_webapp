@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ILoginData } from 'src/app/interfaces/ILoginData';
 import { CalendarService } from 'src/app/services/calendar/calendar.service';
 import { EvaluatorsService } from 'src/app/services/evaluators/evaluators.service';
@@ -33,6 +33,7 @@ export class ExcepcionEvaluacionDetalleComponent implements OnInit {
     private EmailService: SendemailService,
     private calendarService: CalendarService,
     private utilsService: UtilsService,
+    private router: Router
   ){ }
 
   async ngOnInit():Promise<void> {
@@ -172,6 +173,10 @@ export class ExcepcionEvaluacionDetalleComponent implements OnInit {
     const input = value.toString();
     return input.replace(/^0+/, '');
   }
+     regresar() {
+      sessionStorage.setItem('retornaExcepcion', 'true');
+      return this.router.navigateByUrl('/home/reporte-excepcion');
   
+    }  
 
 }

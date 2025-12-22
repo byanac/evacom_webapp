@@ -52,6 +52,10 @@ export class ReporteRetroalimentacionporevaluadorDetalleComponent implements OnI
     this.utilsService.closeLoading();;
   }
 
+     regresar() {
+      sessionStorage.setItem('retornaRetro', 'true');
+      history.back();
+    }
   sendEvaluatedNotification(nombres: string, idEvaluacion: string){
       Swal.fire({
         title:  "Aviso",
