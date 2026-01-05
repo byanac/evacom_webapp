@@ -214,7 +214,8 @@ export class FilepositionperiodfilterComponent implements OnInit, OnDestroy,OnCh
       this.disablefichafield = false;
       this.FichaPH = 'Cod.Ficha';
     }
-    this.componentService.$PositionValue.emit(value);
+     this.componentService.$PositionValue.emit(value===''?value:this.padLeftWithZeros(value));
+    //this.componentService.$PositionValue.emit(value);
   }
 
   padLeftWithZeros(value: number | string): string {
@@ -224,7 +225,7 @@ export class FilepositionperiodfilterComponent implements OnInit, OnDestroy,OnCh
 
   OnTypingFicha(value: string): void {
     this.Ficha = value;
-    this.componentService.$FileValue.emit(this.padLeftWithZeros(value));
+          this.componentService.$FileValue.emit(value===''?value:this.padLeftWithZeros(value));
   }
 
   SendCalendarCode(): void {

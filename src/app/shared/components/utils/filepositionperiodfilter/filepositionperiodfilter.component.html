@@ -20,7 +20,7 @@
       <mat-label>Cod.Puesto</mat-label>
       <input 
         matInput 
-        (keyup)="OnTypingPuesto($event.target.value)" 
+        (blur)="OnTypingPuesto($event.target.value)" 
         maxlength="8" 
         type="text" 
         [(ngModel)]="Puesto" 

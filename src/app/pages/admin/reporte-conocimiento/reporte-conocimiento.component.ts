@@ -127,7 +127,10 @@ ngOnDestroy(): void {
         this.utilsService.showLoading();
         //console.log(this.Estado)
         let todosValue = (this.Estado === undefined || this.Estado === '') 
-        let estado = (this.Estado === "true")
+        let estado = (this.Estado === "true");
+        if (this.Puesto.trim().length>0) {
+          this.Puesto=this.utilsService.padLeftZeros(this.Puesto)
+        }
         const BodyKnowledgeFilter: IFilterBody = {
           ficha: this.Ficha === '' ? '' :  this.utilsService.padLeftZeros(this.Ficha),
           puesto: this.Puesto,

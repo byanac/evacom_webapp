@@ -186,7 +186,7 @@ export class AsignacionGruposEvaluacionComponent implements OnInit, AfterViewIni
       //console.log(this.gruposevaluacion)
       this.utilsService.closeLoading();
     }catch (error){
-      return Swal.fire('Error al cargar los datos de cgrupos de competencia','Por favor, inténtalo de nuevo más tarde.',"error");
+      return Swal.fire('Error al cargar los datos de grupos de competencia','Por favor, inténtalo de nuevo más tarde.',"error");
     }
   }
 

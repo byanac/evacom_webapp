@@ -142,8 +142,8 @@ TableData: IPIDEvaluatorReport[];
   async LoadChiefData(){
     this.utilsService.showLoading();
     const BodyKnowledgeFilter: any = {
-      ficha: this.Ficha,
-      puesto: this.Puesto,
+      ficha: this.Ficha=== '' ? '' :  this.utilsService.padLeftZeros(this.Ficha),
+      puesto: this.Puesto=== '' ? '' :  this.utilsService.padLeftZeros(this.Puesto),
       calendario: this.Periodo,
       gerencias: this.GerenciasToSend,
       equipo: this.TeamsToSend,

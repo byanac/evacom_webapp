@@ -122,7 +122,7 @@
             <tbody>
               <tr *ngFor="let competencia of DataToShow.competencia.slice(3, 6)">
                 <td class="w-60">{{competencia?.titulo}}</td>
-                <td>{{competencia?.promedioAuto}}%  - {{this.ObtenerLabeldeEstado(competencia?.promedioAuto)}}</td>
+                <td>{{competencia?.promedio  | number : '1.2-2' }}%  - {{this.ObtenerLabeldeEstado(competencia?.promedio)}}</td>
               </tr> 
             </tbody>          
           </table>
