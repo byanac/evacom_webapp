@@ -237,9 +237,11 @@ TableData: IPIDEvaluatorReport[];
          }
         this.reporteDataService.setReporteGlobal(retorno);
            console.log(retorno);
-           const urlTree = this.router.createUrlTree(['/home/reporte-retroalimentacion-global']);
+           const urlTree = this.router.createUrlTree(['/home/reporte-retroalimentacion-global']); 
            const relativeUrl = this.router.serializeUrl(urlTree);
-           const absoluteUrl = window.location.origin + '/#' + relativeUrl;
+           //const absoluteUrl = window.location.origin + '/#' + relativeUrl;  // local
+           const absoluteUrl = window.location.origin + '/competencias/#' + relativeUrl; //desplegado
+           console.log(absoluteUrl);
            sessionStorage.setItem('reporte_global', JSON.stringify(retorno));
            window.open(absoluteUrl, '_blank');
           // this.router.navigate(['/home/reporte-retroalimentacion-global']);
