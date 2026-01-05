@@ -9,6 +9,7 @@ import { FilepositionperiodfilterService } from 'src/app/services/filepositionpe
 import { GerencyteamsmultiselectService } from 'src/app/services/gerencyteamsmultiselect/gerencyteamsmultiselect.service';
 import { TeamService } from 'src/app/services/team/team.service';
 import { ITeam } from 'src/app/interfaces/ITeam';
+import { SearchStateService } from 'src/app/services/search-state.service';
 
 @Component({
   selector: 'app-historico-evaluacion',
@@ -20,30 +21,32 @@ export class HistoricoEvaluacionComponent implements OnInit, OnDestroy {
   private teamJsonSubscription: Subscription = new Subscription();
   private FichaSubscription: Subscription = new Subscription();
   private PuestoSubscription: Subscription = new Subscription();
-  private PeriodoSubscription: Subscription = new Subscription();  
+  private PeriodoSubscription: Subscription = new Subscription();
   startuptable: boolean = false;
-  DataList:IEvaluatorsEvaluationsProgress
+  DataList: IEvaluatorsEvaluationsProgress
   Periodo: string = "";
   GerenciasToSend: string[] = [];
   TeamsToSend: string[] = [];
   Teamdata!: ITeam[] | null;
   Teamdatabkup!: ITeam[] | null;
-  
-  filtervalue:string = '';
-  statusvalue:string | boolean = '';
-  gerencyvalue:string = ''
-  tempfiltervalue:string = '';
-  tempstatusvalue:string | boolean = '';
-  tempgerencyvalue:string = '';
+
+  filtervalue: string = '';
+  statusvalue: string | boolean = '';
+  gerencyvalue: string = ''
+  tempfiltervalue: string = '';
+  tempstatusvalue: string | boolean = '';
+  tempgerencyvalue: string = '';
   Ficha: string = '';
   Puesto: string = '';
   constructor(
-    private utilsService: UtilsService, 
+    private utilsService: UtilsService,
     private calendarService: CalendarService,
     private evaluatorsService: EvaluatorsService,
-    private gerencyteamService: GerencyteamsmultiselectService, 
+    private gerencyteamService: GerencyteamsmultiselectService,
     private FilePositionPeriodService: FilepositionperiodfilterService,
-    private teamService: TeamService
+    private teamService: TeamService,
+    private searchState: SearchStateService,
+
   ) { }
 
   async ngOnInit(): Promise<any> {
@@ -74,6 +77,20 @@ export class HistoricoEvaluacionComponent implements OnInit, OnDestroy {
       this.Periodo = value
     })
 
+    const saved = this.searchState.getState();
+
+    if (saved.periodo) {
+      this.Ficha = saved.ficha;
+      this.Puesto = saved.puesto;
+      this.Periodo = saved.periodo;
+      this.GerenciasToSend = saved.gerencias;
+      this.TeamsToSend = saved.equipos;
+
+      // Para volver a mostrar la tabla automáticamente
+      this.FilterData();
+    }
+
+
     this.utilsService.closeLoading();
   }
 
@@ -85,20 +102,29 @@ export class HistoricoEvaluacionComponent implements OnInit, OnDestroy {
     this.PeriodoSubscription.unsubscribe();
   }
 
-  RefreshFilters():void {
+  RefreshFilters(): void {
     this.utilsService.ResetAllFilterValues();
   }
 
-  async FilterData(): Promise<any>{
-     this.gerencyteamService.CloseAllSelects();
-    switch(true) {
+  async FilterData(): Promise<any> {
+    this.gerencyteamService.CloseAllSelects();
+
+    this.searchState.setState({
+      ficha: this.Ficha,
+      puesto: this.Puesto,
+      periodo: this.Periodo,
+      gerencias: this.GerenciasToSend,
+      equipos: this.TeamsToSend
+    });
+
+    switch (true) {
       case this.Periodo === '':
-        Swal.fire('El campo periodo está vacío', 'Debe seleccionar el campo de periodo para continuar.','error');
+        Swal.fire('El campo periodo está vacío', 'Debe seleccionar el campo de periodo para continuar.', 'error');
         break;
       default:
         this.utilsService.showLoading();
         const BodyKnowledgeFilter: any = {
-          ficha: this.Ficha === '' ? '' :  this.utilsService.padLeftZeros(this.Ficha),
+          ficha: this.Ficha === '' ? '' : this.utilsService.padLeftZeros(this.Ficha),
           puesto: this.Puesto,
           calendario: this.Periodo,
           gerencias: this.GerenciasToSend,
@@ -109,22 +135,24 @@ export class HistoricoEvaluacionComponent implements OnInit, OnDestroy {
         try {
           //console.log(BodyKnowledgeFilter)
           const data = await this.evaluatorsService.getEvaluatorsReport(BodyKnowledgeFilter).toPromise();
-          if(data.registros.length === 0){
-            Swal.fire("NOTIFICACIÓN","No se encontraron registros.","info")
-          }else{
-            this.DataList = data.registros  
+          if (data.registros.length === 0) {
+            Swal.fire("NOTIFICACIÓN", "No se encontraron registros.", "info")
+          } else {
+            this.DataList = data.registros
             ////console.log(data.registros)
             this.utilsService.closeLoading();;
             this.startuptable = true;
           }
         } catch (error) {
-          Swal.fire("ERROR",error.message,"error")
+          Swal.fire("ERROR", error.message, "error")
         }
-        
+
     }
   }
 
-  onImgError(event){
+
+
+  onImgError(event) {
     event.target.src = 'assets/img/ProfilePicturePlaceHolder.jpg'
   }
 

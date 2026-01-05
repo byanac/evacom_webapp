@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute,Router } from '@angular/router';
 import { ILoginData } from 'src/app/interfaces/ILoginData';
 import { CalendarService } from 'src/app/services/calendar/calendar.service';
 import { EvaluatorsService } from 'src/app/services/evaluators/evaluators.service';
@@ -27,7 +27,8 @@ export class HistoricoEvaluacionDetalleEvaluadorComponent implements OnInit {
     private evaluatorsService: EvaluatorsService, 
     private EmailService: SendemailService,
     private calendarService: CalendarService,
-    private utilsService: UtilsService,
+    private utilsService: UtilsService,    
+    private router: Router
   ){ }
 
   async ngOnInit():Promise<void> {
@@ -45,6 +46,12 @@ export class HistoricoEvaluacionDetalleEvaluadorComponent implements OnInit {
     this.CalendarType = CalendarString[0].tipo
     this.utilsService.closeLoading();;
   }
+
+   onReturn(){
+    console.log('Retornar a REPORTE HISTÓRICO DE EVALUACIÓN');
+    this.router.navigate(['/home/historico-evaluaciones']);
+  }
+
 
   removeLeadingZeros(value: string | number): string {
     const input = value.toString();

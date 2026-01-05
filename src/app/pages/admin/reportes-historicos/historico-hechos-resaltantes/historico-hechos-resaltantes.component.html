@@ -1,95 +1,104 @@
+<div class="relative overflow-x-auto">
+  <app-title titulo="REPORTE HISTÓRICO DE HECHOS RESALTANTES"></app-title>
+  <div class="max-w-4xl mx-auto p-6 bg-white rounded-lg shadow-md border border-gray-300 rounded-md mb-6">
 
-    <div  class="relative overflow-x-auto">
-      <app-title titulo="REPORTE HISTÓRICO DE HECHOS RESALTANTES"></app-title>
-      <div class="max-w-4xl mx-auto p-6 bg-white rounded-lg shadow-md border border-gray-300 rounded-md mb-6">
-            
-        <div class="grid grid-cols-1 gap-4 mb-6">
-            <app-filepositionperiodfilter [NotCalendarVigencies]="true" [ShowStatusModal]="true" [StatusPlaceHolder]="'Estado de registro'" [FalseText]="'No registrado'" [TrueText]="'Registrado'" [StatusOptionWidth]="'227px'"></app-filepositionperiodfilter>
-          </div>
-        
-          <!-- Selección de equipos -->
-          <div class="flex flex-wrap gap-4 justify-center">
-            <app-gerencyteamsmultiselect></app-gerencyteamsmultiselect>
-            
-            <button style="width: 107.42px;" (click)="FilterData()"  class="items-center justify-center py-2 bg-blue-600 text-white rounded-md flex items-center hover:bg-blue-700 ">
-            <svg class="w-5 h-5 text-white"  xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="m21 21-3.5-3.5M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"/>
-              </svg>                
-              Buscar
-            </button>
-            
-            <button style="width: 107.42px;" (click)="RefreshFilters()" class="items-center justify-center py-2 border border-gray-300 rounded-md flex items-center hover:bg-gray-50 ">
-                  <svg class="w-5 h-5 text-black"  xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="black" viewBox="0 0 24 24">
-                    <path fill-rule="evenodd" d="M8.586 2.586A2 2 0 0 1 10 2h4a2 2 0 0 1 2 2v2h3a1 1 0 1 1 0 2v12a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V8a1 1 0 0 1 0-2h3V4a2 2 0 0 1 .586-1.414ZM10 6h4V4h-4v2Zm1 4a1 1 0 1 0-2 0v8a1 1 0 1 0 2 0v-8Zm4 0a1 1 0 1 0-2 0v8a1 1 0 1 0 2 0v-8Z" clip-rule="evenodd"/>
-                  </svg>
-                Limpiar
-            </button>
-          </div>
-        </div>
+    <div class="grid grid-cols-1 gap-4 mb-6">
+      <app-filepositionperiodfilter [NotCalendarVigencies]="true" [ShowStatusModal]="true"
+        [StatusPlaceHolder]="'Estado de registro'" [FalseText]="'No registrado'" [TrueText]="'Registrado'"
+        [StatusOptionWidth]="'227px'" [initialFicha]="Ficha" [initialPuesto]="Puesto" [initialPeriodo]="Periodo">
+      </app-filepositionperiodfilter>
+    </div>
 
-      <div *ngIf="this.startuptable" class="relative overflow-x-auto">
-         <div id="TitleContainer" class="grid  titlecontainer" style="min-height: 3rem;" >
+
+
+    <!-- Selección de equipos -->
+    <div class="flex flex-wrap gap-4 justify-center">
+      <app-gerencyteamsmultiselect></app-gerencyteamsmultiselect>
+
+      <button style="width: 107.42px;" (click)="FilterData()"
+        class="items-center justify-center py-2 bg-blue-600 text-white rounded-md flex items-center hover:bg-blue-700 ">
+        <svg class="w-5 h-5 text-white" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+          viewBox="0 0 24 24">
+          <path stroke="currentColor" stroke-linecap="round" stroke-width="2"
+            d="m21 21-3.5-3.5M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z" />
+        </svg>
+        Buscar
+      </button>
+
+      <button style="width: 107.42px;" (click)="RefreshFilters()"
+        class="items-center justify-center py-2 border border-gray-300 rounded-md flex items-center hover:bg-gray-50 ">
+        <svg class="w-5 h-5 text-black" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="black"
+          viewBox="0 0 24 24">
+          <path fill-rule="evenodd"
+            d="M8.586 2.586A2 2 0 0 1 10 2h4a2 2 0 0 1 2 2v2h3a1 1 0 1 1 0 2v12a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V8a1 1 0 0 1 0-2h3V4a2 2 0 0 1 .586-1.414ZM10 6h4V4h-4v2Zm1 4a1 1 0 1 0-2 0v8a1 1 0 1 0 2 0v-8Zm4 0a1 1 0 1 0-2 0v8a1 1 0 1 0 2 0v-8Z"
+            clip-rule="evenodd" />
+        </svg>
+        Limpiar
+      </button>
+    </div>
+  </div>
+
+  <div *ngIf="this.startuptable" class="relative overflow-x-auto">
+    <div id="TitleContainer" class="grid  titlecontainer" style="min-height: 3rem;">
       <h1 class="text-lg mb-1 ml-5">Lista de evaluadores</h1>
     </div>
-        <table class="w-full text-sm text-left rtl:text-right text-gray-500 border solid">
-        <thead class="text-xs text-gray-700 uppercase bg-gray-5">
-          <tr>
-            <th scope="col" class="px-6 py-3 border" style="width: 8rem;">Foto</th>
-            <th scope="col" class="px-6 py-3 border" style="width: 5.9rem;">COD. FICHA</th>
-            <th scope="col" class="px-6 py-3 border" style="width: 35rem;">APELLIDOS Y NOMBRES</th>
-            <th scope="col" class="px-6 py-3 border" style="width: 8.5rem;">UNIDAD ORGÁNICA</th>
-            <th scope="col" class="px-6 py-3 border" style="width: 6.8rem;">COD. PUESTO</th>
-            <th scope="col" class="px-6 py-3 border text-wrap" style="width: 35rem;">PUESTO</th>
-            <th scope="col" class="px-6 py-3 border">
-              REGISTRO DE HECHOS RESALTANTES
-              </th>
-            <th scope="col" class="px-6 py-3 border">Acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let item of DataList" class="border hover:bg-gray-100">
-            <!-- Foto -->
-            <th class="px-6 py-4 text-black border">
-              <img class="w-20 h-20" [src]="item.foto" loading="lazy" 
-              crossorigin="anonymous" (error)="onImgError($event)" alt="Foto">
-            </th>
-            <!-- COD. Ficha -->
-            <th class="px-6 py-4 text-gray-900 whitespace-nowrap">
-              <div class="text-base font-semibold">{{ item.codigoFicha }}</div>
-            </th>
-            <!-- APELLIDOS Y NOMBRES -->
-            <td class="px-6 py-4 text-black border">{{ item.apellidosNombres }}</td>
-            <!-- UNIDAD ORGÁNICA -->
-            <td class="px-6 py-4 text-black border">{{ item.unidadOrganica }}</td>
-            <!-- COD. PUESTO -->
-            <td class="px-6 py-4 text-black border">{{ item.codigoPuesto }}</td>
-            <!-- PUESTO -->
-            <td class="px-6 py-4 text-black border">{{ item.nombrePuesto }}</td>
-            <!-- Evaluados -->
-            <td class="px-6 py-4 text-black border">
-              <div *ngIf="item.registraHechos" class="flex items-center">
-                <span class="badgegreen bg-green-500">REGISTRADOS</span>
-              </div>
-              <div *ngIf="!item.registraHechos" class="flex items-center">
-                <span class="badgered bg-red-500">NO REGISTRADOS</span>
-              </div>
-            </td>
-            <!-- Acciones -->
-            <td class="px-6 py-4">
-              <button type="button" 
-              *ngIf="item.registraHechos"
-              [routerLink]="['/home/historico-hechos-resaltantes-reporte-resultados-detalle', item.apellidosNombres, item.codigoFicha, item.codigoPuesto, this.Periodo]" 
+    <table class="w-full text-sm text-left rtl:text-right text-gray-500 border solid">
+      <thead class="text-xs text-gray-700 uppercase bg-gray-5">
+        <tr>
+          <th scope="col" class="px-6 py-3 border" style="width: 8rem;">Foto</th>
+          <th scope="col" class="px-6 py-3 border" style="width: 5.9rem;">COD. FICHA</th>
+          <th scope="col" class="px-6 py-3 border" style="width: 35rem;">APELLIDOS Y NOMBRES</th>
+          <th scope="col" class="px-6 py-3 border" style="width: 8.5rem;">UNIDAD ORGÁNICA</th>
+          <th scope="col" class="px-6 py-3 border" style="width: 6.8rem;">COD. PUESTO</th>
+          <th scope="col" class="px-6 py-3 border text-wrap" style="width: 35rem;">PUESTO</th>
+          <th scope="col" class="px-6 py-3 border">
+            REGISTRO DE HECHOS RESALTANTES
+          </th>
+          <th scope="col" class="px-6 py-3 border">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of DataList" class="border hover:bg-gray-100">
+          <!-- Foto -->
+          <th class="px-6 py-4 text-black border">
+            <img class="w-20 h-20" [src]="item.foto" loading="lazy" crossorigin="anonymous" (error)="onImgError($event)"
+              alt="Foto">
+          </th>
+          <!-- COD. Ficha -->
+          <th class="px-6 py-4 text-gray-900 whitespace-nowrap">
+            <div class="text-base font-semibold">{{ item.codigoFicha }}</div>
+          </th>
+          <!-- APELLIDOS Y NOMBRES -->
+          <td class="px-6 py-4 text-black border">{{ item.apellidosNombres }}</td>
+          <!-- UNIDAD ORGÁNICA -->
+          <td class="px-6 py-4 text-black border">{{ item.unidadOrganica }}</td>
+          <!-- COD. PUESTO -->
+          <td class="px-6 py-4 text-black border">{{ item.codigoPuesto }}</td>
+          <!-- PUESTO -->
+          <td class="px-6 py-4 text-black border">{{ item.nombrePuesto }}</td>
+          <!-- Evaluados -->
+          <td class="px-6 py-4 text-black border">
+            <div *ngIf="item.registraHechos" class="flex items-center">
+              <span class="badgegreen bg-green-500">REGISTRADOS</span>
+            </div>
+            <div *ngIf="!item.registraHechos" class="flex items-center">
+              <span class="badgered bg-red-500">NO REGISTRADOS</span>
+            </div>
+          </td>
+          <!-- Acciones -->
+          <td class="px-6 py-4">
+            <button type="button" *ngIf="item.registraHechos"
+              [routerLink]="['/home/historico-hechos-resaltantes-reporte-resultados-detalle', item.apellidosNombres, item.codigoFicha, item.codigoPuesto, this.Periodo]"
               class="w-full text-white bg-green-500 hover:bg-green-600 font-medium rounded-lg text-sm px-2.5 py-2.5">
               Ver detalle
-              </button>
-              <button type="button"  
-              *ngIf="!item.registraHechos"
+            </button>
+            <button type="button" *ngIf="!item.registraHechos"
               class="w-full text-white bg-gray-500 hover:bg-gray-600 font-medium rounded-lg text-sm px-2.5 py-2.5">
               Ver detalle
-              </button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      </div>
-    </div>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
