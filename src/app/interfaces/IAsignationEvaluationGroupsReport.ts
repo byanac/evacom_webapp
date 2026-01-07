@@ -16,6 +16,7 @@ export interface GrupoEvaluacion {
     apellidosNombres: string;
     codigoPuesto: string;
     nombrePuesto: string;
+     unidadOrganica: string;
   }
   
   export interface Admin {
