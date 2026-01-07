@@ -62,7 +62,14 @@
         </thead>
         <tbody *ngIf="DataToShow != undefined">
           <tr>
-            <td>{{AutoEvaluationResult}}% - {{this.ObtenerLabeldeEstado(AutoEvaluationResult)}}</td>
+             <td>
+              <span *ngIf="TipoCalendario==='90'">
+                {{DataToShow?.promedioEvaluacion}}% - {{this.ObtenerLabeldeEstado(DataToShow?.promedioEvaluacion)}}
+              </span>  
+              <span *ngIf="TipoCalendario==='180'">
+                {{DataToShow?.promedioFinal}}% - {{this.ObtenerLabeldeEstado(DataToShow?.promedioFinal)}}
+              </span>  
+            </td>
           </tr>
         </tbody>
       </table>
@@ -100,7 +107,7 @@
           <tbody>
             <tr *ngFor="let competencia of DataToShow.competencia.slice(0, 3)">
               <td class="w-60">{{competencia?.titulo}}</td>
-              <td>{{competencia?.promedio}}% - {{this.ObtenerLabeldeEstado(competencia?.promedio)}}</td>
+              <td>{{competencia?.promedio | number : '1.2-2'}}% - {{this.ObtenerLabeldeEstado(competencia?.promedio)}}</td>
             </tr>
           </tbody>
           </table>
@@ -115,7 +122,7 @@
             <tbody>
               <tr *ngFor="let competencia of DataToShow.competencia.slice(3, 6)">
                 <td class="w-60">{{competencia?.titulo}}</td>
-                <td>{{competencia?.promedio}}%  - {{this.ObtenerLabeldeEstado(competencia?.promedio)}}</td>
+                <td>{{competencia?.promedio | number : '1.2-2'}}%  - {{this.ObtenerLabeldeEstado(competencia?.promedio)}}</td>
               </tr> 
             </tbody>          
           </table>
@@ -144,7 +151,7 @@
         </tbody>
       </table>
       <div [ngClass]="{'ResultCompetencyContainerInfo90': Show90, 'ResultCompetencyContainerInfo180': Show180}" *ngIf="DataToShow != undefined">
-        <section class="m-0 mt-4 w-140">
+        <section class="m-0 mt-4  " style="width: 540px;">
           <table class="w-full h-full"><thead>
             <tr>
               <th>Evaluador</th>
@@ -153,17 +160,20 @@
           <tbody>
             <tr>
               <td class="w-60">AUTOEVALUACIÓN</td>
-              <td>{{DataToShow?.promedioAutoevaluacion}}% - {{this.ObtenerLabeldeEstado(DataToShow?.promedioAutoevaluacion)}}</td>
+              <td>{{DataToShow?.promedioAutoevaluacion | number : '1.2-2'}}% - {{this.ObtenerLabeldeEstado(DataToShow?.promedioAutoevaluacion)}}</td>
             </tr>
             <tr>
               <td class="w-60">JEFE DIRECTO</td>
-              <td>{{DataToShow?.promedioEvaluacion}}% - {{this.ObtenerLabeldeEstado(DataToShow?.promedioEvaluacion)}}</td>
+              <td>
+                <span *ngIf="TipoCalendario==='90'">  {{DataToShow?.promedioEvaluacion}}% - {{this.ObtenerLabeldeEstado(DataToShow?.promedioEvaluacion)}}</span>
+                <span *ngIf="TipoCalendario==='180'">  {{DataToShow?.promedioJefe}}% - {{this.ObtenerLabeldeEstado(DataToShow?.promedioJefe)}}</span>
+              </td>
             </tr>
           </tbody>
           </table>
         </section>
   
-        <section class="m-0 mt-4 w-96" *ngIf="Show180">
+        <section class="m-0 mt-4 " style="width: 540px;" *ngIf="Show180">
           <table class="w-full h-full"><thead>
             <tr>
               <th>Evaluador</th>
@@ -172,11 +182,11 @@
           <tbody>
             <tr>
               <td class="w-60">TRABAJADORES</td>
-              <td>{{DataToShow?.promedioSubalternos}}% - {{this.ObtenerLabeldeEstado(DataToShow?.promedioSubalternos)}}</td>
+              <td>{{DataToShow?.promedioSubalternos | number : '1.2-2'}}% - {{this.ObtenerLabeldeEstado(DataToShow?.promedioSubalternos)}}</td>
             </tr>
             <tr>
               <td class="w-60">RESULTADO GLOBAL DE DESEMPEÑO</td>
-              <td>{{DataToShow?.promedioFinal}}% - {{this.ObtenerLabeldeEstado(DataToShow?.promedioFinal)}}</td>
+              <td>{{DataToShow?.promedioFinal | number : '1.2-2'}}% - {{this.ObtenerLabeldeEstado(DataToShow?.promedioFinal)}}</td>
             </tr>
           </tbody>
           </table>
@@ -275,25 +285,25 @@
             
             <!-- AutoEvaluación -->
             <td>
-              {{competencia?.promedioAuto}}% - 
+              {{competencia?.promedioAuto | number : '1.2-2'}}% - 
               {{this.ObtenerLabeldeEstado(competencia?.promedioAuto)}}
             </td>
             
             <!-- Evaluador (Jefe Directo) -->
             <td>
-              {{competencia?.promedio}}% - 
+              {{competencia?.promedio | number : '1.2-2'}}% - 
               {{this.ObtenerLabeldeEstado(competencia?.promedio)}}
             </td>
   
             <!-- Trabajadores -->
            <td *ngIf="Show180">
-              {{competencia?.promedioSubalternos}}% - 
+              {{competencia?.promedioSubalternos | number : '1.2-2'}}% - 
               {{this.ObtenerLabeldeEstado(competencia?.promedioSubalternos)}}
             </td>
   
             <!-- Resultado Global -->
             <td *ngIf="Show180">
-              {{competencia?.promedioFinal}}% - 
+              {{competencia?.promedioFinal | number : '1.2-2'}}% - 
               {{this.ObtenerLabeldeEstado(competencia?.promedioFinal)}}
             </td>
           </tr>

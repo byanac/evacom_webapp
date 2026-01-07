@@ -178,6 +178,9 @@ constructor(
         break;
       default:
         this.utilsService.showLoading();
+         if (this.Puesto.trim().length>0) {
+          this.Puesto=this.utilsService.padLeftZeros(this.Puesto)
+        }
         const BodyKnowledgeFilter: any = {
           ficha: this.Ficha === '' ? '' :  this.utilsService.padLeftZeros(this.Ficha),
           puesto: this.Puesto,
