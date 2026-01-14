@@ -8,6 +8,8 @@ import { PidService } from 'src/app/services/pid/pid.service';
 import Swal from 'sweetalert2';
 import { forkJoin } from 'rxjs';
 import { Router } from '@angular/router';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-registro-cumplimiento-pid',
@@ -79,9 +81,9 @@ export class RegistroCumplimientoPidComponent implements OnInit {
   Item2ComplianceAcomplishDate: string;
   Item3ComplianceAcomplishDate: string;
 
-  Item1ComplianceAcomplishPercentage: string;
+  Item1ComplianceAcomplishPercentage: string| number;
   Item2ComplianceAcomplishPercentage: string | number;
-  Item3ComplianceAcomplishPercentage: string;
+  Item3ComplianceAcomplishPercentage: string | number;
 
   Commentary1: string;
   Commentary2: string;
@@ -111,7 +113,7 @@ export class RegistroCumplimientoPidComponent implements OnInit {
 
   IsSavingProgress: boolean = false;
 
-  constructor(private loginService: LoginService, private pidService: PidService, private utilService: UtilsService, private router: Router,) { }
+  constructor( private http: HttpClient,private loginService: LoginService, private pidService: PidService, private utilService: UtilsService, private router: Router,) { }
 
   async ngOnInit(): Promise<void> {
     ////console.log(this.AttachedDocument2)
@@ -388,7 +390,19 @@ export class RegistroCumplimientoPidComponent implements OnInit {
   
 
     if(this.EvaluadoVaARegistrar){
+      if ((this.AttachedItem1Label==="Adjuntar") || (this.AttachedItem2Label==="Adjuntar") || (this.AttachedItem3Label==="Adjuntar")){
+         return Swal.fire('Advertencia','Por favor complete los documentos adjuntos','warning')
+      }
+      if ((!this.Item1ComplianceAcomplishDate) || (!this.Item2ComplianceAcomplishDate) || (!this.Item3ComplianceAcomplishDate)){
+         return Swal.fire('Advertencia','Por favor complete las fechas de ejecución','warning')
+      }
       
+      if ((this.Item1ComplianceAcomplishPercentage===0) || (this.Item2ComplianceAcomplishPercentage===0) || (this.Item3ComplianceAcomplishPercentage===0)){
+         return Swal.fire('Advertencia','Por favor complete el porcentaje de cumplimiento','warning')
+      }
+      if ((this.Item1ComplianceAcomplishPercentage===undefined) || (this.Item2ComplianceAcomplishPercentage===undefined) || (this.Item3ComplianceAcomplishPercentage===undefined)){
+         return Swal.fire('Advertencia','Por favor complete el porcentaje de cumplimiento','warning')
+      }
       if(this.PidDetail1){
         if (!this.Item1ComplianceAcomplishDate || !this.Item1ComplianceAcomplishPercentage || !this.Commentary1 || !this.IsItem1Attached){
         this.IsSavingProgress = true;
@@ -814,4 +828,42 @@ Swal.fire({
       this.activeContainer2 = false;
       this.activeContainer3 = false;
   }
+   downloadFile(url: string, fileName: string) {
+  this.http.get(url, { responseType: 'blob' }).subscribe((blob) => {
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = fileName; // Aquí sí funcionará el nombre
+    document.body.appendChild(a);
+    a.click();
+    window.URL.revokeObjectURL(url);
+    a.remove();
+  });
+}
+downloadFileB(url: string, fileName: string) {
+  const urlBackend=environment.urlDescarga;
+  const params = new HttpParams()
+    .set('urlArchivo', url)
+    .set('nombreDeseado', fileName);
+  this.http.get(urlBackend, {
+    params: params,
+    responseType: 'blob', 
+    observe: 'response'   
+  }).subscribe({
+    next: (response) => {
+      const blob = new Blob([response.body], { type: response.body.type });
+      const urlBlob = window.URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = urlBlob;
+      link.download = fileName;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      window.URL.revokeObjectURL(urlBlob);
+    },
+    error: (err) => {
+      console.error('Error al descargar el archivo desde el proxy:', err);
+    }
+  });
+}
 }

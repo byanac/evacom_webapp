@@ -1,6 +1,7 @@
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit, Renderer2 } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { IActivationDates } from 'src/app/interfaces/IActivationDates';
 import { ICalibrationFindEvaluatedByFicha } from 'src/app/interfaces/ICalibrationFindEvaluatedByFicha';
 import { ICalibrationSendEvaluatedForAutorization } from 'src/app/interfaces/ICalibrationSendEvaluatedForAutorization';
 import { ILoginData } from 'src/app/interfaces/ILoginData';
@@ -88,14 +89,22 @@ export class RegisterexceptionComponent implements OnInit {
   }
 
   async getCalendarData(): Promise<any>{
-    try{
-      const data = await this.calendarService.getDataScheduleApi().toPromise();
-      let typeandperiodname: ISchedule = data.registros.filter((item: { tipo: string; }) => item.tipo === this.TypeValue);
-      this.TypeAndPeriodName = typeandperiodname[0].vNombre
-      this.PeriodCode = typeandperiodname[0].vCodigo
+     
+      //const data = await this.calendarService.getDataScheduleApi().toPromise();
+      const data = await this.calendarService.getCalendarVigencies().toPromise();
+     // let typeandperiodname: ISchedule = data.registros.filter((item: { tipo: string; }) => item.tipo === this.TypeValue);
+       let typeandperiodnameA: IActivationDates[] = data.registros.filter((item: any) => item.tipo === this.TypeValue && item.vigente === true);
+          if (typeandperiodnameA.length ===0){
+             Swal.fire("INFO", "No tiene calendarios vigentes.", "warning").then(() => {
+              this.utilsService.closeLoading()
+             this.CloseModal();
+            });
+          } else {
+          //let typeandperiodname = typeandperiodnameA[0];
+                let typeandperiodname: IActivationDates = typeandperiodnameA[0];
+                this.TypeAndPeriodName = typeandperiodname.vNombre
+                this.PeriodCode = typeandperiodname.vCodigo
       this.utilsService.closeLoading()
-    }catch(error){
-      return Swal.fire('Error al obtener los datos del calendario','','error');
     }
   }
 

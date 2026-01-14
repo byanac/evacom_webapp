@@ -37,7 +37,7 @@ export class HistoricoCalibracionComponent implements OnInit {
     this.utilsService.showLoading();
     let data: any;
     data = await this.CalendarService.getCalendarVigencies().toPromise()
-    data.registros = data.registros.filter((item: { vigente: boolean; }) => item.vigente === false);
+    //data.registros = data.registros.filter((item: { vigente: boolean; }) => item.vigente === false);
     //this.Periodo = data.registros[data.registros.length - 1].vCodigo
     this.calendarData = data;
 

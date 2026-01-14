@@ -136,7 +136,9 @@
                     <h2 class="text-white text-xl font-semibold mb-0">Gestión de Archivos</h2>
                 </div>
                 <div class="p-6 space-y-4">
-                    <a [href]="AttachedDocument1" target="_blank" class="w-full text-left px-4 py-2 rounded border border-gray-300 hover:bg-blue-50  flex items-center space-x-2">
+                    <a 
+                    (click)="downloadFileB(AttachedDocument1, NameAttachedDocument1)"
+                   class="w-full text-left px-4 py-2 rounded border border-gray-300 hover:bg-blue-50  flex items-center space-x-2">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
@@ -205,7 +207,7 @@
                     <h2 class="text-white text-xl font-semibold mb-0">Gestión de Archivos</h2>
                 </div>
                 <div class="p-6 space-y-4">
-                    <a [href]="AttachedDocument2" target="_blank" class="w-full text-left px-4 py-2 rounded border border-gray-300 hover:bg-blue-50  flex items-center space-x-2">
+                    <a (click)="downloadFileB(AttachedDocument2, NameAttachedDocument2)" class="w-full text-left px-4 py-2 rounded border border-gray-300 hover:bg-blue-50  flex items-center space-x-2">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
@@ -303,7 +305,7 @@
           </div>
 
           
-          <a class="mb-0 decoration-transparent text-black" target="_blank" *ngIf="AttachedDocument3 != '' && MostrarUrlDeEnlaces" [href]="AttachedDocument3">
+          <a class="mb-0 decoration-transparent text-black"  *ngIf="AttachedDocument3 != '' && MostrarUrlDeEnlaces" (click)="downloadFileB(AttachedDocument3, NameAttachedDocument3)">
             <label class="mb-0 flex flex-col items-center uppercase cursor-pointer">
               <svg class="w-8 h-8" fill="#374151" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                   <path d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
@@ -354,7 +356,7 @@
           {{Item1EndDate}}
         </td>
         <td class="p-2 border border-gray-300 text-center">
-          <a class="mb-0 decoration-transparent text-black" target="_blank" *ngIf="AttachedDocument1 != ''" [href]="AttachedDocument1">
+          <a class="mb-0 decoration-transparent text-black"   *ngIf="AttachedDocument1 != ''" (click)="downloadFileB(AttachedDocument1, NameAttachedDocument1)">
             <label class="mb-0 flex flex-col items-center uppercase cursor-pointer">
               <svg class="w-8 h-8" fill="#374151" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                   <path d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
@@ -399,7 +401,7 @@
           <p class="mb-0" *ngIf="!Item2EndDate">&nbsp;</p>
         </td>
         <td class="p-2 border border-gray-300 text-center">
-          <a class="mb-0 decoration-transparent text-black" target="_blank" *ngIf="AttachedDocument2 != ''" [href]="AttachedDocument2">
+          <a class="mb-0 decoration-transparent text-black"   *ngIf="AttachedDocument2 != ''" (click)="downloadFileB(AttachedDocument2, NameAttachedDocument2)">
             <label class="mb-0 flex flex-col items-center uppercase cursor-pointer">
               <svg class="w-8 h-8" fill="#374151" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                   <path d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
@@ -444,7 +446,7 @@
           <p class="mb-0" *ngIf="!Item3EndDate">&nbsp;</p>
         </td>
         <td class="p-2 border border-gray-300 text-center">
-          <a class="mb-0 decoration-transparent text-black" target="_blank" *ngIf="AttachedDocument3 != ''" [href]="AttachedDocument3">
+          <a class="mb-0 decoration-transparent text-black"   *ngIf="AttachedDocument3 != ''" (click)="downloadFileB(AttachedDocument3, NameAttachedDocument3)">
             <label class="mb-0 flex flex-col items-center uppercase cursor-pointer">
               <svg class="w-8 h-8" fill="#374151" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                   <path d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />

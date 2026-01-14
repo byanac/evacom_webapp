@@ -116,7 +116,7 @@
             {{Item1EndDate}}
           </td>
           <td class="p-2 border border-gray-300 text-center">
-            <a class="mb-0 decoration-transparent text-black" target="_blank" *ngIf="AttachedDocument1 != ''" [href]="AttachedDocument1">
+            <a class="mb-0 decoration-transparent text-black"  *ngIf="AttachedDocument1 != ''" (click)="downloadFileB(AttachedDocument1, NameAttachedDocument1)">
               <label class="mb-0 flex flex-col items-center uppercase cursor-pointer">
                 <svg class="w-8 h-8" fill="#374151" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                     <path d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
@@ -161,7 +161,7 @@
             <p class="mb-0" *ngIf="!Item2EndDate">&nbsp;</p>
           </td>
           <td class="p-2 border border-gray-300 text-center">
-            <a class="mb-0 decoration-transparent text-black" target="_blank" *ngIf="AttachedDocument2 != ''" [href]="AttachedDocument2">
+            <a class="mb-0 decoration-transparent text-black" *ngIf="AttachedDocument2 != ''" (click)="downloadFileB(AttachedDocument2, NameAttachedDocument2)">
               <label class="mb-0 flex flex-col items-center uppercase cursor-pointer">
                 <svg class="w-8 h-8" fill="#374151" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                     <path d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
@@ -206,7 +206,7 @@
             <p class="mb-0" *ngIf="!Item3EndDate">&nbsp;</p>
           </td>
           <td class="p-2 border border-gray-300 text-center">
-            <a class="mb-0 decoration-transparent text-black" target="_blank" *ngIf="AttachedDocument3 != ''" [href]="AttachedDocument3">
+            <a class="mb-0 decoration-transparent text-black"  *ngIf="AttachedDocument3 != ''" (click)="downloadFileB(AttachedDocument3, NameAttachedDocument3)">
               <label class="mb-0 flex flex-col items-center uppercase cursor-pointer">
                 <svg class="w-8 h-8" fill="#374151" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                     <path d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />

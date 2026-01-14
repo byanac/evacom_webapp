@@ -17,7 +17,8 @@ export class EvalconsolidatedreportmodalComponent implements OnInit {
   constructor(private renderer: Renderer2, private calendarService: CalendarService, private utilService: UtilsService, private modalStateService: ModalsService ) { }
 
   async ngOnInit(): Promise<void> {
-    const data = await this.calendarService.getDataScheduleApi().toPromise()
+    //const data = await this.calendarService.getDataScheduleApi().toPromise()
+    const data = await this.calendarService.getCalendarVigencies().toPromise()
     ////console.log(data)
     this.CalendarData = data;
   }

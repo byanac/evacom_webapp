@@ -1,3 +1,4 @@
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IEstructuraVeredictoPid } from 'src/app/interfaces/IEstructuraVeredictoPid';
@@ -6,6 +7,7 @@ import { IPIDIndicatorsAndDeliverables } from 'src/app/interfaces/IPIDIndicators
 import { LoginService } from 'src/app/services/auth/login.service';
 import { PidService } from 'src/app/services/pid/pid.service';
 import { UtilsService } from 'src/app/services/utils/utils.service';
+import { environment } from 'src/environments/environment';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -95,7 +97,7 @@ export class VerPidCumplimientoComponent implements OnInit {
 
   EvaluatorcomentarioCumplimiento: string = ""
 
-  constructor( private route: ActivatedRoute, private router: Router, private utilService: UtilsService, private pidService: PidService, private loginService: LoginService) { }
+  constructor( private http: HttpClient, private route: ActivatedRoute, private router: Router, private utilService: UtilsService, private pidService: PidService, private loginService: LoginService) { }
 
   async ngOnInit(): Promise<void> {
     this.utilService.showLoading();
@@ -269,6 +271,48 @@ export class VerPidCumplimientoComponent implements OnInit {
     }
     return ''; 
   }
-  
+  downloadFile(url: string, fileName: string) {
+  this.http.get(url, { responseType: 'blob' }).subscribe((blob) => {
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = fileName; // Aquí sí funcionará el nombre
+    document.body.appendChild(a);
+    a.click();
+    window.URL.revokeObjectURL(url);
+    a.remove();
+  });
+}
 
+
+
+downloadFileB(url: string, fileName: string) {
+  const urlBackend=environment.urlDescarga;
+  
+  const params = new HttpParams()
+    .set('urlArchivo', url)
+    .set('nombreDeseado', fileName);
+
+  
+  this.http.get(urlBackend, {
+    params: params,
+    responseType: 'blob', 
+    observe: 'response'   
+  }).subscribe({
+    next: (response) => {
+      const blob = new Blob([response.body], { type: response.body.type });
+      const urlBlob = window.URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = urlBlob;
+      link.download = fileName;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      window.URL.revokeObjectURL(urlBlob);
+    },
+    error: (err) => {
+      console.error('Error al descargar el archivo desde el proxy:', err);
+    }
+  });
+}
 }

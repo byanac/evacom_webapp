@@ -185,5 +185,6 @@ export const environment = {
     GetAdminExceptionReports: `${starturlSedapal}/api/reportes/excepcion`,
     GetExceptionReportTypeFeedbackEvaluatedByEvaluator: '',
     GetExceptionReportTypePIDEvaluatedByEvaluator: '',
-    GetEvaluatorStatusForPhase: `${starturlSedapal}/api/util/evaluado/validacion`
+    GetEvaluatorStatusForPhase: `${starturlSedapal}/api/util/evaluado/validacion`,
+    urlDescarga: `${starturlSedapal}/api/descarga`
 };

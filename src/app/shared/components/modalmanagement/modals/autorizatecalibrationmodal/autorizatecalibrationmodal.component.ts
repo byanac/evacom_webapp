@@ -12,6 +12,7 @@ import { ICalibrationFindEvaluatedByFicha } from 'src/app/interfaces/ICalibratio
 import { ICalibrationSendEvaluatedForAutorization } from 'src/app/interfaces/ICalibrationSendEvaluatedForAutorization';
 import { ModalsService } from 'src/app/services/modals.service';
 import { Subscription } from 'rxjs';
+import { IActivationDates } from 'src/app/interfaces/IActivationDates';
 registerLocaleData(localeEs);
 
 @Component({
@@ -48,17 +49,24 @@ export class AutorizatecalibrationmodalComponent implements OnInit, OnDestroy {
       this.TypeValue = value;
     });
 
-    const data = await this.calendarService.getDataScheduleApi().toPromise();
-
+    //const data = await this.calendarService.getDataScheduleApi().toPromise();
+    const data = await this.calendarService.getCalendarVigencies().toPromise();
     if (!data || !data.registros || data.registros.length === 0) {
       this.utilsService.closeLoading()
       return;
     }
 
-    let typeandperiodname: ISchedule = data.registros.filter((item: { tipo: string; }) => item.tipo === this.TypeValue);
-    this.TypeAndPeriodName = typeandperiodname[0].vNombre
-    this.PeriodCode = typeandperiodname[0].vCodigo
-    this.EndCalibrationPeriod = new Date(typeandperiodname[0].dCalibFin)
+    let typeandperiodnameA: IActivationDates[] = data.registros.filter((item: any) => item.tipo === this.TypeValue && item.vigente === true);
+    if (typeandperiodnameA.length ===0){
+       Swal.fire("INFO", "No tiene calendarios vigentes.", "warning").then(() => {
+        this.utilsService.closeLoading()
+       this.CloseModal();
+      });
+    }
+    let typeandperiodname: IActivationDates = typeandperiodnameA[0];
+    this.TypeAndPeriodName = typeandperiodname.vNombre
+    this.PeriodCode = typeandperiodname.vCodigo
+    this.EndCalibrationPeriod = new Date(typeandperiodname.dCalibFin)
     this.utilsService.closeLoading()
     this.es = {
       firstDayOfWeek: 1,

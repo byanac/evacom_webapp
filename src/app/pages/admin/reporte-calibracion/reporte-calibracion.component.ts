@@ -33,7 +33,8 @@ export class ReporteCalibracionComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
     this.utilsService.showLoading();
-    const data = await this.calendarService.getDataScheduleApi().toPromise()
+    //const data = await this.calendarService.getDataScheduleApi().toPromise()
+    const data = await this.calendarService.getCalendarVigencies().toPromise()
     this.calendarData = data;
      const fuePorRegresar = sessionStorage.getItem('retornaCalibracion');
       if (fuePorRegresar === 'true') {

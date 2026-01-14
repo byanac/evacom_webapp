@@ -63,7 +63,8 @@ export class FilepositionperiodfilterComponent implements OnInit, OnDestroy,OnCh
 
       if (!this.NotCalendarVigencies) {
         //console.log('cargando calendarios vigentes')
-        this.calendarData = await this.calendarService.getDataScheduleApi().toPromise();
+        //this.calendarData = await this.calendarService.getDataScheduleApi().toPromise();
+        this.calendarData = await this.calendarService.getCalendarVigencies().toPromise();
       } else {
         //console.log('cargando calendarios NO vigentes')
         const response = await this.calendarService.getCalendarVigencies().toPromise();

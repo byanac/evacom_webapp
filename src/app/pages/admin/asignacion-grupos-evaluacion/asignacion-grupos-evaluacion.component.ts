@@ -174,6 +174,7 @@ export class AsignacionGruposEvaluacionComponent implements OnInit, AfterViewIni
                 (data.grupoEvaluacion.descripcion || '') +          // 2. Título
                 (data.trabajador.codigoPuesto || '')  +    // 3. Descripción
                 (data.trabajador.nombrePuesto || '')  +    // 3. Descripción
+                 (data.trabajador.unidadOrganica || '')  +    // 3. Descripción
                 (data.trabajador.codigoFicha || '')   +   // 3. Descripción
                 (data.trabajador.apellidosNombres  || '')      // 3. Descripción
                 

@@ -46,7 +46,8 @@ export class ReporteExcepcionComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
     this.utilsService.showLoading();
-    const data = await this.calendarService.getDataScheduleApi().toPromise()
+    //const data = await this.calendarService.getDataScheduleApi().toPromise()
+    const data = await this.calendarService.getCalendarVigencies().toPromise()
     this.calendarData = data;
     this.utilsService.closeLoading();
       const fuePorRegresar = sessionStorage.getItem('retornaExcepcion'); 

@@ -113,10 +113,18 @@ export class EvaluateworkerComponent implements OnInit {
           .subscribe({
             next: (data) => {
               let message: string = "";
-              data.registros.estado === 0 ? message = 'El progreso de la evaluación fue guardado con éxito.' : message = 'La evaluación fue finalizada con éxito.'
+              //data.registros.estado === 0 ? message = 'El progreso de la evaluación fue guardado con éxito.' : message = 'La evaluación fue finalizada con éxito.'
+              if (data.registros.estado === 0) {
+                message='Has grabado solo un avance, aun no has terminado';
+                Swal.fire(message, "",'error').then(() => {
+                data.registros.estado === 0 ?  window.location.reload() : this.TableData = data    
+                }) 
+              } else {
+                message =  'La evaluación fue finalizada con éxito.';
               Swal.fire(message, "",'success').then(() => {
                 data.registros.estado === 0 ?  window.location.reload() : this.TableData = data    
               })  
+              }
            
             },
             error: (error) => {
@@ -132,10 +140,18 @@ export class EvaluateworkerComponent implements OnInit {
           .subscribe({
             next: (data) => {
               let message: string = "";
-              data.registros.estado === 0 ? message = 'El progreso de la evaluación fue guardado con éxito.' : message = 'La evaluación fue finalizada con éxito.'
+              
+               if (data.registros.estado === 0) {
+                message='Has grabado solo un avance, aun no has terminado';
+                Swal.fire(message, "",'error').then(() => {
+                data.registros.estado === 0 ?  window.location.reload() : this.TableData = data    
+                }) 
+              } else {
+                message =  'La evaluación fue finalizada con éxito.';
               Swal.fire(message, "",'success').then(() => {
                 data.registros.estado === 0 ?  window.location.reload() : this.TableData = data    
               })  
+              }
            
             },
             error: (error) => {
