@@ -322,13 +322,10 @@ export class RegisterEvaluatedFeedbackComponent implements OnInit {
             this.feedbackService.PostEvaluatorSaveFeedback(BodyToPost).subscribe({
             next: (data) => {
               Swal.fire("Retroalimentación registrado","La retroalimentación fue registrado con éxito.","success").then(() => {
-                window.location.reload();
+                this.DisableSubmitButton=true;
+            //    window.location.reload();
               })
               //////////console.log(data)
-            },
-            error: (error) => {
-              console.error("Error:", error.message);
-              Swal.fire("Error al enviar la evaluación.",'',"error");
             }
           }); 
       }

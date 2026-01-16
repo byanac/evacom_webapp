@@ -161,7 +161,7 @@ TableData: IPIDEvaluatorReport[];
       sessionStorage.setItem('equipoReporteRetro', JSON.stringify(this.TeamsToSend));
       this.utilsService.closeLoading();
       this.ChiefView = true;
-      return this.DataList = data.registros  
+      return this.DataList = data.registros.filter(item => item.evaluados_total > 0);
     }
   }
 
