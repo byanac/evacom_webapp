@@ -41,7 +41,7 @@ export class RegistroEvaluadores90Component implements OnInit {
     'nombreEvaluador',
     'rolEvaluador',
     'denoPuestoEvaluador',
-     'uoevaluado',
+    'uoevaluado',
     'fichaEvaluado',
     'nombreEvaluado',
     'rolEvaluado',
@@ -51,7 +51,7 @@ export class RegistroEvaluadores90Component implements OnInit {
     'estado',
     'acciones'
   ];
-  
+
   displayedColumnsDialog: string[] = [
     'codigoCalendario',
     'uoevaluador',
@@ -64,24 +64,24 @@ export class RegistroEvaluadores90Component implements OnInit {
     'nombreEvaluado',
     'rolEvaluado',
     'denoPuestoEvaluado',
-
     'observacion'
   ];
+
 
   @ViewChild('UploadExcelEvaluators90Dialog') UploadExcelEvaluators90Dialog: TemplateRef<any>;
   @ViewChild('paginatorEvalGroups') paginatorEvalGroups: MatPaginator;
   editingItem: any = null;
 
-  constructor(public fb: FormBuilder, private adminService: AdminService, private loginService: LoginService, public dialog: MatDialog,private route: ActivatedRoute,private utilsService: UtilsService, private evalAsignationService: EvalasignationService,  private parametrizationService: ParametrizationService) {}
+  constructor(public fb: FormBuilder, private adminService: AdminService, private loginService: LoginService, public dialog: MatDialog, private route: ActivatedRoute, private utilsService: UtilsService, private evalAsignationService: EvalasignationService, private parametrizationService: ParametrizationService) { }
 
   async ngOnInit(): Promise<any> {
     await this.initForm();
     await this.LoadCalendarInfo();
     await this.LoadEvalAsignationData();
     if (this.sortAsignacion) {
-            this.dataSourceEvalAsignation.sort = this.sortAsignacion;
-            this.configureSortingDataAccessor();
-        }
+      this.dataSourceEvalAsignation.sort = this.sortAsignacion;
+      this.configureSortingDataAccessor();
+    }
   }
 
   ngAfterViewInit(): void {
@@ -89,53 +89,53 @@ export class RegistroEvaluadores90Component implements OnInit {
   }
 
   configureSortingDataAccessor() {
-     this.dataSourceEvalAsignation.sortingDataAccessor = (item: any, property: string) => {
-         switch (property) {
-             // Reescrito de forma limpia y concisa
-             case 'fichaEvaluador': return item.evaluador.codigoFicha;
-             case 'uoEvaluador': return item.evaluador.equipo_codigo;
-             case 'nombreEvaluador': return item.evaluador.apellidosNombres;
-             case 'fichaEvaluado': return item.evaluado.codigoFicha;
-             case 'nombreEvaluado': return item.evaluado.apellidosNombres;
-             default:
-                 const value = item[property];
-                 return (typeof value === 'string') ? value.toLowerCase() : value;
-         }
-     };
-}
+    this.dataSourceEvalAsignation.sortingDataAccessor = (item: any, property: string) => {
+      switch (property) {
+        // Reescrito de forma limpia y concisa
+        case 'fichaEvaluador': return item.evaluador.codigoFicha;
+        case 'uoEvaluador': return item.evaluador.equipo_codigo;
+        case 'nombreEvaluador': return item.evaluador.apellidosNombres;
+        case 'fichaEvaluado': return item.evaluado.codigoFicha;
+        case 'nombreEvaluado': return item.evaluado.apellidosNombres;
+        default:
+          const value = item[property];
+          return (typeof value === 'string') ? value.toLowerCase() : value;
+      }
+    };
+  }
 
   async LoadEvalAsignationData(): Promise<any> {
-    try{
+    try {
       this.utilsService.showLoading();
-      
+
       const asignationEvalygroups = await this.evalAsignationService.GetEvalAsignationReport(this.CalendarID).toPromise();
-      const filteredAsignationEvalgroups = asignationEvalygroups.registros.sort((a: any, b: any) => b.estado - a.estado); 
+      const filteredAsignationEvalgroups = asignationEvalygroups.registros.sort((a: any, b: any) => b.estado - a.estado);
       this.evaluadores = filteredAsignationEvalgroups
       this.dataSourceEvalAsignation.data = this.evaluadores;
-       this.dataSourceEvalAsignation.filterPredicate = (data: any, filter: string) => {
+      this.dataSourceEvalAsignation.filterPredicate = (data: any, filter: string) => {
         const dataStr = (
-                (data.evaluador.codigoFicha || '') +          // 1. Código (ID)
-                (data.evaluador.equipo_codigo || '') +          // 2. Título
-                (data.evaluador.apellidosNombres || '')  +    // 3. Descripción
-                (data.evaluado.codigoFicha || '')  +    // 3. Descripción
-                (data.evaluado.apellidosNombres || '')        // 3. Descripción
-            ).toLowerCase(); // Todo a minúsculas
-            return dataStr.indexOf(filter) !== -1;
-        };
-      sessionStorage.setItem('asignaciones',JSON.stringify(this.dataSourceEvalAsignation.data));
-  
+          (data.evaluador.codigoFicha || '') +          // 1. Código (ID)
+          (data.evaluador.equipo_codigo || '') +          // 2. Título
+          (data.evaluador.apellidosNombres || '') +    // 3. Descripción
+          (data.evaluado.codigoFicha || '') +    // 3. Descripción
+          (data.evaluado.apellidosNombres || '')        // 3. Descripción
+        ).toLowerCase(); // Todo a minúsculas
+        return dataStr.indexOf(filter) !== -1;
+      };
+      sessionStorage.setItem('asignaciones', JSON.stringify(this.dataSourceEvalAsignation.data));
+
       //console.log(this.evaluadores)
       this.utilsService.closeLoading();
-    }catch (error) {
+    } catch (error) {
       console.error('Error al cargar los datos de las asignaciones:', error);
       return Swal.fire('Error al cargar los datos de las asignaciones', 'Por favor, inténtalo de nuevo más tarde.', 'error');
     }
   }
-      applyFilter(event: Event) {
-  const filterValue = (event.target as HTMLInputElement).value;
-  this.dataSourceEvalAsignation.filter = filterValue.trim().toLowerCase(); 
-  if (this.dataSourceEvalAsignation.paginator) {
-    this.dataSourceEvalAsignation.paginator.firstPage();
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSourceEvalAsignation.filter = filterValue.trim().toLowerCase();
+    if (this.dataSourceEvalAsignation.paginator) {
+      this.dataSourceEvalAsignation.paginator.firstPage();
     }
   }
 
@@ -151,221 +151,217 @@ export class RegistroEvaluadores90Component implements OnInit {
       correoEvaluado: [{ value: '', disabled: true }],
       puestoEvaluado: [{ value: '', disabled: true }],
       codPuestoEvaluado: [{ value: '', disabled: true }],
-      idEvaluacionAsignacion: [{ value: '', disabled: true}]
+      idEvaluacionAsignacion: [{ value: '', disabled: true }]
     });
   }
 
-  async LoadCalendarInfo(): Promise<any>{
-    try{
-      
+  async LoadCalendarInfo(): Promise<any> {
+    try {
+
       this.utilsService.showLoading();
       const data = await this.parametrizationService.GetParametrizationProgress(this.CalendarID).toPromise();
       //console.log(data.registros)
-      this.CalendarData=data.registros.calendario;  //PROY-00013 RFC
+      this.CalendarData = data.registros.calendario;  //PROY-00013 RFC
       this.CalendarName = data.registros.calendario.vNombre;
       this.utilsService.closeLoading();
-    }catch (error) {
+    } catch (error) {
       console.error('Error al cargar los datos del calendario:', error);
       return Swal.fire('Error al cargar los datos del calendario', 'Por favor, inténtalo de nuevo más tarde.', 'error');
     }
   }
 
 
-  cargaAutomatica(){
+  cargaAutomatica() {
     console.log('cargaAutomatica');
   }
 
 
   handleSubmit() {
     if (this.form.valid) {
-      const newRegister: any = {...this.form.getRawValue()};
+      const newRegister: any = { ...this.form.getRawValue() };
 
       if (this.editingItem) {
         //console.log('editado')
         //console.log(newRegister)
-        if(
-          this.form.get('nombreEvaluador').value === '' || 
-          this.form.get('nombreEvaluador').value === null || 
+        if (
+          this.form.get('nombreEvaluador').value === '' ||
+          this.form.get('nombreEvaluador').value === null ||
           this.form.get('correoEvaluador').value === '' ||
           this.form.get('correoEvaluador').value === null ||
           this.form.get('puestoEvaluador').value === '' ||
-          this.form.get('puestoEvaluador').value === null)
-          {
-            return  Swal.fire('Campo Código de Ficha del Evaluador Vacío', 'Por favor, complete el campo de código de ficha del evaluador correctamente antes de continuar.','warning')
-          }
-  
-          if(
-            this.form.get('nombreEvaluado').value === '' || 
-            this.form.get('nombreEvaluado').value === null || 
-            this.form.get('correoEvaluado').value === '' ||
-            this.form.get('correoEvaluado').value === null ||
-            this.form.get('puestoEvaluado').value === '' ||
-            this.form.get('puestoEvaluado').value === null)
-            {
-              return  Swal.fire('Campo Código de Ficha del Evaluado Vacío', 'Por favor, complete el campo de código de ficha del evaluado correctamente antes de continuar.','warning')
-            }
-          if (String(this.form.get('fichaEvaluador').value).padStart(8,'0') ===String(this.form.get('fichaEvaluado').value).padStart(8,'0')) {
-            return  Swal.fire('Error', 'Evaluador y Evaluado no puede ser el mismo.','warning')
-          }
-            Swal.fire({
-              title:  "Aviso",
-              text: `¿Estás seguro de que deseas actualizar el registro del evaluador y evaluado?`,
-              type: 'warning',
-              showCancelButton: true,
-              confirmButtonText: "Añadir",
-              cancelButtonText: "Cancelar"
-            }).then(async (result) => {
-              if (result.value) {
-                  this.utilsService.showLoading();
-                  let bodyToSend: IRegisterEvaluatorsAndEvaluated = 
-                  {
-                    idEvaluacionAsignacion: newRegister.idEvaluacionAsignacion,
-                    evaluador: {
-                      codigoPuesto: newRegister.codPuestoEvaluador,
-                      tipoEvaluador: 1
-                    },
-                    evaluado: {
-                      codigoPuesto: newRegister.codPuestoEvaluado
-                    },
-                    calendario: {
-                      vCodigo: this.CalendarID,
-                    },
-                    estado: 1,
-                    admin: {
-                      codigoFicha: this.AdminData.ficha
-                    }
-                  }
-                  //console.log(bodyToSend)
-                  this.utilsService.showLoading();
-                  this.evalAsignationService.PutEvalAsignationReports(bodyToSend).subscribe({
-                    next: (data) => {
-                      Swal.fire({
-                        title:  `El registro se ha actualizado con éxito.`,
-                        text: ``,
-                        type: 'success',
-                        showCancelButton: false,
-                        confirmButtonText: 'OK',
-                      }).then(() => {
-                        this.LoadEvalAsignationData();
-                        this.form.markAsTouched();;
-                        this.form.reset();
-                        this.editingItem = null;
-                        this.lastEvaluatorPositionValue = '';
-                        this.lastEvaluatedPositionValue = '';
-                        Object.keys(this.form.controls).forEach(key => {
-                          this.form.get(key).setErrors(null);
-                        });     
-                      })
-                    },
-                    error: (error) => {
-                      Swal.fire({
-                        title:  "Ocurrió un error :(",
-                        text: 'No se pudo actualizar, valide que la asignación no exista y no tenga evaluación terminada',
-                        type: 'error',
-                        showCancelButton: false,
-                        confirmButtonText: 'OK',
-                      }).then(() => {
-                         this.form.markAsTouched();;
-                        this.form.reset();
-                      });
-                    }
-                  });           
-              }
-            })  
-      } else {
-        if(
-        this.form.get('nombreEvaluador').value === '' || 
-        this.form.get('nombreEvaluador').value === null || 
-        this.form.get('correoEvaluador').value === '' ||
-        this.form.get('correoEvaluador').value === null ||
-        this.form.get('puestoEvaluador').value === '' ||
-        this.form.get('puestoEvaluador').value === null)
-        {
-          return  Swal.fire('Campo Código de Ficha del Evaluador Vacío', 'Por favor, complete el campo de código de ficha del evaluador correctamente antes de continuar.','warning')
+          this.form.get('puestoEvaluador').value === null) {
+          return Swal.fire('Campo Código de Ficha del Evaluador Vacío', 'Por favor, complete el campo de código de ficha del evaluador correctamente antes de continuar.', 'warning')
         }
 
-        if(
-          this.form.get('nombreEvaluado').value === '' || 
-          this.form.get('nombreEvaluado').value === null || 
+        if (
+          this.form.get('nombreEvaluado').value === '' ||
+          this.form.get('nombreEvaluado').value === null ||
           this.form.get('correoEvaluado').value === '' ||
           this.form.get('correoEvaluado').value === null ||
           this.form.get('puestoEvaluado').value === '' ||
-          this.form.get('puestoEvaluado').value === null)
-          {
-            return  Swal.fire('Campo Código de Ficha del Evaluado Vacío', 'Por favor, complete el campo de código de ficha del evaluado correctamente antes de continuar.','warning')
-          }
-
-          if (this.form.get('fichaEvaluador').value ===this.form.get('fichaEvaluado').value) {
-            return  Swal.fire('Error', 'Evaluador y Evaluado no puede ser el mismo.','warning')
-          }
-    
-          Swal.fire({
-            title:  "Aviso",
-            text: `¿Estás seguro de que deseas añadir el registro del evaluador y evaluado?`,
-            type: 'warning',
-            showCancelButton: true,
-            confirmButtonText: "Añadir",
-            cancelButtonText: "Cancelar"
-          }).then(async (result) => {
-            if (result.value) {
-                this.utilsService.showLoading();
-                let bodyToSend: IRegisterEvaluatorsAndEvaluated = 
-                {
-                  evaluador: {
-                    codigoPuesto: newRegister.codPuestoEvaluador,
-                    tipoEvaluador: 1
-                  },
-                  evaluado: {
-                    codigoPuesto: newRegister.codPuestoEvaluado
-                  },
-                  calendario: {
-                    vCodigo: this.CalendarID
-                  },
-                  admin: {
-                    codigoFicha: this.AdminData.ficha
-                  }
-                }
-
-                this.utilsService.showLoading();
-                this.evalAsignationService.PostEvalAsignationReport(bodyToSend).subscribe({
-                  next: (data) => {
-                    Swal.fire({
-                      title:  `El registro se ha añadido con éxito.`,
-                      text: ``,
-                      type: 'success',
-                      showCancelButton: false,
-                      confirmButtonText: 'OK',
-                    }).then(() => {
-                      this.LoadEvalAsignationData();
-                      this.form.markAsTouched();;
-                      this.form.reset();
-                      this.lastEvaluatorPositionValue = '';
-                      this.lastEvaluatedPositionValue = '';
-                      Object.keys(this.form.controls).forEach(key => {
-                        this.form.get(key).setErrors(null);
-                      });     
-                    })
-                  },
-                  error: (error) => {
-                    Swal.fire({
-                      title:  "Ocurrió un error :(",
-                     text: 'No se puede insertar valide que la asignación no exista',
-                      type: 'error',
-                      showCancelButton: false,
-                      confirmButtonText: 'OK',
-                    }).then(() => {
-                       this.form.reset();
-                    });
-                  }
-                });           
+          this.form.get('puestoEvaluado').value === null) {
+          return Swal.fire('Campo Código de Ficha del Evaluado Vacío', 'Por favor, complete el campo de código de ficha del evaluado correctamente antes de continuar.', 'warning')
+        }
+        if (String(this.form.get('fichaEvaluador').value).padStart(8, '0') === String(this.form.get('fichaEvaluado').value).padStart(8, '0')) {
+          return Swal.fire('Error', 'Evaluador y Evaluado no puede ser el mismo.', 'warning')
+        }
+        Swal.fire({
+          title: "Aviso",
+          text: `¿Estás seguro de que deseas actualizar el registro del evaluador y evaluado?`,
+          type: 'warning',
+          showCancelButton: true,
+          confirmButtonText: "Añadir",
+          cancelButtonText: "Cancelar"
+        }).then(async (result) => {
+          if (result.value) {
+            this.utilsService.showLoading();
+            let bodyToSend: IRegisterEvaluatorsAndEvaluated =
+            {
+              idEvaluacionAsignacion: newRegister.idEvaluacionAsignacion,
+              evaluador: {
+                codigoPuesto: newRegister.codPuestoEvaluador,
+                tipoEvaluador: 1
+              },
+              evaluado: {
+                codigoPuesto: newRegister.codPuestoEvaluado
+              },
+              calendario: {
+                vCodigo: this.CalendarID,
+              },
+              estado: 1,
+              admin: {
+                codigoFicha: this.AdminData.ficha
+              }
             }
-          })  
+            //console.log(bodyToSend)
+            this.utilsService.showLoading();
+            this.evalAsignationService.PutEvalAsignationReports(bodyToSend).subscribe({
+              next: (data) => {
+                Swal.fire({
+                  title: `El registro se ha actualizado con éxito.`,
+                  text: ``,
+                  type: 'success',
+                  showCancelButton: false,
+                  confirmButtonText: 'OK',
+                }).then(() => {
+                  this.LoadEvalAsignationData();
+                  this.form.markAsTouched();;
+                  this.form.reset();
+                  this.editingItem = null;
+                  this.lastEvaluatorPositionValue = '';
+                  this.lastEvaluatedPositionValue = '';
+                  Object.keys(this.form.controls).forEach(key => {
+                    this.form.get(key).setErrors(null);
+                  });
+                })
+              },
+              error: (error) => {
+                Swal.fire({
+                  title: "Ocurrió un error :(",
+                  text: 'No se pudo actualizar, valide que la asignación no exista y no tenga evaluación terminada',
+                  type: 'error',
+                  showCancelButton: false,
+                  confirmButtonText: 'OK',
+                }).then(() => {
+                  this.form.markAsTouched();;
+                  this.form.reset();
+                });
+              }
+            });
+          }
+        })
+      } else {
+        if (
+          this.form.get('nombreEvaluador').value === '' ||
+          this.form.get('nombreEvaluador').value === null ||
+          this.form.get('correoEvaluador').value === '' ||
+          this.form.get('correoEvaluador').value === null ||
+          this.form.get('puestoEvaluador').value === '' ||
+          this.form.get('puestoEvaluador').value === null) {
+          return Swal.fire('Campo Código de Ficha del Evaluador Vacío', 'Por favor, complete el campo de código de ficha del evaluador correctamente antes de continuar.', 'warning')
+        }
+
+        if (
+          this.form.get('nombreEvaluado').value === '' ||
+          this.form.get('nombreEvaluado').value === null ||
+          this.form.get('correoEvaluado').value === '' ||
+          this.form.get('correoEvaluado').value === null ||
+          this.form.get('puestoEvaluado').value === '' ||
+          this.form.get('puestoEvaluado').value === null) {
+          return Swal.fire('Campo Código de Ficha del Evaluado Vacío', 'Por favor, complete el campo de código de ficha del evaluado correctamente antes de continuar.', 'warning')
+        }
+
+        if (this.form.get('fichaEvaluador').value === this.form.get('fichaEvaluado').value) {
+          return Swal.fire('Error', 'Evaluador y Evaluado no puede ser el mismo.', 'warning')
+        }
+
+        Swal.fire({
+          title: "Aviso",
+          text: `¿Estás seguro de que deseas añadir el registro del evaluador y evaluado?`,
+          type: 'warning',
+          showCancelButton: true,
+          confirmButtonText: "Añadir",
+          cancelButtonText: "Cancelar"
+        }).then(async (result) => {
+          if (result.value) {
+            this.utilsService.showLoading();
+            let bodyToSend: IRegisterEvaluatorsAndEvaluated =
+            {
+              evaluador: {
+                codigoPuesto: newRegister.codPuestoEvaluador,
+                tipoEvaluador: 1
+              },
+              evaluado: {
+                codigoPuesto: newRegister.codPuestoEvaluado
+              },
+              calendario: {
+                vCodigo: this.CalendarID
+              },
+              admin: {
+                codigoFicha: this.AdminData.ficha
+              }
+            }
+
+            this.utilsService.showLoading();
+            this.evalAsignationService.PostEvalAsignationReport(bodyToSend).subscribe({
+              next: (data) => {
+                Swal.fire({
+                  title: `El registro se ha añadido con éxito.`,
+                  text: ``,
+                  type: 'success',
+                  showCancelButton: false,
+                  confirmButtonText: 'OK',
+                }).then(() => {
+                  this.LoadEvalAsignationData();
+                  this.form.markAsTouched();;
+                  this.form.reset();
+                  this.lastEvaluatorPositionValue = '';
+                  this.lastEvaluatedPositionValue = '';
+                  Object.keys(this.form.controls).forEach(key => {
+                    this.form.get(key).setErrors(null);
+                  });
+                })
+              },
+              error: (error) => {
+                Swal.fire({
+                  title: "Ocurrió un error :(",
+                  text: 'No se puede insertar valide que la asignación no exista',
+                  type: 'error',
+                  showCancelButton: false,
+                  confirmButtonText: 'OK',
+                }).then(() => {
+                  this.form.reset();
+                });
+              }
+            });
+          }
+        })
       }
     }
   }
 
   async onSearchEvaluator(): Promise<void> {
-    const currentValue = this.form.get('fichaEvaluador').value; 
+    const currentValue = this.form.get('fichaEvaluador').value;
 
     if ((currentValue !== this.lastEvaluatorPositionValue) && this.form.get('fichaEvaluador').value !== '') {
       this.lastEvaluatorPositionValue = currentValue;
@@ -380,15 +376,15 @@ export class RegistroEvaluadores90Component implements OnInit {
           this.form.get('puestoEvaluador').patchValue(data.registros.nombrePuesto);
           this.form.get('codPuestoEvaluador').patchValue(data.registros.codigoPuesto);
           this.utilsService.closeLoading();
-        }else{
+        } else {
           Swal.fire('Ficha no encontrada', 'No se encontró información para la ficha ingresada.', 'warning');
           this.form.get('nombreEvaluador').patchValue('');
           this.form.get('correoEvaluador').patchValue('');
           this.form.get('puestoEvaluador').patchValue('');
           this.form.get('codPuestoEvaluador').patchValue('');
         }
-      
-      
+
+
 
       } catch (error) {
         console.error("Error al obtener la información del trabajador:", error);
@@ -397,7 +393,7 @@ export class RegistroEvaluadores90Component implements OnInit {
   }
 
   async onSearchEvaluated(): Promise<void> {
-    const currentValue = this.form.get('fichaEvaluado').value; 
+    const currentValue = this.form.get('fichaEvaluado').value;
 
     if ((currentValue !== this.lastEvaluatedPositionValue) && this.form.get('fichaEvaluado').value !== '') {
       this.lastEvaluatedPositionValue = currentValue;
@@ -406,9 +402,9 @@ export class RegistroEvaluadores90Component implements OnInit {
         this.utilsService.showLoading();
         const data = await this.adminService.GetWorkerInfoForRegisterAdminModal(currentValue).toPromise();
         if (data.registros && Object.keys(data.registros).length !== 0) {
-          if (data.registros.jefe===true){
+          if (data.registros.jefe === true) {
             this.utilsService.closeLoading();
-              Swal.fire('Error ', 'En 90° los evaluados no deben ser jefes.', 'warning');
+            Swal.fire('Error ', 'En 90° los evaluados no deben ser jefes.', 'warning');
           } else {
             this.form.get('nombreEvaluado').patchValue(data.registros.apellidosNombres);
             this.form.get('correoEvaluado').patchValue(data.registros.correo);
@@ -416,17 +412,17 @@ export class RegistroEvaluadores90Component implements OnInit {
             this.form.get('codPuestoEvaluado').patchValue(data.registros.codigoPuesto);
             this.utilsService.closeLoading();
           }
-         
-          
-        }else{
+
+
+        } else {
           Swal.fire('Ficha no encontrada', 'No se encontró información para la ficha ingresada.', 'warning');
           this.form.get('nombreEvaluado').patchValue('');
           this.form.get('correoEvaluado').patchValue('');
           this.form.get('puestoEvaluado').patchValue('');
           this.form.get('codPuestoEvaluado').patchValue('');
         }
-      
-      
+
+
 
       } catch (error) {
         console.error("Error al obtener la información del trabajador:", error);
@@ -446,7 +442,7 @@ export class RegistroEvaluadores90Component implements OnInit {
 
   handleDelete(registro: any) {
     //console.log(registro)
-    let bodyToSend: IRegisterEvaluatorsAndEvaluated = 
+    let bodyToSend: IRegisterEvaluatorsAndEvaluated =
     {
       idEvaluacionAsignacion: registro.idEvaluacionAsignacion,
       evaluador: {
@@ -466,7 +462,7 @@ export class RegistroEvaluadores90Component implements OnInit {
     }
     //console.log(bodyToSend)
     Swal.fire({
-      title:  "Aviso",
+      title: "Aviso",
       text: `¿Estás seguro de que deseas eliminar el registro del evaluador y evaluado?`,
       type: 'warning',
       showCancelButton: true,
@@ -478,15 +474,15 @@ export class RegistroEvaluadores90Component implements OnInit {
         this.evalAsignationService.PutEvalAsignationReports(bodyToSend).subscribe({
           next: (data) => {
             Swal.fire({
-              title:  `El registro se ha eliminado con éxito.`,
+              title: `El registro se ha eliminado con éxito.`,
               text: ``,
               type: 'success',
               showCancelButton: false,
               confirmButtonText: 'OK',
             }).then(() => {
-              this.LoadEvalAsignationData();   
+              this.LoadEvalAsignationData();
               this.editingItem = null;
-              this.form.reset() 
+              this.form.reset()
               Object.keys(this.form.controls).forEach(key => {
                 this.form.get(key).setErrors(null);
               });
@@ -496,7 +492,7 @@ export class RegistroEvaluadores90Component implements OnInit {
           },
           error: (error) => {
             Swal.fire({
-              title:  "Ocurrió un error :(",
+              title: "Ocurrió un error :(",
               text: error.message,
               type: 'error',
               showCancelButton: false,
@@ -510,7 +506,7 @@ export class RegistroEvaluadores90Component implements OnInit {
 
   handleActivate(registro: any) {
     //console.log(registro)
-    let bodyToSend: IRegisterEvaluatorsAndEvaluated = 
+    let bodyToSend: IRegisterEvaluatorsAndEvaluated =
     {
       idEvaluacionAsignacion: registro.idEvaluacionAsignacion,
       evaluador: {
@@ -530,7 +526,7 @@ export class RegistroEvaluadores90Component implements OnInit {
     }
     //console.log(bodyToSend)
     Swal.fire({
-      title:  "Aviso",
+      title: "Aviso",
       text: `¿Estás seguro de que deseas activar el registro del evaluador y evaluado?`,
       type: 'warning',
       showCancelButton: true,
@@ -542,18 +538,18 @@ export class RegistroEvaluadores90Component implements OnInit {
         this.evalAsignationService.PutEvalAsignationReports(bodyToSend).subscribe({
           next: (data) => {
             Swal.fire({
-              title:  `El registro se ha activado con éxito.`,
+              title: `El registro se ha activado con éxito.`,
               text: ``,
               type: 'success',
               showCancelButton: false,
               confirmButtonText: 'OK',
             }).then(() => {
-              this.LoadEvalAsignationData();    
+              this.LoadEvalAsignationData();
             })
           },
           error: (error) => {
             Swal.fire({
-              title:  "Ocurrió un error",
+              title: "Ocurrió un error",
               text: error.message,
               type: 'error',
               showCancelButton: false,
@@ -575,7 +571,7 @@ export class RegistroEvaluadores90Component implements OnInit {
       //console.log('Nombre del archivo:', file.name);
       //console.log('Tamaño del archivo (bytes):', file.size);
       //console.log('Tipo de archivo:', file.type);
-  
+
       const allowedExtensions = [
         'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
         'application/vnd.ms-excel'
@@ -588,7 +584,7 @@ export class RegistroEvaluadores90Component implements OnInit {
           'error'
         );
       }
-  
+
       if (file.size > 50000000) {
         this.utilsService.closeLoading();
         return Swal.fire(
@@ -597,7 +593,7 @@ export class RegistroEvaluadores90Component implements OnInit {
           'info'
         );
       }
-  
+
       try {
         const validation = await this.evalAsignationService
           .PostSendEvalAsignationExcelForValidation(file)
@@ -605,14 +601,14 @@ export class RegistroEvaluadores90Component implements OnInit {
         this.EvalAsignacionExcel = validation;
       } finally {
         this.utilsService.closeLoading();
-        input.value = ''; 
+        input.value = '';
       }
     }
   }
 
   private async SendEvalGroupsAsignationData(): Promise<void> {
     Swal.fire({
-      title:  "Aviso",
+      title: "Aviso",
       text: `¿Estás seguro de que deseas cargar los registros de evaluadores y evaluados?`,
       type: 'warning',
       showCancelButton: true,
@@ -620,42 +616,42 @@ export class RegistroEvaluadores90Component implements OnInit {
       cancelButtonText: "Cancelar"
     }).then(async (result) => {
       if (result.value) {
-          this.utilsService.showLoading();
-          this.evalAsignationService.PostSendEvalAsignationExcelForSave(this.EvalAsignacionExcel.datos.listadoCorrectos, this.AdminData.ficha).subscribe({
-            next: (data) => {
-              Swal.fire({
-                title:  `Los registros se han cargado con éxito.`,
-                text: `Los evaluadores y evaluados se cargaron correctamente.`,
-                type: 'success',
-                showCancelButton: false,
-                confirmButtonText: 'OK',
-              }).then(() => {
-                this.EvalAsignacionExcel = null;
-                this.dialog.closeAll();
-                this.LoadEvalAsignationData();
-              })
-            },
-            error: (error) => {
-              Swal.fire({
-                title:  "Ocurrió un error :(",
-                text: error.message,
-                type: 'error',
-                showCancelButton: false,
-                confirmButtonText: 'OK',
-              });
-            }
-          });
-        }
-    })  
+        this.utilsService.showLoading();
+        this.evalAsignationService.PostSendEvalAsignationExcelForSave(this.EvalAsignacionExcel.datos.listadoCorrectos, this.AdminData.ficha).subscribe({
+          next: (data) => {
+            Swal.fire({
+              title: `Los registros se han cargado con éxito.`,
+              text: `Los evaluadores y evaluados se cargaron correctamente.`,
+              type: 'success',
+              showCancelButton: false,
+              confirmButtonText: 'OK',
+            }).then(() => {
+              this.EvalAsignacionExcel = null;
+              this.dialog.closeAll();
+              this.LoadEvalAsignationData();
+            })
+          },
+          error: (error) => {
+            Swal.fire({
+              title: "Ocurrió un error :(",
+              text: error.message,
+              type: 'error',
+              showCancelButton: false,
+              confirmButtonText: 'OK',
+            });
+          }
+        });
+      }
+    })
   }
 
-  
+
   openUploadExcelEvaluators90Dialog(): void {
     this.EvalAsignacionExcel = null;
     this.dialog.open(this.UploadExcelEvaluators90Dialog, {
       width: '1900px'
     });
   }
-  
+
 
 }
