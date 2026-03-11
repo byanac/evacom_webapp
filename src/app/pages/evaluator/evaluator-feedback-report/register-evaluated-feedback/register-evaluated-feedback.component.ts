@@ -355,10 +355,10 @@ export class RegisterEvaluatedFeedbackComponent implements OnInit {
         case (resultado >= 50 && resultado < 75):
             message = "EN DESARROLLO";
             break;
-        case (resultado >= 0 && resultado <= 49):
+        case (resultado >= 0 && resultado < 50):
             message = "NO CUMPLE";
             break;
-        case (resultado >= 75 && resultado <= 94):
+        case (resultado >= 75 && resultado < 95):
             message = "EFECTIVO";
             break;
         default:

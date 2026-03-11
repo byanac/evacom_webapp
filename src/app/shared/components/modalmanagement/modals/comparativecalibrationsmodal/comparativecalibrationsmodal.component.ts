@@ -104,10 +104,10 @@ export class ComparativecalibrationsmodalComponent implements OnInit {
         case (result >= 50 && result < 75):
             message = "EN DESARROLLO";
             break;
-        case (result >= 0 && result <= 49):
+        case (result >= 0 && result < 50):
             message = "NO CUMPLE";
             break;
-        case (result >= 75 && result <= 94):
+        case (result >= 75 && result < 95):
             message = "EFECTIVO";
             break;
         default:
