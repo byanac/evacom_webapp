@@ -300,7 +300,7 @@ export class RegistroRetroalimentacionComponent implements OnInit {
     let message: string;
   
     switch (true) {
-        case (resultado >= 50 && resultado <= 75):
+        case (resultado >= 50 && resultado < 75):
             message = "EN DESARROLLO";
             break;
         case (resultado >= 0 && resultado <= 49):

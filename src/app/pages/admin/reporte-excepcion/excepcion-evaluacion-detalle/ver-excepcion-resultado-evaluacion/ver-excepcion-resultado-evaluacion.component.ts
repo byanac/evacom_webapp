@@ -60,7 +60,7 @@ ObtenerLabeldeEstado(resultado: number): string {
   let message: string;
 
   switch (true) {
-      case (result >= 50 && result <= 75):
+      case (result >= 50 && result < 75):
           message = "EN DESARROLLO";
           break;
       case (result >= 0 && result <= 49):
