@@ -303,10 +303,10 @@ export class ItemGlobalComponent implements OnInit {
     
       switch (true) {
           case (resultado >= 50 && resultado < 75):
-              message = "EN DESARROLLO";
+              message = "PARCIALMENTE EFECTIVO";
               break;
           case (resultado >= 0 && resultado < 50):
-              message = "NO CUMPLE";
+              message = "NECESITA MEJORA";
               break;
           case (resultado >= 75 && resultado < 95):
               message = "EFECTIVO";

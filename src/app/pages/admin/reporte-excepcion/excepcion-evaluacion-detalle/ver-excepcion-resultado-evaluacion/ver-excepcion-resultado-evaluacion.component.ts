@@ -61,10 +61,10 @@ ObtenerLabeldeEstado(resultado: number): string {
 
   switch (true) {
       case (result >= 50 && result < 75):
-          message = "EN DESARROLLO";
+          message = "PARCIALMENTE EFECTIVO";
           break;
       case (result >= 0 && result < 50):
-          message = "NO CUMPLE";
+          message = "NECESITA MEJORA";
           break;
       case (result >= 75 && result < 95):
           message = "EFECTIVO";
