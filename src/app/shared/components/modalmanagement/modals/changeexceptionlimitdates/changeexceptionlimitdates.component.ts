@@ -50,7 +50,8 @@ export class ChangeexceptionlimitdatesComponent implements OnInit {
     let fechaInicioNormalizada = this.obtenerSoloFecha(new Date(this.FechaInicioPeriodo));
     let fechaFinNormalizada = this.obtenerSoloFecha(new Date(this.FechaFinPeriodo));
     
-    if(fechaExpiracionNormalizada >= fechaInicioNormalizada && fechaExpiracionNormalizada <= fechaFinNormalizada) {
+    //if(fechaExpiracionNormalizada >= fechaInicioNormalizada && fechaExpiracionNormalizada <= fechaFinNormalizada) {
+    if(fechaExpiracionNormalizada >= fechaInicioNormalizada ) {
       if (
         this.NuevaFechaFin.getUTCFullYear() < this.TodayDate.getUTCFullYear() || 
         (this.NuevaFechaFin.getUTCFullYear() === this.TodayDate.getUTCFullYear() && this.NuevaFechaFin.getUTCMonth() < this.TodayDate.getUTCMonth()) || 
