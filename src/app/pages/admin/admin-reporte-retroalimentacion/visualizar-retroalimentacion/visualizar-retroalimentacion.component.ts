@@ -295,6 +295,9 @@ this.EvaluationResult = AutoEvaluationData.promedioEvaluacion
     let message: string;
   
     switch (true) {
+      case (resultado < 0 ):
+            message = " Sin registro";
+            break;
         case (resultado >= 50 && resultado < 75):
             message = "PARCIALMENTE EFECTIVO";
             break;

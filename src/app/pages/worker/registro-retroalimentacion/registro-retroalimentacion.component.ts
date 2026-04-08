@@ -49,26 +49,32 @@ export class RegistroRetroalimentacionComponent implements OnInit {
   Show180: boolean = false;
   CalendarTypeNumber: string = ""
 
-  constructor(private loginservice: LoginService, private router: Router, private calendarService: CalendarService, private feedbackService: FeedbackService, private utilService: UtilsService, private loginService: LoginService, private autoevaluationService: AutoevaluationService){}
+  constructor(private loginservice: LoginService,
+    private cd: ChangeDetectorRef,
+    private router: Router, private calendarService: CalendarService, private feedbackService: FeedbackService, private utilService: UtilsService, private loginService: LoginService, private autoevaluationService: AutoevaluationService){}
 
   async ngOnInit(): Promise<void | SweetAlertResult> {
     
     this.utilService.showLoading();
     
-    this.calendarService.GetCalendarName(this.CodCalendario).then(result => {
+    /*this.calendarService.GetCalendarName(this.CodCalendario).then(result => {
       this.PeriodName = result;
-    });
-
+    }); */
+    this.PeriodName = await this.calendarService.GetCalendarName(this.CodCalendario);
+    /*
     this.calendarService.GetCalendarTypeNumber(this.CodCalendario).then(result => {
       this.CalendarTypeNumber = result;
-    });
+    });*/
 
+    this.CalendarTypeNumber = await this.calendarService.GetCalendarTypeNumber(this.CodCalendario); 
     if (this.DataFromsessionStorage.permisos[0].evaluado || this.DataFromsessionStorage.permisos[1].evaluado) {
       if(this.TipoCalendario === '90'){
-        this.MainLoadEvaluated90()
+       await this.MainLoadEvaluated90()
       }else if(this.TipoCalendario === '180'){
-        this.MainLoadEvaluated180();
+        await this.MainLoadEvaluated180();
       }
+      this.cd.detectChanges();
+      this.utilService.closeLoading();
     } else {
         Swal.fire("Alerta", "No eres un evaluado, serás devuelto a la página de inicio se sesión", "warning").then(() => {
             this.router.navigateByUrl('/home');
@@ -300,6 +306,9 @@ export class RegistroRetroalimentacionComponent implements OnInit {
     let message: string;
   
     switch (true) {
+      case (resultado < 0 ):
+            message = " Sin registro";
+            break;
         case (resultado >= 50 && resultado < 75):
             message = "PARCIALMENTE EFECTIVO";
             break;

@@ -144,7 +144,7 @@
         </tbody>
       </table>
       <div [ngClass]="{'ResultCompetencyContainerInfo90': Show90, 'ResultCompetencyContainerInfo180': Show180}" *ngIf="DataToShow != undefined">
-        <section class="m-0 mt-4 w-96">
+        <section class="m-0 mt-4 " style="width: 540px;">
           <table class="w-full h-full"><thead>
             <tr>
               <th>Evaluador</th>
@@ -397,6 +397,9 @@
 
   
              <!-- Autoevaluación -->
+             <tr>
+                <td colspan="2"><hr></td>
+              </tr>
              <tr>
               <td rowspan="2">Autoevaluación</td>
               <td>
