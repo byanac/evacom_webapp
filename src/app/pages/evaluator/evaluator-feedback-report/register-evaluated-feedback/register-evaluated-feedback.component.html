@@ -379,13 +379,13 @@
               <td rowspan="2">Jefe Directo</td>
               <td>
                 <b>Competencia con mayor FORTALEZA</b><br>
-                {{DataToShow.cualitativa[1].competencia_nombre_fortaleza}}: {{DataToShow.cualitativa[1].fortaleza}}
+                {{DataToShow.cualitativa[1]?.competencia_nombre_fortaleza || ''}}: {{DataToShow.cualitativa[1]?.fortaleza || ''}}
               </td>
             </tr>
             <tr>
               <td>
                 <b>Competencia con mayor OPORTUNIDAD DE MEJORA</b><br>
-                {{DataToShow.cualitativa[1].competencia_nombre_oportunidad}}: {{DataToShow.cualitativa[1].oportunidad}}
+                {{DataToShow.cualitativa[1]?.competencia_nombre_oportunidad || ''}}: {{DataToShow.cualitativa[1]?.oportunidad || ''}}
               </td>
             </tr>
             
@@ -394,7 +394,7 @@
     <td rowspan="2">Subordinado {{i + 1}}</td>
     <td>
       <b>Competencia con mayor FORTALEZA</b><br>
-      {{item.competencia_nombre_fortaleza}}: {{item.fortaleza}}
+      {{item.competencia_nombre_fortaleza || ''}}: {{item.fortaleza}}
     </td>
   </tr>
   <tr *ngIf="Show180">
@@ -411,13 +411,13 @@
               <td rowspan="2">Autoevaluación</td>
               <td>
                 <b>Competencia con mayor FORTALEZA</b><br>
-                {{DataToShow.cualitativa[0].competencia_nombre_fortaleza}}: {{DataToShow.cualitativa[0].fortaleza}}
+                {{DataToShow.cualitativa[0]?.competencia_nombre_fortaleza || ''}} : {{DataToShow.cualitativa[0]?.fortaleza || ''}}
               </td>
             </tr>
             <tr>
               <td>
                 <b>Competencia con mayor OPORTUNIDAD DE MEJORA</b><br>
-                {{DataToShow.cualitativa[0].competencia_nombre_oportunidad}}: {{DataToShow.cualitativa[0].oportunidad}}
+                {{DataToShow.cualitativa[0]?.competencia_nombre_oportunidad}}: {{DataToShow.cualitativa[0]?.oportunidad}}
               </td>
             </tr>         
           </tbody>
@@ -441,15 +441,15 @@
           <td>      
             <mat-form-field appearance="outline" class="w-full">
               <textarea
-                matInput
+                #feedbackInput  matInput
                 class="w-full rounded-md "
+                name="evaluatorFeedback"
                 [disabled]="DisableEvaluatorTextField" 
                 [(ngModel)]="EvaluatorFeedbackText"
                 maxlength="500"
                 placeholder="Escribe tu retroalimentación aquí"
                 aria-label="Retroalimentación"
-                rows="5">
-              </textarea>
+                rows="5"></textarea>
               <mat-hint align="end">{{ EvaluatorFeedbackText?.length || 0 }}/500</mat-hint>
             </mat-form-field>            
           </td>
@@ -486,7 +486,7 @@
     <div class="space-y-4">
       <button
         class="inline-flex text-white items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2 w-full"
-        type="submit"
+        type="button"
         (click)="RegisterFeedback()"
         *ngIf="!DisableSubmitButton"
       >

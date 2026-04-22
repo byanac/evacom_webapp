@@ -298,8 +298,9 @@ export class RegisterEvaluatedFeedbackComponent implements OnInit {
     });
   }
 
-  private RegisterFeedback(dateString: string): | Promise<SweetAlertResult>{
-    if(this.EvaluatorFeedbackText.trim() === ""){
+  private RegisterFeedback(): | Promise<SweetAlertResult>{
+    const feedback = this.EvaluatorFeedbackText;
+    if (!feedback || feedback.trim() === "") {
       return Swal.fire('Advertencia', 'Por favor, ingresa tu retroalimentación antes de continuar.','warning');
     }
 
