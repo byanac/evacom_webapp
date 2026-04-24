@@ -379,13 +379,13 @@
               <td rowspan="2">Jefe Directo</td>
               <td>
                 <b>Competencia con mayor FORTALEZA</b><br>
-                {{DataToShow.cualitativa[1].competencia_nombre_fortaleza}}: {{DataToShow.cualitativa[1].fortaleza}}
+                {{DataToShow.cualitativa[1]?.competencia_nombre_fortaleza}}: {{DataToShow.cualitativa[1]?.fortaleza}}
               </td>
             </tr>
             <tr>
               <td>
                 <b>Competencia con mayor OPORTUNIDAD DE MEJORA</b><br>
-                {{DataToShow.cualitativa[1].competencia_nombre_oportunidad}}: {{DataToShow.cualitativa[1].oportunidad}}
+                {{DataToShow.cualitativa[1]?.competencia_nombre_oportunidad}}: {{DataToShow.cualitativa[1]?.oportunidad}}
               </td>
             </tr>
             
@@ -400,7 +400,7 @@
   <tr *ngIf="Show180">
     <td>
       <b>Competencia con mayor OPORTUNIDAD DE MEJORA</b><br>
-      {{item.competencia_nombre_oportunidad}}: {{item.oportunidad}}
+      {{item.competencia_nombre_oportunidad}}: {{item?.oportunidad}}
     </td>
   </tr>
 </ng-container>
@@ -411,13 +411,13 @@
               <td rowspan="2">Autoevaluación</td>
               <td>
                 <b>Competencia con mayor FORTALEZA</b><br>
-                {{DataToShow.cualitativa[0].competencia_nombre_fortaleza}}: {{DataToShow.cualitativa[0].fortaleza}}
+                {{DataToShow.cualitativa[0]?.competencia_nombre_fortaleza}}: {{DataToShow.cualitativa[0]?.fortaleza}}
               </td>
             </tr>
             <tr>
               <td>
                 <b>Competencia con mayor OPORTUNIDAD DE MEJORA</b><br>
-                {{DataToShow.cualitativa[0].competencia_nombre_oportunidad}}: {{DataToShow.cualitativa[0].oportunidad}}
+                {{DataToShow.cualitativa[0]?.competencia_nombre_oportunidad}}: {{DataToShow.cualitativa[0]?.oportunidad}}
               </td>
             </tr>         
           </tbody>
@@ -448,8 +448,7 @@
                 maxlength="500"
                 placeholder="Escribe tu retroalimentación aquí"
                 aria-label="Retroalimentación"
-                rows="5">
-              </textarea>
+                rows="5"></textarea>
               <mat-hint align="end">{{ EvaluatorFeedbackText?.length || 0 }}/500</mat-hint>
             </mat-form-field>            
           </td>
