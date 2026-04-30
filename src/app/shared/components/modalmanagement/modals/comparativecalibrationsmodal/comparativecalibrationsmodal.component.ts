@@ -90,7 +90,8 @@ export class ComparativecalibrationsmodalComponent implements OnInit {
   }
 
   calcularPromedioPonderado(resultado): string {
-    let result = (resultado / 5) * 100;
+    //let result = (resultado / 5) * 100;
+    let result = ((resultado -1) *25);
     let message: string;
     message = result.toFixed(2) + "%";
     return message;
@@ -138,7 +139,8 @@ export class ComparativecalibrationsmodalComponent implements OnInit {
  }
 
   calcularPromedioFinal(resultado: number): string {
-    let result = (resultado / 5) * 100
+    //let result = (resultado / 5) * 100
+    let result = ((resultado -1) *25);
     return(result.toFixed(2))
   } 
 
