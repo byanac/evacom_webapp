@@ -98,7 +98,7 @@ export class ComparativecalibrationsmodalComponent implements OnInit {
   }
 
   ObtenerLabeldeEstado(resultado: number): string {
-    let result = (resultado / 5) * 100;
+    let result = (resultado -  1) * 25;
     let message: string;
 
     switch (true) {
